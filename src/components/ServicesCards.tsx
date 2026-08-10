@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, ArrowLeft, CheckCircle2, MapPin, Clock } from 'lucide-react';
 import { servicesData } from '../data/services';
 import { HexBadge } from './HexBadge';
 
@@ -10,6 +9,12 @@ interface ServicesCardsProps {
 }
 
 export const ServicesCards: React.FC<ServicesCardsProps> = ({ limit, showTitle = true }) => {
+  const [flippedCards, setFlippedCards] = useState<Record<string, boolean>>({});
+
+  const toggleFlip = (id: string) => {
+    setFlippedCards(prev => ({ ...prev, [id]: !prev[id] }));
+  };
+
   const displayServices = limit ? servicesData.slice(0, limit) : servicesData;
 
   return (
@@ -30,87 +35,159 @@ export const ServicesCards: React.FC<ServicesCardsProps> = ({ limit, showTitle =
         )}
 
         <div className="grid-3 services-grid" style={{ gap: '2rem' }}>
-          {displayServices.map((service) => (
-            <div
-              key={service.id}
-              className="service-card-item"
-              style={{
-                backgroundColor: '#ffffff',
-                borderRadius: 'var(--radius-lg)',
-                padding: '2.5rem',
-                border: '1px solid rgba(10, 31, 68, 0.06)',
-                boxShadow: '0 8px 24px rgba(10, 31, 68, 0.06)',
-                display: 'flex',
-                flexDirection: 'column',
-                position: 'relative',
-                transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.transform = 'translateY(-6px)';
-                e.currentTarget.style.boxShadow = '0 20px 40px rgba(10, 31, 68, 0.12)';
-                e.currentTarget.style.borderColor = 'rgba(2, 132, 199, 0.2)';
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 8px 24px rgba(10, 31, 68, 0.06)';
-                e.currentTarget.style.borderColor = 'rgba(10, 31, 68, 0.06)';
-              }}
-            >
-              {/* Hexagon Badge */}
-              <div className="service-card-badge-row" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
-                <HexBadge iconName={service.iconName} size={54} active />
-                {service.id === 'home-x-ray' && (
-                  <span className="emergency-pill" style={{ fontSize: '0.75rem', fontWeight: 800, backgroundColor: '#fee2e2', color: '#dc2626', padding: '0.25rem 0.65rem', borderRadius: '12px' }}>
-                    🚨 24/7 Emergency Home Service
-                  </span>
-                )}
-              </div>
+          {displayServices.map((service) => {
+            const isFlipped = !!flippedCards[service.id];
 
-              <h3 className="heading-md service-card-title" style={{ fontSize: '1.35rem', marginBottom: '0.75rem' }}>
-                {service.title}
-              </h3>
+            return (
+              <div key={service.id} className="service-flip-card-wrapper">
+                <div className={`service-flip-card-inner ${isFlipped ? 'is-flipped' : ''}`}>
+                  
+                  {/* FRONT SIDE */}
+                  <div className="service-card-front">
+                    {/* Hexagon Badge & Emergency Pill */}
+                    <div className="service-card-badge-row" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
+                      <HexBadge iconName={service.iconName} size={54} active />
+                      {service.id === 'home-x-ray' && (
+                        <span className="emergency-pill" style={{ fontSize: '0.75rem', fontWeight: 800, backgroundColor: '#fee2e2', color: '#dc2626', padding: '0.25rem 0.65rem', borderRadius: '12px' }}>
+                          🚨 24/7 Emergency Home Service
+                        </span>
+                      )}
+                    </div>
 
-              <p className="service-card-desc" style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.25rem' }}>
-                {service.shortDesc}
-              </p>
+                    <h3 className="heading-md service-card-title" style={{ fontSize: '1.35rem', marginBottom: '0.75rem' }}>
+                      {service.title}
+                    </h3>
 
-              {/* Highlights */}
-              <div className="service-card-highlights" style={{ marginTop: 'auto', paddingTop: '1rem', borderTop: '1px solid var(--border-color)', marginBottom: '1.25rem' }}>
-                <div style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--navy-primary)', marginBottom: '0.5rem', textTransform: 'uppercase' }}>
-                  Key Highlights:
+                    <p className="service-card-desc" style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.25rem' }}>
+                      {service.shortDesc}
+                    </p>
+
+                    {/* Highlights */}
+                    <div className="service-card-highlights" style={{ marginTop: 'auto', paddingTop: '1rem', borderTop: '1px solid var(--border-color)', marginBottom: '1.25rem' }}>
+                      <div style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--navy-primary)', marginBottom: '0.5rem', textTransform: 'uppercase' }}>
+                        Key Highlights:
+                      </div>
+                      <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.4rem', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+                        {service.keyHighlights.slice(0, 3).map((item, idx) => (
+                          <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.4rem' }}>
+                            <CheckCircle2 size={14} color="var(--navy-primary)" style={{ marginTop: '2px', flexShrink: 0 }} />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Interactive Action to Flip Card */}
+                    <div className="service-card-actions" style={{ marginTop: 'auto' }}>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          toggleFlip(service.id);
+                        }}
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '0.35rem',
+                          color: 'var(--blue-brand)',
+                          fontSize: '0.9rem',
+                          fontWeight: 700,
+                          background: 'none',
+                          border: 'none',
+                          padding: 0,
+                          cursor: 'pointer',
+                          transition: 'gap 0.2s ease'
+                        }}
+                        onMouseEnter={e => e.currentTarget.style.gap = '0.55rem'}
+                        onMouseLeave={e => e.currentTarget.style.gap = '0.35rem'}
+                      >
+                        <span>View Service Details</span>
+                        <ArrowRight size={16} />
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* BACK SIDE (Detailed View) */}
+                  <div className="service-card-back">
+                    <div>
+                      {/* Top Header Row */}
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                        <span style={{ fontSize: '0.75rem', fontWeight: 800, color: 'var(--blue-brand)', backgroundColor: 'var(--blue-soft)', padding: '0.25rem 0.65rem', borderRadius: '12px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                          Clinical Overview
+                        </span>
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            toggleFlip(service.id);
+                          }}
+                          className="service-back-flip-btn"
+                          title="Back to summary"
+                        >
+                          <ArrowLeft size={14} /> Back
+                        </button>
+                      </div>
+
+                      {/* Title */}
+                      <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--navy-primary)', marginBottom: '0.65rem' }}>
+                        {service.title}
+                      </h3>
+
+                      {/* Detailed Description */}
+                      <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.55, marginBottom: '1.1rem' }}>
+                        {service.fullDesc}
+                      </p>
+
+                      {/* What Service Includes / Key Features */}
+                      <div style={{ marginBottom: '1.1rem' }}>
+                        <div style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--navy-primary)', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                          What This Service Includes:
+                        </div>
+                        <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.45rem', fontSize: '0.83rem', color: 'var(--text-secondary)', padding: 0 }}>
+                          {service.keyHighlights.map((item, idx) => (
+                            <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.45rem', lineHeight: 1.4 }}>
+                              <CheckCircle2 size={14} color="var(--blue-brand)" style={{ marginTop: '2px', flexShrink: 0 }} />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Availability Information */}
+                      <div style={{ backgroundColor: 'var(--bg-subtle)', padding: '0.75rem 0.9rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-color)', fontSize: '0.8rem' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontWeight: 700, color: 'var(--navy-primary)', marginBottom: '0.2rem' }}>
+                          <MapPin size={14} color="var(--blue-brand)" /> Service Availability:
+                        </div>
+                        <div style={{ color: 'var(--text-secondary)', lineHeight: 1.4 }}>
+                          {service.id === 'home-x-ray' ? (
+                            <span>🚨 24 Hours / 7 Days Mobile Doorstep Dispatch across Borivali, Kandivali, Malad, Goregaon & Andheri.</span>
+                          ) : (
+                            <span>🏥 Available across all 5 SOS OPD Centres (Borivali, Kandivali, Malad, Goregaon & Andheri).</span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Bottom Back Button */}
+                    <div style={{ paddingTop: '0.75rem' }}>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          toggleFlip(service.id);
+                        }}
+                        className="service-back-flip-btn"
+                        style={{ width: 'fit-content' }}
+                      >
+                        <ArrowLeft size={14} /> Back to Summary
+                      </button>
+                    </div>
+                  </div>
+
                 </div>
-                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.4rem', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
-                  {service.keyHighlights.slice(0, 3).map((item, idx) => (
-                    <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.4rem' }}>
-                      <CheckCircle2 size={14} color="var(--navy-primary)" style={{ marginTop: '2px', flexShrink: 0 }} />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
-
-              {/* Subtle Action Link */}
-              <div className="service-card-actions" style={{ marginTop: 'auto' }}>
-                <Link
-                  to={`/services#${service.id}`}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '0.35rem',
-                    color: 'var(--blue-brand)',
-                    fontSize: '0.9rem',
-                    fontWeight: 700,
-                    transition: 'gap 0.2s ease'
-                  }}
-                  onMouseEnter={e => e.currentTarget.style.gap = '0.55rem'}
-                  onMouseLeave={e => e.currentTarget.style.gap = '0.35rem'}
-                >
-                  <span>View Service Details</span>
-                  <ArrowRight size={16} />
-                </Link>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
@@ -124,37 +201,6 @@ export const ServicesCards: React.FC<ServicesCardsProps> = ({ limit, showTitle =
           }
           .services-grid {
             gap: 1.25rem !important;
-          }
-          .service-card-item {
-            padding: 1.35rem 1.25rem !important;
-            border-radius: var(--radius-md) !important;
-            box-shadow: 0 4px 16px rgba(10, 31, 68, 0.05) !important;
-          }
-          .service-card-badge-row {
-            margin-bottom: 0.85rem !important;
-          }
-          .service-card-title {
-            font-size: 1.2rem !important;
-            margin-bottom: 0.5rem !important;
-          }
-          .service-card-desc {
-            font-size: 0.88rem !important;
-            margin-bottom: 1rem !important;
-          }
-          .service-card-highlights {
-            padding-top: 0.75rem !important;
-            margin-bottom: 1rem !important;
-          }
-          .service-book-btn {
-            height: 46px !important;
-            font-size: 0.92rem !important;
-          }
-          .service-call-btn {
-            height: 46px !important;
-            width: 46px !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
           }
           .emergency-pill {
             font-size: 0.7rem !important;
