@@ -111,7 +111,7 @@ export const ServicesCards: React.FC<ServicesCardsProps> = ({ limit, showTitle =
                   <div className="service-card-back">
                     <div>
                       {/* Top Header Row */}
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
                         <span style={{ fontSize: '0.75rem', fontWeight: 800, color: 'var(--blue-brand)', backgroundColor: 'var(--blue-soft)', padding: '0.25rem 0.65rem', borderRadius: '12px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                           Clinical Overview
                         </span>
@@ -129,44 +129,29 @@ export const ServicesCards: React.FC<ServicesCardsProps> = ({ limit, showTitle =
                       </div>
 
                       {/* Title */}
-                      <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--navy-primary)', marginBottom: '0.65rem' }}>
+                      <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--navy-primary)', marginBottom: '0.75rem' }}>
                         {service.title}
                       </h3>
 
                       {/* Detailed Description */}
-                      <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.55, marginBottom: '1.1rem' }}>
+                      <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '1.25rem' }}>
                         {service.fullDesc}
                       </p>
 
                       {/* What Service Includes / Key Features */}
                       <div>
-                        <div style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--navy-primary)', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                        <div style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--navy-primary)', marginBottom: '0.6rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                           What This Service Includes:
                         </div>
-                        <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.45rem', fontSize: '0.83rem', color: 'var(--text-secondary)', padding: 0 }}>
+                        <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.85rem', color: 'var(--text-secondary)', padding: 0 }}>
                           {service.keyHighlights.map((item, idx) => (
-                            <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.45rem', lineHeight: 1.4 }}>
-                              <CheckCircle2 size={14} color="var(--blue-brand)" style={{ marginTop: '2px', flexShrink: 0 }} />
+                            <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.45rem', lineHeight: 1.45 }}>
+                              <CheckCircle2 size={14} color="var(--blue-brand)" style={{ marginTop: '3px', flexShrink: 0 }} />
                               <span>{item}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
-                    </div>
-
-                    {/* Bottom Back Button */}
-                    <div style={{ paddingTop: '0.75rem' }}>
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          toggleFlip(service.id);
-                        }}
-                        className="service-back-flip-btn"
-                        style={{ width: 'fit-content' }}
-                      >
-                        <ArrowLeft size={14} /> Back to Summary
-                      </button>
                     </div>
                   </div>
 
