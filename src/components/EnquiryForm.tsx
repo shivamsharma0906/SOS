@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, CheckCircle2, Phone, Calendar, MapPin, User, Mail, Sparkles, Stethoscope, Clock, ShieldCheck } from 'lucide-react';
+import { Send, CheckCircle2, Phone, Calendar, MapPin, User, Mail, Sparkles, Stethoscope, Clock, ShieldCheck, X } from 'lucide-react';
 import { centresData } from '../data/centres';
 import { servicesData } from '../data/services';
 import { doctorsData } from '../data/doctors';
@@ -11,6 +11,8 @@ interface EnquiryFormProps {
   onSuccess?: () => void;
   title?: string;
   subtitle?: string;
+  isModal?: boolean;
+  onClose?: () => void;
 }
 
 export const EnquiryForm: React.FC<EnquiryFormProps> = ({
@@ -19,7 +21,9 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
   defaultDoctor = '',
   onSuccess,
   title = 'Book Your Priority Orthopedic Consultation',
-  subtitle = 'Fill in your details to schedule an appointment at your nearest Mumbai SOS Centre or request a Home X-Ray visit.'
+  subtitle = 'Fill in your details to schedule an appointment at your nearest Mumbai SOS Centre or request a Home X-Ray visit.',
+  isModal = false,
+  onClose
 }) => {
   const [formData, setFormData] = useState({
     fullName: '',
@@ -80,21 +84,46 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
 
   if (isSubmitted) {
     return (
-      <div className="consultation-card-wrapper animate-fade-in">
-        <div className="consultation-header-banner" style={{ background: 'linear-gradient(135deg, #052e16 0%, #14532d 60%, #166534 100%)' }}>
+      <div className="consultation-card-wrapper animate-fade-in" style={{ borderRadius: isModal ? '24px' : undefined }}>
+        <div className="consultation-header-banner" style={{ background: 'linear-gradient(135deg, #052e16 0%, #14532d 60%, #166534 100%)', padding: isModal ? '1.75rem 1.75rem 1.25rem 1.75rem' : undefined }}>
+          {isModal && onClose && (
+            <button
+              onClick={onClose}
+              aria-label="Close modal"
+              style={{
+                position: 'absolute',
+                top: '1.25rem',
+                right: '1.25rem',
+                background: 'rgba(255, 255, 255, 0.2)',
+                border: 'none',
+                borderRadius: '50%',
+                width: '34px',
+                height: '34px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                color: '#ffffff',
+                transition: 'background 0.2s ease',
+                zIndex: 10
+              }}
+            >
+              <X size={18} />
+            </button>
+          )}
           <div className="consultation-header-badge" style={{ backgroundColor: 'rgba(34, 197, 94, 0.25)', borderColor: 'rgba(74, 222, 128, 0.4)', color: '#86efac' }}>
             <CheckCircle2 size={14} />
             <span>Appointment Request Received</span>
           </div>
-          <h3 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#ffffff', marginBottom: '0.5rem' }}>
+          <h3 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#ffffff', marginBottom: '0.5rem' }}>
             Thank You, {formData.fullName}!
           </h3>
-          <p style={{ color: '#bbf7d0', fontSize: '0.95rem', maxWidth: '600px' }}>
+          <p style={{ color: '#bbf7d0', fontSize: '0.92rem', maxWidth: '600px' }}>
             Our medical desk at SOS has received your request. We will reach out to you at <strong>{formData.phone}</strong> shortly to confirm your consultation timing.
           </p>
         </div>
 
-        <div className="consultation-form-body" style={{ textAlign: 'center' }}>
+        <div className="consultation-form-body" style={{ textAlign: 'center', padding: isModal ? '1.75rem' : undefined }}>
           <div style={{
             backgroundColor: '#f0fdf4',
             border: '1px solid #bbf7d0',
@@ -149,79 +178,116 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
   }
 
   return (
-    <div className="consultation-card-wrapper animate-fade-in">
+    <div className="consultation-card-wrapper animate-fade-in" style={{ borderRadius: isModal ? '24px' : undefined }}>
       {/* Top Banner Header */}
-      <div className="consultation-header-banner">
-        <div style={{ position: 'relative', zIndex: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem' }}>
-          <div style={{ flex: 1, minWidth: '280px' }}>
+      <div className="consultation-header-banner" style={{ padding: isModal ? '1.6rem 1.75rem 1.25rem 1.75rem' : undefined }}>
+        {isModal && onClose && (
+          <button
+            onClick={onClose}
+            aria-label="Close modal"
+            style={{
+              position: 'absolute',
+              top: '1.25rem',
+              right: '1.25rem',
+              background: 'rgba(255, 255, 255, 0.15)',
+              backdropFilter: 'blur(4px)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              borderRadius: '50%',
+              width: '34px',
+              height: '34px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              color: '#ffffff',
+              transition: 'all 0.2s ease',
+              zIndex: 10
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.3)';
+              e.currentTarget.style.transform = 'scale(1.05)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)';
+              e.currentTarget.style.transform = 'scale(1)';
+            }}
+          >
+            <X size={18} />
+          </button>
+        )}
+
+        <div style={{ position: 'relative', zIndex: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', paddingRight: isModal ? '2.5rem' : 0 }}>
+          <div style={{ flex: 1, minWidth: '240px' }}>
             <div className="consultation-header-badge">
               <Sparkles size={13} />
               <span>Priority Consultation Desk</span>
             </div>
-            <h3 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.02em', lineHeight: 1.25 }}>
+            <h3 style={{ fontSize: isModal ? '1.55rem' : '1.75rem', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.02em', lineHeight: 1.25 }}>
               {title}
             </h3>
-            <p style={{ fontSize: '0.92rem', color: '#cbd5e1', marginTop: '0.4rem', lineHeight: 1.5, maxWidth: '620px' }}>
+            <p style={{ fontSize: '0.88rem', color: '#cbd5e1', marginTop: '0.3rem', lineHeight: 1.45, maxWidth: '580px' }}>
               {subtitle}
             </p>
           </div>
 
-          <div style={{
-            backgroundColor: 'rgba(255, 255, 255, 0.1)',
-            backdropFilter: 'blur(8px)',
-            padding: '0.75rem 1.1rem',
-            borderRadius: 'var(--radius-md)',
-            border: '1px solid rgba(255, 255, 255, 0.15)',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.8rem'
-          }}>
+          {!isModal && (
             <div style={{
-              width: '40px',
-              height: '40px',
-              borderRadius: '50%',
-              backgroundColor: 'rgba(2, 132, 199, 0.3)',
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              backdropFilter: 'blur(8px)',
+              padding: '0.75rem 1.1rem',
+              borderRadius: 'var(--radius-md)',
+              border: '1px solid rgba(255, 255, 255, 0.15)',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center',
-              color: '#38bdf8'
+              gap: '0.8rem'
             }}>
-              <Phone size={20} />
+              <div style={{
+                width: '40px',
+                height: '40px',
+                borderRadius: '50%',
+                backgroundColor: 'rgba(2, 132, 199, 0.3)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#38bdf8'
+              }}>
+                <Phone size={20} />
+              </div>
+              <div>
+                <span style={{ display: 'block', fontSize: '0.75rem', color: '#93c5fd', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.04em' }}>
+                  Helpline Desk
+                </span>
+                <a href="tel:7070706505" style={{ fontSize: '1.1rem', fontWeight: 800, color: '#ffffff', textDecoration: 'none' }}>
+                  7070706505
+                </a>
+              </div>
             </div>
-            <div>
-              <span style={{ display: 'block', fontSize: '0.75rem', color: '#93c5fd', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.04em' }}>
-                Helpline Desk
-              </span>
-              <a href="tel:7070706505" style={{ fontSize: '1.1rem', fontWeight: 800, color: '#ffffff', textDecoration: 'none' }}>
-                7070706505
-              </a>
-            </div>
-          </div>
+          )}
         </div>
 
         {/* Feature Micro-Badges Bar */}
-        <div className="consultation-perks-bar">
+        <div className="consultation-perks-bar" style={{ marginTop: isModal ? '1.1rem' : '1.5rem', paddingTop: isModal ? '0.9rem' : '1.25rem' }}>
           <div className="consultation-perk-item">
-            <CheckCircle2 size={16} style={{ color: '#38bdf8' }} />
+            <CheckCircle2 size={15} style={{ color: '#38bdf8' }} />
             <span>5 Mumbai OPD Centres</span>
           </div>
           <div className="consultation-perk-item">
-            <Clock size={16} style={{ color: '#38bdf8' }} />
+            <Clock size={15} style={{ color: '#38bdf8' }} />
             <span>Zero Wait-Time OPD</span>
           </div>
           <div className="consultation-perk-item">
-            <Stethoscope size={16} style={{ color: '#38bdf8' }} />
+            <Stethoscope size={15} style={{ color: '#38bdf8' }} />
             <span>Senior Surgeon Care</span>
           </div>
           <div className="consultation-perk-item">
-            <ShieldCheck size={16} style={{ color: '#38bdf8' }} />
+            <ShieldCheck size={15} style={{ color: '#38bdf8' }} />
             <span>Home X-Ray Available</span>
           </div>
         </div>
       </div>
 
       {/* Form Content Body */}
-      <form onSubmit={handleSubmit} className="consultation-form-body">
+      <form onSubmit={handleSubmit} className="consultation-form-body" style={{ padding: isModal ? '1.6rem 1.75rem 1.75rem 1.75rem' : undefined }}>
         {/* Anti-spam honeypot */}
         <input 
           type="text" 

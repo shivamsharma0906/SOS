@@ -1,5 +1,4 @@
 import React from 'react';
-import { X } from 'lucide-react';
 import { EnquiryForm } from './EnquiryForm';
 
 interface AppointmentModalProps {
@@ -25,8 +24,9 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
         position: 'fixed',
         inset: 0,
         zIndex: 2000,
-        backgroundColor: 'rgba(7, 21, 46, 0.7)',
-        backdropFilter: 'blur(4px)',
+        backgroundColor: 'rgba(7, 21, 46, 0.75)',
+        backdropFilter: 'blur(8px)',
+        WebkitBackdropFilter: 'blur(8px)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -36,51 +36,28 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
       onClick={onClose}
     >
       <div 
+        className="modal-pop-in"
         style={{
           position: 'relative',
           width: '100%',
-          maxWidth: '560px',
-          maxHeight: '90vh',
+          maxWidth: '620px',
+          maxHeight: '92vh',
           overflowY: 'auto',
           backgroundColor: '#ffffff',
-          borderRadius: 'var(--radius-lg)',
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
+          borderRadius: '24px',
+          boxShadow: '0 25px 60px -15px rgba(7, 21, 46, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.15)'
         }}
         onClick={e => e.stopPropagation()}
       >
-        <button
-          onClick={onClose}
-          aria-label="Close modal"
-          style={{
-            position: 'absolute',
-            top: '1rem',
-            right: '1rem',
-            background: 'var(--bg-subtle)',
-            border: 'none',
-            borderRadius: '50%',
-            width: '36px',
-            height: '36px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer',
-            zIndex: 10,
-            color: 'var(--navy-primary)'
-          }}
-        >
-          <X size={20} />
-        </button>
-
-        <div style={{ padding: '0.5rem' }}>
-          <EnquiryForm 
-            defaultDoctor={defaultDoctor} 
-            defaultCentre={defaultCentre}
-            defaultService={defaultService}
-            onSuccess={() => {
-              // Optionally close modal after short delay
-            }}
-          />
-        </div>
+        <EnquiryForm 
+          isModal={true}
+          onClose={onClose}
+          defaultDoctor={defaultDoctor} 
+          defaultCentre={defaultCentre}
+          defaultService={defaultService}
+          title="Book Priority Appointment"
+          subtitle="Select your details for direct OPD consultation or Home X-Ray visit."
+        />
       </div>
     </div>
   );
