@@ -475,3 +475,182 @@ img {
     padding: 0.3rem 0.85rem !important;
   }
 }
+
+/* Priority Consultation Box Styling */
+.consultation-card-wrapper {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(10, 31, 68, 0.12), 0 4px 12px rgba(10, 31, 68, 0.04);
+  border: 1px solid rgba(10, 31, 68, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.consultation-header-banner {
+  background: linear-gradient(135deg, #07152e 0%, #0a1f44 60%, #0c2b64 100%);
+  color: #ffffff;
+  padding: 2.25rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.consultation-header-banner::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.35) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.consultation-header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.9rem;
+  background: rgba(37, 99, 235, 0.25);
+  border: 1px solid rgba(96, 165, 250, 0.4);
+  border-radius: var(--radius-pill);
+  color: #93c5fd;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.consultation-perks-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.consultation-perk-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.consultation-form-body {
+  padding: 2.5rem;
+  background: #ffffff;
+}
+
+.consultation-input-wrapper {
+  position: relative;
+}
+
+.consultation-input-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #64748b;
+  pointer-events: none;
+  transition: color 0.2s ease;
+}
+
+.consultation-field-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--navy-primary);
+  margin-bottom: 0.4rem;
+}
+
+.consultation-input-field {
+  width: 100%;
+  padding: 0.85rem 1rem 0.85rem 2.75rem;
+  border-radius: var(--radius-md);
+  border: 1.5px solid #cbd5e1;
+  font-size: 0.95rem;
+  color: var(--navy-primary);
+  background-color: #f8fafc;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.consultation-input-field:focus {
+  background-color: #ffffff;
+  border-color: var(--blue-brand);
+  box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.12);
+}
+
+.consultation-input-field:focus + .consultation-input-icon {
+  color: var(--blue-brand);
+}
+
+.consultation-select-field {
+  padding-left: 2.75rem;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  cursor: pointer;
+}
+
+.consultation-textarea-field {
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1.5px solid #cbd5e1;
+  font-size: 0.95rem;
+  color: var(--navy-primary);
+  background-color: #f8fafc;
+  width: 100%;
+  outline: none;
+  transition: all 0.2s ease;
+  resize: vertical;
+}
+
+.consultation-textarea-field:focus {
+  background-color: #ffffff;
+  border-color: var(--blue-brand);
+  box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.12);
+}
+
+.consultation-submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #0a1f44 0%, #0c2b64 50%, #0284c7 100%);
+  color: #ffffff;
+  padding: 1.1rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  box-shadow: 0 8px 24px rgba(10, 31, 68, 0.25);
+  transition: all 0.25s ease;
+}
+
+.consultation-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(2, 132, 199, 0.35);
+  background: linear-gradient(135deg, #07152e 0%, #0a1f44 50%, #0284c7 100%);
+}
+
+@media (max-width: 768px) {
+  .consultation-header-banner {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .consultation-form-body {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .consultation-perks-bar {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+}
