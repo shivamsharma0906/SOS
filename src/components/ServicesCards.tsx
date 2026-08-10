@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, ArrowLeft, CheckCircle2, MapPin, Clock } from 'lucide-react';
+import { ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { servicesData } from '../data/services';
 import { HexBadge } from './HexBadge';
 
@@ -9,10 +9,10 @@ interface ServicesCardsProps {
 }
 
 export const ServicesCards: React.FC<ServicesCardsProps> = ({ limit, showTitle = true }) => {
-  const [flippedCards, setFlippedCards] = useState<Record<string, boolean>>({});
+  const [activeFlippedId, setActiveFlippedId] = useState<string | null>(null);
 
   const toggleFlip = (id: string) => {
-    setFlippedCards(prev => ({ ...prev, [id]: !prev[id] }));
+    setActiveFlippedId(prev => (prev === id ? null : id));
   };
 
   const displayServices = limit ? servicesData.slice(0, limit) : servicesData;
@@ -36,7 +36,7 @@ export const ServicesCards: React.FC<ServicesCardsProps> = ({ limit, showTitle =
 
         <div className="grid-3 services-grid" style={{ gap: '2rem' }}>
           {displayServices.map((service) => {
-            const isFlipped = !!flippedCards[service.id];
+            const isFlipped = activeFlippedId === service.id;
 
             return (
               <div key={service.id} className="service-flip-card-wrapper">
@@ -139,7 +139,7 @@ export const ServicesCards: React.FC<ServicesCardsProps> = ({ limit, showTitle =
                       </p>
 
                       {/* What Service Includes / Key Features */}
-                      <div style={{ marginBottom: '1.1rem' }}>
+                      <div>
                         <div style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--navy-primary)', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                           What This Service Includes:
                         </div>
@@ -151,20 +151,6 @@ export const ServicesCards: React.FC<ServicesCardsProps> = ({ limit, showTitle =
                             </li>
                           ))}
                         </ul>
-                      </div>
-
-                      {/* Availability Information */}
-                      <div style={{ backgroundColor: 'var(--bg-subtle)', padding: '0.75rem 0.9rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-color)', fontSize: '0.8rem' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontWeight: 700, color: 'var(--navy-primary)', marginBottom: '0.2rem' }}>
-                          <MapPin size={14} color="var(--blue-brand)" /> Service Availability:
-                        </div>
-                        <div style={{ color: 'var(--text-secondary)', lineHeight: 1.4 }}>
-                          {service.id === 'home-x-ray' ? (
-                            <span>🚨 24 Hours / 7 Days Mobile Doorstep Dispatch across Borivali, Kandivali, Malad, Goregaon & Andheri.</span>
-                          ) : (
-                            <span>🏥 Available across all 5 SOS OPD Centres (Borivali, Kandivali, Malad, Goregaon & Andheri).</span>
-                          )}
-                        </div>
                       </div>
                     </div>
 
