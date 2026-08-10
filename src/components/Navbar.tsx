@@ -127,14 +127,6 @@ export const Navbar: React.FC = () => {
 
           {/* CTA Buttons */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }} className="desktop-actions">
-            <a 
-              href="tel:7070706505" 
-              className="btn btn-secondary btn-sm"
-              style={{ gap: '0.4rem', whiteSpace: 'nowrap' }}
-            >
-              <Phone size={14} /> 7070706505
-            </a>
-
             <button 
               onClick={() => setIsModalOpen(true)} 
               className="btn btn-primary btn-sm"
