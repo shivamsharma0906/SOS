@@ -1,0 +1,42 @@
+/* Info Video Section — Full Bleed Layout */
+
+/* Global: break out of container for full-bleed video */
+.info-video-section {
+  overflow: hidden;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.info-video-section .container {
+  padding: 0 !important;
+  max-width: 100% !important;
+}
+
+.info-video-section .container > div:first-child {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1.5rem !important;
+}
+
+.video-wrapper {
+  width: 100vw !important;
+  max-width: none !important;
+  border-radius: 0 !important;
+  border: none !important;
+  margin-left: calc(-50vw + 50%) !important;
+}
+
+/* Mobile: 9:16 portrait crop */
+@media (max-width: 768px) {
+  .video-wrapper {
+    aspect-ratio: 9 / 16 !important;
+    height: auto !important;
+    overflow: hidden !important;
+  }
+
+  .video-wrapper video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+}
