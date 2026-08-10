@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, ShieldCheck, MapPin, Activity, CheckCircle2, Star } from 'lucide-react';
-import { ContactChip } from './ContactChip';
+import { Calendar, ShieldCheck, Activity, Star } from 'lucide-react';
 import { MedicalCrossMotif } from './DecorativeMotif';
 import { AppointmentModal } from './AppointmentModal';
 import { servicesData } from '../data/services';
@@ -67,11 +66,6 @@ export const Hero: React.FC = () => {
             <p className="subhead" style={{ color: 'var(--text-secondary)', marginBottom: '2rem', lineHeight: 1.7, fontSize: '1.1rem' }}>
               SOS Speciality Orthopedic Service is Mumbai’s trusted destination for complete orthopedic wellness, delivering expert doctor consultations, keyhole surgery, and <strong>24/7 Home X-Ray Services</strong> right at your doorstep.
             </p>
-
-            {/* Pill Contact Chip */}
-            <div style={{ marginBottom: '2.5rem' }}>
-              <ContactChip size="md" />
-            </div>
 
             {/* CTA Buttons */}
             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
@@ -182,13 +176,13 @@ export const Hero: React.FC = () => {
                 <Activity size={18} color="#ffffff" />
               </div>
               <div>
-                <div style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--navy-primary)', lineHeight: 1 }}>24/7 Mobile</div>
+                <div style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--navy-primary)', lineHeight: 1 }}>24/7</div>
                 <div style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>Home X-Ray Service</div>
               </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
       <style>{`
         @media (max-width: 767px) {
           section {
@@ -236,15 +230,8 @@ export const Hero: React.FC = () => {
             max-width: 100% !important;
           }
 
-          /* Contact card container */
-          .animate-fade-in > div:nth-child(4) {
-            width: 100% !important;
-            max-width: 100% !important;
-            margin-bottom: 1.5rem !important;
-          }
-
           /* CTA Buttons */
-          .animate-fade-in > div:nth-child(5) {
+          .animate-fade-in > div:last-child {
             display: flex !important;
             flex-direction: column !important;
             gap: 14px !important;
