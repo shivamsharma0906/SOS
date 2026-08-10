@@ -179,20 +179,22 @@ export const ConditionsGrid: React.FC = () => {
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  justifyContent: 'space-between',
-                  width: '100%',
-                  padding: '0.55rem 0.85rem',
-                  borderRadius: 'var(--radius-sm)',
-                  backgroundColor: '#ffffff',
-                  border: '1px solid var(--border-color)',
-                  color: 'var(--navy-primary)',
-                  fontSize: '0.82rem',
+                  gap: '0.35rem',
+                  background: 'none',
+                  border: 'none',
+                  color: 'var(--blue-brand)',
+                  fontSize: '0.85rem',
                   fontWeight: 700,
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  padding: 0,
+                  marginTop: 'auto',
+                  transition: 'gap 0.2s ease'
                 }}
+                onMouseEnter={e => e.currentTarget.style.gap = '0.55rem'}
+                onMouseLeave={e => e.currentTarget.style.gap = '0.35rem'}
               >
-                <span>Consult Doctor for {condition.name.split(' ')[0]}</span>
-                <ChevronRight size={14} />
+                <span>Consult for {condition.name}</span>
+                <ChevronRight size={15} />
               </button>
             </div>
           ))}

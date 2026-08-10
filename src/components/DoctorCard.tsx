@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Award, Calendar, MapPin, Clock, ChevronDown, ChevronUp, ShieldCheck } from 'lucide-react';
+import { Award, MapPin, Clock, ChevronDown, ChevronUp, ArrowRight, Calendar } from 'lucide-react';
 import { Doctor } from '../data/doctors';
 import { AppointmentModal } from './AppointmentModal';
 
@@ -106,11 +106,19 @@ export const DoctorCard: React.FC<DoctorCardProps> = ({ doctor }) => {
         {isExpanded && (
           <div style={{ padding: '1rem', backgroundColor: 'var(--bg-subtle)', borderRadius: 'var(--radius-sm)', marginBottom: '1.25rem', fontSize: '0.85rem' }}>
             <div style={{ fontWeight: 700, color: 'var(--navy-primary)', marginBottom: '0.5rem' }}>Core Surgical Expertise:</div>
-            <ul style={{ paddingLeft: '1.1rem', color: 'var(--text-secondary)' }}>
+            <ul style={{ paddingLeft: '1.1rem', color: 'var(--text-secondary)', marginBottom: '1rem' }}>
               {doctor.expertiseList.map((item, idx) => (
                 <li key={idx}>{item}</li>
               ))}
             </ul>
+
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="btn btn-primary btn-sm"
+              style={{ width: '100%', gap: '0.4rem' }}
+            >
+              <Calendar size={14} /> Request Consultation with {doctor.name.split(' ')[1]}
+            </button>
           </div>
         )}
 
@@ -132,29 +140,28 @@ export const DoctorCard: React.FC<DoctorCardProps> = ({ doctor }) => {
           </div>
         </div>
 
-        {/* Action Buttons */}
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="btn btn-primary btn-sm"
-            style={{ width: '100%' }}
-          >
-            <Calendar size={14} /> Book Doctor Consultation
-          </button>
-
+        {/* Action Button: View Profile */}
+        <div>
           <button
             onClick={() => setIsExpanded(!isExpanded)}
             style={{
-              padding: '0.5rem 0.75rem',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              width: '100%',
+              padding: '0.65rem 1rem',
               borderRadius: 'var(--radius-pill)',
-              border: '1px solid var(--border-color)',
+              border: '1.5px solid var(--border-color)',
               backgroundColor: '#ffffff',
+              color: 'var(--navy-primary)',
+              fontSize: '0.88rem',
+              fontWeight: 700,
               cursor: 'pointer',
-              color: 'var(--navy-primary)'
+              transition: 'all 0.2s ease'
             }}
-            title={isExpanded ? 'Show less' : 'View full credentials'}
           >
-            {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+            <span>{isExpanded ? 'Hide Credentials' : 'View Profile & Expertise'}</span>
+            {isExpanded ? <ChevronUp size={16} /> : <ArrowRight size={16} color="var(--blue-brand)" />}
           </button>
         </div>
       </div>

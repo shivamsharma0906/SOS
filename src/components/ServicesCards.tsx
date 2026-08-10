@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { ArrowRight, CheckCircle2, Phone, Calendar } from 'lucide-react';
-import { servicesData, Service } from '../data/services';
+import { Link } from 'react-router-dom';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { servicesData } from '../data/services';
 import { HexBadge } from './HexBadge';
-import { AppointmentModal } from './AppointmentModal';
 
 interface ServicesCardsProps {
   limit?: number;
@@ -10,9 +10,6 @@ interface ServicesCardsProps {
 }
 
 export const ServicesCards: React.FC<ServicesCardsProps> = ({ limit, showTitle = true }) => {
-  const [selectedService, setSelectedService] = useState<string | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   const displayServices = limit ? servicesData.slice(0, limit) : servicesData;
 
   return (
@@ -92,29 +89,25 @@ export const ServicesCards: React.FC<ServicesCardsProps> = ({ limit, showTitle =
                 </ul>
               </div>
 
-              {/* Actions */}
-              <div className="service-card-actions" style={{ display: 'flex', gap: '0.75rem' }}>
-                <button
-                  onClick={() => {
-                    setSelectedService(service.id);
-                    setIsModalOpen(true);
+              {/* Subtle Action Link */}
+              <div className="service-card-actions" style={{ marginTop: 'auto' }}>
+                <Link
+                  to={`/services#${service.id}`}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.35rem',
+                    color: 'var(--blue-brand)',
+                    fontSize: '0.9rem',
+                    fontWeight: 700,
+                    transition: 'gap 0.2s ease'
                   }}
-                  className="btn btn-primary btn-sm service-book-btn"
-                  style={{ width: '100%' }}
+                  onMouseEnter={e => e.currentTarget.style.gap = '0.55rem'}
+                  onMouseLeave={e => e.currentTarget.style.gap = '0.35rem'}
                 >
-                  <Calendar size={14} /> Book Service
-                </button>
-
-                {service.id === 'home-x-ray' && (
-                  <a
-                    href="tel:7070706505"
-                    className="btn btn-secondary btn-sm service-call-btn"
-                    style={{ padding: '0.5rem' }}
-                    title="Call Home X-Ray Helpline"
-                  >
-                    <Phone size={14} />
-                  </a>
-                )}
+                  <span>View Service Details</span>
+                  <ArrowRight size={16} />
+                </Link>
               </div>
             </div>
           ))}
@@ -169,12 +162,6 @@ export const ServicesCards: React.FC<ServicesCardsProps> = ({ limit, showTitle =
           }
         }
       `}</style>
-
-      <AppointmentModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        defaultService={selectedService || undefined}
-      />
     </section>
   );
 };

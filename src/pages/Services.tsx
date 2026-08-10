@@ -124,7 +124,7 @@ export const Services: React.FC = () => {
                   </div>
                 </div>
 
-                <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginTop: '1rem' }}>
+                <div style={{ marginTop: '1rem' }}>
                   <button
                     onClick={() => {
                       setSelectedServiceId(service.id);
@@ -134,15 +134,6 @@ export const Services: React.FC = () => {
                   >
                     <Calendar size={18} /> Book {service.title} Consultation
                   </button>
-
-                  <a 
-                    href="https://wa.me/917070706505?text=Hello%20SOS,%20I%20want%20to%20enquire%20about%20your%20services."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-whatsapp"
-                  >
-                    <FaWhatsapp size={18} /> WhatsApp Inquiry
-                  </a>
                 </div>
               </div>
 

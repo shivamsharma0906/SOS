@@ -64,16 +64,6 @@ export const Navbar: React.FC = () => {
             >
               <Phone size={13} color="#38bdf8" /> <span>24/7 Helpline: <strong>7070706505</strong></span>
             </a>
-            <a 
-              href="https://wa.me/917070706505?text=Hello%20SOS%20Orthopedic%20Service,%20I%20would%20like%20to%20enquire%20about%20consultation." 
-              target="_blank" 
-              rel="noopener noreferrer"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: '#ffffff', fontWeight: 600, transition: 'color 0.2s' }}
-              onMouseEnter={e => e.currentTarget.style.color = '#38bdf8'}
-              onMouseLeave={e => e.currentTarget.style.color = '#ffffff'}
-            >
-              <FaWhatsapp size={14} /> <span>WhatsApp Desk</span>
-            </a>
           </div>
         </div>
       </div>

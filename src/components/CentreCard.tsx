@@ -191,7 +191,7 @@ export const CentreCard: React.FC<CentreCardProps> = ({ centre }) => {
         </div>
 
         {/* Action Buttons */}
-        <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+        <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           <button
             onClick={() => setIsModalOpen(true)}
             className="btn btn-primary btn-sm"
@@ -200,23 +200,25 @@ export const CentreCard: React.FC<CentreCardProps> = ({ centre }) => {
             <Calendar size={15} /> Book Appointment at {centre.area}
           </button>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1.25rem', fontSize: '0.8rem', fontWeight: 600 }}>
             <a
               href={`tel:${centre.phone}`}
-              className="btn btn-secondary btn-sm"
-              style={{ fontSize: '0.82rem' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', color: 'var(--navy-primary)', transition: 'color 0.2s' }}
+              onMouseEnter={e => e.currentTarget.style.color = 'var(--blue-brand)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'var(--navy-primary)'}
             >
-              <Phone size={13} /> Call Centre
+              <Phone size={13} color="var(--blue-brand)" /> Call Clinic
             </a>
-
+            <span style={{ color: '#cbd5e1' }}>|</span>
             <a
               href={`https://wa.me/${centre.whatsapp}?text=Hello%20SOS%20${centre.area}%20Centre,%20I%20would%20like%20to%20enquire%20about%20a%20doctor%20consultation.`}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-whatsapp btn-sm"
-              style={{ fontSize: '0.82rem' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', color: '#16a34a', transition: 'opacity 0.2s' }}
+              onMouseEnter={e => e.currentTarget.style.opacity = '0.8'}
+              onMouseLeave={e => e.currentTarget.style.opacity = '1'}
             >
-              <FaWhatsapp size={14} /> WhatsApp
+              <FaWhatsapp size={13} /> Chat WhatsApp
             </a>
           </div>
         </div>

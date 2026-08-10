@@ -68,17 +68,9 @@ export const Home: React.FC = () => {
                 </div>
               </div>
 
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                <a href="tel:7070706505" className="btn btn-primary">
-                  <Phone size={18} /> Book Home X-Ray: 7070706505
-                </a>
-                <a
-                  href="https://wa.me/917070706505?text=Hello%20SOS,%20I%20need%20a%20Home%20X-Ray%20service%20booking."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-whatsapp"
-                >
-                  <FaWhatsapp size={18} /> WhatsApp Booking
+              <div>
+                <a href="tel:7070706505" className="btn btn-primary btn-lg" style={{ gap: '0.6rem' }}>
+                  <Phone size={18} /> Request Home X-Ray: 7070706505
                 </a>
               </div>
             </div>
