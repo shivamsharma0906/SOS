@@ -675,7 +675,7 @@ img {
 .service-flip-card-wrapper {
   perspective: 1200px;
   width: 100%;
-  min-height: 490px;
+  min-height: 500px;
 }
 
 .service-flip-card-inner {
@@ -709,13 +709,13 @@ img {
   background-color: #ffffff;
   border: 1px solid rgba(10, 31, 68, 0.06);
   box-shadow: 0 8px 24px rgba(10, 31, 68, 0.06);
-  padding: 2.5rem;
+  padding: 2.25rem 2rem;
   display: flex;
   flex-direction: column;
-  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
-.service-flip-card-wrapper:hover .service-card-front {
+.service-flip-card-wrapper:hover .service-flip-card-inner:not(.is-flipped) .service-card-front {
   transform: translateY(-6px);
   box-shadow: 0 20px 40px rgba(10, 31, 68, 0.12);
   border-color: rgba(2, 132, 199, 0.2);
@@ -730,7 +730,7 @@ img {
   background-color: #ffffff;
   border: 1px solid rgba(10, 31, 68, 0.08);
   box-shadow: 0 12px 32px rgba(10, 31, 68, 0.08);
-  padding: 2.25rem 2rem;
+  padding: 2rem 1.75rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -742,11 +742,11 @@ img {
   align-items: center;
   gap: 0.4rem;
   color: var(--navy-primary);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 700;
   background: var(--bg-subtle);
   border: 1px solid var(--border-color);
-  padding: 0.4rem 0.85rem;
+  padding: 0.35rem 0.8rem;
   border-radius: var(--radius-pill);
   cursor: pointer;
   transition: all 0.2s ease;
@@ -760,7 +760,7 @@ img {
 
 @media (max-width: 767px) {
   .service-flip-card-wrapper {
-    min-height: 440px;
+    min-height: 460px;
   }
   .service-card-front,
   .service-card-back {
