@@ -133,7 +133,7 @@ export const InfoVideo: React.FC = () => {
             muted
             loop
             playsInline
-            poster="/assets/video-poster.jpg"
+            poster="/assets/logo.jpeg"
             onTimeUpdate={handleTimeUpdate}
             style={{
               width: '100%',
@@ -204,21 +204,23 @@ export const InfoVideo: React.FC = () => {
               >
                 Real Diagnosis.
               </div>
-
-
             </div>
           </div>
 
-          {/* Bottom Left Small SOS logo mark - fades in only during final phase */}
+          {/* Bottom Center SOS Logo Mark */}
           <div 
             style={{
               position: 'absolute',
               bottom: '1.5rem',
-              left: '1.5rem',
+              left: '50%',
+              transform: 'translateX(-50%)',
               zIndex: 2,
               opacity: getPhaseOpacity(3),
               transition: reducedMotion ? 'none' : 'opacity 0.3s ease',
-              pointerEvents: 'none'
+              pointerEvents: 'none',
+              display: 'flex',
+              justifyContent: 'center',
+              width: 'max-content'
             }}
           >
             <BrandLogo variant="light" size="sm" />

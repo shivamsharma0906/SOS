@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { EnquiryForm } from './EnquiryForm';
 
 interface AppointmentModalProps {
@@ -16,6 +16,18 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
   defaultCentre = '',
   defaultService = ''
 }) => {
+  // Lock body scroll on mobile when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
@@ -30,13 +42,14 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '1rem',
+        padding: '0.75rem',
         overflowY: 'auto'
       }}
       onClick={onClose}
+      className="modal-backdrop-overlay"
     >
       <div 
-        className="modal-pop-in"
+        className="modal-pop-in appointment-modal-card"
         style={{
           position: 'relative',
           width: '100%',
@@ -59,6 +72,20 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
           subtitle="Select your details for direct OPD consultation or Home X-Ray visit."
         />
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .modal-backdrop-overlay {
+            padding: 0.5rem !important;
+            align-items: flex-end !important;
+          }
+          .appointment-modal-card {
+            max-height: 94vh !important;
+            border-radius: 20px 20px 0 0 !important;
+            margin: 0 !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };

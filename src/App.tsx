@@ -7,6 +7,7 @@ import { LocalBusinessSchema } from './components/LocalBusinessSchema';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { Services } from './pages/Services';
+import { ServiceDetail } from './pages/ServiceDetail';
 import { Doctors } from './pages/Doctors';
 import { Centres } from './pages/Centres';
 import { Testimonials } from './pages/Testimonials';
@@ -36,6 +37,7 @@ export const App: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/services/:slug" element={<ServiceDetail />} />
           <Route path="/doctors" element={<Doctors />} />
           <Route path="/centres" element={<Centres />} />
           <Route path="/testimonials" element={<Testimonials />} />

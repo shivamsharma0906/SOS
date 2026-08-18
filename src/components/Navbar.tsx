@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Phone, Menu, X, Calendar, MapPin } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
 import { AppointmentModal } from './AppointmentModal';
-import { FaWhatsapp } from 'react-icons/fa';
+import { centresData } from '../data/centres';
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -54,7 +54,7 @@ export const Navbar: React.FC = () => {
         <div className="container top-header-container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
           <div className="top-header-centres" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <MapPin size={13} color="#38bdf8" style={{ flexShrink: 0 }} /> 
-            <span>5 Centres in Mumbai: <strong>Borivali | Kandivali | Malad | Goregaon | Andheri</strong></span>
+            <span>Centres & Clinics: <strong>{centresData.map(c => c.area).join(' | ')}</strong></span>
           </div>
 
           <div className="top-header-actions" style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
@@ -201,31 +201,22 @@ export const Navbar: React.FC = () => {
             ))}
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', marginTop: 'auto' }}>
+          {/* Clean Pair of Actions for Mobile Drawer */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: 'auto' }}>
             <button 
               onClick={() => { setMobileMenuOpen(false); setIsModalOpen(true); }}
-              className="btn btn-primary btn-lg"
-              style={{ width: '100%' }}
+              className="btn btn-primary btn-md"
+              style={{ width: '100%', justifyContent: 'center' }}
             >
-              <Calendar size={18} /> Book Appointment
+              <Calendar size={16} /> Book Appointment
             </button>
 
             <a 
               href="tel:7070706505"
-              className="btn btn-secondary btn-lg"
-              style={{ width: '100%' }}
+              className="btn btn-secondary btn-md"
+              style={{ width: '100%', justifyContent: 'center' }}
             >
-              <Phone size={18} /> Call 7070706505
-            </a>
-
-            <a 
-              href="https://wa.me/917070706505?text=Hello%20SOS%20Orthopedic%20Service,%20I%20would%20like%20to%20enquire%20about%20consultation."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-whatsapp btn-lg"
-              style={{ width: '100%' }}
-            >
-              <FaWhatsapp size={20} /> WhatsApp Enquiry
+              <Phone size={16} /> 24/7 Helpline: 7070706505
             </a>
           </div>
         </div>
@@ -261,29 +252,15 @@ export const Navbar: React.FC = () => {
             font-size: 12px !important;
           }
           .main-navbar-header {
-            height: 64px !important;
-            padding: 0 !important;
-            display: flex !important;
-            align-items: center !important;
-          }
-          .navbar-container {
-            padding: 0 16px !important;
-            width: 100% !important;
-            max-width: 100% !important;
-          }
-          .mobile-toggle {
-            min-width: 44px !important;
-            min-height: 44px !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            padding: 0 !important;
+            padding: 0.4rem 0 !important;
           }
         }
       `}</style>
 
-      {/* Booking Modal */}
-      <AppointmentModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <AppointmentModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     </>
   );
 };

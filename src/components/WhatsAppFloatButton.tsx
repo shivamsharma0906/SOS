@@ -18,8 +18,9 @@ export const WhatsAppFloatButton: React.FC = () => {
 
   return (
     <>
-      {/* Right Edge Fixed Social Media Bar (Stuck to right hand side corner - Matching Image 2) */}
+      {/* Right Edge Fixed Social Media Bar (Desktop only) */}
       <div 
+        className="fixed-social-media-bar"
         style={{
           position: 'fixed',
           right: 0,
@@ -151,7 +152,7 @@ export const WhatsAppFloatButton: React.FC = () => {
           gap: '0.5rem'
         }}
       >
-        {/* Tooltip badge */}
+        {/* Tooltip badge (Desktop only) */}
         {showTooltip && (
           <div 
             className="whatsapp-tooltip-badge"
@@ -209,24 +210,15 @@ export const WhatsAppFloatButton: React.FC = () => {
 
       <style>{`
         @media (max-width: 767px) {
-          /* Shrink floating social media buttons */
-          div[style*="position: fixed"][style*="top: 50%"] {
-            right: 8px !important;
-            gap: 0.25rem !important;
-          }
-          div[style*="position: fixed"][style*="top: 50%"] a {
-            width: 36px !important;
-            height: 36px !important;
-          }
-          div[style*="position: fixed"][style*="top: 50%"] svg {
-            width: 16px !important;
-            height: 16px !important;
+          /* Hide fixed side social bar on mobile to prevent blocking readable content */
+          .fixed-social-media-bar {
+            display: none !important;
           }
           /* Hide the WhatsApp tooltip badge on mobile */
           .whatsapp-tooltip-badge {
             display: none !important;
           }
-          /* Style floating WhatsApp circle button */
+          /* Position floating WhatsApp button comfortably in bottom thumb zone */
           .whatsapp-float-container {
             bottom: 20px !important;
             right: 16px !important;

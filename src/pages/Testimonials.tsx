@@ -1,36 +1,23 @@
-import React, { useState } from 'react';
-import { Star, CheckCircle2, Quote, Calendar } from 'lucide-react';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Star, CheckCircle2, Quote, Phone, User } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
 import { TestimonialCarousel } from '../components/TestimonialCarousel';
 import { testimonialsData } from '../data/testimonials';
-import { AppointmentModal } from '../components/AppointmentModal';
 import { MedicalCrossMotif } from '../components/DecorativeMotif';
 
 export const Testimonials: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   return (
     <>
       <SEOHead
-        title="Patient Reviews & Ratings | SOS Speciality Orthopedic Service Mumbai"
-        description="Read verified patient reviews for knee replacement, endoscopic spine surgery, ACL rehab, and 24/7 Home X-Ray service across Mumbai."
+        title="Patient Reviews & Recovery Stories | SOS Speciality Orthopedic Service"
+        description="Explore verified patient feedback and reviews from patients treated across our SOS Orthopedic Centre network in Kandivali, Nanded, Ambernath, and Murbad."
       />
 
-      {/* Hero Header (Light Mode) */}
-      <section 
-        style={{ 
-          position: 'relative',
-          background: 'linear-gradient(180deg, #ffffff 0%, var(--bg-subtle) 100%)',
-          padding: '5rem 0 4rem 0',
-          overflow: 'hidden',
-          color: 'var(--navy-primary)',
-          borderBottom: '1px solid var(--border-color)',
-          textAlign: 'center'
-        }}
-      >
-        <div className="bg-blob-top-right" />
-        <MedicalCrossMotif size={65} top="15%" left="8%" opacity={0.06} />
-        <MedicalCrossMotif size={80} bottom="10%" right="10%" opacity={0.05} />
+      {/* Hero Header */}
+      <section className="page-hero-section">
+        <MedicalCrossMotif size={50} top="10%" left="6%" opacity={0.04} />
+        <MedicalCrossMotif size={60} bottom="10%" right="8%" opacity={0.03} />
 
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div 
@@ -40,25 +27,25 @@ export const Testimonials: React.FC = () => {
               gap: '0.4rem', 
               backgroundColor: 'var(--blue-soft)', 
               color: 'var(--blue-brand)', 
-              padding: '0.35rem 0.9rem', 
+              padding: '0.3rem 0.85rem', 
               borderRadius: 'var(--radius-pill)', 
-              fontSize: '0.82rem', 
+              fontSize: '0.8rem', 
               fontWeight: 700, 
-              border: '1px solid rgba(2, 132, 199, 0.2)',
-              marginBottom: '1.25rem', 
+              border: '1px solid rgba(2, 132, 199, 0.2)', 
+              marginBottom: '0.85rem', 
               textTransform: 'uppercase',
               letterSpacing: '0.05em'
             }}
           >
-            Patient Stories
+            Patient Stories & Reviews
           </div>
 
-          <h1 className="heading-xl" style={{ color: 'var(--navy-primary)', marginBottom: '1.25rem', maxWidth: '800px', margin: '0 auto 1.25rem auto' }}>
-            Real Recovery Stories from Real Patients
+          <h1 className="heading-xl" style={{ color: 'var(--navy-primary)', marginBottom: '0.85rem', maxWidth: '800px', margin: '0 auto 0.85rem auto' }}>
+            Recovery Experiences from Our Patients
           </h1>
 
-          <p className="subhead" style={{ color: 'var(--text-secondary)', margin: '0 auto', maxWidth: '720px', fontSize: '1.1rem' }}>
-            Over 10,000+ patients across Borivali, Kandivali, Malad, Goregaon, and Andheri have restored their pain-free mobility with SOS.
+          <p className="subhead" style={{ color: 'var(--text-secondary)', margin: '0 auto', maxWidth: '720px', fontSize: '1.05rem' }}>
+            Real patient testimonials from specialist consultations, keyhole arthroscopic procedures, spine care, and joint replacements across SOS centres.
           </p>
         </div>
       </section>
@@ -67,78 +54,117 @@ export const Testimonials: React.FC = () => {
       <TestimonialCarousel showTitle={false} />
 
       {/* Full Grid of Reviews */}
-      <section style={{ padding: '5rem 0', backgroundColor: '#ffffff' }}>
+      <section style={{ padding: '4rem 0', backgroundColor: '#ffffff' }}>
         <div className="container">
-          <h2 className="heading-lg" style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-            Verified Patient Testimonials
-          </h2>
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <h2 className="heading-lg" style={{ marginBottom: '0.75rem' }}>
+              All Verified Patient Feedback
+            </h2>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', maxWidth: '650px', margin: '0 auto' }}>
+              Authentic reviews submitted by patients receiving care across Kandivali, Nanded, Ambernath, and Murbad clinics.
+            </p>
+          </div>
 
-          <div className="grid-3" style={{ gap: '2.5rem' }}>
+          <div 
+            style={{ 
+              display: 'grid', 
+              gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', 
+              gap: '2rem' 
+            }}
+          >
             {testimonialsData.map((item) => (
               <div
                 key={item.id}
                 style={{
                   backgroundColor: '#ffffff',
                   borderRadius: 'var(--radius-lg)',
-                  padding: '2.25rem',
-                  border: '1px solid rgba(10, 31, 68, 0.05)',
-                  boxShadow: '0 8px 24px rgba(10, 31, 68, 0.04)',
+                  padding: '2rem',
+                  border: '1px solid rgba(10, 31, 68, 0.06)',
+                  boxShadow: '0 4px 16px rgba(10, 31, 68, 0.03)',
                   display: 'flex',
                   flexDirection: 'column',
                   position: 'relative',
                   overflow: 'hidden',
-                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+                  transition: 'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease'
                 }}
                 onMouseEnter={e => {
-                  e.currentTarget.style.transform = 'translateY(-6px)';
-                  e.currentTarget.style.boxShadow = '0 20px 40px rgba(10, 31, 68, 0.1)';
-                  e.currentTarget.style.borderColor = 'rgba(2, 132, 199, 0.2)';
+                  e.currentTarget.style.transform = 'translateY(-4px)';
+                  e.currentTarget.style.boxShadow = '0 16px 36px rgba(10, 31, 68, 0.08)';
+                  e.currentTarget.style.borderColor = 'rgba(2, 132, 199, 0.3)';
                 }}
                 onMouseLeave={e => {
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(10, 31, 68, 0.04)';
-                  e.currentTarget.style.borderColor = 'rgba(10, 31, 68, 0.05)';
+                  e.currentTarget.style.boxShadow = '0 4px 16px rgba(10, 31, 68, 0.03)';
+                  e.currentTarget.style.borderColor = 'rgba(10, 31, 68, 0.06)';
                 }}
               >
-                {/* Decorative Quote Icon */}
-                <div style={{ position: 'absolute', right: '1.5rem', top: '1.5rem', opacity: 0.05, color: 'var(--navy-primary)' }}>
-                  <Quote size={40} fill="currentColor" />
+                {/* Watermark Quote Icon */}
+                <div style={{ position: 'absolute', top: '1.25rem', right: '1.25rem', color: 'rgba(2, 132, 199, 0.08)', pointerEvents: 'none' }}>
+                  <Quote size={54} />
                 </div>
 
-                <div style={{ display: 'flex', gap: '0.25rem', marginBottom: '1.25rem' }}>
-                  {[...Array(item.rating)].map((_, i) => (
-                    <Star key={i} size={16} fill="#f59e0b" color="#f59e0b" />
-                  ))}
+                {/* Rating Stars & Centre Tag */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem', position: 'relative', zIndex: 2 }}>
+                  <div style={{ display: 'flex', gap: '3px' }}>
+                    {[...Array(item.rating)].map((_, i) => (
+                      <Star key={i} size={15} color="#f59e0b" fill="#f59e0b" />
+                    ))}
+                  </div>
+
+                  <span style={{ fontSize: '0.74rem', fontWeight: 700, color: 'var(--blue-brand)', backgroundColor: 'var(--blue-soft)', padding: '0.2rem 0.55rem', borderRadius: '4px' }}>
+                    {item.location}
+                  </span>
                 </div>
 
-                <p style={{ fontSize: '0.98rem', lineHeight: 1.6, color: 'var(--text-secondary)', fontStyle: 'italic', marginBottom: '2rem', flexGrow: 1, position: 'relative', zIndex: 2 }}>
+                {/* Review Text */}
+                <p style={{ fontSize: '0.92rem', color: 'var(--navy-primary)', lineHeight: 1.6, fontStyle: 'italic', marginBottom: '1.5rem', position: 'relative', zIndex: 2 }}>
                   "{item.comment}"
                 </p>
 
-                <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '1.25rem', position: 'relative', zIndex: 2 }}>
-                  <div style={{ fontWeight: 800, color: 'var(--navy-primary)', fontSize: '1.02rem' }}>
-                    {item.patientName} <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-secondary)' }}>({item.age} yrs)</span>
+                {/* Patient Profile */}
+                <div style={{ marginTop: 'auto', display: 'flex', alignItems: 'center', gap: '0.75rem', borderTop: '1px solid var(--border-color)', paddingTop: '1rem', position: 'relative', zIndex: 2 }}>
+                  <div style={{ width: '42px', height: '42px', borderRadius: '50%', backgroundColor: 'var(--blue-soft)', color: 'var(--navy-primary)', fontWeight: 800, fontSize: '0.95rem', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1.5px solid rgba(2, 132, 199, 0.25)' }}>
+                    {item.patientName ? item.patientName.charAt(0) : <User size={18} />}
                   </div>
-                  <div style={{ fontSize: '0.82rem', color: 'var(--blue-brand)', fontWeight: 700, marginTop: '0.3rem' }}>
-                    📍 {item.location} • {item.treatment}
-                  </div>
-                  <div style={{ fontSize: '0.78rem', color: 'var(--text-light)', marginTop: '0.15rem', fontWeight: 500 }}>
-                    Consulting Surgeon: {item.doctorName}
+
+                  <div>
+                    <div style={{ fontWeight: 800, color: 'var(--navy-primary)', fontSize: '0.92rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                      <span>{item.patientName}</span>
+                      {item.age && <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', fontWeight: 600 }}>({item.age} yrs)</span>}
+                      {item.verified && <CheckCircle2 size={13} color="var(--blue-brand)" />}
+                    </div>
+                    <div style={{ fontSize: '0.76rem', color: 'var(--text-secondary)' }}>
+                      Treated for {item.treatment} &bull; Dr. {item.doctorName}
+                    </div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-
-          <div style={{ textAlign: 'center', marginTop: '4rem' }}>
-            <button onClick={() => setIsModalOpen(true)} className="btn btn-primary btn-lg">
-              <Calendar size={18} /> Book Your Appointment Today
-            </button>
-          </div>
         </div>
       </section>
 
-      <AppointmentModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      {/* CTA Strip */}
+      <section style={{ padding: '3.5rem 0', backgroundColor: 'var(--bg-subtle)', textAlign: 'center', borderTop: '1px solid var(--border-color)' }}>
+        <div className="container">
+          <h2 className="heading-md" style={{ color: 'var(--navy-primary)', marginBottom: '0.75rem' }}>
+            Experience Expert Orthopedic Care
+          </h2>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.96rem', maxWidth: '600px', margin: '0 auto 1.5rem auto' }}>
+            Consult our specialist orthopedic surgeons for evidence-based treatments and personalized rehabilitation.
+          </p>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+            <Link to="/contact" className="btn btn-primary btn-md">
+              Contact SOS Centres & Doctors
+            </Link>
+            <a href="tel:7070706505" className="btn btn-secondary btn-md" style={{ gap: '0.45rem' }}>
+              <Phone size={15} /> 24/7 Helpline: 7070706505
+            </a>
+          </div>
+        </div>
+      </section>
     </>
   );
 };
+
+export default Testimonials;

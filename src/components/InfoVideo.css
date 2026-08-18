@@ -1,37 +1,38 @@
-/* Info Video Section — Full Bleed Layout */
+/* Info Video Section — Responsive Layout */
 
-/* Global: break out of container for full-bleed video */
 .info-video-section {
-  overflow: hidden;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+  overflow: hidden !important;
+  width: 100% !important;
+  max-width: 100vw !important;
 }
 
 .info-video-section .container {
-  padding: 0 !important;
-  max-width: 100% !important;
+  padding: 0 1rem !important;
+  max-width: 1240px !important;
 }
 
 .info-video-section .container > div:first-child {
   max-width: 720px;
-  margin: 0 auto;
-  padding: 0 1.5rem !important;
+  margin: 0 auto 2rem auto;
 }
 
 .video-wrapper {
-  width: 100vw !important;
-  max-width: none !important;
-  border-radius: 0 !important;
-  border: none !important;
-  margin-left: calc(-50vw + 50%) !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  border-radius: var(--radius-lg) !important;
+  overflow: hidden !important;
 }
 
-/* Mobile: 9:16 portrait crop */
+/* Mobile: Compact 16:9 / 4:3 safe ratio */
 @media (max-width: 768px) {
+  .info-video-section {
+    padding: 2.5rem 0 !important;
+  }
+
   .video-wrapper {
-    aspect-ratio: 9 / 16 !important;
+    aspect-ratio: 16 / 9 !important;
     height: auto !important;
-    overflow: hidden !important;
+    border-radius: 16px !important;
   }
 
   .video-wrapper video {

@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { Calendar, ShieldCheck, MapPin, Activity, CheckCircle2, Star } from 'lucide-react';
-import { ContactChip } from './ContactChip';
+import { Link } from 'react-router-dom';
+import { Calendar, ShieldCheck, Activity, CheckCircle2, Star, Stethoscope } from 'lucide-react';
 import { MedicalCrossMotif } from './DecorativeMotif';
 import { AppointmentModal } from './AppointmentModal';
 import { servicesData } from '../data/services';
-import { centresData } from '../data/centres';
-import { FaWhatsapp } from 'react-icons/fa';
 
 export const Hero: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,10 +18,9 @@ export const Hero: React.FC = () => {
         color: 'var(--navy-primary)',
         borderBottom: '1px solid var(--border-color)'
       }}
+      className="hero-section"
     >
-      {/* Background Motifs */}
-      <div className="bg-blob-top-right" />
-      <div className="bg-blob-bottom-left" />
+      {/* Background Motifs (hidden on mobile via CSS) */}
       <MedicalCrossMotif size={65} top="15%" left="8%" opacity={0.06} />
       <MedicalCrossMotif size={50} top="65%" left="42%" opacity={0.04} />
       <MedicalCrossMotif size={80} bottom="10%" right="12%" opacity={0.05} />
@@ -31,311 +28,243 @@ export const Hero: React.FC = () => {
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '4rem', alignItems: 'center' }} className="hero-grid">
           
-          {/* Left Column: Premium Light Mode Copy */}
-          <div className="animate-fade-in">
+          {/* Left Column: Copy & Actions */}
+          <div className="animate-fade-in hero-copy-col">
             <div 
               style={{ 
                 display: 'inline-flex', 
                 alignItems: 'center', 
-                gap: '0.5rem', 
-                padding: '0.4rem 1rem', 
+                gap: '0.45rem', 
+                padding: '0.35rem 0.9rem', 
                 backgroundColor: 'var(--blue-soft)', 
                 color: 'var(--blue-brand)', 
                 fontWeight: 700, 
-                fontSize: '0.85rem', 
+                fontSize: '0.82rem', 
                 borderRadius: 'var(--radius-pill)', 
                 border: '1px solid rgba(2, 132, 199, 0.2)', 
                 textTransform: 'uppercase', 
                 letterSpacing: '0.05em',
-                marginBottom: '1.5rem' 
+                marginBottom: '1.25rem' 
               }}
+              className="hero-badge"
             >
-              <ShieldCheck size={16} />
-              <span>S | O | S — Complete Orthopedic Care</span>
+              <ShieldCheck size={15} />
+              <span>Complete Orthopedic Care</span>
             </div>
 
-            <h1 className="heading-xl" style={{ color: 'var(--navy-primary)', marginBottom: '1.5rem', lineHeight: 1.2 }}>
-              Premium Relief for <br />
+            <h1 className="heading-xl hero-title" style={{ color: 'var(--navy-primary)', marginBottom: '1.25rem', lineHeight: 1.2 }}>
+              Relief for Bone, Joint, <br className="hidden-mobile" />
               <span style={{ color: 'var(--blue-brand)', position: 'relative' }}>
-                Bone, Joint, Spine
-                <svg width="100%" height="12" viewBox="0 0 100 12" preserveAspectRatio="none" style={{ position: 'absolute', bottom: '-4px', left: 0, zIndex: -1, opacity: 0.3 }}>
-                  <path d="M0,10 Q50,0 100,10" stroke="var(--blue-brand)" strokeWidth="4" fill="none" strokeLinecap="round" />
-                </svg>
-              </span> & Sports Injuries
+                Spine & Sports Injuries
+              </span>
             </h1>
 
-            <p className="subhead" style={{ color: 'var(--text-secondary)', marginBottom: '2rem', lineHeight: 1.7, fontSize: '1.1rem' }}>
-              SOS Speciality Orthopedic Service is Mumbai’s trusted destination for complete orthopedic wellness, delivering expert doctor consultations, keyhole surgery, and <strong>24/7 Home X-Ray Services</strong> right at your doorstep.
+            {/* Subhead with consistent natural text flow */}
+            <p 
+              className="hero-subhead"
+              style={{ 
+                color: 'var(--text-secondary)', 
+                marginBottom: '1.5rem', 
+                lineHeight: 1.65, 
+                fontSize: '1.05rem',
+                textAlign: 'left'
+              }}
+            >
+              Consultant orthopedic surgeon OPDs, joint preservation care, and 24/7 doorstep Home X-Ray diagnostics across Mumbai centres.
             </p>
 
-            {/* Micro Trust & Feature Highlights */}
+            {/* Micro Trust Badges */}
             <div 
               className="hero-trust-badges"
               style={{ 
                 display: 'flex', 
-                gap: '1.5rem', 
+                gap: '0.75rem 1.25rem', 
                 flexWrap: 'wrap', 
-                marginBottom: '2.25rem', 
-                fontSize: '0.9rem', 
+                marginBottom: '2rem', 
+                fontSize: '0.88rem', 
                 color: 'var(--navy-primary)',
                 fontWeight: 700 
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                <CheckCircle2 size={18} color="var(--blue-brand)" />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                <CheckCircle2 size={16} color="var(--blue-brand)" />
                 <span>24/7 Home X-Ray</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                <CheckCircle2 size={18} color="var(--blue-brand)" />
-                <span>5 Mumbai OPD Centres</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                <CheckCircle2 size={16} color="var(--blue-brand)" />
+                <span>4 Centre Locations</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                <CheckCircle2 size={18} color="var(--blue-brand)" />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                <CheckCircle2 size={16} color="var(--blue-brand)" />
                 <span>Zero Wait-Time OPD</span>
               </div>
             </div>
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons: Professional Pair */}
             <div className="hero-cta-group" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
               <button 
                 onClick={() => setIsModalOpen(true)}
                 className="btn btn-primary btn-lg"
               >
-                <Calendar size={20} /> Book Appointment
+                <Calendar size={18} /> Book Appointment
               </button>
 
-              <a 
-                href="https://wa.me/917070706505?text=Hello%20SOS%20Orthopedic%20Service,%20I%20would%20like%20to%20enquire%20about%20a%20consultation."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-whatsapp btn-lg"
+              <Link 
+                to="/services"
+                className="btn btn-secondary btn-lg"
+                style={{ gap: '0.45rem' }}
               >
-                <FaWhatsapp size={20} /> WhatsApp Enquiry
-              </a>
+                <Stethoscope size={18} /> Explore Specialities
+              </Link>
             </div>
           </div>
 
-          {/* Right Column: Premium Light Glassmorphism */}
-          <div style={{ position: 'relative' }}>
+          {/* Right Column: Visual with Glassmorphism badges (Desktop only floating badges) */}
+          <div className="hero-visual-col" style={{ position: 'relative' }}>
             
             {/* Main Image with Soft Glow */}
             <div style={{ position: 'relative', borderRadius: 'var(--radius-lg)', overflow: 'hidden', boxShadow: 'var(--shadow-lg)' }}>
               <img
                 src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=900"
                 alt="SOS Orthopedic Specialist Consultation"
-                style={{ width: '100%', height: '500px', objectFit: 'cover', objectPosition: 'center 20%' }}
+                style={{ width: '100%', height: '480px', objectFit: 'cover', objectPosition: 'center 20%' }}
+                className="hero-main-img"
               />
             </div>
 
-            {/* Floating Glass Panel: Core Services */}
+            {/* Floating Glass Panel: Core Services (Desktop only) */}
             <div 
-              className="glass-panel-light animate-float-up"
+              className="glass-panel-light animate-float-up desktop-only"
               style={{
                 position: 'absolute',
-                bottom: '-2rem',
-                left: '-2rem',
-                padding: '1.5rem',
+                bottom: '-1.5rem',
+                left: '-1.5rem',
+                padding: '1.25rem 1.75rem',
                 borderRadius: 'var(--radius-md)',
-                width: '320px',
-                zIndex: 10
-              }}
-            >
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--navy-primary)', fontFamily: 'var(--font-serif)' }}>
-                  Our Core Services
-                </h3>
-                <span style={{ fontSize: '0.7rem', fontWeight: 700, color: '#ffffff', backgroundColor: 'var(--blue-brand)', padding: '0.2rem 0.5rem', borderRadius: '12px' }}>
-                  5 Specialities
-                </span>
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                {servicesData.map(s => (
-                  <div key={s.id} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    <div style={{ backgroundColor: 'var(--blue-soft)', padding: '0.3rem', borderRadius: '8px' }}>
-                      <Activity size={16} color="var(--blue-brand)" />
-                    </div>
-                    <span style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--navy-primary)' }}>{s.title}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Floating Pill: Trust Badge */}
-            <div 
-              className="glass-panel-light animate-float-down"
-              style={{
-                position: 'absolute',
-                top: '2rem',
-                right: '-1.5rem',
-                padding: '0.75rem 1.25rem',
-                borderRadius: 'var(--radius-pill)',
+                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                backdropFilter: 'blur(12px)',
+                border: '1px solid rgba(255, 255, 255, 0.8)',
+                boxShadow: '0 12px 32px rgba(10, 31, 68, 0.12)',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.75rem',
-                zIndex: 10
+                gap: '1rem',
+                zIndex: 4
               }}
             >
-              <div style={{ backgroundColor: '#f59e0b', borderRadius: '50%', padding: '0.4rem', boxShadow: '0 4px 10px rgba(245, 158, 11, 0.3)' }}>
-                <Star size={18} color="#ffffff" fill="#ffffff" />
+              <div 
+                style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '12px',
+                  backgroundColor: 'var(--blue-soft)',
+                  color: 'var(--blue-brand)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                <Activity size={24} />
               </div>
               <div>
-                <div style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--navy-primary)', lineHeight: 1 }}>10,000+</div>
-                <div style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>Patients Treated</div>
+                <div style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--navy-primary)' }}>10,000+</div>
+                <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', fontWeight: 600 }}>Patients Treated</div>
               </div>
             </div>
 
-            {/* Floating Pill: 24/7 Home X-Ray */}
+            {/* Floating Rating Badge (Desktop only) */}
             <div 
-              className="glass-panel-light animate-float-up"
+              className="glass-panel-light animate-float-down desktop-only"
               style={{
                 position: 'absolute',
-                bottom: '4rem',
+                top: '-1rem',
                 right: '-1rem',
                 padding: '0.75rem 1.25rem',
                 borderRadius: 'var(--radius-pill)',
+                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                backdropFilter: 'blur(12px)',
+                border: '1px solid rgba(255, 255, 255, 0.8)',
+                boxShadow: '0 8px 24px rgba(10, 31, 68, 0.1)',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.75rem',
-                zIndex: 10,
-                animationDelay: '1s'
+                gap: '0.5rem',
+                zIndex: 4
               }}
             >
-              <div style={{ backgroundColor: '#ef4444', borderRadius: '50%', padding: '0.4rem', boxShadow: '0 4px 10px rgba(239, 68, 68, 0.3)' }}>
-                <Activity size={18} color="#ffffff" />
+              <div style={{ display: 'flex', color: '#eab308' }}>
+                <Star size={16} fill="#eab308" />
               </div>
-              <div>
-                <div style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--navy-primary)', lineHeight: 1 }}>24/7 Mobile</div>
-                <div style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>Home X-Ray Service</div>
-              </div>
+              <span style={{ fontSize: '0.88rem', fontWeight: 800, color: 'var(--navy-primary)' }}>4.9/5</span>
+              <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>(500+ Reviews)</span>
+            </div>
+
           </div>
         </div>
       </div>
-    </div>
+
+      <AppointmentModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        defaultService={servicesData[0]?.id} 
+      />
+
       <style>{`
-        @media (max-width: 767px) {
-          section {
-            padding: 28px 20px 32px 20px !important;
-            overflow: hidden !important;
+        @media (max-width: 992px) {
+          .hero-section {
+            padding: 2rem 0 2.5rem 0 !important;
           }
 
           .hero-grid {
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 1.5rem !important;
-            width: 100% !important;
-            max-width: 100% !important;
+            grid-template-columns: 1fr !important;
+            gap: 2rem !important;
           }
 
-          /* Left column content ordering and sizing */
-          .animate-fade-in {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            max-width: 100%;
+          .hero-copy-col {
+            text-align: left !important;
           }
 
-          .animate-fade-in > div:first-child {
-            align-self: flex-start;
-            margin-bottom: 1rem !important;
-            font-size: 0.75rem !important;
-            padding: 0.35rem 0.85rem !important;
-            max-width: 100%;
+          .hero-badge {
+            margin-bottom: 0.85rem !important;
           }
 
-          .heading-xl {
-            font-size: clamp(30px, 8vw, 40px) !important;
-            font-weight: 800 !important;
-            line-height: 1.12 !important;
-            margin-bottom: 1rem !important;
-            word-break: break-word;
+          .hero-title {
+            font-size: 1.85rem !important;
+            line-height: 1.25 !important;
+            margin-bottom: 0.85rem !important;
           }
 
-          .subhead {
-            font-size: 16px !important;
+          .hero-subhead {
+            font-size: 0.95rem !important;
             line-height: 1.6 !important;
-            margin-bottom: 1.5rem !important;
-            width: 100% !important;
-            max-width: 100% !important;
+            margin-bottom: 1.25rem !important;
           }
 
-          /* Trust badges container */
           .hero-trust-badges {
-            gap: 0.85rem !important;
-            margin-bottom: 1.5rem !important;
-            font-size: 0.82rem !important;
-          }
-
-          /* CTA Buttons */
-          .hero-cta-group {
-            display: flex !important;
             flex-direction: column !important;
-            gap: 14px !important;
-            width: 100% !important;
+            gap: 0.5rem !important;
+            margin-bottom: 1.5rem !important;
           }
 
-          .animate-fade-in .btn {
+          .hero-trust-badges div {
+            font-size: 0.84rem !important;
+          }
+
+          .hero-cta-group {
+            flex-direction: column !important;
+            gap: 0.65rem !important;
+          }
+
+          .hero-cta-group .btn {
             width: 100% !important;
-            height: 54px !important;
-            display: inline-flex !important;
-            align-items: center !important;
+            min-height: 48px !important;
             justify-content: center !important;
-            font-size: 1.05rem !important;
-            margin: 0 !important;
-            box-sizing: border-box !important;
           }
 
-          /* Right column (Medical Image / Animation) - placed below CTA buttons */
-          .hero-grid > div:last-child {
-            width: 100% !important;
-            max-width: 100% !important;
-            position: relative !important;
-            left: 0 !important;
-            right: 0 !important;
-            margin-top: 0.5rem !important;
-          }
-
-          .hero-grid > div:last-child > div:first-child {
-            width: 100% !important;
-            height: auto !important;
-            max-height: 320px !important;
-            border-radius: var(--radius-md) !important;
-          }
-
-          .hero-grid > div:last-child img {
-            width: 100% !important;
-            height: auto !important;
-            max-height: 320px !important;
-            object-fit: cover !important;
-            object-position: center !important;
-          }
-
-          /* Hide floating absolute badges on mobile to prevent overflow */
-          .glass-panel-light {
-            display: none !important;
-          }
-
-          /* Scale and position background blobs safely */
-          .bg-blob-top-right {
-            width: 160px !important;
-            height: 160px !important;
-            top: -20px !important;
-            right: -20px !important;
-            opacity: 0.4 !important;
-            z-index: 0 !important;
-          }
-
-          .bg-blob-bottom-left {
-            width: 140px !important;
-            height: 140px !important;
-            bottom: -20px !important;
-            left: -20px !important;
-            opacity: 0.4 !important;
-            z-index: 0 !important;
+          .hero-main-img {
+            height: 240px !important;
+            border-radius: 16px !important;
           }
         }
       `}</style>
-
-      <AppointmentModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 };
