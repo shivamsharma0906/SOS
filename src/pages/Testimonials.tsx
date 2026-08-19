@@ -11,7 +11,7 @@ export const Testimonials: React.FC = () => {
     <>
       <SEOHead
         title="Patient Reviews & Recovery Stories | SOS Speciality Orthopedic Service"
-        description="Explore verified patient feedback and reviews from patients treated across our SOS Orthopedic Centre network in Kandivali, Nanded, Ambernath, and Murbad."
+        description="Explore verified patient feedback and reviews from patients treated across our SOS Orthopedic Centre network in Kandivali, Malad, Borivali, and Goregaon."
       />
 
       {/* Hero Header */}
@@ -61,7 +61,7 @@ export const Testimonials: React.FC = () => {
               All Verified Patient Feedback
             </h2>
             <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', maxWidth: '650px', margin: '0 auto' }}>
-              Authentic reviews submitted by patients receiving care across Kandivali, Nanded, Ambernath, and Murbad clinics.
+              Authentic reviews submitted by patients receiving care across Kandivali, Malad, Borivali, and Goregaon clinics.
             </p>
           </div>
 

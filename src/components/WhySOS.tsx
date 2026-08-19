@@ -287,7 +287,7 @@ export const WhySOS: React.FC = () => {
             </h3>
 
             <p style={{ color: '#cbd5e1', fontSize: '0.92rem', lineHeight: 1.6, margin: 0 }} className="emergency-desc">
-              Certified mobile digital X-ray units dispatched within <strong>20–30 minutes</strong> for elderly patients and acute fall cases across Kandivali, Nanded, and Ambernath.
+              Certified mobile digital X-ray units dispatched within <strong>20–30 minutes</strong> for elderly patients and acute fall cases across Kandivali, Malad, Borivali, and Goregaon.
             </p>
           </div>
 

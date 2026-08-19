@@ -18,7 +18,7 @@ export const Home: React.FC = () => {
     <>
       <SEOHead
         title="SOS Speciality Orthopedic Service | Complete Orthopedic Care"
-        description="SOS Speciality Orthopedic Service: 24/7 Home X-Ray, Bone, Joint, Spine & Sports Injury care across Kandivali, Nanded, Ambernath, and Murbad. 20-30 min emergency dispatch."
+        description="SOS Speciality Orthopedic Service: 24/7 Home X-Ray, Bone, Joint, Spine & Sports Injury care across Kandivali, Malad, Borivali, and Goregaon. 20-30 min emergency dispatch."
       />
 
       {/* 1. Hero Banner */}

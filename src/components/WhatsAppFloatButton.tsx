@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
-import { X, Facebook, Instagram, Youtube } from 'lucide-react';
+import { X, Facebook, Instagram } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
-
-const XLogoIcon: React.FC<{ size?: number }> = ({ size = 16 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-  </svg>
-);
 
 export const WhatsAppFloatButton: React.FC = () => {
   const [showTooltip, setShowTooltip] = useState(true);
@@ -35,7 +29,7 @@ export const WhatsAppFloatButton: React.FC = () => {
       >
         {/* Facebook */}
         <a
-          href="https://facebook.com/officialsosortho"
+          href="https://www.facebook.com/profile.php?id=61592799181133"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Facebook"
@@ -59,35 +53,9 @@ export const WhatsAppFloatButton: React.FC = () => {
           <Facebook size={20} fill="#ffffff" color="#1877F2" />
         </a>
 
-        {/* X / Twitter */}
-        <a
-          href="https://x.com/officialsosortho"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="X Twitter"
-          style={{
-            width: '42px',
-            height: '42px',
-            borderRadius: '50% 0 0 50%',
-            backgroundColor: '#000000',
-            color: '#ffffff',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            boxShadow: '-2px 4px 12px rgba(0, 0, 0, 0.25)',
-            transition: 'transform 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
-            textDecoration: 'none'
-          }}
-          onMouseEnter={e => e.currentTarget.style.transform = 'translateX(-5px)'}
-          onMouseLeave={e => e.currentTarget.style.transform = 'translateX(0)'}
-          title="SOS on X"
-        >
-          <XLogoIcon size={18} />
-        </a>
-
         {/* Instagram */}
         <a
-          href="https://instagram.com/officialsosortho"
+          href="https://www.instagram.com/sosorthopaedics/"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Instagram"
@@ -109,32 +77,6 @@ export const WhatsAppFloatButton: React.FC = () => {
           title="SOS on Instagram"
         >
           <Instagram size={20} color="#ffffff" />
-        </a>
-
-        {/* YouTube */}
-        <a
-          href="https://youtube.com/c/officialsosortho"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="YouTube"
-          style={{
-            width: '42px',
-            height: '42px',
-            borderRadius: '50% 0 0 50%',
-            backgroundColor: '#FF0000',
-            color: '#ffffff',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            boxShadow: '-2px 4px 12px rgba(0, 0, 0, 0.25)',
-            transition: 'transform 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
-            textDecoration: 'none'
-          }}
-          onMouseEnter={e => e.currentTarget.style.transform = 'translateX(-5px)'}
-          onMouseLeave={e => e.currentTarget.style.transform = 'translateX(0)'}
-          title="SOS on YouTube"
-        >
-          <Youtube size={20} fill="#ffffff" color="#FF0000" />
         </a>
       </div>
 

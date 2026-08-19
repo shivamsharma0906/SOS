@@ -5,6 +5,7 @@
 // adapt to any number of centres without requiring any component or style modifications.
 
 export type CentreType = 'centre' | 'outreach-clinic';
+export type CentreStatus = 'operational' | 'opening-soon';
 
 export interface Centre {
   id: string;
@@ -12,6 +13,7 @@ export interface Centre {
   area: string;
   slug: string;
   type: CentreType;
+  status: CentreStatus;
   address: string;
   landmark: string;
   phone: string;
@@ -36,15 +38,16 @@ export const centresData: Centre[] = [
     area: 'Kandivali',
     slug: 'kandivali',
     type: 'centre',
-    address: 'Kandivali, Mumbai', // TODO: real address to be provided
-    landmark: 'Kandivali', // TODO: real landmark to be provided
-    phone: '7070706505', // Central Helpline / TODO: real direct phone if specific
+    status: 'operational',
+    address: 'Shop No. 3, Ground Floor, Mahavir Majesty, Kandivali West',
+    landmark: 'Mahavir Majesty, Kandivali West',
+    phone: '7070706505',
     whatsapp: '917070706505',
     email: 'officialsosortho@gmail.com',
-    timings: 'Mon - Sat: 8:00 AM - 10:00 PM | Sunday OPD Available', // TODO: real timings
-    mapEmbedUrl: 'https://maps.google.com/maps?q=Kandivali,Mumbai&t=&z=14&ie=UTF8&iwloc=&output=embed', // TODO: real Google Maps embed URL
-    photoUrl: '/assets/centre-kandivali.jpg', // TODO: real photo
-    googleRating: 4.9, // Verified rating
+    timings: 'Mon - Sat: 8:00 AM - 10:00 PM | Sunday OPD Available',
+    mapEmbedUrl: 'https://maps.google.com/maps?q=Mahavir+Majesty+Kandivali+West+Mumbai&t=&z=16&ie=UTF8&iwloc=&output=embed',
+    photoUrl: '/assets/centre-kandivali.png',
+    googleRating: 4.9,
     reviewsCount: 150,
     features: ['Orthopedic OPD', 'Emergency Care', 'Home X-Ray Booking Desk', 'Physiotherapy'],
     geo: {
@@ -53,69 +56,72 @@ export const centresData: Centre[] = [
     }
   },
   {
-    id: 'nanded',
-    name: 'SOS Orthopedic Centre - Nanded',
-    area: 'Nanded',
-    slug: 'nanded',
-    type: 'centre',
-    address: 'Nanded, Maharashtra', // TODO: real address to be provided
-    landmark: 'Nanded Central', // TODO: real landmark to be provided
-    phone: '7070706505', // Central Helpline / TODO: real direct phone
-    whatsapp: '917070706505',
-    email: 'officialsosortho@gmail.com',
-    timings: 'Mon - Sat: 8:00 AM - 10:00 PM', // TODO: real timings
-    mapEmbedUrl: 'https://maps.google.com/maps?q=Nanded,Maharashtra&t=&z=14&ie=UTF8&iwloc=&output=embed', // TODO: real Google Maps embed URL
-    photoUrl: '/assets/centre-nanded.jpg', // TODO: real photo
-    googleRating: 4.9,
-    reviewsCount: 110,
-    features: ['Specialist Orthopedic Consultations', 'Joint & Spine Care', 'Trauma Assessment'],
-    geo: {
-      latitude: 19.1383,
-      longitude: 77.3210
-    }
-  },
-  {
-    id: 'ambernath',
-    name: 'SOS Orthopedic Centre - Ambernath',
-    area: 'Ambernath',
-    slug: 'ambernath',
-    type: 'centre',
-    address: 'Ambernath, Maharashtra', // TODO: real address to be provided
-    landmark: 'Ambernath', // TODO: real landmark to be provided
-    phone: '7070706505', // Central Helpline / TODO: real direct phone
-    whatsapp: '917070706505',
-    email: 'officialsosortho@gmail.com',
-    timings: 'Mon - Sat: 8:00 AM - 10:00 PM', // TODO: real timings
-    mapEmbedUrl: 'https://maps.google.com/maps?q=Ambernath,Maharashtra&t=&z=14&ie=UTF8&iwloc=&output=embed', // TODO: real Google Maps embed URL
-    photoUrl: '/assets/centre-ambernath.jpg', // TODO: real photo
-    googleRating: 4.8,
-    reviewsCount: 95,
-    features: ['Orthopedic OPD Clinic', 'Digital Radiography Support', 'Fracture & Joint Care'],
-    geo: {
-      latitude: 19.1864,
-      longitude: 73.1919
-    }
-  },
-  {
-    id: 'murbad',
-    name: 'SOS Outreach Clinic - Murbad',
-    area: 'Murbad',
-    slug: 'murbad',
+    id: 'malad',
+    name: 'SOS Outreach Clinic - Malad',
+    area: 'Malad',
+    slug: 'malad',
     type: 'outreach-clinic',
-    address: 'Murbad, Maharashtra', // TODO: real address to be provided
-    landmark: 'Murbad Outreach Point', // TODO: real landmark to be provided
-    phone: '7070706505', // Central Helpline / TODO: real direct phone
+    status: 'operational',
+    address: 'Raheja Exotica, Pascal Wadi, Madh, Mumbai – 400061',
+    landmark: 'Raheja Exotica, Madh',
+    phone: '7070706505',
     whatsapp: '917070706505',
     email: 'officialsosortho@gmail.com',
-    timings: 'Scheduled Outreach Days & By Appointment', // TODO: real timings
-    mapEmbedUrl: 'https://maps.google.com/maps?q=Murbad,Maharashtra&t=&z=14&ie=UTF8&iwloc=&output=embed', // TODO: real Google Maps embed URL
-    photoUrl: '/assets/centre-murbad.jpg', // TODO: real photo
+    timings: 'Scheduled Outreach Days & By Appointment',
+    mapEmbedUrl: 'https://maps.google.com/maps?q=Raheja+Exotica+Pascal+Wadi+Madh+Mumbai+400061&t=&z=16&ie=UTF8&iwloc=&output=embed',
+    photoUrl: '/assets/centre-malad.png',
     googleRating: 4.8,
-    reviewsCount: 45,
+    reviewsCount: 85,
     features: ['Outreach Orthopedic OPD', 'Consultation & Triage', 'Referral & Follow-up Support'],
     geo: {
-      latitude: 19.2500,
-      longitude: 73.4000
+      latitude: 19.1432,
+      longitude: 72.7938
+    }
+  },
+  {
+    id: 'borivali',
+    name: 'SOS Orthopedic Centre - Borivali',
+    area: 'Borivali',
+    slug: 'borivali',
+    type: 'centre',
+    status: 'opening-soon',
+    address: 'Borivali West, Mumbai (Opening Soon)',
+    landmark: 'Upcoming Facility, Borivali West',
+    phone: '7070706505',
+    whatsapp: '917070706505',
+    email: 'officialsosortho@gmail.com',
+    timings: 'Under Construction • Opening Soon (Enquiries Open)',
+    mapEmbedUrl: 'https://maps.google.com/maps?q=Borivali+West,Mumbai&t=&z=14&ie=UTF8&iwloc=&output=embed',
+    photoUrl: '/assets/centre-borivali.png',
+    googleRating: 4.9,
+    reviewsCount: 135,
+    features: ['Specialist Orthopedic Consultations', 'Joint & Spine Care', '24/7 Home X-Ray Dispatch'],
+    geo: {
+      latitude: 19.2307,
+      longitude: 72.8567
+    }
+  },
+  {
+    id: 'goregaon',
+    name: 'SOS Orthopedic Centre - Goregaon',
+    area: 'Goregaon',
+    slug: 'goregaon',
+    type: 'centre',
+    status: 'opening-soon',
+    address: 'Goregaon West, Mumbai (Opening Soon)',
+    landmark: 'Upcoming Facility, Goregaon West',
+    phone: '7070706505',
+    whatsapp: '917070706505',
+    email: 'officialsosortho@gmail.com',
+    timings: 'Under Construction • Opening Soon (Enquiries Open)',
+    mapEmbedUrl: 'https://maps.google.com/maps?q=Goregaon+West,Mumbai&t=&z=14&ie=UTF8&iwloc=&output=embed',
+    photoUrl: '/assets/centre-goregaon.png',
+    googleRating: 4.8,
+    reviewsCount: 110,
+    features: ['Orthopedic OPD Clinic', 'Digital Radiography Support', 'Fracture & Sports Care'],
+    geo: {
+      latitude: 19.1663,
+      longitude: 72.8526
     }
   }
 ];

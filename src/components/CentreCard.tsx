@@ -42,20 +42,20 @@ export const CentreCard: React.FC<CentreCardProps> = ({ centre }) => {
             src={centre.photoUrl}
             alt={centre.name}
             onError={(e) => {
-              e.currentTarget.style.display = 'none';
-              if (e.currentTarget.parentElement) {
-                e.currentTarget.parentElement.style.background = isOutreach 
-                  ? 'linear-gradient(135deg, #1e293b 0%, #334155 100%)' 
-                  : 'linear-gradient(135deg, #07152e 0%, #0a1f44 100%)';
+              const target = e.currentTarget;
+              if (!target.dataset.fallbackTried) {
+                target.dataset.fallbackTried = 'true';
+                target.src = '/assets/centre-kandivali.png';
               }
             }}
             style={{
               width: '100%',
               height: '100%',
               objectFit: 'cover',
-              filter: 'brightness(0.92)'
+              filter: 'brightness(0.92)',
+              display: 'block'
             }}
-            loading="lazy"
+            loading="eager"
           />
         ) : (
           <iframe
@@ -94,7 +94,7 @@ export const CentreCard: React.FC<CentreCardProps> = ({ centre }) => {
           position: 'absolute',
           top: '0.75rem',
           right: '0.75rem',
-          backgroundColor: isOutreach ? '#3b82f6' : '#22c55e',
+          backgroundColor: centre.status === 'opening-soon' ? '#d97706' : (isOutreach ? '#3b82f6' : '#22c55e'),
           color: '#ffffff',
           padding: '0.2rem 0.6rem',
           borderRadius: 'var(--radius-pill)',
@@ -102,7 +102,7 @@ export const CentreCard: React.FC<CentreCardProps> = ({ centre }) => {
           fontWeight: 800,
           boxShadow: 'var(--shadow-sm)'
         }}>
-          {isOutreach ? '📅 By Appt' : '● Open Today'}
+          {centre.status === 'opening-soon' ? '🚧 Opening Soon' : (isOutreach ? '📅 By Appt' : '● Open Today')}
         </div>
 
         {/* Photo / Map Toggle Button Bar */}
@@ -186,8 +186,8 @@ export const CentreCard: React.FC<CentreCardProps> = ({ centre }) => {
         {/* Features Chips */}
         <div className="centre-features-row" style={{ display: 'flex', gap: '0.35rem', flexWrap: 'wrap', marginBottom: '1.25rem' }}>
           {centre.features.slice(0, 3).map((feat, idx) => (
-            <span 
-              key={idx} 
+            <span
+              key={idx}
               style={{
                 fontSize: '0.72rem',
                 fontWeight: 600,
@@ -209,7 +209,7 @@ export const CentreCard: React.FC<CentreCardProps> = ({ centre }) => {
             className="btn btn-primary btn-sm"
             style={{ width: '100%', justifyContent: 'center', gap: '0.4rem' }}
           >
-            <Phone size={14} /> Call {centre.area} Desk: {centre.phone}
+            <Phone size={14} /> {centre.status === 'opening-soon' ? `Enquire for ${centre.area} Desk: ${centre.phone}` : `Call ${centre.area} Desk: ${centre.phone}`}
           </a>
         </div>
       </div>

@@ -215,7 +215,7 @@ export const Services: React.FC = () => {
                 Need an Emergency Home X-Ray for an Elderly Patient?
               </h2>
               <p style={{ fontSize: '0.92rem', color: '#cbd5e1', lineHeight: 1.55, margin: 0 }}>
-                Certified mobile digital X-ray units dispatched within <strong>20–30 minutes</strong> directly to your home across Kandivali, Nanded, and Ambernath centres.
+                Certified mobile digital X-ray units dispatched within <strong>20–30 minutes</strong> directly to your home across Kandivali, Malad, Borivali, and Goregaon centres.
               </p>
             </div>
 

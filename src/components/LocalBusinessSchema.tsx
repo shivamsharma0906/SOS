@@ -25,10 +25,8 @@ export const LocalBusinessSchema: React.FC = () => {
         { "@type": "AdministrativeArea", "name": "Andheri" }
       ],
       "sameAs": [
-        "https://facebook.com/officialsosortho",
-        "https://x.com/officialsosortho",
-        "https://instagram.com/officialsosortho",
-        "https://youtube.com/c/officialsosortho"
+        "https://www.facebook.com/profile.php?id=61592799181133",
+        "https://www.instagram.com/sosorthopaedics/"
       ],
       "availableService": [
         { "@type": "MedicalDiagnosticTest", "name": "24/7 Home X-Ray Service" },

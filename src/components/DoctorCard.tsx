@@ -42,9 +42,10 @@ export const DoctorCard: React.FC<DoctorCardProps> = ({ doctor }) => {
           src={doctor.photoUrl}
           alt={doctor.name}
           onError={(e) => {
-            e.currentTarget.style.display = 'none';
-            if (e.currentTarget.parentElement) {
-              e.currentTarget.parentElement.style.background = 'linear-gradient(135deg, #07152e 0%, #0a1f44 50%, #0369a1 100%)';
+            const target = e.currentTarget;
+            if (!target.dataset.fallbackTried) {
+              target.dataset.fallbackTried = 'true';
+              target.src = '/assets/doctor-desai.jpg';
             }
           }}
           style={{
@@ -54,7 +55,7 @@ export const DoctorCard: React.FC<DoctorCardProps> = ({ doctor }) => {
             objectPosition: 'center 15%',
             display: 'block'
           }}
-          loading="lazy"
+          loading="eager"
         />
 
         {/* Pediatric/Trauma Care Highlight Pill */}

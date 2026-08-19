@@ -1,15 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, ArrowRight, Facebook, Instagram, Youtube, ShieldCheck } from 'lucide-react';
+import { Phone, Mail, MapPin, ArrowRight, Facebook, Instagram, ShieldCheck } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
 import { centresData } from '../data/centres';
 import { FaWhatsapp } from 'react-icons/fa';
-
-const XLogoIcon: React.FC<{ size?: number }> = ({ size = 15 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-  </svg>
-);
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -88,17 +82,11 @@ export const Footer: React.FC = () => {
 
             {/* Social Icons Row */}
             <div style={{ display: 'flex', gap: '0.65rem', marginTop: '0.25rem' }}>
-              <a href="https://facebook.com/officialsosortho" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.08)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <a href="https://www.facebook.com/profile.php?id=61592799181133" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.08)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Facebook size={17} />
               </a>
-              <a href="https://x.com/officialsosortho" target="_blank" rel="noopener noreferrer" aria-label="X Twitter" style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.08)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <XLogoIcon size={15} />
-              </a>
-              <a href="https://instagram.com/officialsosortho" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.08)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <a href="https://www.instagram.com/sosorthopaedics/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.08)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Instagram size={17} />
-              </a>
-              <a href="https://youtube.com/c/officialsosortho" target="_blank" rel="noopener noreferrer" aria-label="YouTube" style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.08)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Youtube size={17} />
               </a>
             </div>
           </div>
@@ -121,23 +109,28 @@ export const Footer: React.FC = () => {
                   <Link 
                     to={link.path} 
                     style={{ 
-                      color: '#94a3b8', 
+                      color: '#cbd5e1', 
                       display: 'inline-flex', 
                       alignItems: 'center', 
-                      gap: '0.4rem', 
-                      transition: 'all 0.2s ease' 
+                      gap: '0.55rem', 
+                      transition: 'all 0.2s ease',
+                      fontSize: '0.88rem'
                     }} 
                     onMouseEnter={e => {
-                      e.currentTarget.style.color = '#ffffff';
+                      e.currentTarget.style.color = '#38bdf8';
                       e.currentTarget.style.transform = 'translateX(4px)';
+                      const arrow = e.currentTarget.querySelector('.footer-link-arrow') as HTMLElement;
+                      if (arrow) arrow.style.color = '#38bdf8';
                     }} 
                     onMouseLeave={e => {
-                      e.currentTarget.style.color = '#94a3b8';
+                      e.currentTarget.style.color = '#cbd5e1';
                       e.currentTarget.style.transform = 'translateX(0)';
+                      const arrow = e.currentTarget.querySelector('.footer-link-arrow') as HTMLElement;
+                      if (arrow) arrow.style.color = '#64748b';
                     }}
                   >
-                    <ArrowRight size={12} style={{ opacity: 0.5 }} />
-                    {link.name}
+                    <span className="footer-link-arrow" style={{ color: '#64748b', fontSize: '0.95rem', transition: 'color 0.2s ease', flexShrink: 0 }}>&rarr;</span>
+                    <span>{link.name}</span>
                   </Link>
                 </li>
               ))}
@@ -162,23 +155,28 @@ export const Footer: React.FC = () => {
                   <Link 
                     to={spec.path} 
                     style={{ 
-                      color: '#94a3b8', 
+                      color: '#cbd5e1', 
                       display: 'inline-flex', 
                       alignItems: 'center', 
-                      gap: '0.4rem', 
-                      transition: 'all 0.2s ease' 
+                      gap: '0.55rem', 
+                      transition: 'all 0.2s ease',
+                      fontSize: '0.88rem'
                     }} 
                     onMouseEnter={e => {
-                      e.currentTarget.style.color = '#ffffff';
+                      e.currentTarget.style.color = '#38bdf8';
                       e.currentTarget.style.transform = 'translateX(4px)';
+                      const arrow = e.currentTarget.querySelector('.footer-link-arrow') as HTMLElement;
+                      if (arrow) arrow.style.color = '#38bdf8';
                     }} 
                     onMouseLeave={e => {
-                      e.currentTarget.style.color = '#94a3b8';
+                      e.currentTarget.style.color = '#cbd5e1';
                       e.currentTarget.style.transform = 'translateX(0)';
+                      const arrow = e.currentTarget.querySelector('.footer-link-arrow') as HTMLElement;
+                      if (arrow) arrow.style.color = '#64748b';
                     }}
                   >
-                    <ArrowRight size={12} style={{ opacity: 0.5 }} />
-                    {spec.name}
+                    <span className="footer-link-arrow" style={{ color: '#64748b', fontSize: '0.95rem', transition: 'color 0.2s ease', flexShrink: 0 }}>&rarr;</span>
+                    <span>{spec.name}</span>
                   </Link>
                 </li>
               ))}
@@ -241,12 +239,21 @@ export const Footer: React.FC = () => {
                 Navigation
               </div>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.55rem', fontSize: '0.82rem' }}>
-                <li><Link to="/about" style={{ color: '#cbd5e1' }}>About SOS</Link></li>
-                <li><Link to="/services" style={{ color: '#cbd5e1' }}>All Services</Link></li>
-                <li><Link to="/doctors" style={{ color: '#cbd5e1' }}>Surgeons</Link></li>
-                <li><Link to="/centres" style={{ color: '#cbd5e1' }}>Centres</Link></li>
-                <li><Link to="/testimonials" style={{ color: '#cbd5e1' }}>Patient Reviews</Link></li>
-                <li><Link to="/contact" style={{ color: '#cbd5e1' }}>Book OPD</Link></li>
+                {[
+                  { name: 'About SOS', path: '/about' },
+                  { name: 'All Services', path: '/services' },
+                  { name: 'Surgeons', path: '/doctors' },
+                  { name: 'Centres', path: '/centres' },
+                  { name: 'Patient Reviews', path: '/testimonials' },
+                  { name: 'Book OPD', path: '/contact' }
+                ].map(item => (
+                  <li key={item.path}>
+                    <Link to={item.path} style={{ color: '#cbd5e1', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', transition: 'color 0.2s ease' }}>
+                      <span style={{ color: '#64748b', fontSize: '0.85rem' }}>&rarr;</span>
+                      <span>{item.name}</span>
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -255,12 +262,21 @@ export const Footer: React.FC = () => {
                 Specialities
               </div>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.55rem', fontSize: '0.82rem' }}>
-                <li><Link to="/services/joint-replacement" style={{ color: '#cbd5e1' }}>Joint Replacement</Link></li>
-                <li><Link to="/services/acl-ligament" style={{ color: '#cbd5e1' }}>ACL & Ligament</Link></li>
-                <li><Link to="/services/spine-care" style={{ color: '#cbd5e1' }}>Spine & Sciatica</Link></li>
-                <li><Link to="/services/sports-injury" style={{ color: '#cbd5e1' }}>Sports Injury</Link></li>
-                <li><Link to="/services/pediatric-trauma" style={{ color: '#cbd5e1' }}>Pediatric Trauma</Link></li>
-                <li><Link to="/services/home-x-ray" style={{ color: '#cbd5e1' }}>Home X-Ray</Link></li>
+                {[
+                  { name: 'Joint Replacement', path: '/services/joint-replacement' },
+                  { name: 'ACL & Ligament', path: '/services/acl-ligament' },
+                  { name: 'Spine & Sciatica', path: '/services/spine-care' },
+                  { name: 'Sports Injury', path: '/services/sports-injury' },
+                  { name: 'Pediatric Trauma', path: '/services/pediatric-trauma' },
+                  { name: 'Home X-Ray', path: '/services/home-x-ray' }
+                ].map(item => (
+                  <li key={item.path}>
+                    <Link to={item.path} style={{ color: '#cbd5e1', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', transition: 'color 0.2s ease' }}>
+                      <span style={{ color: '#64748b', fontSize: '0.85rem' }}>&rarr;</span>
+                      <span>{item.name}</span>
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -294,17 +310,11 @@ export const Footer: React.FC = () => {
 
           {/* Social Media Row */}
           <div style={{ display: 'flex', justifyContent: 'center', gap: '0.85rem', marginBottom: '1.5rem' }}>
-            <a href="https://facebook.com/officialsosortho" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style={{ width: '38px', height: '38px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.08)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <a href="https://www.facebook.com/profile.php?id=61592799181133" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style={{ width: '38px', height: '38px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.08)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Facebook size={18} />
             </a>
-            <a href="https://x.com/officialsosortho" target="_blank" rel="noopener noreferrer" aria-label="X Twitter" style={{ width: '38px', height: '38px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.08)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <XLogoIcon size={16} />
-            </a>
-            <a href="https://instagram.com/officialsosortho" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={{ width: '38px', height: '38px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.08)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <a href="https://www.instagram.com/sosorthopaedics/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={{ width: '38px', height: '38px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.08)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Instagram size={18} />
-            </a>
-            <a href="https://youtube.com/c/officialsosortho" target="_blank" rel="noopener noreferrer" aria-label="YouTube" style={{ width: '38px', height: '38px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.08)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Youtube size={18} />
             </a>
           </div>
         </div>

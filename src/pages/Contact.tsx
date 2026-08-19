@@ -14,7 +14,7 @@ export const Contact: React.FC = () => {
     <>
       <SEOHead
         title="Contact SOS Speciality Orthopedic Service | 24/7 Helpline 7070706505"
-        description="Connect with SOS Speciality Orthopedic Service in Mumbai. Call 7070706505 for doctor consultations or 24/7 Home X-Ray dispatch across Kandivali, Nanded, Ambernath, and Murbad."
+        description="Connect with SOS Speciality Orthopedic Service in Mumbai. Call 7070706505 for doctor consultations or 24/7 Home X-Ray dispatch across Kandivali, Malad, Borivali, and Goregaon."
       />
 
       {/* ── 1. Hero Header ── */}
@@ -263,7 +263,7 @@ export const Contact: React.FC = () => {
                         transition: 'all 0.2s ease'
                       }}
                     >
-                      {c.area} {c.type === 'outreach-clinic' ? '(Outreach)' : ''}
+                      {c.area} {c.type === 'outreach-clinic' ? '(Outreach)' : c.status === 'opening-soon' ? '(Opening Soon)' : ''}
                     </button>
                   ))}
                 </div>
@@ -280,15 +280,19 @@ export const Contact: React.FC = () => {
                     }}
                     className="contact-selected-centre-card"
                   >
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem', flexWrap: 'wrap', gap: '0.5rem' }}>
                       <h4 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--navy-primary)' }}>
                         {activeCentreData.name}
                       </h4>
-                      {activeCentreData.type === 'outreach-clinic' && (
+                      {activeCentreData.status === 'opening-soon' ? (
                         <span style={{ fontSize: '0.72rem', fontWeight: 800, backgroundColor: '#fef3c7', color: '#b45309', padding: '0.2rem 0.5rem', borderRadius: '4px' }}>
+                          🚧 Opening Soon
+                        </span>
+                      ) : activeCentreData.type === 'outreach-clinic' ? (
+                        <span style={{ fontSize: '0.72rem', fontWeight: 800, backgroundColor: '#e0f2fe', color: '#0369a1', padding: '0.2rem 0.5rem', borderRadius: '4px' }}>
                           Outreach Clinic
                         </span>
-                      )}
+                      ) : null}
                     </div>
 
                     <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.5, marginBottom: '1rem' }}>
