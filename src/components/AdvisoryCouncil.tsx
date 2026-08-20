@@ -136,7 +136,7 @@ export const AdvisoryCouncil: React.FC = () => {
                   border: '1px solid var(--border-color)'
                 }}>
                   <Award size={12} color="var(--blue-brand)" />
-                  <span>50+ Yrs Council</span>
+                  <span>50+ Yrs Combined</span>
                 </div>
               </div>
 

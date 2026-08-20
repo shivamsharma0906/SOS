@@ -43,7 +43,7 @@ const pillars = [
 const stats = [
   { value: '10,000+', label: 'Patients Treated', icon: <Users size={20} /> },
   { value: '4 Centres', label: 'Network Locations', icon: <MapPin size={20} /> },
-  { value: '50+ Yrs', label: 'Council Experience', icon: <Clock size={20} /> },
+  { value: '50+ Yrs', label: 'Combined Experience', icon: <Clock size={20} /> },
   { value: '4.9★', label: 'Patient Rating', icon: <Star size={20} /> },
 ];
 
@@ -94,9 +94,9 @@ export const About: React.FC = () => {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-              gap: '1.25rem',
-              maxWidth: '860px',
+              gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
+              gap: '1rem',
+              maxWidth: '960px',
               margin: '0 auto',
             }}
             className="stats-grid"
@@ -104,31 +104,63 @@ export const About: React.FC = () => {
             {stats.map((s, i) => (
               <div
                 key={i}
+                className="about-stat-card"
                 style={{
                   backgroundColor: '#ffffff',
-                  padding: '1.25rem',
-                  borderRadius: 'var(--radius-md)',
-                  border: '1px solid rgba(10, 31, 68, 0.06)',
-                  boxShadow: '0 4px 16px rgba(10, 31, 68, 0.03)',
+                  padding: '1.15rem 1.1rem',
+                  borderRadius: '16px',
+                  border: '1px solid rgba(10, 31, 68, 0.08)',
+                  boxShadow: '0 4px 16px rgba(10, 31, 68, 0.04)',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.85rem',
+                  transition: 'transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease',
                 }}
               >
                 <div
+                  className="about-stat-icon"
                   style={{
                     backgroundColor: 'var(--blue-soft)',
                     color: 'var(--blue-brand)',
-                    padding: '0.6rem',
-                    borderRadius: '10px',
+                    width: '44px',
+                    height: '44px',
+                    borderRadius: '12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     flexShrink: 0,
+                    border: '1px solid rgba(2, 132, 199, 0.15)',
                   }}
                 >
                   {s.icon}
                 </div>
-                <div style={{ textAlign: 'left' }}>
-                  <div style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--navy-primary)', lineHeight: 1.1 }}>{s.value}</div>
-                  <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', fontWeight: 600, marginTop: '0.15rem' }}>{s.label}</div>
+                <div style={{ textAlign: 'left', minWidth: 0, flex: 1 }}>
+                  <div
+                    className="about-stat-value"
+                    style={{
+                      fontSize: '1.28rem',
+                      fontWeight: 800,
+                      color: 'var(--navy-primary)',
+                      lineHeight: 1.15,
+                      letterSpacing: '-0.01em',
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    {s.value}
+                  </div>
+                  <div
+                    className="about-stat-label"
+                    style={{
+                      fontSize: '0.76rem',
+                      color: 'var(--text-secondary)',
+                      fontWeight: 600,
+                      marginTop: '0.2rem',
+                      lineHeight: 1.2,
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    {s.label}
+                  </div>
                 </div>
               </div>
             ))}
@@ -397,6 +429,20 @@ export const About: React.FC = () => {
       </section>
 
       <style>{`
+        .about-stat-card:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 10px 24px rgba(10, 31, 68, 0.08) !important;
+          border-color: rgba(2, 132, 199, 0.3) !important;
+        }
+
+        @media (max-width: 900px) {
+          .stats-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 0.85rem !important;
+            max-width: 560px !important;
+          }
+        }
+
         @media (max-width: 768px) {
           .about-story-section, .about-pillars-section {
             padding: 2.25rem 0 !important;
@@ -450,14 +496,32 @@ export const About: React.FC = () => {
             justify-content: center !important;
           }
 
-          .stats-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 0.75rem !important;
-          }
-
           .pillar-card {
             padding: 1.5rem 1.25rem !important;
             border-radius: 16px !important;
+          }
+        }
+
+        @media (max-width: 520px) {
+          .stats-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 0.6rem !important;
+          }
+          .about-stat-card {
+            padding: 0.85rem 0.7rem !important;
+            gap: 0.6rem !important;
+            border-radius: 12px !important;
+          }
+          .about-stat-icon {
+            width: 36px !important;
+            height: 36px !important;
+            border-radius: 9px !important;
+          }
+          .about-stat-value {
+            font-size: 1.12rem !important;
+          }
+          .about-stat-label {
+            font-size: 0.7rem !important;
           }
         }
       `}</style>
