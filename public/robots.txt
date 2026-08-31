@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sosortho.com/sitemap.xml
+Sitemap: https://www.sosorth.com/sitemap.xml
