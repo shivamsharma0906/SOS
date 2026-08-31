@@ -51,7 +51,7 @@ export const About: React.FC = () => {
   return (
     <>
       <SEOHead
-        title="About SOS Speciality Orthopedic Service | Geriatric & Specialized Orthopedic Care"
+        title="About SOS Speciality Orthopedic Clinic | Geriatric & Specialized Orthopedic Care"
         description="SOS was founded by practicing orthopedic surgeons to provide accessible, patient-first musculoskeletal care, joint preservation, and 24/7 doorstep diagnostics."
       />
 

@@ -17,8 +17,8 @@ export const Doctors: React.FC = () => {
   return (
     <>
       <SEOHead
-        title="Our Orthopedic Doctors | SOS Speciality Orthopedic Service"
-        description="Meet the consulting orthopedic surgeons at SOS Speciality Orthopedic Service. Experienced consultants in Joint Replacement, Spine Care, Pediatric Trauma, and Sports Injuries."
+        title="Our Orthopedic Doctors | SOS Speciality Orthopedic Clinic"
+        description="Meet the consulting orthopedic surgeons at SOS Speciality Orthopedic Clinic. Experienced consultants in Joint Replacement, Spine Care, Pediatric Trauma, and Sports Injuries."
       />
 
       {/* Hero Header */}

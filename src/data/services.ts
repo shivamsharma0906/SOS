@@ -256,7 +256,7 @@ export const servicesData: Service[] = [
     slug: 'home-x-ray',
     iconName: 'xray',
     shortDesc: '24/7 doorstep portable digital X-ray imaging, wound dressings, and at-home orthopedic consultations.',
-    fullDesc: 'SOS Speciality Orthopedic Service brings certified digital radiograph equipment and trained technicians directly to your residence. Designed specifically for senior citizens, bedridden patients, and acute post-fall emergencies.',
+    fullDesc: 'SOS Speciality Orthopedic Clinic brings certified digital radiograph equipment and trained technicians directly to your residence. Designed specifically for senior citizens, bedridden patients, and acute post-fall emergencies.',
     conditionOverview: 'Transporting an elderly or injured patient with an acute fracture to a diagnostic lab causes unnecessary suffering. Our doorstep medical division provides immediate imaging and reporting at home.',
     keyHighlights: [
       'Portable high-frequency digital radiograph machine',

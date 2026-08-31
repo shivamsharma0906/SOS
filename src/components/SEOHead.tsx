@@ -8,8 +8,8 @@ interface SEOHeadProps {
 }
 
 export const SEOHead: React.FC<SEOHeadProps> = ({
-  title = 'SOS Speciality Orthopedic Service | Complete Orthopedic Care Mumbai',
-  description = 'SOS Speciality Orthopedic Service - Expert treatment for Bone, Joint, Spine & Sports Injuries in Mumbai (Borivali, Kandivali, Malad, Goregaon, Andheri). 24/7 Home X-Ray Service.',
+  title = 'SOS Speciality Orthopedic Clinic | Complete Orthopedic Care Mumbai',
+  description = 'SOS Speciality Orthopedic Clinic - Expert treatment for Bone, Joint, Spine & Sports Injuries in Mumbai (Borivali, Kandivali, Malad, Goregaon, Andheri). 24/7 Home X-Ray Service.',
   keywords = 'Orthopedic Doctor Mumbai, Home X-Ray Service Borivali, Spine Care Kandivali, Joint Replacement Malad, Sports Injury Specialist Goregaon, Bone Care Andheri, SOS Ortho',
   canonicalUrl
 }) => {

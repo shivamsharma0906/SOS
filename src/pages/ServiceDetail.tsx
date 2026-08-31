@@ -34,7 +34,7 @@ export const ServiceDetail: React.FC = () => {
   return (
     <>
       <SEOHead
-        title={`${service.title} | SOS Speciality Orthopedic Service`}
+        title={`${service.title} | SOS Speciality Orthopedic Clinic`}
         description={`${service.shortDesc} Step-by-step treatment pathway, symptoms, and consulting orthopedic surgeons at SOS.`}
       />
 

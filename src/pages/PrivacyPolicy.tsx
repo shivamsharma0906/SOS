@@ -4,11 +4,11 @@ import { SEOHead } from '../components/SEOHead';
 export const PrivacyPolicy: React.FC = () => {
   return (
     <>
-      <SEOHead title="Privacy Policy | SOS Speciality Orthopedic Service" />
+      <SEOHead title="Privacy Policy | SOS Speciality Orthopedic Clinic" />
       <div className="container container-narrow" style={{ padding: '4rem 1.5rem', lineHeight: 1.7 }}>
         <h1 className="heading-lg" style={{ marginBottom: '1.5rem' }}>Privacy Policy</h1>
         <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>
-          At <strong>SOS Speciality Orthopedic Service</strong>, accessible from our clinics across Mumbai (Borivali, Kandivali, Malad, Goregaon, Andheri) and online platforms, your privacy and medical data security are paramount.
+          At <strong>SOS Speciality Orthopedic Clinic</strong>, accessible from our clinics across Mumbai (Borivali, Kandivali, Malad, Goregaon, Andheri) and online platforms, your privacy and medical data security are paramount.
         </p>
 
         <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginTop: '2rem', marginBottom: '0.75rem' }}>1. Patient Information Collected</h2>

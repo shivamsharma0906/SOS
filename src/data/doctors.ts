@@ -28,7 +28,7 @@ export const doctorsData: Doctor[] = [
     specialization: 'Joint Replacement & Orthopedic Care', // TODO: real specialization
     experienceYears: 15, // TODO: real experience years
     photoUrl: '/assets/doctor-desai.jpg', // TODO: real photo URL
-    bio: 'Consultant Orthopedic Surgeon at SOS Speciality Orthopedic Service dedicated to advanced patient mobility and comprehensive orthopedic wellness.', // TODO: real bio
+    bio: 'Consultant Orthopedic Surgeon at SOS Speciality Orthopedic Clinic dedicated to advanced patient mobility and comprehensive orthopedic wellness.', // TODO: real bio
     expertiseList: ['Joint Replacement', 'Arthroscopic Surgery', 'General Orthopedics'], // TODO: real expertise list
     centresAvailable: ['Kandivali', 'Borivali'],
     schedule: 'Mon to Sat: By Appointment',

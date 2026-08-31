@@ -176,7 +176,7 @@ export const Navbar: React.FC = () => {
         >
           <div className="container navbar-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem' }}>
             {/* Brand Logo */}
-            <Link to="/" aria-label="SOS Speciality Orthopedic Service Home" style={{ display: 'flex', alignItems: 'center' }}>
+            <Link to="/" aria-label="SOS Speciality Orthopedic Clinic Home" style={{ display: 'flex', alignItems: 'center' }}>
               <BrandLogo variant="compact" size="md" />
             </Link>
 

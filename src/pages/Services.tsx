@@ -27,7 +27,7 @@ export const Services: React.FC = () => {
   return (
     <>
       <SEOHead
-        title="Our Orthopedic Specialities | SOS Speciality Orthopedic Service"
+        title="Our Orthopedic Specialities | SOS Speciality Orthopedic Clinic"
         description="Comprehensive orthopedic care: Joint Replacement, Keyhole ACL Repair, Spine Care, Sports Medicine, Pediatric Trauma, and 24/7 Home X-Ray Diagnostics."
       />
 

@@ -7,7 +7,7 @@ export const LocalBusinessSchema: React.FC = () => {
       "@context": "https://schema.org",
       "@type": "MedicalClinic",
       "@id": "https://sosortho.com/#clinic",
-      "name": "SOS Speciality Orthopedic Service",
+      "name": "SOS Speciality Orthopedic Clinic",
       "alternateName": "SOS Complete Orthopedic Care Mumbai",
       "url": "https://sosortho.com",
       "logo": "https://sosortho.com/assets/video-poster.jpg",
@@ -15,7 +15,7 @@ export const LocalBusinessSchema: React.FC = () => {
       "telephone": "+917070706505",
       "email": "officialsosortho@gmail.com",
       "priceRange": "₹₹",
-      "description": "Speciality Orthopedic Service in Mumbai offering expert care for bone, joint, spine, and sports injuries with 24/7 Home X-Ray Services across Borivali, Kandivali, Malad, Goregaon, and Andheri.",
+      "description": "Speciality Orthopedic Clinic in Mumbai offering expert care for bone, joint, spine, and sports injuries with 24/7 Home X-Ray Services across Borivali, Kandivali, Malad, Goregaon, and Andheri.",
       "medicalSpecialty": ["Orthopedic", "Rheumatology", "SportsMedicine", "PediatricOrthopedics"],
       "areaServed": [
         { "@type": "AdministrativeArea", "name": "Borivali" },

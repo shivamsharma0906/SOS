@@ -7,7 +7,7 @@ export const WhatsAppFloatButton: React.FC = () => {
 
   const phone = '917070706505';
   const prefilledMessage = encodeURIComponent(
-    'Hello SOS Speciality Orthopedic Service! I would like to book a consultation / enquire about your services.'
+    'Hello SOS Speciality Orthopedic Clinic! I would like to book a consultation / enquire about your services.'
   );
 
   return (

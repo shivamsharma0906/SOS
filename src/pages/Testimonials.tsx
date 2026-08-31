@@ -10,7 +10,7 @@ export const Testimonials: React.FC = () => {
   return (
     <>
       <SEOHead
-        title="Patient Reviews & Recovery Stories | SOS Speciality Orthopedic Service"
+        title="Patient Reviews & Recovery Stories | SOS Speciality Orthopedic Clinic"
         description="Explore verified patient feedback and reviews from patients treated across our SOS Orthopedic Centre network in Kandivali, Malad, Borivali, and Goregaon."
       />
 

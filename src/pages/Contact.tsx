@@ -13,8 +13,8 @@ export const Contact: React.FC = () => {
   return (
     <>
       <SEOHead
-        title="Contact SOS Speciality Orthopedic Service | 24/7 Helpline 7070706505"
-        description="Connect with SOS Speciality Orthopedic Service in Mumbai. Call 7070706505 for doctor consultations or 24/7 Home X-Ray dispatch across Kandivali, Malad, Borivali, and Goregaon."
+        title="Contact SOS Speciality Orthopedic Clinic | 24/7 Helpline 7070706505"
+        description="Connect with SOS Speciality Orthopedic Clinic in Mumbai. Call 7070706505 for doctor consultations or 24/7 Home X-Ray dispatch across Kandivali, Malad, Borivali, and Goregaon."
       />
 
       {/* ── 1. Hero Header ── */}
@@ -42,7 +42,7 @@ export const Contact: React.FC = () => {
           </div>
 
           <h1 className="heading-xl" style={{ color: 'var(--navy-primary)', marginBottom: '0.85rem', maxWidth: '820px', margin: '0 auto 0.85rem auto' }}>
-            Contact <span style={{ color: 'var(--blue-brand)' }}>SOS Orthopedic Service</span>
+            Contact <span style={{ color: 'var(--blue-brand)' }}>SOS Orthopedic Clinic</span>
           </h1>
 
           <p className="subhead" style={{ color: 'var(--text-secondary)', margin: '0 auto 2rem auto', maxWidth: '680px', fontSize: '1.05rem', lineHeight: 1.65 }}>
@@ -95,7 +95,7 @@ export const Contact: React.FC = () => {
 
             {/* WhatsApp Card */}
             <a 
-              href="https://wa.me/917070706505?text=Hello%20SOS%20Orthopedic%20Service,%20I%20would%20like%20to%20enquire%20about%20a%20consultation."
+              href="https://wa.me/917070706505?text=Hello%20SOS%20Orthopedic%20Clinic,%20I%20would%20like%20to%20enquire%20about%20a%20consultation."
               target="_blank"
               rel="noopener noreferrer"
               style={{

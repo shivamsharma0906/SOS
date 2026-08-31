@@ -55,7 +55,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({ variant = 'full', size = '
             fontWeight: 700,
             letterSpacing: '0.15em',
             color: isLight ? 'rgba(255,255,255,0.8)' : 'var(--text-secondary)'
-          }}>ORTHOPEDIC SERVICE</span>
+          }}>ORTHOPEDIC CLINIC</span>
         </div>
       </div>
     );
@@ -123,7 +123,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({ variant = 'full', size = '
         SPECIALITY
       </div>
 
-      {/* — ORTHOPEDIC SERVICE — */}
+      {/* — ORTHOPEDIC CLINIC — */}
       <div style={{
         display: 'flex',
         alignItems: 'center',
@@ -136,7 +136,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({ variant = 'full', size = '
         marginTop: '0.15rem'
       }}>
         <span style={{ height: '1px', width: '16px', backgroundColor: isLight ? 'rgba(255,255,255,0.4)' : '#94a3b8' }}></span>
-        <span>ORTHOPEDIC SERVICE</span>
+        <span>ORTHOPEDIC CLINIC</span>
         <span style={{ height: '1px', width: '16px', backgroundColor: isLight ? 'rgba(255,255,255,0.4)' : '#94a3b8' }}></span>
       </div>
 

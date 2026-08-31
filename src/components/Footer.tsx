@@ -222,7 +222,7 @@ export const Footer: React.FC = () => {
               <Phone size={14} /> 7070706505
             </a>
             <a 
-              href="https://wa.me/917070706505?text=Hello%20SOS%20Orthopedic%20Service,%20I%20would%20like%20to%20enquire%20about%20a%20consultation."
+              href="https://wa.me/917070706505?text=Hello%20SOS%20Orthopedic%20Clinic,%20I%20would%20like%20to%20enquire%20about%20a%20consultation."
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-whatsapp btn-sm"
@@ -321,7 +321,7 @@ export const Footer: React.FC = () => {
 
         {/* ── 3. Bottom Legal & Copyright Bar ── */}
         <div className="footer-bottom-bar">
-          <span>© Copyright {currentYear} <strong>SOS Speciality Orthopedic Service</strong>.</span>
+          <span>© Copyright {currentYear} <strong>SOS Speciality Orthopedic Clinic</strong>.</span>
           
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <Link to="/privacy-policy" style={{ color: '#94a3b8', transition: 'color 0.2s' }}>

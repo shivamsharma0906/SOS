@@ -14,7 +14,7 @@ export const Centres: React.FC = () => {
     <>
       <SEOHead
         title={`Orthopedic Centres & Outreach Clinics | ${centreAreas} | SOS`}
-        description={`Find your nearest SOS Speciality Orthopedic Service centre or outreach clinic: ${centreAreas}. Specialist OPD consultations, digital X-ray diagnostics, and care.`}
+        description={`Find your nearest SOS Speciality Orthopedic Clinic centre or outreach clinic: ${centreAreas}. Specialist OPD consultations, digital X-ray diagnostics, and care.`}
       />
 
       {/* Hero Header */}
