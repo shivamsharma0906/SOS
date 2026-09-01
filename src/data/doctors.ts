@@ -72,7 +72,7 @@ export const doctorsData: Doctor[] = [
     qualifications: 'Orthopedic Surgeon',
     specialization: 'Sports Medicine & Arthroscopy',
     experienceYears: 12,
-    photoUrl: '/assets/doctor-ruia.jpg',
+    photoUrl: '/assets/image.png',
     bio: 'Consultant Orthopedic Surgeon specializing in athletic sports injuries, keyhole ligament reconstructions (ACL/PCL), and joint restoration.',
     expertiseList: ['ACL & Ligament Reconstruction', 'Arthroscopic Joint Surgery', 'Sports Rehabilitation'],
     centresAvailable: ['Kandivali', 'Malad'],

@@ -4,6 +4,8 @@
 // Contact page, and Schema generator) are responsive and use auto-fill grids that dynamically 
 // adapt to any number of centres without requiring any component or style modifications.
 
+import { BUSINESS_INFO } from '../config/business';
+
 export type CentreType = 'centre' | 'outreach-clinic';
 export type CentreStatus = 'operational' | 'opening-soon';
 
@@ -41,13 +43,13 @@ export const centresData: Centre[] = [
     status: 'operational',
     address: 'Shop No. 3, Ground Floor, Mahavir Majesty, Kandivali West',
     landmark: 'Mahavir Majesty, Kandivali West',
-    phone: '7070706505',
-    whatsapp: '917070706505',
-    email: 'officialsosortho@gmail.com',
+    phone: BUSINESS_INFO.phone,
+    whatsapp: `91${BUSINESS_INFO.phone}`,
+    email: BUSINESS_INFO.email,
     timings: 'Mon - Sat: 8:00 AM - 10:00 PM | Sunday OPD Available',
     mapEmbedUrl: 'https://maps.google.com/maps?q=Mahavir+Majesty+Kandivali+West+Mumbai&t=&z=16&ie=UTF8&iwloc=&output=embed',
     photoUrl: '/assets/centre-kandivali.png',
-    googleRating: 4.9,
+    googleRating: 5,
     reviewsCount: 150,
     features: ['Orthopedic OPD', 'Emergency Care', 'Home X-Ray Booking Desk', 'Physiotherapy'],
     geo: {
@@ -64,9 +66,9 @@ export const centresData: Centre[] = [
     status: 'operational',
     address: 'Raheja Exotica, Pascal Wadi, Madh, Mumbai – 400061',
     landmark: 'Raheja Exotica, Madh',
-    phone: '7070706505',
-    whatsapp: '917070706505',
-    email: 'officialsosortho@gmail.com',
+    phone: BUSINESS_INFO.phone,
+    whatsapp: `91${BUSINESS_INFO.phone}`,
+    email: BUSINESS_INFO.email,
     timings: 'Scheduled Outreach Days & By Appointment',
     mapEmbedUrl: 'https://maps.google.com/maps?q=Raheja+Exotica+Pascal+Wadi+Madh+Mumbai+400061&t=&z=16&ie=UTF8&iwloc=&output=embed',
     photoUrl: '/assets/centre-malad.png',
@@ -87,13 +89,13 @@ export const centresData: Centre[] = [
     status: 'opening-soon',
     address: 'Borivali West, Mumbai (Opening Soon)',
     landmark: 'Upcoming Facility, Borivali West',
-    phone: '7070706505',
-    whatsapp: '917070706505',
-    email: 'officialsosortho@gmail.com',
+    phone: BUSINESS_INFO.phone,
+    whatsapp: `91${BUSINESS_INFO.phone}`,
+    email: BUSINESS_INFO.email,
     timings: 'Under Construction • Opening Soon (Enquiries Open)',
     mapEmbedUrl: 'https://maps.google.com/maps?q=Borivali+West,Mumbai&t=&z=14&ie=UTF8&iwloc=&output=embed',
     photoUrl: '/assets/centre-borivali.png',
-    googleRating: 4.9,
+    googleRating: 5,
     reviewsCount: 135,
     features: ['Specialist Orthopedic Consultations', 'Joint & Spine Care', '24/7 Home X-Ray Dispatch'],
     geo: {
@@ -110,9 +112,9 @@ export const centresData: Centre[] = [
     status: 'opening-soon',
     address: 'Goregaon West, Mumbai (Opening Soon)',
     landmark: 'Upcoming Facility, Goregaon West',
-    phone: '7070706505',
-    whatsapp: '917070706505',
-    email: 'officialsosortho@gmail.com',
+    phone: BUSINESS_INFO.phone,
+    whatsapp: `91${BUSINESS_INFO.phone}`,
+    email: BUSINESS_INFO.email,
     timings: 'Under Construction • Opening Soon (Enquiries Open)',
     mapEmbedUrl: 'https://maps.google.com/maps?q=Goregaon+West,Mumbai&t=&z=14&ie=UTF8&iwloc=&output=embed',
     photoUrl: '/assets/centre-goregaon.png',

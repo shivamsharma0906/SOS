@@ -1,5 +1,6 @@
 import React from 'react';
 import { Phone, Mail } from 'lucide-react';
+import { BUSINESS_INFO } from '../config/business';
 
 interface ContactChipProps {
   phone?: string;
@@ -9,8 +10,8 @@ interface ContactChipProps {
 }
 
 export const ContactChip: React.FC<ContactChipProps> = ({
-  phone = '7070706505',
-  email = 'officialsosortho@gmail.com',
+  phone = BUSINESS_INFO.phone,
+  email = BUSINESS_INFO.email,
   className = '',
   size = 'md'
 }) => {
@@ -168,12 +169,12 @@ export const ContactChip: React.FC<ContactChipProps> = ({
 
       <style>{`
         @media (max-width: 576px) {
-          .desktop-only { display: none !important; }
-          .mobile-only { display: flex !important; }
+          .contact-chip.desktop-only { display: none !important; }
+          .contact-chip.mobile-only { display: flex !important; }
         }
         @media (min-width: 577px) {
-          .desktop-only { display: inline-flex !important; }
-          .mobile-only { display: none !important; }
+          .contact-chip.desktop-only { display: inline-flex !important; }
+          .contact-chip.mobile-only { display: none !important; }
         }
       `}</style>
     </>

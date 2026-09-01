@@ -112,8 +112,8 @@ export const InfoVideo: React.FC = () => {
           <div className="badge-tag" style={{ marginBottom: '0.75rem' }}>
             Our Approach
           </div>
-          <h2 className="heading-lg" style={{ marginBottom: '1rem' }}>
-            Starts With the Right Diagnosis
+          <h2 className="heading-lg" style={{ marginBottom: '1rem', color: 'var(--navy-primary)' }}>
+            Starts With the <span style={{ color: 'var(--blue-brand)' }}>Right Diagnosis</span>
           </h2>
         </div>
 

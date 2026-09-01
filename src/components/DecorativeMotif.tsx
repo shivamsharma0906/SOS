@@ -1,15 +1,17 @@
 import React from 'react';
 
-export const MedicalCrossMotif: React.FC<{ size?: number; top?: string; left?: string; right?: string; bottom?: string; opacity?: number }> = ({
+export const MedicalCrossMotif: React.FC<{ size?: number; top?: string; left?: string; right?: string; bottom?: string; opacity?: number; className?: string }> = ({
   size = 40,
   top,
   left,
   right,
   bottom,
-  opacity = 0.08
+  opacity = 0.08,
+  className = ''
 }) => {
   return (
     <div 
+      className={`medical-cross-motif desktop-only hidden-mobile ${className}`.trim()}
       style={{
         position: 'absolute',
         top,

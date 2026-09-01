@@ -11,6 +11,7 @@ import { DoctorCard } from '../components/DoctorCard';
 import { AppointmentModal } from '../components/AppointmentModal';
 import { HexBadge } from '../components/HexBadge';
 import { MedicalCrossMotif } from '../components/DecorativeMotif';
+import { BUSINESS_INFO } from '../config/business';
 
 export const ServiceDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -98,11 +99,11 @@ export const ServiceDetail: React.FC = () => {
               {/* Clean Helpline Link */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }} className="service-cta-group">
                 <a
-                  href="tel:7070706505"
+                  href={`tel:${BUSINESS_INFO.phone}`}
                   className="btn btn-secondary btn-md"
                   style={{ gap: '0.45rem' }}
                 >
-                  <Phone size={15} /> 24/7 Clinical Helpline: 7070706505
+                  <Phone size={15} /> 24/7 Clinical Helpline: {BUSINESS_INFO.phone}
                 </a>
               </div>
             </div>
@@ -161,8 +162,8 @@ export const ServiceDetail: React.FC = () => {
               <div className="badge-tag" style={{ marginBottom: '0.65rem' }}>
                 Recognizing the Signs
               </div>
-              <h2 className="heading-lg" style={{ marginBottom: '0.75rem' }}>
-                When Should You Consult a Specialist?
+              <h2 className="heading-lg" style={{ marginBottom: '0.75rem', color: 'var(--navy-primary)' }}>
+                When Should You <span style={{ color: 'var(--blue-brand)' }}>Consult a Specialist?</span>
               </h2>
               <p className="subhead">
                 Early intervention prevents chronic joint degeneration, cartilage loss, and progressive instability.
@@ -219,8 +220,8 @@ export const ServiceDetail: React.FC = () => {
               <div className="badge-tag" style={{ marginBottom: '0.65rem' }}>
                 Standard of Care
               </div>
-              <h2 className="heading-lg" style={{ marginBottom: '0.75rem' }}>
-                The 4-Step Treatment Pathway
+              <h2 className="heading-lg" style={{ marginBottom: '0.75rem', color: 'var(--navy-primary)' }}>
+                The 4-Step <span style={{ color: 'var(--blue-brand)' }}>Treatment Pathway</span>
               </h2>
               <p className="subhead">
                 A structured, evidence-based roadmap ensuring accurate diagnosis, conservative joint preservation, and guided recovery.
@@ -293,8 +294,8 @@ export const ServiceDetail: React.FC = () => {
               <div className="badge-tag" style={{ marginBottom: '0.65rem' }}>
                 Specialist Surgeons
               </div>
-              <h2 className="heading-lg" style={{ marginBottom: '0.75rem' }}>
-                Consulting Surgeons for {service.title}
+              <h2 className="heading-lg" style={{ marginBottom: '0.75rem', color: 'var(--navy-primary)' }}>
+                Consulting Surgeons for <span style={{ color: 'var(--blue-brand)' }}>{service.title}</span>
               </h2>
               <p className="subhead">
                 Schedule a consultation with our senior orthopedic surgeons specializing in this clinical domain.

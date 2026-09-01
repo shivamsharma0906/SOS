@@ -1,22 +1,46 @@
 import React, { useEffect } from 'react';
 import { centresData } from '../data/centres';
+import { testimonialsData, googleReviewsSummary } from '../data/testimonials';
+import { BUSINESS_INFO } from '../config/business';
 
 export const LocalBusinessSchema: React.FC = () => {
   useEffect(() => {
     const schemaData = {
       "@context": "https://schema.org",
       "@type": "MedicalClinic",
-      "@id": "https://www.sosorth.com/#clinic",
-      "name": "SOS Speciality Orthopedic Clinic",
+      "@id": `${BUSINESS_INFO.website}/#clinic`,
+      "name": BUSINESS_INFO.name,
       "alternateName": "SOS Complete Orthopedic Care Mumbai",
-      "url": "https://www.sosorth.com",
-      "logo": "https://www.sosorth.com/assets/video-poster.jpg",
-      "image": "https://www.sosorth.com/assets/video-poster.jpg",
-      "telephone": "+917070706505",
-      "email": "officialsosortho@gmail.com",
+      "url": BUSINESS_INFO.website,
+      "logo": `${BUSINESS_INFO.website}/assets/video-poster.jpg`,
+      "image": `${BUSINESS_INFO.website}/assets/video-poster.jpg`,
+      "telephone": `+91${BUSINESS_INFO.phone}`,
+      "email": BUSINESS_INFO.email,
       "priceRange": "₹₹",
       "description": "Speciality Orthopedic Clinic in Mumbai offering expert care for bone, joint, spine, and sports injuries with 24/7 Home X-Ray Services across Borivali, Kandivali, Malad, Goregaon, and Andheri.",
       "medicalSpecialty": ["Orthopedic", "Rheumatology", "SportsMedicine", "PediatricOrthopedics"],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": googleReviewsSummary.averageRating.toString(),
+        "reviewCount": googleReviewsSummary.totalReviews.toString(),
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": testimonialsData.map(item => ({
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": item.patientName
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": item.rating.toString(),
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "reviewBody": item.comment,
+        "datePublished": "2026-08-25"
+      })),
       "areaServed": [
         { "@type": "AdministrativeArea", "name": "Borivali" },
         { "@type": "AdministrativeArea", "name": "Kandivali" },
@@ -51,7 +75,7 @@ export const LocalBusinessSchema: React.FC = () => {
           "latitude": centre.geo.latitude,
           "longitude": centre.geo.longitude
         },
-        "telephone": "+917070706505",
+        "telephone": `+91${BUSINESS_INFO.phone}`,
         "openingHours": "Mo-Sa 09:00-21:00"
       }))
     };

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, ArrowRight, Facebook, Instagram, ShieldCheck } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
 import { centresData } from '../data/centres';
+import { BUSINESS_INFO } from '../config/business';
 import { FaWhatsapp } from 'react-icons/fa';
 
 export const Footer: React.FC = () => {
@@ -43,7 +44,7 @@ export const Footer: React.FC = () => {
               }}
             >
               <a 
-                href="tel:7070706505" 
+                href={`tel:${BUSINESS_INFO.phone}`} 
                 style={{ 
                   display: 'inline-flex', 
                   alignItems: 'center', 
@@ -57,13 +58,13 @@ export const Footer: React.FC = () => {
                 onMouseLeave={e => e.currentTarget.style.color = '#ffffff'}
               >
                 <Phone size={18} color="#38bdf8" />
-                <span>7070706505</span>
+                <span>{BUSINESS_INFO.phone}</span>
               </a>
               <div style={{ fontSize: '0.74rem', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700 }}>
                 24/7 Emergency & Home Visit Helpline
               </div>
               <a 
-                href="mailto:officialsosortho@gmail.com" 
+                href={`mailto:${BUSINESS_INFO.email}`} 
                 style={{ 
                   display: 'inline-flex', 
                   alignItems: 'center', 
@@ -76,7 +77,7 @@ export const Footer: React.FC = () => {
                 onMouseLeave={e => e.currentTarget.style.color = '#cbd5e1'}
               >
                 <Mail size={14} color="#64748b" />
-                <span>officialsosortho@gmail.com</span>
+                <span>{BUSINESS_INFO.email}</span>
               </a>
             </div>
 
@@ -215,14 +216,14 @@ export const Footer: React.FC = () => {
           {/* Quick Action Touch Buttons */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.65rem', marginBottom: '1.5rem' }}>
             <a 
-              href="tel:7070706505" 
+              href={`tel:${BUSINESS_INFO.phone}`} 
               className="btn btn-emergency btn-sm"
               style={{ fontSize: '0.82rem', padding: '0.6rem 0.5rem', gap: '0.35rem', justifyContent: 'center' }}
             >
-              <Phone size={14} /> 7070706505
+              <Phone size={14} /> {BUSINESS_INFO.phone}
             </a>
             <a 
-              href="https://wa.me/917070706505?text=Hello%20SOS%20Orthopedic%20Clinic,%20I%20would%20like%20to%20enquire%20about%20a%20consultation."
+              href={`https://wa.me/91${BUSINESS_INFO.phone}?text=Hello%20SOS%20Orthopedic%20Clinic,%20I%20would%20like%20to%20enquire%20about%20a%20consultation.`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-whatsapp btn-sm"
@@ -321,7 +322,7 @@ export const Footer: React.FC = () => {
 
         {/* ── 3. Bottom Legal & Copyright Bar ── */}
         <div className="footer-bottom-bar">
-          <span>© Copyright {currentYear} <strong>SOS Speciality Orthopedic Clinic</strong>.</span>
+          <span>© Copyright {currentYear} <strong>{BUSINESS_INFO.name}</strong>.</span>
           
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <Link to="/privacy-policy" style={{ color: '#94a3b8', transition: 'color 0.2s' }}>

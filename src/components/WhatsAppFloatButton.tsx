@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { X, Facebook, Instagram } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
+import { BUSINESS_INFO } from '../config/business';
 
 export const WhatsAppFloatButton: React.FC = () => {
   const [showTooltip, setShowTooltip] = useState(true);
 
-  const phone = '917070706505';
+  const phone = `91${BUSINESS_INFO.phone}`;
   const prefilledMessage = encodeURIComponent(
-    'Hello SOS Speciality Orthopedic Clinic! I would like to book a consultation / enquire about your services.'
+    `Hello ${BUSINESS_INFO.name}! I would like to book a consultation / enquire about your services.`
   );
 
   return (

@@ -2,9 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   ShieldCheck, Award, Heart, Activity, CheckCircle2,
-  Calendar, MapPin, Users, Star, Clock, ArrowRight, Stethoscope, Phone
+  Calendar, MapPin, Users, Star, Clock, ArrowRight, Stethoscope, Phone, HeartHandshake
 } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
+import { BUSINESS_INFO } from '../config/business';
 import { MedicalCrossMotif } from '../components/DecorativeMotif';
 import { AdvisoryCouncil } from '../components/AdvisoryCouncil';
 import { centresData } from '../data/centres';
@@ -44,7 +45,7 @@ const stats = [
   { value: '10,000+', label: 'Patients Treated', icon: <Users size={20} /> },
   { value: '4 Centres', label: 'Network Locations', icon: <MapPin size={20} /> },
   { value: '50+ Yrs', label: 'Combined Experience', icon: <Clock size={20} /> },
-  { value: '4.9★', label: 'Patient Rating', icon: <Star size={20} /> },
+  { value: '5.0★', label: 'Google Rating (10 Reviews)', icon: <Star size={20} /> },
 ];
 
 export const About: React.FC = () => {
@@ -203,7 +204,7 @@ export const About: React.FC = () => {
               </div>
 
               <h2 className="heading-lg" style={{ color: 'var(--navy-primary)', marginBottom: '1.25rem', lineHeight: 1.25 }}>
-                Built on Clinical Empathy & Surgical Excellence
+                Built on Clinical Empathy & <span style={{ color: 'var(--blue-brand)' }}>Surgical Excellence</span>
               </h2>
 
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.02rem', lineHeight: 1.7, marginBottom: '1.2rem' }}>
@@ -244,9 +245,10 @@ export const About: React.FC = () => {
               <div style={{ borderRadius: 'var(--radius-lg)', overflow: 'hidden', boxShadow: '0 20px 48px rgba(10, 31, 68, 0.12)' }}>
                 <img
                   src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=900"
-                  alt="SOS Clinical Consulting Facility"
+                  alt="Modern orthopedic consultation and diagnostic facility at SOS Speciality Orthopedic Clinic Mumbai"
                   style={{ width: '100%', height: '440px', objectFit: 'cover', display: 'block' }}
                   className="about-story-img"
+                  loading="lazy"
                 />
               </div>
 
@@ -306,7 +308,7 @@ export const About: React.FC = () => {
             </div>
 
             <h2 className="heading-lg" style={{ color: 'var(--navy-primary)', marginBottom: '0.85rem' }}>
-              How We Deliver Orthopedic Excellence
+              How We Deliver <span style={{ color: 'var(--blue-brand)' }}>Orthopedic Excellence</span>
             </h2>
 
             <p className="subhead" style={{ margin: '0 auto', fontSize: '1.05rem', color: 'var(--text-secondary)' }}>
@@ -384,7 +386,7 @@ export const About: React.FC = () => {
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 2.5rem auto' }}>
             <h2 className="heading-md" style={{ color: 'var(--navy-primary)', marginBottom: '0.75rem' }}>
-              Serving Patients Across Mumbai
+              Serving Patients <span style={{ color: 'var(--blue-brand)' }}>Across Mumbai</span>
             </h2>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.98rem' }}>
               Specialist OPD facilities, digital X-rays, and 24/7 doorstep diagnostics at every centre.
@@ -421,8 +423,8 @@ export const About: React.FC = () => {
             <Link to="/contact" className="btn btn-primary btn-lg">
               <Calendar size={18} /> Schedule a Consultation
             </Link>
-            <a href="tel:7070706505" className="btn btn-secondary btn-lg">
-              <Phone size={18} /> Call 7070706505
+            <a href={`tel:${BUSINESS_INFO.phone}`} className="btn btn-secondary btn-lg">
+              <Phone size={18} /> Call {BUSINESS_INFO.phone}
             </a>
           </div>
         </div>

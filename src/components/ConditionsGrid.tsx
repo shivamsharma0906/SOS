@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import { conditionsData, Condition } from '../data/conditions';
 import { AppointmentModal } from './AppointmentModal';
+import { BUSINESS_INFO } from '../config/business';
 
 export const ConditionsGrid: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
@@ -166,7 +167,7 @@ export const ConditionsGrid: React.FC = () => {
           </div>
 
           <h2 className="heading-lg" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.35rem)', marginBottom: '0.6rem', color: 'var(--navy-primary)' }}>
-            Conditions We Treat
+            Conditions <span style={{ color: 'var(--blue-brand)' }}>We Treat</span>
           </h2>
 
           <p style={{ fontSize: '0.96rem', margin: '0 auto', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
@@ -805,8 +806,8 @@ export const ConditionsGrid: React.FC = () => {
           </div>
 
           <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
-            <a href="tel:7070706505" className="btn btn-primary btn-sm" style={{ gap: '0.4rem', fontSize: '0.82rem' }}>
-              <Phone size={14} /> Call 24/7 Triage: 7070706505
+            <a href={`tel:${BUSINESS_INFO.phone}`} className="btn btn-primary btn-sm" style={{ gap: '0.4rem', fontSize: '0.82rem' }}>
+              <Phone size={14} /> Call 24/7 Triage: {BUSINESS_INFO.phone}
             </a>
           </div>
         </div>

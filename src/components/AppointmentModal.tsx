@@ -36,13 +36,13 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
         position: 'fixed',
         inset: 0,
         zIndex: 2000,
-        backgroundColor: 'rgba(7, 21, 46, 0.75)',
+        backgroundColor: 'rgba(7, 21, 46, 0.8)',
         backdropFilter: 'blur(8px)',
         WebkitBackdropFilter: 'blur(8px)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '0.75rem',
+        padding: '1rem',
         overflowY: 'auto'
       }}
       onClick={onClose}
@@ -53,12 +53,13 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
         style={{
           position: 'relative',
           width: '100%',
-          maxWidth: '620px',
-          maxHeight: '92vh',
+          maxWidth: '520px',
+          maxHeight: '90vh',
           overflowY: 'auto',
           backgroundColor: '#ffffff',
-          borderRadius: '24px',
-          boxShadow: '0 25px 60px -15px rgba(7, 21, 46, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.15)'
+          borderRadius: '20px',
+          boxShadow: '0 25px 60px -15px rgba(7, 21, 46, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.15)',
+          margin: 'auto'
         }}
         onClick={e => e.stopPropagation()}
       >
@@ -68,8 +69,6 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
           defaultDoctor={defaultDoctor} 
           defaultCentre={defaultCentre}
           defaultService={defaultService}
-          title="Book Priority Appointment"
-          subtitle="Select your details for direct OPD consultation or Home X-Ray visit."
         />
       </div>
 
@@ -77,15 +76,17 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
         @media (max-width: 640px) {
           .modal-backdrop-overlay {
             padding: 0.5rem !important;
-            align-items: flex-end !important;
+            align-items: center !important;
           }
           .appointment-modal-card {
-            max-height: 94vh !important;
-            border-radius: 20px 20px 0 0 !important;
-            margin: 0 !important;
+            max-height: 92vh !important;
+            border-radius: 18px !important;
+            margin: auto !important;
           }
         }
       `}</style>
     </div>
   );
 };
+
+export default AppointmentModal;

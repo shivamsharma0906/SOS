@@ -65,7 +65,7 @@ export const AdvisoryCouncil: React.FC = () => {
           </div>
 
           <h2 className="heading-lg" style={{ color: 'var(--navy-primary)', marginBottom: '0.85rem' }}>
-            Medical Advisory Council
+            Medical <span style={{ color: 'var(--blue-brand)' }}>Advisory Council</span>
           </h2>
 
           <p className="subhead" style={{ margin: '0 auto', fontSize: '1.02rem', color: 'var(--text-secondary)' }}>

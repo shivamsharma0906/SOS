@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Clock, Zap, Home, ShieldCheck, Phone, CheckCircle2, ChevronDown, ChevronUp } from 'lucide-react';
+import { BUSINESS_INFO } from '../config/business';
 
 interface AdvantageCard {
   id: string;
@@ -66,12 +67,10 @@ export const WhySOS: React.FC = () => {
     <section 
       style={{ 
         padding: '4.5rem 0', 
-        backgroundColor: '#ffffff',
-        borderBottom: '1px solid var(--border-color)',
-        position: 'relative'
+        borderBottom: '1px solid var(--border-color)'
       }} 
       id="why-sos"
-      className="why-sos-section"
+      className="why-sos-section section-light"
     >
       <div className="container">
         {/* Header */}
@@ -98,7 +97,7 @@ export const WhySOS: React.FC = () => {
           </div>
 
           <h2 className="heading-lg why-sos-title" style={{ color: 'var(--navy-primary)', marginBottom: '0.85rem' }}>
-            A Modern Standard for Specialized Orthopedic Care
+            A Modern Standard for <span style={{ color: 'var(--blue-brand)' }}>Specialized Orthopedic Care</span>
           </h2>
 
           <p className="subhead why-sos-subhead" style={{ margin: '0 auto', fontSize: '1.05rem', color: 'var(--text-secondary)' }}>
@@ -293,11 +292,11 @@ export const WhySOS: React.FC = () => {
 
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }} className="emergency-cta-group">
             <a 
-              href="tel:7070706505" 
+              href={`tel:${BUSINESS_INFO.phone}`} 
               className="btn btn-emergency btn-lg"
               style={{ whiteSpace: 'nowrap', gap: '0.45rem', justifyContent: 'center' }}
             >
-              <Phone size={18} /> Call 24/7 Hotline: 7070706505
+              <Phone size={18} /> Call 24/7 Hotline: {BUSINESS_INFO.phone}
             </a>
           </div>
         </div>

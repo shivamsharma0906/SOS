@@ -4,6 +4,7 @@ import { Phone, Menu, X, Calendar, MapPin } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
 import { AppointmentModal } from './AppointmentModal';
 import { centresData } from '../data/centres';
+import { BUSINESS_INFO } from '../config/business';
 
 export const Navbar: React.FC = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -119,6 +120,46 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
+      {/* Slim Sticky Mobile-Only Helpline Bar (Visible at all times while scrolling, ~36-38px height) */}
+      <div 
+        className="mobile-sticky-helpline-bar"
+        style={{
+          display: 'none',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          width: '100%',
+          height: '38px',
+          backgroundColor: '#07152e',
+          borderBottom: '1px solid rgba(56, 189, 248, 0.25)',
+          color: '#ffffff',
+          zIndex: 1005,
+          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)'
+        }}
+      >
+        <a 
+          href={`tel:${BUSINESS_INFO.phone}`}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '0.45rem',
+            color: '#ffffff',
+            textDecoration: 'none',
+            fontSize: '0.78rem',
+            fontWeight: 700,
+            letterSpacing: '0.02em',
+            padding: '0 1rem',
+            height: '100%',
+            width: '100%'
+          }}
+        >
+          <Phone size={13} color="#38bdf8" />
+          <span>24/7 Helpline: <strong style={{ color: '#38bdf8' }}>{BUSINESS_INFO.phone}</strong></span>
+        </a>
+      </div>
+
       {/* Fixed Navbar Wrapper with Smooth GPU-accelerated Transform */}
       <div
         ref={navbarRef}
@@ -135,10 +176,11 @@ export const Navbar: React.FC = () => {
           willChange: 'transform',
         }}
       >
-        {/* Top Header Bar with Helpline & Centres */}
+        {/* Top Header Bar with Helpline & Centres (Desktop) */}
         <div 
           className="top-header-bar"
           style={{
+            width: '100%',
             backgroundColor: 'var(--navy-dark)',
             color: '#ffffff',
             fontSize: '0.82rem',
@@ -146,18 +188,18 @@ export const Navbar: React.FC = () => {
             borderBottom: '1px solid rgba(255,255,255,0.1)'
           }}
         >
-          <div className="container top-header-container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
-            <div className="top-header-centres" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <div className="container top-header-container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+            <div className="top-header-centres" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', whiteSpace: 'nowrap' }}>
               <MapPin size={13} color="#38bdf8" style={{ flexShrink: 0 }} /> 
               <span>Centres & Clinics: <strong>{centresData.map(c => c.area).join(' | ')}</strong></span>
             </div>
 
-            <div className="top-header-actions" style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+            <div className="top-header-actions" style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', marginLeft: 'auto', whiteSpace: 'nowrap' }}>
               <a 
-                href="tel:7070706505" 
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: '#ffffff', fontWeight: 600 }}
+                href={`tel:${BUSINESS_INFO.phone}`} 
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: '#ffffff', fontWeight: 600, textDecoration: 'none' }}
               >
-                <Phone size={13} color="#38bdf8" /> <span>24/7 Helpline: <strong>7070706505</strong></span>
+                <Phone size={13} color="#38bdf8" /> <span>24/7 Helpline: <strong>{BUSINESS_INFO.phone}</strong></span>
               </a>
             </div>
           </div>
@@ -176,7 +218,15 @@ export const Navbar: React.FC = () => {
         >
           <div className="container navbar-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem' }}>
             {/* Brand Logo */}
-            <Link to="/" aria-label="SOS Speciality Orthopedic Clinic Home" style={{ display: 'flex', alignItems: 'center' }}>
+            <Link 
+              to="/" 
+              onClick={() => {
+                window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+                setMobileMenuOpen(false);
+              }}
+              aria-label="SOS Speciality Orthopedic Clinic Home" 
+              style={{ display: 'flex', alignItems: 'center' }}
+            >
               <BrandLogo variant="compact" size="md" />
             </Link>
 
@@ -277,7 +327,13 @@ export const Navbar: React.FC = () => {
           }}
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-            <Link to="/" onClick={() => setMobileMenuOpen(false)}>
+            <Link 
+              to="/" 
+              onClick={() => {
+                window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+                setMobileMenuOpen(false);
+              }}
+            >
               <BrandLogo variant="compact" size="md" />
             </Link>
             <button 
@@ -319,11 +375,11 @@ export const Navbar: React.FC = () => {
             </button>
 
             <a 
-              href="tel:7070706505"
+              href={`tel:${BUSINESS_INFO.phone}`}
               className="btn btn-secondary btn-md"
               style={{ width: '100%', justifyContent: 'center' }}
             >
-              <Phone size={16} /> 24/7 Helpline: 7070706505
+              <Phone size={16} /> 24/7 Helpline: {BUSINESS_INFO.phone}
             </a>
           </div>
         </div>
@@ -331,6 +387,15 @@ export const Navbar: React.FC = () => {
 
       {/* Responsive Style Overrides */}
       <style>{`
+        @media (min-width: 769px) {
+          .top-header-bar {
+            display: block !important;
+            width: 100% !important;
+          }
+          .mobile-sticky-helpline-bar {
+            display: none !important;
+          }
+        }
         @media (max-width: 1024px) {
           .desktop-nav, .desktop-actions {
             display: none !important;
@@ -339,30 +404,21 @@ export const Navbar: React.FC = () => {
             display: block !important;
           }
         }
-        @media (max-width: 767px) {
+        @media (max-width: 768px) {
           .top-header-bar {
-            padding: 0.6rem 0.5rem !important;
-          }
-          .top-header-container {
-            flex-direction: column !important;
-            align-items: center !important;
-            text-align: center !important;
-            gap: 0.5rem !important;
-          }
-          .top-header-centres {
             display: none !important;
           }
-          .top-header-actions {
-            width: 100% !important;
-            justify-content: center !important;
-            gap: 1.25rem !important;
-            font-size: 12px !important;
+          .mobile-sticky-helpline-bar {
+            display: flex !important;
+          }
+          .navbar-fixed-wrapper {
+            top: 38px !important;
           }
           .main-navbar-header {
             padding: 0.4rem 0 !important;
           }
           .navbar-spacer {
-            min-height: 72px !important;
+            min-height: 88px !important;
           }
         }
       `}</style>
@@ -374,3 +430,5 @@ export const Navbar: React.FC = () => {
     </>
   );
 };
+
+export default Navbar;

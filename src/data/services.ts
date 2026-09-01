@@ -3,6 +3,8 @@
 // Each service entry contains step-by-step clinical workflows and linked specialist doctors
 // for rendering dedicated landing pages at /services/:slug.
 
+import { BUSINESS_INFO } from '../config/business';
+
 export interface ServiceStep {
   stepNumber: number;
   title: string;
@@ -274,7 +276,7 @@ export const servicesData: Service[] = [
       {
         stepNumber: 1,
         title: 'Call / Request Dispatch',
-        desc: 'Contact our 24/7 helpline (7070706505) or book via WhatsApp/online form with patient location and clinical details.'
+        desc: `Contact our 24/7 helpline (${BUSINESS_INFO.phone}) or book via WhatsApp/online form with patient location and clinical details.`
       },
       {
         stepNumber: 2,

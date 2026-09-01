@@ -1,195 +1,242 @@
 import React, { useState } from 'react';
-import { Award, MapPin, Clock, ChevronUp, ArrowRight, Calendar, Baby } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Award, MapPin, Clock, ChevronUp, ChevronDown, Calendar, Baby, Stethoscope, CheckCircle2, ShieldCheck } from 'lucide-react';
 import { Doctor } from '../data/doctors';
-import { AppointmentModal } from './AppointmentModal';
 
 interface DoctorCardProps {
   doctor: Doctor;
+  onSelectDoctor?: (doctorId: string) => void;
 }
 
-export const DoctorCard: React.FC<DoctorCardProps> = ({ doctor }) => {
+export const DoctorCard: React.FC<DoctorCardProps> = ({ doctor, onSelectDoctor }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [imgError, setImgError] = useState(false);
+  const navigate = useNavigate();
+
+  // Fallback initial avatar if image fails to load
+  const initials = doctor.name.replace('Dr. ', '').split(' ').map(n => n[0]).join('');
+
+  const handleBookConsultation = () => {
+    if (onSelectDoctor) {
+      onSelectDoctor(doctor.id);
+    }
+    const element = document.getElementById('book-consultation');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      navigate(`/contact?doctor=${doctor.id}#book-consultation`);
+    }
+  };
 
   return (
     <div
-      className="doctor-profile-card"
+      className="hospital-doctor-card"
       style={{
         backgroundColor: '#ffffff',
-        borderRadius: 'var(--radius-lg)',
-        border: doctor.pediatricTraumaCare ? '1.5px solid rgba(2, 132, 199, 0.3)' : '1px solid rgba(10, 31, 68, 0.06)',
-        boxShadow: '0 8px 24px rgba(10, 31, 68, 0.06)',
+        borderRadius: '20px',
+        border: '1px solid rgba(10, 31, 68, 0.08)',
+        boxShadow: '0 4px 20px rgba(10, 31, 68, 0.05)',
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
-        transition: 'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease'
+        transition: 'transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease'
       }}
       onMouseEnter={e => {
-        e.currentTarget.style.transform = 'translateY(-4px)';
-        e.currentTarget.style.boxShadow = '0 16px 36px rgba(10, 31, 68, 0.1)';
-        e.currentTarget.style.borderColor = 'rgba(2, 132, 199, 0.35)';
+        e.currentTarget.style.transform = 'translateY(-5px)';
+        e.currentTarget.style.boxShadow = '0 18px 38px rgba(10, 31, 68, 0.12)';
+        e.currentTarget.style.borderColor = 'rgba(2, 132, 199, 0.4)';
       }}
       onMouseLeave={e => {
         e.currentTarget.style.transform = 'translateY(0)';
-        e.currentTarget.style.boxShadow = '0 8px 24px rgba(10, 31, 68, 0.06)';
-        e.currentTarget.style.borderColor = doctor.pediatricTraumaCare ? 'rgba(2, 132, 199, 0.3)' : 'rgba(10, 31, 68, 0.06)';
+        e.currentTarget.style.boxShadow = '0 4px 20px rgba(10, 31, 68, 0.05)';
+        e.currentTarget.style.borderColor = 'rgba(10, 31, 68, 0.08)';
       }}
     >
-      {/* Doctor Image Header with clear face framing */}
-      <div style={{ position: 'relative', height: '240px', backgroundColor: '#f1f5f9', overflow: 'hidden' }} className="doctor-img-box">
-        <img
-          src={doctor.photoUrl}
-          alt={doctor.name}
-          onError={(e) => {
-            const target = e.currentTarget;
-            if (!target.dataset.fallbackTried) {
-              target.dataset.fallbackTried = 'true';
-              target.src = '/assets/doctor-desai.jpg';
-            }
-          }}
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center 15%',
-            display: 'block'
-          }}
-          loading="eager"
-        />
+      {/* ── 1. Doctor Portrait Frame (Clean, Unblocked) ── */}
+      <div style={{ position: 'relative', height: '240px', backgroundColor: '#f8fafc', overflow: 'hidden' }} className="doctor-card-media">
+        {!imgError ? (
+          <img
+            src={doctor.photoUrl}
+            alt={`${doctor.name}, ${doctor.title} specializing in ${doctor.specialization} at SOS Speciality Orthopedic Clinic`}
+            onError={() => setImgError(true)}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center 12%',
+              display: 'block',
+              transition: 'transform 0.4s ease'
+            }}
+            loading="lazy"
+          />
+        ) : (
+          <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, #0a1f44 0%, #0284c7 100%)', color: '#ffffff' }}>
+            <Stethoscope size={36} color="#93c5fd" style={{ marginBottom: '0.4rem' }} />
+            <span style={{ fontSize: '1.4rem', fontWeight: 800 }}>{initials}</span>
+            <span style={{ fontSize: '0.78rem', color: '#e0f2fe' }}>{doctor.name}</span>
+          </div>
+        )}
 
-        {/* Pediatric/Trauma Care Highlight Pill */}
+        {/* Soft bottom vignette overlay */}
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(7, 21, 46, 0.25) 0%, transparent 40%)', pointerEvents: 'none' }} />
+
+        {/* Top-Right: OPD Available Live Indicator */}
+        <div style={{
+          position: 'absolute',
+          top: '0.65rem',
+          right: '0.65rem',
+          backgroundColor: 'rgba(7, 21, 46, 0.88)',
+          backdropFilter: 'blur(8px)',
+          color: '#ffffff',
+          padding: '0.25rem 0.65rem',
+          borderRadius: '9999px',
+          fontSize: '0.68rem',
+          fontWeight: 800,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.35rem',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)',
+          zIndex: 2
+        }}>
+          <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#22c55e', display: 'inline-block', boxShadow: '0 0 0 2px rgba(34, 197, 94, 0.35)' }} />
+          <span>OPD Available</span>
+        </div>
+
+        {/* Top-Left: Pediatric/Trauma Pill */}
         {doctor.pediatricTraumaCare && (
           <div style={{
             position: 'absolute',
-            top: '0.75rem',
-            left: '0.75rem',
-            backgroundColor: '#0284c7',
+            top: '0.65rem',
+            left: '0.65rem',
+            backgroundColor: 'rgba(2, 132, 199, 0.95)',
+            backdropFilter: 'blur(8px)',
             color: '#ffffff',
-            padding: '0.3rem 0.75rem',
-            borderRadius: 'var(--radius-pill)',
-            fontSize: '0.74rem',
+            padding: '0.25rem 0.65rem',
+            borderRadius: '9999px',
+            fontSize: '0.68rem',
             fontWeight: 800,
-            boxShadow: '0 2px 8px rgba(2, 132, 199, 0.3)',
+            boxShadow: '0 2px 8px rgba(2, 132, 199, 0.35)',
             display: 'flex',
             alignItems: 'center',
-            gap: '0.35rem',
+            gap: '0.25rem',
+            border: '1px solid rgba(255, 255, 255, 0.25)',
             zIndex: 2
           }}>
-            <Baby size={14} />
-            <span>Pediatric & Trauma Specialist</span>
+            <Baby size={12} />
+            <span>Pediatric Specialist</span>
           </div>
         )}
+      </div>
 
-        {/* Specialization Pill */}
-        <div style={{
-          position: 'absolute',
-          bottom: '0.75rem',
-          left: '0.75rem',
-          zIndex: 2
-        }}>
-          <span style={{
-            fontSize: '0.72rem',
-            fontWeight: 800,
-            color: '#ffffff',
-            backgroundColor: 'rgba(7, 21, 46, 0.85)',
-            backdropFilter: 'blur(4px)',
-            padding: '0.3rem 0.7rem',
-            borderRadius: 'var(--radius-pill)',
-            textTransform: 'uppercase',
-            letterSpacing: '0.04em',
-            border: '1px solid rgba(255, 255, 255, 0.15)',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.2)'
-          }}>
+      {/* ── 2. Doctor Details Body ── */}
+      <div style={{ padding: '1.25rem 1.15rem 1.15rem 1.15rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }} className="doctor-card-body">
+        
+        {/* Doctor Name & Title */}
+        <div style={{ marginBottom: '0.5rem' }}>
+          <h3 style={{ fontSize: '1.22rem', fontWeight: 800, color: 'var(--navy-primary)', lineHeight: 1.25, margin: '0 0 0.15rem 0' }}>
+            {doctor.name}
+          </h3>
+          <div style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--blue-brand)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+            {doctor.title}
+          </div>
+        </div>
+
+        {/* Prominent Specialization Box (Legible, Un-truncated) */}
+        <div 
+          style={{
+            backgroundColor: '#f0f7ff',
+            border: '1px solid #bae6fd',
+            borderRadius: '8px',
+            padding: '0.35rem 0.6rem',
+            marginBottom: '0.75rem',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.35rem'
+          }}
+        >
+          <Stethoscope size={13} color="var(--blue-brand)" style={{ flexShrink: 0 }} />
+          <span style={{ fontSize: '0.76rem', fontWeight: 800, color: '#0369a1', lineHeight: 1.25 }}>
             {doctor.specialization}
           </span>
         </div>
-      </div>
 
-      {/* Body Content */}
-      <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }} className="doctor-card-body">
-        <h3 className="heading-sm" style={{ fontSize: '1.25rem', marginBottom: '0.2rem', color: 'var(--navy-primary)' }}>
-          {doctor.name}
-        </h3>
-        <p style={{ fontSize: '0.84rem', fontWeight: 600, color: 'var(--navy-primary)', marginBottom: '0.45rem' }}>
-          {doctor.title}
-        </p>
-
-        {/* Desktop Qualifications Line */}
-        <p className="doctor-qual-text desktop-only" style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', marginBottom: '0.85rem', lineHeight: 1.4 }}>
-          🎓 {doctor.qualifications}
-        </p>
-
-        {/* Badges: Experience & Registration */}
-        <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
-          <span style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--navy-primary)', backgroundColor: 'var(--blue-soft)', padding: '0.25rem 0.65rem', borderRadius: 'var(--radius-pill)' }}>
-            <Award size={12} style={{ marginRight: '4px', verticalAlign: 'middle' }} /> {doctor.experienceYears}+ Yrs Exp.
+        {/* Qualifications & Experience Tag Strip */}
+        <div style={{ display: 'flex', gap: '0.35rem', flexWrap: 'wrap', marginBottom: '0.75rem' }}>
+          <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#0369a1', backgroundColor: '#e0f2fe', padding: '0.2rem 0.5rem', borderRadius: '6px', display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+            <Award size={12} /> {doctor.experienceYears}+ Yrs Exp
           </span>
-          <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', backgroundColor: 'var(--bg-subtle)', padding: '0.25rem 0.55rem', borderRadius: 'var(--radius-pill)', border: '1px solid var(--border-color)' }}>
-            {doctor.registrationNumber}
+          <span style={{ fontSize: '0.72rem', fontWeight: 600, color: '#475569', backgroundColor: '#f1f5f9', padding: '0.2rem 0.5rem', borderRadius: '6px', border: '1px solid #e2e8f0' }}>
+            🎓 {doctor.qualifications}
+          </span>
+          <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#16a34a', backgroundColor: '#dcfce7', padding: '0.2rem 0.5rem', borderRadius: '6px', display: 'inline-flex', alignItems: 'center', gap: '0.2rem' }}>
+            <ShieldCheck size={12} /> Verified
           </span>
         </div>
 
-        {/* Desktop Bio summary */}
-        <p className="doctor-bio-text desktop-only" style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.5, marginBottom: '1.25rem' }}>
+        {/* Bio Snippet */}
+        <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.5, margin: '0 0 0.85rem 0', flexGrow: 1 }}>
           {doctor.bio}
         </p>
 
-        {/* Expandable Details with Clean Vertical Flow */}
+        {/* Expandable Key Clinical Focus / Procedures */}
         {isExpanded && (
-          <div style={{ padding: '1rem', backgroundColor: 'var(--bg-subtle)', borderRadius: 'var(--radius-md)', marginBottom: '1rem', fontSize: '0.84rem' }}>
-            {/* Mobile Qualifications & Bio Summary */}
-            <div className="mobile-only" style={{ marginBottom: '0.85rem', paddingBottom: '0.75rem', borderBottom: '1px solid var(--border-color)' }}>
-              <div style={{ fontWeight: 800, fontSize: '0.76rem', color: 'var(--navy-primary)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '0.25rem' }}>
-                Qualifications:
-              </div>
-              <div style={{ color: 'var(--text-secondary)', marginBottom: '0.45rem', fontWeight: 600 }}>
-                🎓 {doctor.qualifications}
-              </div>
-              <p style={{ color: 'var(--text-secondary)', lineHeight: 1.5, margin: 0, fontSize: '0.84rem' }}>
-                {doctor.bio}
-              </p>
+          <div className="animate-fade-in" style={{ padding: '0.75rem', backgroundColor: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '10px', marginBottom: '0.85rem', fontSize: '0.8rem' }}>
+            <div style={{ fontWeight: 800, fontSize: '0.72rem', color: 'var(--navy-primary)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '0.35rem' }}>
+              Key Clinical Procedures:
             </div>
-
-            <div style={{ fontWeight: 800, fontSize: '0.76rem', color: 'var(--navy-primary)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '0.4rem' }}>
-              Clinical & Surgical Focus:
-            </div>
-            <ul style={{ paddingLeft: '1.1rem', color: 'var(--text-secondary)', marginBottom: '0.85rem' }}>
+            <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 0.65rem 0', display: 'flex', flexDirection: 'column', gap: '0.3rem', fontSize: '0.78rem', color: 'var(--text-secondary)' }}>
               {doctor.expertiseList.map((item, idx) => (
-                <li key={idx} style={{ marginBottom: '0.25rem' }}>{item}</li>
+                <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.35rem', lineHeight: 1.35 }}>
+                  <CheckCircle2 size={12} color="var(--blue-brand)" style={{ marginTop: '2px', flexShrink: 0 }} />
+                  <span>{item}</span>
+                </li>
               ))}
             </ul>
-
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="btn btn-primary btn-sm"
-              style={{ width: '100%', gap: '0.35rem' }}
-            >
-              <Calendar size={14} /> Request Consultation
-            </button>
           </div>
         )}
 
-        {/* Centres & Timings */}
-        <div style={{ marginTop: 'auto', paddingTop: '0.85rem', borderTop: '1px solid var(--border-color)', marginBottom: '1rem' }}>
-          <div style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--navy-primary)', marginBottom: '0.35rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-            <MapPin size={13} color="var(--navy-primary)" /> Available at SOS Centres:
+        {/* Centres & Timings Strip */}
+        <div style={{ paddingTop: '0.65rem', borderTop: '1px solid #f1f5f9', marginBottom: '0.85rem' }}>
+          <div style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--navy-primary)', marginBottom: '0.3rem', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+            <MapPin size={12} color="var(--blue-brand)" /> SOS Centres:
           </div>
-          <div style={{ display: 'flex', gap: '0.35rem', flexWrap: 'wrap', marginBottom: '0.45rem' }}>
+          <div style={{ display: 'flex', gap: '0.25rem', flexWrap: 'wrap', marginBottom: '0.35rem' }}>
             {doctor.centresAvailable.map(centre => (
-              <span key={centre} style={{ fontSize: '0.74rem', fontWeight: 700, color: 'var(--navy-primary)', backgroundColor: 'var(--blue-soft)', padding: '0.15rem 0.5rem', borderRadius: '4px' }}>
+              <span key={centre} style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--navy-primary)', backgroundColor: '#f1f5f9', padding: '0.12rem 0.45rem', borderRadius: '4px', border: '1px solid #e2e8f0' }}>
                 {centre}
               </span>
             ))}
           </div>
 
-          <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-            <Clock size={12} /> {doctor.schedule}
+          <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+            <Clock size={11} color="var(--blue-brand)" /> {doctor.schedule}
           </div>
         </div>
 
-        {/* Action Button: View Profile */}
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
+        {/* ── 3. Action Buttons ── */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', marginTop: 'auto' }}>
+          {/* Primary Action: Direct to Original EnquiryForm */}
+          <button
+            onClick={handleBookConsultation}
+            className="btn btn-primary"
+            style={{
+              width: '100%',
+              justifyContent: 'center',
+              gap: '0.4rem',
+              padding: '0.6rem 0.85rem',
+              borderRadius: '9999px',
+              fontWeight: 800,
+              fontSize: '0.84rem',
+              background: 'linear-gradient(135deg, #0284c7 0%, #0369a1 100%)',
+              boxShadow: '0 4px 14px rgba(2, 132, 199, 0.28)'
+            }}
+          >
+            <Calendar size={14} /> Book Consultation
+          </button>
+
+          {/* Secondary Action: View Procedures */}
           <button
             onClick={() => setIsExpanded(!isExpanded)}
             style={{
@@ -197,39 +244,35 @@ export const DoctorCard: React.FC<DoctorCardProps> = ({ doctor }) => {
               alignItems: 'center',
               justifyContent: 'space-between',
               width: '100%',
-              padding: '0.55rem 0.85rem',
-              borderRadius: 'var(--radius-pill)',
-              border: '1.5px solid var(--border-color)',
-              backgroundColor: '#ffffff',
-              color: 'var(--navy-primary)',
-              fontSize: '0.84rem',
+              padding: '0.4rem 0.75rem',
+              borderRadius: '9999px',
+              border: '1px solid #e2e8f0',
+              backgroundColor: '#f8fafc',
+              color: '#334155',
+              fontSize: '0.76rem',
               fontWeight: 700,
               cursor: 'pointer',
-              transition: 'all 0.2s ease'
+              transition: 'all 0.15s ease'
             }}
           >
-            <span>{isExpanded ? 'Hide Details' : 'View Profile & Focus'}</span>
-            {isExpanded ? <ChevronUp size={15} /> : <ArrowRight size={15} color="var(--blue-brand)" />}
+            <span>{isExpanded ? 'Hide Procedures' : 'View Key Procedures'}</span>
+            {isExpanded ? <ChevronUp size={13} /> : <ChevronDown size={13} color="var(--blue-brand)" />}
           </button>
         </div>
       </div>
 
       <style>{`
         @media (max-width: 768px) {
-          .doctor-card-body {
-            padding: 1.25rem 1.1rem !important;
+          .doctor-card-media {
+            height: 220px !important;
           }
-          .doctor-img-box {
-            height: 230px !important;
+          .doctor-card-body {
+            padding: 1.15rem 1rem !important;
           }
         }
       `}</style>
-
-      <AppointmentModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        defaultDoctor={doctor.id}
-      />
     </div>
   );
 };
+
+export default DoctorCard;

@@ -23,7 +23,7 @@ export const ServicesCards: React.FC<ServicesCardsProps> = ({ limit, showTitle =
   const displayServices = limit ? servicesData.slice(0, limit) : servicesData;
 
   return (
-    <section style={{ padding: '4.5rem 0', backgroundColor: 'var(--bg-subtle)' }} id="our-services" className="services-section">
+    <section style={{ padding: '4.5rem 0' }} id="our-services" className="services-section section-tint">
       <div className="container">
         {showTitle && (
           <div className="services-header" style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 2.75rem auto' }}>
@@ -31,7 +31,7 @@ export const ServicesCards: React.FC<ServicesCardsProps> = ({ limit, showTitle =
               Speciality Clinical Units
             </div>
             <h2 className="heading-lg" style={{ marginBottom: '0.75rem', color: 'var(--navy-primary)' }}>
-              Our Orthopedic Specialities
+              Our Orthopedic <span style={{ color: 'var(--blue-brand)' }}>Specialities</span>
             </h2>
             <p className="subhead" style={{ margin: '0 auto', fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
               Surgeon-led joint replacement, ACL ligament reconstruction, spine care, and 24/7 Home X-Ray diagnostics across Mumbai.
