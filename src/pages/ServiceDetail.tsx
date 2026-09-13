@@ -37,6 +37,7 @@ export const ServiceDetail: React.FC = () => {
       <SEOHead
         title={`${service.title} | SOS Speciality Orthopedic Clinic`}
         description={`${service.shortDesc} Step-by-step treatment pathway, symptoms, and consulting orthopedic surgeons at SOS.`}
+        canonicalUrl={`${BUSINESS_INFO.website}/services/${slug}`}
       />
 
       {/* Breadcrumb Bar */}

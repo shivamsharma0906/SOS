@@ -12,6 +12,7 @@ import { EnquiryForm } from '../components/EnquiryForm';
 import { doctorsData } from '../data/doctors';
 import { centresData } from '../data/centres';
 import { InfoVideo } from '../components/InfoVideo';
+import { BUSINESS_INFO } from '../config/business';
 
 export const Home: React.FC = () => {
   const [selectedDoctorForForm, setSelectedDoctorForForm] = useState('');
@@ -21,6 +22,7 @@ export const Home: React.FC = () => {
       <SEOHead
         title="SOS Speciality Orthopedic Clinic | Complete Orthopedic Care"
         description="SOS Speciality Orthopedic Clinic: 24/7 Home X-Ray, Bone, Joint, Spine & Sports Injury care across Kandivali, Malad, Borivali, and Goregaon. 20-30 min emergency dispatch."
+        canonicalUrl={`${BUSINESS_INFO.website}/`}
       />
 
       {/* 1. Hero Banner */}
@@ -60,13 +62,15 @@ export const Home: React.FC = () => {
               gap: '1.25rem'
             }}
           >
-            {doctorsData.map((doctor) => (
-              <DoctorCard 
-                key={doctor.id} 
-                doctor={doctor} 
-                onSelectDoctor={(docId) => setSelectedDoctorForForm(docId)}
-              />
-            ))}
+            {doctorsData
+              .filter((doctor) => doctor.category !== 'consultant')
+              .map((doctor) => (
+                <DoctorCard 
+                  key={doctor.id} 
+                  doctor={doctor} 
+                  onSelectDoctor={(docId) => setSelectedDoctorForForm(docId)}
+                />
+              ))}
           </div>
 
           <div className="mobile-only" style={{ textAlign: 'center', marginTop: '1.75rem', display: 'none' }}>

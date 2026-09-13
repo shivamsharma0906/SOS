@@ -14,6 +14,8 @@ import { Testimonials } from './pages/Testimonials';
 import { Contact } from './pages/Contact';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { Terms } from './pages/Terms';
+import { Mentors } from './pages/Mentors';
+import { NotFound } from './pages/NotFound';
 
 // Scroll to top on navigation
 const ScrollToTop: React.FC = () => {
@@ -40,10 +42,12 @@ export const App: React.FC = () => {
           <Route path="/services/:slug" element={<ServiceDetail />} />
           <Route path="/doctors" element={<Doctors />} />
           <Route path="/centres" element={<Centres />} />
+          <Route path="/mentors" element={<Mentors />} />
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<Terms />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />

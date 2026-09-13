@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { centresData } from '../data/centres';
-import { testimonialsData, googleReviewsSummary } from '../data/testimonials';
+import { googleReviewsSummary } from '../data/testimonials';
 import { BUSINESS_INFO } from '../config/business';
 
 export const LocalBusinessSchema: React.FC = () => {
@@ -26,21 +26,6 @@ export const LocalBusinessSchema: React.FC = () => {
         "bestRating": "5",
         "worstRating": "1"
       },
-      "review": testimonialsData.map(item => ({
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": item.patientName
-        },
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": item.rating.toString(),
-          "bestRating": "5",
-          "worstRating": "1"
-        },
-        "reviewBody": item.comment,
-        "datePublished": "2026-08-25"
-      })),
       "areaServed": [
         { "@type": "AdministrativeArea", "name": "Borivali" },
         { "@type": "AdministrativeArea", "name": "Kandivali" },

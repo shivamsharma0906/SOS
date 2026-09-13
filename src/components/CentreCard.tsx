@@ -48,7 +48,7 @@ export const CentreCard: React.FC<CentreCardProps> = ({ centre }) => {
               const target = e.currentTarget;
               if (!target.dataset.fallbackTried) {
                 target.dataset.fallbackTried = 'true';
-                target.src = '/assets/centre-kandivali.png';
+                target.src = '/assets/centre-kandivali.webp';
               }
             }}
             style={{

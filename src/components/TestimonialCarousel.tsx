@@ -2,10 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ExternalLink, ArrowRight } from 'lucide-react';
 import { GoogleIcon } from './GoogleIcon';
-import { TrustIndexWidget } from './TrustIndexWidget';
-import { googleReviewsSummary } from '../data/testimonials';
+import { GoogleRatingSummaryCard } from './GoogleRatingSummaryCard';
+import { ReviewCard } from './ReviewCard';
+import { testimonialsData, googleReviewsSummary } from '../data/testimonials';
 
 export const TestimonialCarousel: React.FC<{ showTitle?: boolean }> = ({ showTitle = true }) => {
+  // 3 Curated Featured Reviews:
+  // 1. Nirmal Shah (Knee Pain Diagnosis & Digital X-Ray)
+  // 2. Felixcia (Neck Pain & Shoulder Stiffness Relief with Owner Response)
+  // 3. Trushna Parmar (Robotic & Conventional Knee Replacement with Owner Response & Photo)
+  const featuredReviews = testimonialsData.filter(r => 
+    ['google-review-1', 'google-review-2', 'google-review-4'].includes(r.id)
+  );
+
   return (
     <section 
       style={{ 
@@ -13,22 +22,21 @@ export const TestimonialCarousel: React.FC<{ showTitle?: boolean }> = ({ showTit
         color: 'var(--navy-primary)' 
       }}
       id="patient-reviews"
-      className="testimonial-carousel-section section-tint"
     >
-      <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+      <div className="container">
         {showTitle && (
-          <div style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 2.5rem auto' }}>
+          <div style={{ textAlign: 'center', maxWidth: '760px', margin: '0 auto 2.5rem auto' }}>
             <div 
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.45rem',
-                backgroundColor: '#ffffff',
-                border: '1px solid rgba(10, 31, 68, 0.08)',
-                padding: '0.3rem 0.85rem',
-                borderRadius: 'var(--radius-pill)',
-                boxShadow: '0 2px 8px rgba(10, 31, 68, 0.03)',
-                marginBottom: '0.85rem'
+              style={{ 
+                display: 'inline-flex', 
+                alignItems: 'center', 
+                gap: '0.45rem', 
+                backgroundColor: '#ffffff', 
+                padding: '0.35rem 0.9rem', 
+                borderRadius: 'var(--radius-pill)', 
+                marginBottom: '1rem', 
+                boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+                border: '1px solid var(--border-color)'
               }}
             >
               <GoogleIcon size={16} />
@@ -47,13 +55,31 @@ export const TestimonialCarousel: React.FC<{ showTitle?: boolean }> = ({ showTit
           </div>
         )}
 
-        {/* Live Trustindex Google Reviews Widget */}
-        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
-          <TrustIndexWidget widgetId="1525a98807b64976fa96ed4dc80" />
+        {/* ── First-Party On-Brand Reviews Showcase ── */}
+        <div
+          className="featured-reviews-grid"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '320px repeat(3, minmax(0, 1fr))',
+            gap: '1.25rem',
+            alignItems: 'stretch'
+          }}
+        >
+          {/* Summary Card */}
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <GoogleRatingSummaryCard style={{ height: '100%' }} />
+          </div>
+
+          {/* 3 Featured Reviews */}
+          {featuredReviews.map(review => (
+            <div key={review.id} style={{ display: 'flex', flexDirection: 'column' }}>
+              <ReviewCard review={review} />
+            </div>
+          ))}
         </div>
 
         {/* Action Links */}
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1rem', marginTop: '2rem', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1rem', marginTop: '2.5rem', flexWrap: 'wrap' }}>
           <a
             href={googleReviewsSummary.writeReviewUrl}
             target="_blank"
@@ -73,6 +99,23 @@ export const TestimonialCarousel: React.FC<{ showTitle?: boolean }> = ({ showTit
           </Link>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 1200px) {
+          .featured-reviews-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 1.25rem !important;
+          }
+        }
+        @media (max-width: 768px) {
+          .featured-reviews-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1.25rem !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };
+
+export default TestimonialCarousel;

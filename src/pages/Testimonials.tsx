@@ -21,8 +21,9 @@ import {
 import { SEOHead } from '../components/SEOHead';
 import { MedicalCrossMotif } from '../components/DecorativeMotif';
 import { GoogleIcon } from '../components/GoogleIcon';
-import { TrustIndexWidget } from '../components/TrustIndexWidget';
-import { googleReviewsSummary } from '../data/testimonials';
+import { GoogleRatingSummaryCard } from '../components/GoogleRatingSummaryCard';
+import { ReviewCard } from '../components/ReviewCard';
+import { googleReviewsSummary, testimonialsData } from '../data/testimonials';
 import { BUSINESS_INFO } from '../config/business';
 
 const reviewFaqs = [
@@ -48,24 +49,40 @@ const reviewFaqs = [
   },
   {
     category: 'Emergency & Home Care',
-    q: 'Is 24/7 Home X-Ray available across Mumbai for senior citizens?',
-    a: 'Yes. Our portable digital X-ray units dispatch to homes across Borivali, Kandivali, Malad, Goregaon, and Andheri with rapid turnaround, providing hospital-grade bedside imaging for bedridden elders and slip-and-fall emergencies.'
+    question: 'How do I book an OPD consultation with a senior orthopedic surgeon at SOS?',
+    answer: `You can schedule an appointment by clicking any 'Book Consultation' button on the website, or by calling our 24/7 helpline at +91 ${BUSINESS_INFO.phone}. We will confirm your preferred SOS centre, consulting doctor, and time slot.`
   },
   {
-    category: 'Patient Reviews',
-    q: 'How can I submit my own review after visiting the clinic?',
-    a: 'You can tap the "Write a Review on Google" button on this page to share your experience directly on our verified Google Business Profile for SOS Speciality Orthopedic Clinic in Kandivali West.'
+    category: 'Home X-Ray',
+    question: 'How fast can the 24/7 Home X-Ray team reach my home in Mumbai?',
+    answer: 'Our mobile digital X-ray technicians are strategically stationed across Borivali, Kandivali, Malad, Goregaon, and Andheri. Average doorstep arrival is within 20 to 30 minutes of booking confirmation.'
+  },
+  {
+    category: 'Surgical Care',
+    question: 'Does SOS assist with mediclaim and cashless insurance for surgeries?',
+    answer: 'Yes. Our patient care coordinators manage end-to-end cashless pre-authorization with major TPAs and insurance providers for joint replacements, spine surgeries, and trauma procedures.'
+  },
+  {
+    category: 'Second Opinion',
+    question: 'Can I consult SOS surgeons for a second opinion on joint or spine surgery?',
+    answer: 'Absolutely. We encourage patients to bring their existing MRI, CT, and X-ray reports for an unbiased clinical evaluation focusing on conservative, joint-preservation options before surgery.'
   }
 ];
 
 export const Testimonials: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<'all' | 'knee' | 'spine-neck' | 'trauma-xray' | 'general'>('all');
+
+  const filteredReviews = selectedCategory === 'all'
+    ? testimonialsData
+    : testimonialsData.filter(review => review.category === selectedCategory);
 
   return (
     <>
       <SEOHead
         title="Patient Reviews & 5.0★ Google Ratings | SOS Speciality Orthopedic Clinic"
         description="Explore 100% verified 5-star Google reviews for SOS Speciality Orthopedic Clinic in Kandivali West, Mumbai. Expert knee care, spine relief, robotic joint surgery, and in-house X-rays."
+        canonicalUrl={`${BUSINESS_INFO.website}/testimonials`}
       />
 
       {/* ── 1. Hero Section ── */}
@@ -73,35 +90,33 @@ export const Testimonials: React.FC = () => {
         className="page-hero-section" 
         style={{ 
           position: 'relative', 
-          background: 'linear-gradient(180deg, #ffffff 0%, #f0f7ff 100%)',
-          padding: '4.5rem 0 3.5rem 0',
-          borderBottom: '1px solid var(--border-color)'
+          overflow: 'hidden', 
+          padding: '3.5rem 0 3rem 0'
         }}
       >
-        <MedicalCrossMotif size={55} top="12%" left="6%" opacity={0.04} />
-        <MedicalCrossMotif size={65} bottom="12%" right="7%" opacity={0.03} />
+        <MedicalCrossMotif size={65} top="8%" left="4%" opacity={0.04} />
+        <MedicalCrossMotif size={75} bottom="10%" right="5%" opacity={0.03} />
 
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto' }}>
-            
-            {/* Top Pill Badge */}
             <div 
               style={{ 
                 display: 'inline-flex', 
                 alignItems: 'center', 
-                gap: '0.5rem', 
-                backgroundColor: '#ffffff', 
-                color: 'var(--navy-primary)', 
-                padding: '0.4rem 1.1rem', 
+                gap: '0.45rem', 
+                backgroundColor: 'var(--blue-soft)', 
+                color: 'var(--blue-brand)', 
+                padding: '0.35rem 0.95rem', 
                 borderRadius: 'var(--radius-pill)', 
-                fontSize: '0.84rem', 
+                fontSize: '0.82rem', 
                 fontWeight: 700, 
-                border: '1px solid rgba(2, 132, 199, 0.2)', 
-                boxShadow: '0 4px 14px rgba(2, 132, 199, 0.08)',
-                marginBottom: '1.25rem'
+                border: '1px solid rgba(2, 132, 199, 0.25)', 
+                marginBottom: '1rem', 
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em'
               }}
             >
-              <GoogleIcon size={18} />
+              <GoogleIcon size={16} />
               <span>Verified Google Reviews</span>
               <span style={{ 
                 backgroundColor: '#10b981', 
@@ -154,8 +169,6 @@ export const Testimonials: React.FC = () => {
               border: '1px solid rgba(10, 31, 68, 0.08)',
               padding: '1.75rem 2rem',
               display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '1.5rem',
               alignItems: 'center'
             }}
             className="review-metrics-bar"
@@ -251,36 +264,147 @@ export const Testimonials: React.FC = () => {
         </div>
       </section>
 
-      {/* ── 3. Live Trustindex Google Reviews Widget ── */}
-      <section style={{ padding: '4rem 0 4.5rem 0', backgroundColor: '#ffffff' }}>
+      {/* ── 3. Google Patient Reviews Directory ── */}
+      <section style={{ padding: '4rem 0 5rem 0', backgroundColor: '#ffffff' }} id="reviews-directory">
         <div className="container">
-          <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 2.5rem auto' }}>
+          <div style={{ textAlign: 'center', maxWidth: '740px', margin: '0 auto 2.5rem auto' }}>
             <div className="badge-tag" style={{ marginBottom: '0.75rem' }}>
-              Live Google Feedback Feed
+              Genuine Patient Stories
             </div>
             <h2 className="heading-lg" style={{ color: 'var(--navy-primary)', marginBottom: '0.75rem' }}>
               Verified Google <span style={{ color: 'var(--blue-brand)' }}>Patient Reviews</span>
             </h2>
             <p className="subhead" style={{ margin: '0 auto' }}>
-              Synchronized directly with our official Google Business Profile in Kandivali West, Mumbai.
+              Explore real patient experiences across knee pain relief, robotic joint surgery, neck & spine stiffness, trauma care, and in-house digital radiography at SOS Speciality Orthopedic Clinic.
             </p>
           </div>
 
-          {/* Official Trustindex Live Widget */}
-          <div 
-            style={{ 
-              maxWidth: '1040px', 
-              margin: '0 auto', 
-              backgroundColor: '#ffffff',
-              borderRadius: 'var(--radius-lg)',
-              border: '1px solid rgba(10, 31, 68, 0.08)',
-              padding: '1.5rem',
-              boxShadow: '0 4px 24px rgba(10, 31, 68, 0.04)',
-              minHeight: '280px'
+          {/* Google Business Rating Summary Card */}
+          <div style={{ maxWidth: '640px', margin: '0 auto 3rem auto' }}>
+            <GoogleRatingSummaryCard />
+          </div>
+
+          {/* Category Filter Buttons (matching Doctors.tsx pattern) */}
+          <div style={{ display: 'flex', gap: '0.65rem', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '2.5rem' }}>
+            <button
+              onClick={() => setSelectedCategory('all')}
+              style={{
+                padding: '0.55rem 1.15rem',
+                borderRadius: 'var(--radius-pill)',
+                fontSize: '0.82rem',
+                fontWeight: 700,
+                border: '1.5px solid',
+                borderColor: selectedCategory === 'all' ? 'var(--navy-primary)' : 'var(--border-color)',
+                cursor: 'pointer',
+                backgroundColor: selectedCategory === 'all' ? 'var(--navy-primary)' : '#ffffff',
+                color: selectedCategory === 'all' ? '#ffffff' : 'var(--navy-primary)',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              ★ All Reviews ({testimonialsData.length})
+            </button>
+
+            <button
+              onClick={() => setSelectedCategory('knee')}
+              style={{
+                padding: '0.55rem 1.15rem',
+                borderRadius: 'var(--radius-pill)',
+                fontSize: '0.82rem',
+                fontWeight: 700,
+                border: '1.5px solid',
+                borderColor: selectedCategory === 'knee' ? 'var(--navy-primary)' : 'var(--border-color)',
+                cursor: 'pointer',
+                backgroundColor: selectedCategory === 'knee' ? 'var(--navy-primary)' : '#ffffff',
+                color: selectedCategory === 'knee' ? '#ffffff' : 'var(--navy-primary)',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              🦴 Knee Care ({testimonialsData.filter(r => r.category === 'knee').length})
+            </button>
+
+            <button
+              onClick={() => setSelectedCategory('spine-neck')}
+              style={{
+                padding: '0.55rem 1.15rem',
+                borderRadius: 'var(--radius-pill)',
+                fontSize: '0.82rem',
+                fontWeight: 700,
+                border: '1.5px solid',
+                borderColor: selectedCategory === 'spine-neck' ? 'var(--navy-primary)' : 'var(--border-color)',
+                cursor: 'pointer',
+                backgroundColor: selectedCategory === 'spine-neck' ? 'var(--navy-primary)' : '#ffffff',
+                color: selectedCategory === 'spine-neck' ? '#ffffff' : 'var(--navy-primary)',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              ⚡ Spine & Neck ({testimonialsData.filter(r => r.category === 'spine-neck').length})
+            </button>
+
+            <button
+              onClick={() => setSelectedCategory('trauma-xray')}
+              style={{
+                padding: '0.55rem 1.15rem',
+                borderRadius: 'var(--radius-pill)',
+                fontSize: '0.82rem',
+                fontWeight: 700,
+                border: '1.5px solid',
+                borderColor: selectedCategory === 'trauma-xray' ? 'var(--navy-primary)' : 'var(--border-color)',
+                cursor: 'pointer',
+                backgroundColor: selectedCategory === 'trauma-xray' ? 'var(--navy-primary)' : '#ffffff',
+                color: selectedCategory === 'trauma-xray' ? '#ffffff' : 'var(--navy-primary)',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              🛡️ Trauma & X-Ray ({testimonialsData.filter(r => r.category === 'trauma-xray').length})
+            </button>
+
+            <button
+              onClick={() => setSelectedCategory('general')}
+              style={{
+                padding: '0.55rem 1.15rem',
+                borderRadius: 'var(--radius-pill)',
+                fontSize: '0.82rem',
+                fontWeight: 700,
+                border: '1.5px solid',
+                borderColor: selectedCategory === 'general' ? 'var(--navy-primary)' : 'var(--border-color)',
+                cursor: 'pointer',
+                backgroundColor: selectedCategory === 'general' ? 'var(--navy-primary)' : '#ffffff',
+                color: selectedCategory === 'general' ? '#ffffff' : 'var(--navy-primary)',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              🏥 Orthopedic Care ({testimonialsData.filter(r => r.category === 'general').length})
+            </button>
+          </div>
+
+          {/* Responsive Reviews Grid */}
+          <div
+            className="testimonials-directory-grid"
+            style={{
+              display: 'grid',
+              alignItems: 'stretch'
             }}
           >
-            <TrustIndexWidget widgetId="1525a98807b64976fa96ed4dc80" />
+            {filteredReviews.map(review => (
+              <ReviewCard key={review.id} review={review} />
+            ))}
           </div>
+
+          {filteredReviews.length === 0 && (
+            <div style={{ textAlign: 'center', padding: '3rem 1rem', color: 'var(--text-secondary)' }}>
+              <p style={{ fontSize: '1.05rem', fontWeight: 600 }}>No reviews found matching this filter.</p>
+              <button 
+                onClick={() => setSelectedCategory('all')} 
+                className="btn btn-secondary btn-sm" 
+                style={{ marginTop: '0.75rem' }}
+              >
+                View All Reviews
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
@@ -724,8 +848,27 @@ export const Testimonials: React.FC = () => {
 
         @media (max-width: 600px) {
           .review-metrics-bar {
-            grid-template-columns: 1fr !important;
-            gap: 1rem !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 0.65rem !important;
+            padding: 1rem 0.85rem !important;
+          }
+          .review-metrics-bar > div {
+            gap: 0.6rem !important;
+          }
+          .review-metrics-bar > div > div:first-child {
+            width: 36px !important;
+            height: 36px !important;
+            border-radius: 10px !important;
+          }
+          .review-metrics-bar > div > div:first-child svg {
+            width: 18px !important;
+            height: 18px !important;
+          }
+          .review-metrics-bar > div > div:last-child > div:first-child {
+            font-size: 1.12rem !important;
+          }
+          .review-metrics-bar > div > div:last-child > div:last-child {
+            font-size: 0.68rem !important;
           }
         }
       `}</style>

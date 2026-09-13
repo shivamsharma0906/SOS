@@ -5,7 +5,10 @@ import { BUSINESS_INFO } from '../config/business';
 export const PrivacyPolicy: React.FC = () => {
   return (
     <>
-      <SEOHead title={`Privacy Policy | ${BUSINESS_INFO.name}`} />
+      <SEOHead 
+        title={`Privacy Policy | ${BUSINESS_INFO.name}`} 
+        canonicalUrl={`${BUSINESS_INFO.website}/privacy-policy`}
+      />
       <div className="container container-narrow" style={{ padding: '4rem 1.5rem', lineHeight: 1.7 }}>
         <h1 className="heading-lg" style={{ marginBottom: '1.5rem', color: 'var(--navy-primary)' }}>Privacy <span style={{ color: 'var(--blue-brand)' }}>Policy</span></h1>
         <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>

@@ -20,6 +20,7 @@ export const Contact: React.FC = () => {
       <SEOHead
         title={`Contact ${BUSINESS_INFO.name} | 24/7 Helpline ${BUSINESS_INFO.phone}`}
         description={`Connect with ${BUSINESS_INFO.name} in Mumbai. Call ${BUSINESS_INFO.phone} for doctor consultations or 24/7 Home X-Ray dispatch across Kandivali, Malad, Borivali, and Goregaon.`}
+        canonicalUrl={`${BUSINESS_INFO.website}/contact`}
       />
 
       {/* ── 1. Hero Header & Quick Contact Channels ── */}

@@ -113,6 +113,7 @@ export const Navbar: React.FC = () => {
     { name: 'About SOS', path: '/about' },
     { name: 'Our Services', path: '/services' },
     { name: 'Doctors', path: '/doctors' },
+    { name: 'Mentors', path: '/mentors' },
     { name: 'Centres', path: '/centres' },
     { name: 'Reviews', path: '/testimonials' },
     { name: 'Contact Us', path: '/contact' }

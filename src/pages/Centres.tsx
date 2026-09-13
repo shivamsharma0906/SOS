@@ -25,6 +25,7 @@ export const Centres: React.FC = () => {
       <SEOHead
         title={`Orthopedic Centres & Outreach Clinics | ${centreAreas} | SOS Mumbai`}
         description={`Find your nearest SOS Speciality Orthopedic Clinic centre or outreach clinic: ${centreAreas}. Specialist OPD consultations, digital X-ray diagnostics, and 24/7 Home X-Ray care.`}
+        canonicalUrl={`${BUSINESS_INFO.website}/centres`}
       />
 
       {/* ── 1. Hero Header & Trust Metrics Strip ── */}
