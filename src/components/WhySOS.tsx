@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Clock, Zap, Home, ShieldCheck, Phone, CheckCircle2, ChevronDown, ChevronUp } from 'lucide-react';
+import { Clock, Zap, Home, ShieldCheck, Phone, CheckCircle2, ChevronDown, ChevronUp, Activity } from 'lucide-react';
 import { BUSINESS_INFO } from '../config/business';
 
 interface AdvantageCard {
@@ -278,7 +278,7 @@ export const WhySOS: React.FC = () => {
                 border: '1px solid rgba(239, 68, 68, 0.3)'
               }}
             >
-              <span>🚨 24/7 Emergency & Doorstep Diagnostics</span>
+              <Activity size={13} style={{ display: 'inline', marginRight: '4px', verticalAlign: 'middle' }} /> <span>24/7 Emergency & Doorstep Diagnostics</span>
             </div>
 
             <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#ffffff', marginBottom: '0.5rem', lineHeight: 1.3 }} className="emergency-title">

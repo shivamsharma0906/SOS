@@ -101,7 +101,9 @@ export const Footer: React.FC = () => {
               {[
                 { name: 'About SOS & Mission', path: '/about' },
                 { name: 'Our Speciality Units', path: '/services' },
-                { name: 'Orthopedic Surgeons', path: '/doctors' },
+                { name: 'Orthopedic Doctors', path: '/doctors' },
+                { name: 'Surgical Mentors', path: '/mentors' },
+                { name: 'Doorstep Home Services', path: '/home-services' },
                 { name: 'Centres & Outreach', path: '/centres' },
                 { name: 'Patient Reviews', path: '/testimonials' },
                 { name: 'Book Priority OPD', path: '/contact' }
@@ -149,8 +151,9 @@ export const Footer: React.FC = () => {
                 { name: 'ACL & Ligament Repair', path: '/services/acl-ligament' },
                 { name: 'Spine Care & Sciatica', path: '/services/spine-care' },
                 { name: 'Sports Injury & Arthroscopy', path: '/services/sports-injury' },
-                { name: 'Pediatric & Trauma Care', path: '/services/pediatric-trauma' },
-                { name: '24/7 Home X-Ray Dispatch', path: '/services/home-x-ray' }
+                { name: 'X-Ray Services at Home', path: '/x-ray-services-at-home' },
+                { name: 'Physiotherapy & Rehab', path: '/physiotherapy' },
+                { name: 'Home Healthcare Services', path: '/home-services' }
               ].map(spec => (
                 <li key={spec.path}>
                   <Link 
@@ -242,11 +245,12 @@ export const Footer: React.FC = () => {
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.55rem', fontSize: '0.82rem' }}>
                 {[
                   { name: 'About SOS', path: '/about' },
-                  { name: 'All Services', path: '/services' },
-                  { name: 'Surgeons', path: '/doctors' },
+                  { name: 'Services', path: '/services' },
+                  { name: 'Doctors', path: '/doctors' },
+                  { name: 'Mentors', path: '/mentors' },
+                  { name: 'Home Services', path: '/home-services' },
                   { name: 'Centres', path: '/centres' },
-                  { name: 'Patient Reviews', path: '/testimonials' },
-                  { name: 'Book OPD', path: '/contact' }
+                  { name: 'Reviews', path: '/testimonials' }
                 ].map(item => (
                   <li key={item.path}>
                     <Link to={item.path} style={{ color: '#cbd5e1', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', transition: 'color 0.2s ease' }}>
@@ -267,9 +271,9 @@ export const Footer: React.FC = () => {
                   { name: 'Joint Replacement', path: '/services/joint-replacement' },
                   { name: 'ACL & Ligament', path: '/services/acl-ligament' },
                   { name: 'Spine & Sciatica', path: '/services/spine-care' },
-                  { name: 'Sports Injury', path: '/services/sports-injury' },
-                  { name: 'Pediatric Trauma', path: '/services/pediatric-trauma' },
-                  { name: 'Home X-Ray', path: '/services/home-x-ray' }
+                  { name: 'Home X-Ray (24/7)', path: '/x-ray-services-at-home' },
+                  { name: 'Physiotherapy', path: '/physiotherapy' },
+                  { name: 'Home Care', path: '/home-services' }
                 ].map(item => (
                   <li key={item.path}>
                     <Link to={item.path} style={{ color: '#cbd5e1', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', transition: 'color 0.2s ease' }}>
@@ -285,7 +289,7 @@ export const Footer: React.FC = () => {
           {/* Centre Locations Strip */}
           <div style={{ marginBottom: '1.5rem', textAlign: 'center' }}>
             <div style={{ fontSize: '0.74rem', fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.6rem' }}>
-              📍 Our Centre Network
+              Our Centre Network
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
               {centresData.map(c => (

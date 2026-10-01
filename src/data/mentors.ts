@@ -10,14 +10,6 @@ export interface Mentor {
 
 export const mentorsData: Mentor[] = [
   {
-    id: 'dr-akash-saraogi',
-    name: 'Dr. Akash A. Saraogi',
-    title: 'Orthopedic Surgeon — Hip and Knee Joint Specialist',
-    qualifications: 'FRCS (England) (Gold Medal), MCh Hip and Knee (UK) (Gold Medal), MS Ortho (Gold Medal) – J.J. Hospital, Mumbai, Wrightington Revision Fellow, D SICOT (Gold Medal, Italy), SICOT Fellow (Spain), AO Fellow (Germany), FEBOT (Portugal)',
-    bio: 'International gold medalist orthopedic surgeon specializing in primary and complex revision hip and knee joint reconstructions. Guided by masterclass fellowships across the UK, Germany, and Italy, he mentors clinical teams in advanced arthroplasty techniques.',
-    photoUrl: '/assets/dr-akash-saraogi.webp'
-  },
-  {
     id: 'dr-hardik-desai',
     name: 'Dr. Hardik Desai',
     title: 'Consultant Trauma and Pediatric Orthopaedic Surgeon',
@@ -40,5 +32,13 @@ export const mentorsData: Mentor[] = [
     qualifications: 'MS Orthopaedics, FRCS (Trauma and Ort), MRCSed, Dip. CAOS (UK)',
     bio: 'Consultant sports orthopaedic surgeon with prestigious UK surgical qualifications including FRCS, MRCSed, and Dip. CAOS. He provides surgical mentorship in shoulder and knee arthroscopy, sports injury rehabilitation, and joint restoration.',
     photoUrl: '/assets/doctor-gokhale.jpg'
+  },
+  {
+    id: 'dr-akash-saraogi',
+    name: 'Dr. Akash A. Saraogi',
+    title: 'Orthopedic Surgeon — Hip and Knee Joint Specialist',
+    qualifications: 'FRCS (England) (Gold Medal), MCh Hip and Knee (UK) (Gold Medal), MS Ortho (Gold Medal) – J.J. Hospital, Mumbai, Wrightington Revision Fellow, D SICOT (Gold Medal, Italy), SICOT Fellow (Spain), AO Fellow (Germany), FEBOT (Portugal)',
+    bio: 'International gold medalist orthopedic surgeon specializing in primary and complex revision hip and knee joint reconstructions. Guided by masterclass fellowships across the UK, Germany, and Italy, he mentors clinical teams in advanced arthroplasty techniques.',
+    photoUrl: '/assets/dr-akash-saraogi.webp'
   }
 ];

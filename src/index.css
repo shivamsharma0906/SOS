@@ -1176,9 +1176,94 @@ html, body {
   .consultant-card:hover,
   .mentor-card:hover,
   .review-card:hover,
-  .google-rating-summary-card:hover {
+  .google-rating-summary-card:hover,
+  .interactive-feature-card:hover {
     transform: none !important;
   }
+}
+
+/* ── High-Performance Tasteful Animations ── */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes faqSlideDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -6px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes livePulseDot {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeSlideUp 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.faq-answer-animated {
+  animation: faqSlideDown 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.live-pulse-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #10b981;
+  animation: livePulseDot 2s infinite ease-in-out;
+  flex-shrink: 0;
+}
+
+/* Card Hover Micro-Interactions */
+.interactive-feature-card {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease !important;
+}
+
+.interactive-feature-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 28px rgba(10, 31, 68, 0.08) !important;
+  border-color: rgba(2, 132, 199, 0.25) !important;
+}
+
+.interactive-feature-card:hover .icon-box-hover {
+  transform: scale(1.08);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pill-choice-btn {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.pill-choice-btn:hover {
+  transform: translateY(-1px) !important;
+}
+
+.pill-choice-btn:active {
+  transform: scale(0.97) !important;
 }
 
 

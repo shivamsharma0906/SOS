@@ -79,7 +79,7 @@ export const ServicesCards: React.FC<ServicesCardsProps> = ({ limit, showTitle =
                       <HexBadge iconName={service.iconName} size={48} active />
                       {service.id === 'home-x-ray' ? (
                         <span style={{ fontSize: '0.74rem', fontWeight: 800, backgroundColor: '#fee2e2', color: '#dc2626', padding: '0.25rem 0.65rem', borderRadius: 'var(--radius-pill)' }}>
-                          🚨 24/7 Home Service
+                          24/7 Home Service
                         </span>
                       ) : (
                         <span style={{ fontSize: '0.72rem', fontWeight: 700, backgroundColor: 'var(--blue-soft)', color: 'var(--blue-brand)', padding: '0.2rem 0.6rem', borderRadius: 'var(--radius-pill)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>

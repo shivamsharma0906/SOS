@@ -7,7 +7,6 @@ import {
 import { SEOHead } from '../components/SEOHead';
 import { BUSINESS_INFO } from '../config/business';
 import { MedicalCrossMotif } from '../components/DecorativeMotif';
-import { AdvisoryCouncil } from '../components/AdvisoryCouncil';
 import { centresData } from '../data/centres';
 
 const pillars = [
@@ -379,8 +378,6 @@ export const About: React.FC = () => {
         </div>
       </section>
 
-      {/* ── 4. Senior Advisory Council Component ── */}
-      <AdvisoryCouncil />
 
       {/* ── 5. Centre Network & Outreach Strip ── */}
       <section style={{ padding: '4rem 0', backgroundColor: '#ffffff', borderTop: '1px solid var(--border-color)' }}>

@@ -69,7 +69,7 @@ export const servicesData: Service[] = [
         desc: 'Structured same-day / next-day ambulation guidance, personalized home exercise regimen, and regular surgeon follow-ups.'
       }
     ],
-    relevantDoctorIds: ['dr-hardik-desai', 'dr-nikhil-gokhale'],
+    relevantDoctorIds: ['dr-maulik-joshi', 'dr-shobit-deshmukh'],
     isFeatured: true
   },
   {
@@ -114,7 +114,7 @@ export const servicesData: Service[] = [
         desc: 'Stepwise progression from protected weight-bearing to functional muscle strengthening, agility drills, and return-to-sport testing.'
       }
     ],
-    relevantDoctorIds: ['dr-aakash-ruia', 'dr-hardik-desai'],
+    relevantDoctorIds: ['dr-shobit-deshmukh', 'dr-omkar'],
     isFeatured: true
   },
   {
@@ -159,7 +159,7 @@ export const servicesData: Service[] = [
         desc: 'Minimally invasive endoscopic micro-discectomy to relieve persistent nerve root pressure without extensive muscle trauma.'
       }
     ],
-    relevantDoctorIds: ['dr-nikhil-gokhale'],
+    relevantDoctorIds: ['dr-omkar'],
     isFeatured: true
   },
   {
@@ -204,7 +204,7 @@ export const servicesData: Service[] = [
         desc: 'Progressive strength, proprioceptive balance exercises, and safe return-to-sport athletic clearance testing.'
       }
     ],
-    relevantDoctorIds: ['dr-aakash-ruia'],
+    relevantDoctorIds: ['dr-shobit-deshmukh', 'dr-omkar'],
     isFeatured: true
   },
   {
@@ -249,7 +249,7 @@ export const servicesData: Service[] = [
         desc: 'Scheduled radiograph reviews to monitor pediatric bone remodeling, cast removal, and gradual return to playground activities.'
       }
     ],
-    relevantDoctorIds: ['dr-akhil-tawari'],
+    relevantDoctorIds: ['dr-maulik-joshi'],
     isFeatured: true
   },
   {
@@ -294,7 +294,7 @@ export const servicesData: Service[] = [
         desc: 'Digital images previewed immediately, validated by senior radiologists, and shared directly with consulting orthopedic surgeons.'
       }
     ],
-    relevantDoctorIds: ['dr-hardik-desai', 'dr-akhil-tawari'],
+    relevantDoctorIds: ['dr-maulik-joshi', 'dr-shobit-deshmukh', 'dr-omkar'],
     isFeatured: true
   }
 ];

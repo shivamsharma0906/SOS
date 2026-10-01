@@ -55,22 +55,20 @@ export const Home: React.FC = () => {
           </div>
 
           <div 
-            className="doctors-grid-4col"
+            className="doctors-grid-3col"
             style={{ 
               display: 'grid',
-              gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
-              gap: '1.25rem'
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: '1.5rem'
             }}
           >
-            {doctorsData
-              .filter((doctor) => doctor.category !== 'consultant')
-              .map((doctor) => (
-                <DoctorCard 
-                  key={doctor.id} 
-                  doctor={doctor} 
-                  onSelectDoctor={(docId) => setSelectedDoctorForForm(docId)}
-                />
-              ))}
+            {doctorsData.map((doctor) => (
+              <DoctorCard 
+                key={doctor.id} 
+                doctor={doctor} 
+                onSelectDoctor={(docId) => setSelectedDoctorForForm(docId)}
+              />
+            ))}
           </div>
 
           <div className="mobile-only" style={{ textAlign: 'center', marginTop: '1.75rem', display: 'none' }}>

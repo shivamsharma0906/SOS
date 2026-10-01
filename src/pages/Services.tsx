@@ -179,7 +179,7 @@ export const Services: React.FC = () => {
                 transition: 'all 0.2s ease'
               }}
             >
-              🦴 Joint Replacement
+              Joint Replacement
             </button>
 
             <button
@@ -197,7 +197,7 @@ export const Services: React.FC = () => {
                 transition: 'all 0.2s ease'
               }}
             >
-              🏃 ACL & Sports Injuries
+              ACL & Sports Injuries
             </button>
 
             <button
@@ -215,7 +215,7 @@ export const Services: React.FC = () => {
                 transition: 'all 0.2s ease'
               }}
             >
-              🩺 Spine & Sciatica
+              Spine & Sciatica
             </button>
 
             <button
@@ -233,7 +233,7 @@ export const Services: React.FC = () => {
                 transition: 'all 0.2s ease'
               }}
             >
-              👶 Pediatric Trauma
+              Pediatric Trauma
             </button>
 
             <button
@@ -251,7 +251,7 @@ export const Services: React.FC = () => {
                 transition: 'all 0.2s ease'
               }}
             >
-              🚐 24/7 Home X-Ray
+              24/7 Home X-Ray
             </button>
           </div>
 
@@ -306,7 +306,7 @@ export const Services: React.FC = () => {
                     <div style={{ position: 'absolute', top: '0.85rem', left: '0.85rem', zIndex: 2 }}>
                       {isHomeXray ? (
                         <span style={{ fontSize: '0.72rem', fontWeight: 800, backgroundColor: '#dc2626', color: '#ffffff', padding: '0.25rem 0.65rem', borderRadius: 'var(--radius-pill)', boxShadow: '0 2px 8px rgba(0,0,0,0.2)' }}>
-                          🚨 24/7 Home Service
+                          24/7 Home Service
                         </span>
                       ) : (
                         <span style={{ fontSize: '0.72rem', fontWeight: 700, backgroundColor: 'rgba(10, 31, 68, 0.85)', backdropFilter: 'blur(6px)', color: '#ffffff', padding: '0.25rem 0.65rem', borderRadius: 'var(--radius-pill)', border: '1px solid rgba(255,255,255,0.2)' }}>
@@ -483,7 +483,7 @@ export const Services: React.FC = () => {
           >
             <div style={{ maxWidth: '620px' }}>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', backgroundColor: 'rgba(239, 68, 68, 0.2)', color: '#f87171', padding: '0.25rem 0.75rem', borderRadius: 'var(--radius-pill)', fontSize: '0.76rem', fontWeight: 800, marginBottom: '0.65rem', textTransform: 'uppercase' }}>
-                🚨 24/7 Doorstep Diagnostic Dispatch
+                <Activity size={14} /> 24/7 Doorstep Diagnostic Dispatch
               </div>
               <h2 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#ffffff', marginBottom: '0.5rem', lineHeight: 1.25 }}>
                 Need an Emergency Home X-Ray for an Elderly Patient?

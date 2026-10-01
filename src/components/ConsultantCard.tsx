@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Doctor } from '../data/doctors';
-import { 
-  Award, 
-  MapPin, 
-  Clock, 
-  Calendar, 
-  CheckCircle2, 
-  Stethoscope, 
-  Globe, 
-  ChevronDown, 
+import {
+  Award,
+  MapPin,
+  Clock,
+  Calendar,
+  CheckCircle2,
+  Stethoscope,
+  Globe,
+  ChevronDown,
   ChevronUp,
   Sparkles,
   ShieldCheck
@@ -43,12 +43,12 @@ export const ConsultantCard: React.FC<ConsultantCardProps> = ({ doctor, onSelect
     .slice(0, 2)
     .join('');
 
-  const displayedFellowships = showAllCredentials 
-    ? doctor.fellowships 
+  const displayedFellowships = showAllCredentials
+    ? doctor.fellowships
     : doctor.fellowships?.slice(0, 2);
 
   return (
-    <div 
+    <div
       className="consultant-card"
       style={{
         backgroundColor: '#ffffff',
@@ -73,13 +73,13 @@ export const ConsultantCard: React.FC<ConsultantCardProps> = ({ doctor, onSelect
       }}
     >
       {/* ── 1. Media Portrait Frame with Executive Overlay ── */}
-      <div 
-        style={{ 
-          position: 'relative', 
-          height: '270px', 
-          backgroundColor: '#f1f5f9', 
-          overflow: 'hidden' 
-        }} 
+      <div
+        style={{
+          position: 'relative',
+          height: '270px',
+          backgroundColor: '#f1f5f9',
+          overflow: 'hidden'
+        }}
         className="consultant-card-media"
       >
         {!imgError ? (
@@ -98,15 +98,15 @@ export const ConsultantCard: React.FC<ConsultantCardProps> = ({ doctor, onSelect
             loading="lazy"
           />
         ) : (
-          <div style={{ 
-            width: '100%', 
-            height: '100%', 
-            display: 'flex', 
-            flexDirection: 'column', 
-            alignItems: 'center', 
-            justifyContent: 'center', 
-            background: 'linear-gradient(135deg, #0a1f44 0%, #0284c7 100%)', 
-            color: '#ffffff' 
+          <div style={{
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: 'linear-gradient(135deg, #0a1f44 0%, #0284c7 100%)',
+            color: '#ffffff'
           }}>
             <Stethoscope size={40} color="#93c5fd" style={{ marginBottom: '0.4rem' }} />
             <span style={{ fontSize: '1.5rem', fontWeight: 800 }}>{initials}</span>
@@ -115,13 +115,13 @@ export const ConsultantCard: React.FC<ConsultantCardProps> = ({ doctor, onSelect
         )}
 
         {/* Soft elegant gradient vignette at bottom */}
-        <div 
-          style={{ 
-            position: 'absolute', 
-            inset: 0, 
-            background: 'linear-gradient(to top, rgba(7, 21, 46, 0.5) 0%, rgba(7, 21, 46, 0.1) 40%, transparent 70%)', 
-            pointerEvents: 'none' 
-          }} 
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(to top, rgba(7, 21, 46, 0.5) 0%, rgba(7, 21, 46, 0.1) 40%, transparent 70%)',
+            pointerEvents: 'none'
+          }}
         />
 
         {/* Bottom-Left: Super-Specialist Honor Badge (Separated from top to eliminate overlap) */}
@@ -151,43 +151,15 @@ export const ConsultantCard: React.FC<ConsultantCardProps> = ({ doctor, onSelect
           </div>
         )}
 
-        {/* Top-Right: Appointment Live Status */}
-        <div style={{
-          position: 'absolute',
-          top: '0.75rem',
-          right: '0.75rem',
-          backgroundColor: 'rgba(7, 21, 46, 0.88)',
-          backdropFilter: 'blur(8px)',
-          color: '#ffffff',
-          padding: '0.28rem 0.65rem',
-          borderRadius: '9999px',
-          fontSize: '0.68rem',
-          fontWeight: 800,
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.35rem',
-          border: '1px solid rgba(255, 255, 255, 0.2)',
-          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-          zIndex: 2
-        }}>
-          <span style={{ 
-            width: '6px', 
-            height: '6px', 
-            borderRadius: '50%', 
-            backgroundColor: '#22c55e', 
-            display: 'inline-block', 
-            boxShadow: '0 0 0 2px rgba(34, 197, 94, 0.4)' 
-          }} />
-          <span>By Appointment</span>
-        </div>
+
       </div>
 
       {/* ── 2. Card Content Body ── */}
-      <div 
-        style={{ 
-          padding: '1.4rem 1.35rem', 
-          display: 'flex', 
-          flexDirection: 'column', 
+      <div
+        style={{
+          padding: '1.4rem 1.35rem',
+          display: 'flex',
+          flexDirection: 'column',
           flexGrow: 1,
           gap: '0.85rem'
         }}
@@ -195,29 +167,29 @@ export const ConsultantCard: React.FC<ConsultantCardProps> = ({ doctor, onSelect
       >
         {/* Name & Title */}
         <div>
-          <div style={{ 
-            fontSize: '0.74rem', 
-            fontWeight: 800, 
-            color: 'var(--blue-brand)', 
-            textTransform: 'uppercase', 
+          <div style={{
+            fontSize: '0.74rem',
+            fontWeight: 800,
+            color: 'var(--blue-brand)',
+            textTransform: 'uppercase',
             letterSpacing: '0.05em',
             marginBottom: '0.2rem'
           }}>
             {doctor.title}
           </div>
-          <h3 style={{ 
-            fontSize: '1.3rem', 
-            fontWeight: 800, 
-            color: 'var(--navy-primary)', 
-            lineHeight: 1.25, 
-            margin: 0 
+          <h3 style={{
+            fontSize: '1.3rem',
+            fontWeight: 800,
+            color: 'var(--navy-primary)',
+            lineHeight: 1.25,
+            margin: 0
           }}>
             {doctor.name}
           </h3>
         </div>
 
         {/* Specialization Badge */}
-        <div 
+        <div
           style={{
             backgroundColor: '#f0f9ff',
             border: '1px solid #bae6fd',
@@ -247,7 +219,7 @@ export const ConsultantCard: React.FC<ConsultantCardProps> = ({ doctor, onSelect
         </div>
 
         {/* Structured Credentials & International Fellowships (Desktop Full) */}
-        <div 
+        <div
           className="desktop-only"
           style={{
             backgroundColor: '#f8fafc',
@@ -261,11 +233,11 @@ export const ConsultantCard: React.FC<ConsultantCardProps> = ({ doctor, onSelect
         >
           {/* Header Row */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <div style={{ 
-              fontSize: '0.72rem', 
-              fontWeight: 800, 
-              color: '#475569', 
-              textTransform: 'uppercase', 
+            <div style={{
+              fontSize: '0.72rem',
+              fontWeight: 800,
+              color: '#475569',
+              textTransform: 'uppercase',
               letterSpacing: '0.05em',
               display: 'flex',
               alignItems: 'center',
@@ -274,13 +246,13 @@ export const ConsultantCard: React.FC<ConsultantCardProps> = ({ doctor, onSelect
               <Globe size={13} color="var(--blue-brand)" />
               <span>International Fellowships & Degrees</span>
             </div>
-            <span style={{ 
-              fontSize: '0.68rem', 
-              fontWeight: 700, 
-              color: '#0284c7', 
-              backgroundColor: '#e0f2fe', 
-              padding: '0.1rem 0.45rem', 
-              borderRadius: '9999px' 
+            <span style={{
+              fontSize: '0.68rem',
+              fontWeight: 700,
+              color: '#0284c7',
+              backgroundColor: '#e0f2fe',
+              padding: '0.1rem 0.45rem',
+              borderRadius: '9999px'
             }}>
               Verified
             </span>
@@ -290,7 +262,7 @@ export const ConsultantCard: React.FC<ConsultantCardProps> = ({ doctor, onSelect
           {doctor.degrees && doctor.degrees.length > 0 && (
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem' }}>
               {doctor.degrees.map((deg, idx) => (
-                <span 
+                <span
                   key={idx}
                   style={{
                     fontSize: '0.71rem',
@@ -303,7 +275,7 @@ export const ConsultantCard: React.FC<ConsultantCardProps> = ({ doctor, onSelect
                     boxShadow: '0 1px 2px rgba(0,0,0,0.03)'
                   }}
                 >
-                  🎓 {deg}
+                  {deg}
                 </span>
               ))}
             </div>
@@ -313,13 +285,13 @@ export const ConsultantCard: React.FC<ConsultantCardProps> = ({ doctor, onSelect
           {displayedFellowships && displayedFellowships.length > 0 && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem', marginTop: '0.2rem' }}>
               {displayedFellowships.map((fellowship, idx) => (
-                <div 
-                  key={idx} 
-                  style={{ 
-                    display: 'flex', 
-                    alignItems: 'flex-start', 
-                    gap: '0.35rem', 
-                    fontSize: '0.75rem', 
+                <div
+                  key={idx}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '0.35rem',
+                    fontSize: '0.75rem',
                     color: '#334155',
                     lineHeight: 1.35
                   }}
@@ -355,11 +327,11 @@ export const ConsultantCard: React.FC<ConsultantCardProps> = ({ doctor, onSelect
         </div>
 
         {/* Compact 1-line Credential Tag for Mobile */}
-        <div 
-          className="mobile-flex" 
-          style={{ 
-            display: 'none', 
-            alignItems: 'center', 
+        <div
+          className="mobile-flex"
+          style={{
+            display: 'none',
+            alignItems: 'center',
             gap: '0.35rem',
             backgroundColor: '#f8fafc',
             border: '1px solid #e2e8f0',
@@ -377,13 +349,13 @@ export const ConsultantCard: React.FC<ConsultantCardProps> = ({ doctor, onSelect
         </div>
 
         {/* Short Bio (Desktop Only) */}
-        <p 
+        <p
           className="desktop-only"
-          style={{ 
-            fontSize: '0.84rem', 
-            color: 'var(--text-secondary)', 
-            lineHeight: 1.5, 
-            margin: 0 
+          style={{
+            fontSize: '0.84rem',
+            color: 'var(--text-secondary)',
+            lineHeight: 1.5,
+            margin: 0
           }}
         >
           {doctor.bio}
@@ -391,11 +363,11 @@ export const ConsultantCard: React.FC<ConsultantCardProps> = ({ doctor, onSelect
 
         {/* Key Expertise / Surgical Procedures (Desktop Full) */}
         <div className="desktop-only">
-          <div style={{ 
-            fontSize: '0.7rem', 
-            fontWeight: 800, 
-            color: 'var(--navy-primary)', 
-            textTransform: 'uppercase', 
+          <div style={{
+            fontSize: '0.7rem',
+            fontWeight: 800,
+            color: 'var(--navy-primary)',
+            textTransform: 'uppercase',
             letterSpacing: '0.04em',
             marginBottom: '0.4rem'
           }}>
@@ -403,7 +375,7 @@ export const ConsultantCard: React.FC<ConsultantCardProps> = ({ doctor, onSelect
           </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
             {doctor.expertiseList.map((item, idx) => (
-              <span 
+              <span
                 key={idx}
                 style={{
                   fontSize: '0.73rem',
@@ -428,7 +400,7 @@ export const ConsultantCard: React.FC<ConsultantCardProps> = ({ doctor, onSelect
         {/* Compact Clinical Focus for Mobile (Top 2 tags) */}
         <div className="mobile-flex" style={{ display: 'none', flexWrap: 'wrap', gap: '0.3rem' }}>
           {doctor.expertiseList.slice(0, 2).map((item, idx) => (
-            <span 
+            <span
               key={idx}
               style={{
                 fontSize: '0.71rem',
@@ -450,24 +422,24 @@ export const ConsultantCard: React.FC<ConsultantCardProps> = ({ doctor, onSelect
         </div>
 
         {/* Centres & Timings Strip (Desktop Full) */}
-        <div 
+        <div
           className="desktop-only"
-          style={{ 
-            paddingTop: '0.75rem', 
-            borderTop: '1px solid #f1f5f9', 
+          style={{
+            paddingTop: '0.75rem',
+            borderTop: '1px solid #f1f5f9',
             marginTop: 'auto',
             display: 'flex',
             flexDirection: 'column',
             gap: '0.4rem'
           }}
         >
-          <div style={{ 
-            fontSize: '0.73rem', 
-            fontWeight: 700, 
-            color: 'var(--navy-primary)', 
-            display: 'flex', 
-            alignItems: 'center', 
-            gap: '0.35rem' 
+          <div style={{
+            fontSize: '0.73rem',
+            fontWeight: 700,
+            color: 'var(--navy-primary)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.35rem'
           }}>
             <MapPin size={13} color="var(--blue-brand)" />
             <span>Available Across All 4 SOS Centres:</span>
@@ -475,16 +447,16 @@ export const ConsultantCard: React.FC<ConsultantCardProps> = ({ doctor, onSelect
 
           <div style={{ display: 'flex', gap: '0.3rem', flexWrap: 'wrap' }}>
             {doctor.centresAvailable.map(centre => (
-              <span 
-                key={centre} 
-                style={{ 
-                  fontSize: '0.7rem', 
-                  fontWeight: 700, 
-                  color: '#334155', 
-                  backgroundColor: '#f1f5f9', 
-                  padding: '0.15rem 0.5rem', 
-                  borderRadius: '5px', 
-                  border: '1px solid #e2e8f0' 
+              <span
+                key={centre}
+                style={{
+                  fontSize: '0.7rem',
+                  fontWeight: 700,
+                  color: '#334155',
+                  backgroundColor: '#f1f5f9',
+                  padding: '0.15rem 0.5rem',
+                  borderRadius: '5px',
+                  border: '1px solid #e2e8f0'
                 }}
               >
                 {centre}
@@ -492,11 +464,11 @@ export const ConsultantCard: React.FC<ConsultantCardProps> = ({ doctor, onSelect
             ))}
           </div>
 
-          <div style={{ 
-            fontSize: '0.73rem', 
-            color: 'var(--text-secondary)', 
-            display: 'flex', 
-            alignItems: 'center', 
+          <div style={{
+            fontSize: '0.73rem',
+            color: 'var(--text-secondary)',
+            display: 'flex',
+            alignItems: 'center',
             gap: '0.3rem',
             marginTop: '0.1rem'
           }}>
@@ -506,14 +478,14 @@ export const ConsultantCard: React.FC<ConsultantCardProps> = ({ doctor, onSelect
         </div>
 
         {/* Compact Centres & Timings for Mobile (1 clean line) */}
-        <div 
-          className="mobile-flex" 
-          style={{ 
-            display: 'none', 
-            alignItems: 'center', 
+        <div
+          className="mobile-flex"
+          style={{
+            display: 'none',
+            alignItems: 'center',
             justifyContent: 'space-between',
-            fontSize: '0.73rem', 
-            color: '#475569', 
+            fontSize: '0.73rem',
+            color: '#475569',
             fontWeight: 600,
             marginTop: 'auto',
             paddingTop: '0.4rem',
@@ -526,7 +498,7 @@ export const ConsultantCard: React.FC<ConsultantCardProps> = ({ doctor, onSelect
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
             <Clock size={12} color="var(--blue-brand)" />
-            <span>By Appointment</span>
+            <span></span>
           </div>
         </div>
 

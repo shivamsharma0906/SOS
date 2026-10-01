@@ -19,7 +19,8 @@ import {
   Phone,
   Stethoscope,
   AlertCircle,
-  Truck
+  Truck,
+  MapPin
 } from 'lucide-react';
 import { conditionsData, Condition } from '../data/conditions';
 import { AppointmentModal } from './AppointmentModal';
@@ -38,16 +39,16 @@ export const ConditionsGrid: React.FC = () => {
   // Concise quick symptom matcher tags
   const quickSymptoms = [
     { label: 'All Symptoms', match: null },
-    { label: '🦴 Knee Pain & Arthritis', match: 'knee-osteoarthritis' },
-    { label: '⚡ ACL / Knee Instability', match: 'acl-tear' },
-    { label: '⚡ Sciatica Leg Pain', match: 'sciatica' },
-    { label: '🔄 Slipped Disc Spasms', match: 'slipped-disc' },
-    { label: '💪 Shoulder & Arm Pain', match: 'rotator-cuff' },
-    { label: '👵 Bone Fragility & Fall', match: 'osteoporosis-fractures' },
-    { label: '🎯 Neck Pain & Tingling', match: 'cervical-spondylosis' },
-    { label: '❄️ Frozen Shoulder', match: 'frozen-shoulder' },
-    { label: '🧒 Child Limping / Fracture', match: 'pediatric-fractures' },
-    { label: '🚨 Emergency Fracture', match: 'acute-trauma-fractures' }
+    { label: 'Knee Pain & Arthritis', match: 'knee-osteoarthritis' },
+    { label: 'ACL & Knee Instability', match: 'acl-tear' },
+    { label: 'Sciatica & Leg Pain', match: 'sciatica' },
+    { label: 'Slipped Disc & Spasms', match: 'slipped-disc' },
+    { label: 'Shoulder & Arm Pain', match: 'rotator-cuff' },
+    { label: 'Bone Fragility & Fall Risk', match: 'osteoporosis-fractures' },
+    { label: 'Neck Pain & Cervical Care', match: 'cervical-spondylosis' },
+    { label: 'Frozen Shoulder Rehab', match: 'frozen-shoulder' },
+    { label: 'Pediatric Fracture & Limp', match: 'pediatric-fractures' },
+    { label: 'Emergency Trauma & Fracture', match: 'acute-trauma-fractures' }
   ];
 
   const filteredConditions = useMemo(() => {
@@ -723,8 +724,8 @@ export const ConditionsGrid: React.FC = () => {
                   <h3 style={{ fontSize: '1.05rem', fontWeight: 800, marginBottom: '0.2rem', color: 'var(--navy-primary)', lineHeight: 1.25 }}>
                     {condition.name}
                   </h3>
-                  <div style={{ fontSize: '0.74rem', color: 'var(--blue-brand)', fontWeight: 700, marginBottom: '0.6rem' }}>
-                    📍 {condition.bodyRegion}
+                  <div style={{ fontSize: '0.74rem', color: 'var(--blue-brand)', fontWeight: 700, marginBottom: '0.6rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+                    <MapPin size={12} /> {condition.bodyRegion}
                   </div>
 
                   <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: 1.4, marginBottom: '0.85rem' }}>
@@ -794,8 +795,8 @@ export const ConditionsGrid: React.FC = () => {
           }}
         >
           <div style={{ maxWidth: '680px' }}>
-            <div style={{ fontSize: '0.74rem', fontWeight: 800, color: 'var(--blue-brand)', textTransform: 'uppercase', marginBottom: '0.25rem' }}>
-              📞 24/7 Orthopedic Emergency & Home Triage
+            <div style={{ fontSize: '0.74rem', fontWeight: 800, color: 'var(--blue-brand)', textTransform: 'uppercase', marginBottom: '0.25rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+              <Phone size={13} /> 24/7 Orthopedic Emergency & Home Triage
             </div>
             <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--navy-primary)', margin: 0, lineHeight: 1.3 }}>
               Unsure about your diagnosis or need a Home X-Ray?

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Phone, Clock, Star, ExternalLink, CheckCircle2 } from 'lucide-react';
+import { MapPin, Phone, Clock, Star, ExternalLink, CheckCircle2, Camera, Map } from 'lucide-react';
 import { Centre } from '../data/centres';
 
 interface CentreCardProps {
@@ -120,7 +120,7 @@ export const CentreCard: React.FC<CentreCardProps> = ({ centre }) => {
           zIndex: 2
         }}>
           <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: isUpcoming ? '#fbbf24' : '#22c55e', display: 'inline-block', boxShadow: `0 0 0 2px ${isUpcoming ? 'rgba(251, 191, 36, 0.35)' : 'rgba(34, 197, 94, 0.35)'}` }} />
-          <span>{isUpcoming ? 'Opening Soon' : (isOutreach ? 'By Appointment' : 'OPD Open Today')}</span>
+          <span>{isUpcoming ? 'Opening Soon' : (isOutreach ? '' : 'OPD Open Today')}</span>
         </div>
 
         {/* Photo / Map Toggle Button Bar */}
@@ -151,7 +151,7 @@ export const CentreCard: React.FC<CentreCardProps> = ({ centre }) => {
               transition: 'all 0.15s ease'
             }}
           >
-            📷 Photo
+            <Camera size={11} style={{ marginRight: '3px', verticalAlign: 'middle' }} /> Photo
           </button>
           <button
             onClick={() => setActiveTab('map')}
@@ -167,14 +167,14 @@ export const CentreCard: React.FC<CentreCardProps> = ({ centre }) => {
               transition: 'all 0.15s ease'
             }}
           >
-            🗺️ Map
+            <Map size={11} style={{ marginRight: '3px', verticalAlign: 'middle' }} /> Map
           </button>
         </div>
       </div>
 
       {/* ── 2. Centre Details Body ── */}
       <div style={{ padding: '1.25rem 1.15rem 1.15rem 1.15rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }} className="centre-card-body">
-        
+
         {/* Title & Google Rating Strip */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem', gap: '0.5rem' }}>
           <div>
@@ -200,7 +200,7 @@ export const CentreCard: React.FC<CentreCardProps> = ({ centre }) => {
             <span>{centre.address}</span>
             {centre.landmark && (
               <div style={{ fontSize: '0.73rem', color: 'var(--navy-primary)', fontWeight: 700, marginTop: '0.1rem' }}>
-                📍 Landmark: {centre.landmark}
+                Landmark: {centre.landmark}
               </div>
             )}
           </div>

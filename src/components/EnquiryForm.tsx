@@ -17,7 +17,9 @@ import {
   ChevronRight,
   Award,
   Clock,
-  Sparkles
+  Sparkles,
+  Zap,
+  AlertCircle
 } from 'lucide-react';
 import { centresData } from '../data/centres';
 import { servicesData } from '../data/services';
@@ -220,8 +222,8 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
             flexWrap: 'wrap'
           }}>
             <div>
-              <div style={{ fontSize: '0.74rem', fontWeight: 800, color: '#166534', textTransform: 'uppercase' }}>
-                ⚡ Verification Call
+              <div style={{ fontSize: '0.74rem', fontWeight: 800, color: '#166534', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+                <Zap size={12} /> Priority Verification Call
               </div>
               <div style={{ fontSize: '0.78rem', color: '#15803d' }}>
                 Desk will call at <strong>{formData.phone}</strong> in under 15 mins.
@@ -553,7 +555,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                     <Calendar size={12} className="hospital-compact-icon" style={{ left: '0.55rem' }} />
                   </div>
                   {errors.preferredDate && (
-                    <span className="hospital-compact-err">⚠️ {errors.preferredDate}</span>
+                    <span className="hospital-compact-err"><AlertCircle size={10} style={{ display: 'inline', marginRight: '3px' }} />{errors.preferredDate}</span>
                   )}
                 </div>
 
@@ -615,7 +617,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                     <User size={13} className="hospital-compact-icon" />
                   </div>
                   {errors.fullName && (
-                    <span className="hospital-compact-err">⚠️ {errors.fullName}</span>
+                    <span className="hospital-compact-err"><AlertCircle size={10} style={{ display: 'inline', marginRight: '3px' }} />{errors.fullName}</span>
                   )}
                 </div>
 
@@ -623,7 +625,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                   <label className="hospital-compact-label">Mobile / WhatsApp *</label>
                   <div className="hospital-input-box" style={{ display: 'flex', alignItems: 'center' }}>
                     <div style={{ position: 'absolute', left: '0.45rem', display: 'flex', alignItems: 'center', pointerEvents: 'none', color: '#0a1f44', fontWeight: 700, fontSize: '0.72rem' }}>
-                      <span>🇮🇳 +91</span>
+                      <span>+91</span>
                     </div>
                     <input
                       type="tel"
@@ -631,11 +633,11 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                       value={formData.phone}
                       onChange={e => setFormData({ ...formData, phone: e.target.value })}
                       className="hospital-compact-input"
-                      style={{ paddingLeft: '3.4rem', borderColor: errors.phone ? '#ef4444' : undefined }}
+                      style={{ paddingLeft: '2.6rem', borderColor: errors.phone ? '#ef4444' : undefined }}
                     />
                   </div>
                   {errors.phone && (
-                    <span className="hospital-compact-err">⚠️ {errors.phone}</span>
+                    <span className="hospital-compact-err"><AlertCircle size={10} style={{ display: 'inline', marginRight: '3px' }} />{errors.phone}</span>
                   )}
                 </div>
               </div>

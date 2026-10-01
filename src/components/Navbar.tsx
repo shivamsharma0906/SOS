@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Phone, Menu, X, Calendar, MapPin } from 'lucide-react';
+import { Phone, Menu, X, Calendar, MapPin, ChevronDown } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
 import { AppointmentModal } from './AppointmentModal';
 import { centresData } from '../data/centres';
@@ -11,6 +11,7 @@ export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const [navHeight, setNavHeight] = useState<number>(0);
 
   const navbarRef = useRef<HTMLDivElement>(null);
@@ -111,7 +112,16 @@ export const Navbar: React.FC = () => {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'About SOS', path: '/about' },
-    { name: 'Our Services', path: '/services' },
+    { 
+      name: 'Services', 
+      path: '/services',
+      subLinks: [
+        { name: 'Speciality Units', path: '/services', desc: 'Joint Replacement, Spine & Sports Care' },
+        { name: 'X-Ray Services at Home', path: '/x-ray-services-at-home', desc: '24/7 Rapid Doorstep Digital Radiography' },
+        { name: 'Physiotherapy & Rehab', path: '/physiotherapy', desc: 'Surgeon-Guided In-Clinic & Home Recovery' },
+        { name: 'Home Healthcare Services', path: '/home-services', desc: 'Doctor Bedside OPD, Nursing & Diagnostics' }
+      ]
+    },
     { name: 'Doctors', path: '/doctors' },
     { name: 'Mentors', path: '/mentors' },
     { name: 'Centres', path: '/centres' },
@@ -232,19 +242,106 @@ export const Navbar: React.FC = () => {
             </Link>
 
             {/* Desktop Nav Links */}
-            <nav style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }} className="desktop-nav">
+            <nav style={{ display: 'flex', alignItems: 'center', gap: '1.15rem' }} className="desktop-nav">
               {navLinks.map((link) => {
-                const isActive = location.pathname === link.path;
+                const isActive = location.pathname === link.path || (link.subLinks && link.subLinks.some(s => location.pathname === s.path));
+                
+                if (link.subLinks) {
+                  return (
+                    <div 
+                      key={link.path}
+                      style={{ position: 'relative' }}
+                      onMouseEnter={() => setServicesDropdownOpen(true)}
+                      onMouseLeave={() => setServicesDropdownOpen(false)}
+                    >
+                      <Link
+                        to={link.path}
+                        style={{
+                          fontSize: '0.88rem',
+                          fontWeight: isActive ? 700 : 600,
+                          color: isActive ? 'var(--navy-primary)' : 'var(--text-secondary)',
+                          position: 'relative',
+                          padding: '0.35rem 0',
+                          whiteSpace: 'nowrap',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '0.25rem',
+                          transition: 'color 0.2s ease'
+                        }}
+                      >
+                        <span>{link.name}</span>
+                        <ChevronDown size={13} style={{ opacity: 0.7, transition: 'transform 0.2s', transform: servicesDropdownOpen ? 'rotate(180deg)' : 'rotate(0)' }} />
+                        {isActive && (
+                          <span 
+                            style={{
+                              position: 'absolute',
+                              bottom: -2,
+                              left: 0,
+                              right: 0,
+                              height: '2.5px',
+                              backgroundColor: 'var(--navy-primary)',
+                              borderRadius: '2px'
+                            }} 
+                          />
+                        )}
+                      </Link>
+
+                      {/* Dropdown Card */}
+                      {servicesDropdownOpen && (
+                        <div 
+                          style={{
+                            position: 'absolute',
+                            top: '100%',
+                            left: '-15px',
+                            backgroundColor: '#ffffff',
+                            borderRadius: '16px',
+                            boxShadow: '0 16px 36px rgba(10, 31, 68, 0.12)',
+                            border: '1px solid rgba(10, 31, 68, 0.08)',
+                            padding: '0.65rem',
+                            minWidth: '290px',
+                            zIndex: 1050,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '0.25rem'
+                          }}
+                        >
+                          {link.subLinks.map(sub => (
+                            <Link 
+                              key={sub.path} 
+                              to={sub.path}
+                              onClick={() => setServicesDropdownOpen(false)}
+                              style={{
+                                padding: '0.6rem 0.85rem',
+                                borderRadius: '10px',
+                                textDecoration: 'none',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '0.15rem',
+                                transition: 'all 0.15s ease'
+                              }}
+                              onMouseEnter={e => e.currentTarget.style.backgroundColor = 'var(--blue-soft)'}
+                              onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}
+                            >
+                              <span style={{ fontSize: '0.86rem', fontWeight: 700, color: 'var(--navy-primary)' }}>{sub.name}</span>
+                              <span style={{ fontSize: '0.73rem', color: 'var(--text-secondary)' }}>{sub.desc}</span>
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
+
                 return (
                   <Link
                     key={link.path}
                     to={link.path}
                     style={{
-                      fontSize: '0.9rem',
+                      fontSize: '0.88rem',
                       fontWeight: isActive ? 700 : 600,
                       color: isActive ? 'var(--navy-primary)' : 'var(--text-secondary)',
                       position: 'relative',
-                      padding: '0.3rem 0',
+                      padding: '0.35rem 0',
                       whiteSpace: 'nowrap',
                       transition: 'color 0.2s ease'
                     }}
@@ -346,22 +443,54 @@ export const Navbar: React.FC = () => {
             </button>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem', marginBottom: '2rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', marginBottom: '2rem' }}>
             {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                onClick={() => setMobileMenuOpen(false)}
-                style={{
-                  fontSize: '1.1rem',
-                  fontWeight: 700,
-                  color: location.pathname === link.path ? 'var(--navy-primary)' : 'var(--text-secondary)',
-                  paddingBottom: '0.5rem',
-                  borderBottom: '1px solid var(--border-color)'
-                }}
-              >
-                {link.name}
-              </Link>
+              <React.Fragment key={link.path}>
+                <Link
+                  to={link.path}
+                  onClick={() => setMobileMenuOpen(false)}
+                  style={{
+                    fontSize: '1.05rem',
+                    fontWeight: 700,
+                    color: location.pathname === link.path ? 'var(--navy-primary)' : 'var(--text-secondary)',
+                    paddingBottom: '0.4rem',
+                    borderBottom: '1px solid var(--border-color)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between'
+                  }}
+                >
+                  <span>{link.name}</span>
+                  {location.pathname === link.path && <span style={{ color: 'var(--blue-brand)', fontSize: '0.8rem' }}>●</span>}
+                </Link>
+
+                {link.subLinks && (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', paddingLeft: '0.85rem', marginBottom: '0.5rem' }}>
+                    {link.subLinks.map(sub => (
+                      <Link
+                        key={sub.path}
+                        to={sub.path}
+                        onClick={() => setMobileMenuOpen(false)}
+                        style={{
+                          fontSize: '0.9rem',
+                          fontWeight: location.pathname === sub.path ? 700 : 500,
+                          color: location.pathname === sub.path ? 'var(--blue-brand)' : 'var(--text-secondary)',
+                          padding: '0.45rem 0.75rem',
+                          borderRadius: '8px',
+                          backgroundColor: location.pathname === sub.path ? 'var(--blue-soft)' : '#f8fafc',
+                          border: '1px solid rgba(10, 31, 68, 0.05)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between'
+                        }}
+                      >
+                        <span>{sub.name}</span>
+                        <span style={{ fontSize: '0.78rem', color: 'var(--blue-brand)' }}>&rarr;</span>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </React.Fragment>
             ))}
           </div>
 

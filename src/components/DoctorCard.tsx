@@ -93,13 +93,13 @@ export const DoctorCard: React.FC<DoctorCardProps> = ({ doctor, onSelectDoctor }
       }}
     >
       {/* ── 1. Doctor Portrait Frame with Gradient Vignette ── */}
-      <div 
-        style={{ 
-          position: 'relative', 
-          height: '260px', 
-          backgroundColor: '#f1f5f9', 
-          overflow: 'hidden' 
-        }} 
+      <div
+        style={{
+          position: 'relative',
+          height: '260px',
+          backgroundColor: '#f1f5f9',
+          overflow: 'hidden'
+        }}
         className="doctor-card-media"
       >
         {!imgError ? (
@@ -118,16 +118,16 @@ export const DoctorCard: React.FC<DoctorCardProps> = ({ doctor, onSelectDoctor }
             loading="lazy"
           />
         ) : (
-          <div 
-            style={{ 
-              width: '100%', 
-              height: '100%', 
-              display: 'flex', 
-              flexDirection: 'column', 
-              alignItems: 'center', 
-              justifyContent: 'center', 
-              background: 'linear-gradient(135deg, #0a1f44 0%, #0284c7 100%)', 
-              color: '#ffffff' 
+          <div
+            style={{
+              width: '100%',
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'linear-gradient(135deg, #0a1f44 0%, #0284c7 100%)',
+              color: '#ffffff'
             }}
           >
             <Stethoscope size={38} color="#93c5fd" style={{ marginBottom: '0.4rem' }} />
@@ -137,51 +137,19 @@ export const DoctorCard: React.FC<DoctorCardProps> = ({ doctor, onSelectDoctor }
         )}
 
         {/* Soft elegant gradient vignette at bottom */}
-        <div 
-          style={{ 
-            position: 'absolute', 
-            inset: 0, 
-            background: 'linear-gradient(to top, rgba(7, 21, 46, 0.5) 0%, rgba(7, 21, 46, 0.1) 35%, transparent 65%)', 
-            pointerEvents: 'none' 
-          }} 
-        />
-
-        {/* Top-Right: OPD Available Live Indicator */}
-        <div 
+        <div
           style={{
             position: 'absolute',
-            top: '0.75rem',
-            right: '0.75rem',
-            backgroundColor: 'rgba(7, 21, 46, 0.88)',
-            backdropFilter: 'blur(8px)',
-            color: '#ffffff',
-            padding: '0.28rem 0.65rem',
-            borderRadius: '9999px',
-            fontSize: '0.68rem',
-            fontWeight: 800,
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.35rem',
-            border: '1px solid rgba(255, 255, 255, 0.2)',
-            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-            zIndex: 2
+            inset: 0,
+            background: 'linear-gradient(to top, rgba(7, 21, 46, 0.5) 0%, rgba(7, 21, 46, 0.1) 35%, transparent 65%)',
+            pointerEvents: 'none'
           }}
-        >
-          <span 
-            style={{ 
-              width: '6px', 
-              height: '6px', 
-              borderRadius: '50%', 
-              backgroundColor: '#22c55e', 
-              display: 'inline-block', 
-              boxShadow: '0 0 0 2px rgba(34, 197, 94, 0.4)' 
-            }} 
-          />
-          <span>OPD Available</span>
-        </div>
+        />
+
+
 
         {/* Bottom-Left: Specialty Badge on Vignette (No overlap!) */}
-        <div 
+        <div
           style={{
             position: 'absolute',
             bottom: '0.85rem',
@@ -209,37 +177,37 @@ export const DoctorCard: React.FC<DoctorCardProps> = ({ doctor, onSelectDoctor }
       </div>
 
       {/* ── 2. Doctor Details Body ── */}
-      <div 
-        style={{ 
-          padding: '1.35rem 1.25rem', 
-          display: 'flex', 
-          flexDirection: 'column', 
+      <div
+        style={{
+          padding: '1.35rem 1.25rem',
+          display: 'flex',
+          flexDirection: 'column',
           flexGrow: 1,
           gap: '0.75rem'
-        }} 
+        }}
         className="doctor-card-body"
       >
         {/* Name & Title */}
         <div>
-          <div 
-            style={{ 
-              fontSize: '0.74rem', 
-              fontWeight: 800, 
-              color: 'var(--blue-brand)', 
-              textTransform: 'uppercase', 
+          <div
+            style={{
+              fontSize: '0.74rem',
+              fontWeight: 800,
+              color: 'var(--blue-brand)',
+              textTransform: 'uppercase',
               letterSpacing: '0.05em',
               marginBottom: '0.2rem'
             }}
           >
             {doctor.title}
           </div>
-          <h3 
-            style={{ 
-              fontSize: '1.25rem', 
-              fontWeight: 800, 
-              color: 'var(--navy-primary)', 
-              lineHeight: 1.25, 
-              margin: 0 
+          <h3
+            style={{
+              fontSize: '1.25rem',
+              fontWeight: 800,
+              color: 'var(--navy-primary)',
+              lineHeight: 1.25,
+              margin: 0
             }}
           >
             {doctor.name}
@@ -247,7 +215,7 @@ export const DoctorCard: React.FC<DoctorCardProps> = ({ doctor, onSelectDoctor }
         </div>
 
         {/* Specialization Badge */}
-        <div 
+        <div
           style={{
             backgroundColor: '#f0f9ff',
             border: '1px solid #bae6fd',
@@ -258,7 +226,7 @@ export const DoctorCard: React.FC<DoctorCardProps> = ({ doctor, onSelectDoctor }
             gap: '0.45rem'
           }}
         >
-          <div 
+          <div
             style={{
               width: '22px',
               height: '22px',
@@ -281,46 +249,46 @@ export const DoctorCard: React.FC<DoctorCardProps> = ({ doctor, onSelectDoctor }
         {/* Qualifications & Experience Tag Strip */}
         <div style={{ display: 'flex', gap: '0.35rem', flexWrap: 'wrap' }}>
           {doctor.experienceYears > 0 && (
-            <span 
-              style={{ 
-                fontSize: '0.71rem', 
-                fontWeight: 700, 
-                color: '#0369a1', 
-                backgroundColor: '#e0f2fe', 
-                padding: '0.2rem 0.5rem', 
-                borderRadius: '6px', 
-                display: 'inline-flex', 
-                alignItems: 'center', 
-                gap: '0.25rem' 
+            <span
+              style={{
+                fontSize: '0.71rem',
+                fontWeight: 700,
+                color: '#0369a1',
+                backgroundColor: '#e0f2fe',
+                padding: '0.2rem 0.5rem',
+                borderRadius: '6px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.25rem'
               }}
             >
               <Award size={12} /> {doctor.experienceYears}+ Yrs Exp
             </span>
           )}
-          <span 
-            style={{ 
-              fontSize: '0.71rem', 
-              fontWeight: 600, 
-              color: '#475569', 
-              backgroundColor: '#f8fafc', 
-              padding: '0.2rem 0.5rem', 
-              borderRadius: '6px', 
-              border: '1px solid #e2e8f0' 
+          <span
+            style={{
+              fontSize: '0.71rem',
+              fontWeight: 600,
+              color: '#475569',
+              backgroundColor: '#f8fafc',
+              padding: '0.2rem 0.5rem',
+              borderRadius: '6px',
+              border: '1px solid #e2e8f0'
             }}
           >
-            🎓 {doctor.qualifications}
+            {doctor.qualifications}
           </span>
-          <span 
-            style={{ 
-              fontSize: '0.71rem', 
-              fontWeight: 700, 
-              color: '#16a34a', 
-              backgroundColor: '#dcfce7', 
-              padding: '0.2rem 0.5rem', 
-              borderRadius: '6px', 
-              display: 'inline-flex', 
-              alignItems: 'center', 
-              gap: '0.2rem' 
+          <span
+            style={{
+              fontSize: '0.71rem',
+              fontWeight: 700,
+              color: '#16a34a',
+              backgroundColor: '#dcfce7',
+              padding: '0.2rem 0.5rem',
+              borderRadius: '6px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.2rem'
             }}
           >
             <ShieldCheck size={12} /> Verified Surgeon
@@ -328,14 +296,14 @@ export const DoctorCard: React.FC<DoctorCardProps> = ({ doctor, onSelectDoctor }
         </div>
 
         {/* Bio Snippet (Desktop Only) */}
-        <p 
+        <p
           className="desktop-only"
-          style={{ 
-            fontSize: '0.83rem', 
-            color: 'var(--text-secondary)', 
-            lineHeight: 1.55, 
-            margin: 0, 
-            flexGrow: 1 
+          style={{
+            fontSize: '0.83rem',
+            color: 'var(--text-secondary)',
+            lineHeight: 1.55,
+            margin: 0,
+            flexGrow: 1
           }}
         >
           {doctor.bio}
@@ -343,12 +311,12 @@ export const DoctorCard: React.FC<DoctorCardProps> = ({ doctor, onSelectDoctor }
 
         {/* Key Clinical Focus Pills (Desktop Full) */}
         <div className="desktop-only">
-          <div 
-            style={{ 
-              fontSize: '0.68rem', 
-              fontWeight: 800, 
-              color: 'var(--navy-primary)', 
-              textTransform: 'uppercase', 
+          <div
+            style={{
+              fontSize: '0.68rem',
+              fontWeight: 800,
+              color: 'var(--navy-primary)',
+              textTransform: 'uppercase',
               letterSpacing: '0.04em',
               marginBottom: '0.35rem'
             }}
@@ -357,7 +325,7 @@ export const DoctorCard: React.FC<DoctorCardProps> = ({ doctor, onSelectDoctor }
           </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem' }}>
             {doctor.expertiseList.slice(0, 3).map((item, idx) => (
-              <span 
+              <span
                 key={idx}
                 style={{
                   fontSize: '0.71rem',
@@ -382,7 +350,7 @@ export const DoctorCard: React.FC<DoctorCardProps> = ({ doctor, onSelectDoctor }
         {/* Compact Clinical Focus on Mobile (Top 2 tags) */}
         <div className="mobile-flex" style={{ display: 'none', flexWrap: 'wrap', gap: '0.3rem' }}>
           {doctor.expertiseList.slice(0, 2).map((item, idx) => (
-            <span 
+            <span
               key={idx}
               style={{
                 fontSize: '0.71rem',
@@ -404,25 +372,25 @@ export const DoctorCard: React.FC<DoctorCardProps> = ({ doctor, onSelectDoctor }
         </div>
 
         {/* Centres & Timings Strip (Desktop Full) */}
-        <div 
+        <div
           className="desktop-only"
-          style={{ 
-            paddingTop: '0.7rem', 
-            borderTop: '1px solid #f1f5f9', 
+          style={{
+            paddingTop: '0.7rem',
+            borderTop: '1px solid #f1f5f9',
             marginTop: 'auto',
             display: 'flex',
             flexDirection: 'column',
             gap: '0.35rem'
           }}
         >
-          <div 
-            style={{ 
-              fontSize: '0.72rem', 
-              fontWeight: 700, 
-              color: 'var(--navy-primary)', 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: '0.3rem' 
+          <div
+            style={{
+              fontSize: '0.72rem',
+              fontWeight: 700,
+              color: 'var(--navy-primary)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.3rem'
             }}
           >
             <MapPin size={12} color="var(--blue-brand)" />
@@ -432,16 +400,16 @@ export const DoctorCard: React.FC<DoctorCardProps> = ({ doctor, onSelectDoctor }
           <div style={{ display: 'flex', gap: '0.3rem', flexWrap: 'wrap' }}>
             {doctor.centresAvailable.length > 0 ? (
               doctor.centresAvailable.map(centre => (
-                <span 
-                  key={centre} 
-                  style={{ 
-                    fontSize: '0.7rem', 
-                    fontWeight: 700, 
-                    color: '#334155', 
-                    backgroundColor: '#f1f5f9', 
-                    padding: '0.14rem 0.48rem', 
-                    borderRadius: '5px', 
-                    border: '1px solid #e2e8f0' 
+                <span
+                  key={centre}
+                  style={{
+                    fontSize: '0.7rem',
+                    fontWeight: 700,
+                    color: '#334155',
+                    backgroundColor: '#f1f5f9',
+                    padding: '0.14rem 0.48rem',
+                    borderRadius: '5px',
+                    border: '1px solid #e2e8f0'
                   }}
                 >
                   {centre}
@@ -449,17 +417,17 @@ export const DoctorCard: React.FC<DoctorCardProps> = ({ doctor, onSelectDoctor }
               ))
             ) : (
               <span style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', fontStyle: 'italic' }}>
-                All SOS Centres (By Appointment)
+                All SOS Centres ()
               </span>
             )}
           </div>
 
-          <div 
-            style={{ 
-              fontSize: '0.72rem', 
-              color: 'var(--text-secondary)', 
-              display: 'flex', 
-              alignItems: 'center', 
+          <div
+            style={{
+              fontSize: '0.72rem',
+              color: 'var(--text-secondary)',
+              display: 'flex',
+              alignItems: 'center',
               gap: '0.3rem',
               marginTop: '0.1rem'
             }}
@@ -470,14 +438,14 @@ export const DoctorCard: React.FC<DoctorCardProps> = ({ doctor, onSelectDoctor }
         </div>
 
         {/* Compact Centres & Timings for Mobile (1 clean line) */}
-        <div 
-          className="mobile-flex" 
-          style={{ 
-            display: 'none', 
-            alignItems: 'center', 
+        <div
+          className="mobile-flex"
+          style={{
+            display: 'none',
+            alignItems: 'center',
             justifyContent: 'space-between',
-            fontSize: '0.73rem', 
-            color: '#475569', 
+            fontSize: '0.73rem',
+            color: '#475569',
             fontWeight: 600,
             marginTop: 'auto',
             paddingTop: '0.4rem',

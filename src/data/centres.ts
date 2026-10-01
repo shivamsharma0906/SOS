@@ -69,7 +69,7 @@ export const centresData: Centre[] = [
     phone: BUSINESS_INFO.phone,
     whatsapp: `91${BUSINESS_INFO.phone}`,
     email: BUSINESS_INFO.email,
-    timings: 'Scheduled Outreach Days & By Appointment',
+    timings: 'Scheduled Outreach Days & ',
     mapEmbedUrl: 'https://maps.google.com/maps?q=Raheja+Exotica+Pascal+Wadi+Madh+Mumbai+400061&t=&z=16&ie=UTF8&iwloc=&output=embed',
     photoUrl: '/assets/centre-malad.webp',
     googleRating: 4.8,

@@ -21,8 +21,7 @@ export const Doctors: React.FC = () => {
     return doc.specialization.toLowerCase().includes(mode) || doc.expertiseList.some(e => e.toLowerCase().includes(mode));
   });
 
-  const seniorDoctors = filteredDoctors.filter(doc => doc.category !== 'consultant');
-  const consultantDoctors = filteredDoctors.filter(doc => doc.category === 'consultant');
+
 
   const handleSelectDoctor = (docId: string) => {
     setSelectedDoctorForModal(docId);
@@ -170,7 +169,7 @@ export const Doctors: React.FC = () => {
                 transition: 'all 0.2s ease'
               }}
             >
-              🦴 Joint Replacement
+              Joint Replacement
             </button>
 
             <button
@@ -188,7 +187,7 @@ export const Doctors: React.FC = () => {
                 transition: 'all 0.2s ease'
               }}
             >
-              🩺 Spine Specialists
+              Spine Specialists
             </button>
 
             <button
@@ -227,70 +226,22 @@ export const Doctors: React.FC = () => {
                 transition: 'all 0.2s ease'
               }}
             >
-              🏃 Sports Medicine & ACL
+              Sports Medicine & ACL
             </button>
           </div>
 
-          {/* ── Senior Consultants Section (Executive Redesign) ── */}
-          {seniorDoctors.length > 0 && (
-            <div style={{ marginBottom: consultantDoctors.length > 0 ? '5rem' : '0' }}>
-              <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 2.5rem auto' }}>
-                <div 
-                  style={{ 
-                    display: 'inline-flex', 
-                    alignItems: 'center', 
-                    gap: '0.45rem', 
-                    backgroundColor: 'var(--blue-soft)', 
-                    color: 'var(--blue-brand)', 
-                    padding: '0.35rem 0.95rem', 
-                    borderRadius: 'var(--radius-pill)', 
-                    fontSize: '0.8rem', 
-                    fontWeight: 800, 
-                    border: '1px solid rgba(2, 132, 199, 0.25)', 
-                    marginBottom: '0.85rem', 
-                    textTransform: 'uppercase', 
-                    letterSpacing: '0.06em' 
-                  }}
-                >
-                  <Award size={15} /> Core Surgical Faculty & Direct OPD
-                </div>
-
-                <h2 style={{ fontSize: '2.15rem', fontWeight: 800, color: 'var(--navy-primary)', margin: '0 0 0.85rem 0', lineHeight: 1.25 }}>
-                  Senior Consultant <span style={{ color: 'var(--blue-brand)' }}>Surgeons</span>
-                </h2>
-
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.96rem', lineHeight: 1.6, margin: '0 auto', maxWidth: '720px' }}>
-                  Our senior surgeons manage routine outpatient consultations, acute fracture care, and specialized joint & spine surgeries across all 4 SOS Mumbai clinics.
-                </p>
-              </div>
-
-              <div 
-                className="doctors-grid-4col"
-                style={{ display: 'grid' }}
-              >
-                {seniorDoctors.map((doctor) => (
-                  <DoctorCard 
-                    key={doctor.id} 
-                    doctor={doctor} 
-                    onSelectDoctor={handleSelectDoctor}
-                  />
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* ── Our Consultants Section (Executive Redesign) ── */}
-          {consultantDoctors.length > 0 && (
+          {/* ── Specialist Doctors Showcase (Maulik, Shobit, Omkar) ── */}
+          {filteredDoctors.length > 0 && (
             <div 
               id="our-consultants" 
               className="consultants-section-wrapper"
               style={{ 
-                marginTop: seniorDoctors.length > 0 ? '4rem' : '0',
                 background: 'linear-gradient(180deg, #f8fafc 0%, #f0f7ff 100%)',
                 borderRadius: '24px',
                 border: '1px solid rgba(2, 132, 199, 0.18)',
                 boxShadow: '0 12px 36px rgba(10, 31, 68, 0.04)',
-                position: 'relative'
+                position: 'relative',
+                padding: '2.5rem 1.75rem'
               }}
             >
               {/* Top Section Header */}
@@ -312,15 +263,15 @@ export const Doctors: React.FC = () => {
                     letterSpacing: '0.06em' 
                   }}
                 >
-                  <Award size={15} /> Super-Specialist Advisory & Visiting Panel
+                  <Award size={15} /> Active Clinical Faculty & OPD Panel
                 </div>
                 
                 <h2 style={{ fontSize: '2.15rem', fontWeight: 800, color: 'var(--navy-primary)', margin: '0 0 0.85rem 0', lineHeight: 1.25 }}>
-                  Our <span style={{ color: 'var(--blue-brand)' }}>Consultants</span>
+                  Our Orthopedic <span style={{ color: 'var(--blue-brand)' }}>Consultant Surgeons</span>
                 </h2>
                 
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.96rem', lineHeight: 1.6, margin: '0 auto', maxWidth: '720px' }}>
-                  Distinguished super-specialist orthopedic surgeons bringing international surgical fellowships from the United Kingdom, Germany, South Korea, and Italy, advanced robotic joint replacements, and complex trauma reconstructions directly to SOS patients across Mumbai.
+                  Distinguished consultant orthopedic surgeons providing comprehensive clinical evaluations, advanced robotic joint replacements, complex trauma reconstructions, and minimally invasive spine care across all 4 SOS Mumbai centres.
                 </p>
               </div>
 
@@ -329,7 +280,7 @@ export const Doctors: React.FC = () => {
                 className="consultants-grid-3col"
                 style={{ display: 'grid' }}
               >
-                {consultantDoctors.map((doctor) => (
+                {filteredDoctors.map((doctor) => (
                   <ConsultantCard 
                     key={doctor.id} 
                     doctor={doctor} 
@@ -371,17 +322,17 @@ export const Doctors: React.FC = () => {
                   </div>
                   <div>
                     <div style={{ fontWeight: 800, fontSize: '0.98rem', color: 'var(--navy-primary)' }}>
-                      Need a Second Opinion for Complex Joint Replacement or Revision Surgery?
+                      Need a Second Opinion for Complex Joint Replacement or Spine Surgery?
                     </div>
                     <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', marginTop: '0.15rem' }}>
-                      Bring your X-rays and MRI scans for a dedicated evaluation by our super-specialist surgical panel.
+                      Bring your X-rays and MRI scans for a dedicated evaluation by our consultant surgeons across Kandivali, Malad, Borivali, and Goregaon.
                     </div>
                   </div>
                 </div>
 
                 <div style={{ display: 'flex', gap: '0.65rem', alignItems: 'center' }}>
                   <button
-                    onClick={() => handleSelectDoctor(consultantDoctors[0]?.id || '')}
+                    onClick={() => handleSelectDoctor(filteredDoctors[0]?.id || '')}
                     className="btn btn-primary btn-sm"
                     style={{ gap: '0.35rem', fontWeight: 800 }}
                   >
@@ -400,7 +351,7 @@ export const Doctors: React.FC = () => {
           )}
 
           {/* Empty Filter State */}
-          {seniorDoctors.length === 0 && consultantDoctors.length === 0 && (
+          {filteredDoctors.length === 0 && (
             <div style={{ textAlign: 'center', padding: '3rem 1rem', color: 'var(--text-secondary)' }}>
               <p style={{ fontSize: '1.05rem', fontWeight: 600 }}>No specialists found matching this filter.</p>
               <button onClick={() => setFilterMode('all')} className="btn btn-secondary btn-sm" style={{ marginTop: '0.75rem' }}>

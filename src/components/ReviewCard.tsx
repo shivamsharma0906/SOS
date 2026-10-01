@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Star, ShieldCheck, Stethoscope, CornerDownRight, ChevronDown, ChevronUp } from 'lucide-react';
+import { Star, ShieldCheck, Stethoscope, CornerDownRight, ChevronDown, ChevronUp, Camera } from 'lucide-react';
 import { Testimonial } from '../data/testimonials';
 import { GoogleIcon } from './GoogleIcon';
 
@@ -163,7 +163,7 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
               gap: '0.25rem'
             }}
           >
-            📷 {review.photosCount && review.photosCount > 1 ? `${review.photosCount} photos` : 'Photo'}
+            <Camera size={11} /> {review.photosCount && review.photosCount > 1 ? `${review.photosCount} photos` : 'Photo'}
           </span>
         )}
 

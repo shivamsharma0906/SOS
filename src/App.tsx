@@ -15,6 +15,9 @@ import { Contact } from './pages/Contact';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { Terms } from './pages/Terms';
 import { Mentors } from './pages/Mentors';
+import { XRayAtHome } from './pages/XRayAtHome';
+import { Physiotherapy } from './pages/Physiotherapy';
+import { HomeServices } from './pages/HomeServices';
 import { NotFound } from './pages/NotFound';
 
 // Scroll to top on navigation
@@ -40,6 +43,10 @@ export const App: React.FC = () => {
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/services/:slug" element={<ServiceDetail />} />
+          <Route path="/x-ray-services-at-home" element={<XRayAtHome />} />
+          <Route path="/x-ray-at-home" element={<XRayAtHome />} />
+          <Route path="/physiotherapy" element={<Physiotherapy />} />
+          <Route path="/home-services" element={<HomeServices />} />
           <Route path="/doctors" element={<Doctors />} />
           <Route path="/centres" element={<Centres />} />
           <Route path="/mentors" element={<Mentors />} />

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Phone, Mail, MapPin, Clock, ShieldCheck, ExternalLink, Calendar, CheckCircle2 } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, ShieldCheck, ExternalLink, Calendar, CheckCircle2, Activity } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
 import { EnquiryForm } from '../components/EnquiryForm';
 import { centresData } from '../data/centres';
@@ -254,7 +254,7 @@ export const Contact: React.FC = () => {
                   </div>
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#dc2626', fontWeight: 800, paddingTop: '0.25rem', fontSize: '0.84rem' }}>
-                    <span>🚨 24/7 Mobile Home X-Ray Dispatch Active Everyday</span>
+                    <Activity size={14} /> <span>24/7 Mobile Home X-Ray Dispatch Active Everyday</span>
                   </div>
                 </div>
               </div>
@@ -284,7 +284,7 @@ export const Contact: React.FC = () => {
                         transition: 'all 0.15s ease'
                       }}
                     >
-                      📍 {c.area} {c.type === 'outreach-clinic' ? '(Outreach)' : ''}
+                      {c.area} {c.type === 'outreach-clinic' ? '(Outreach)' : ''}
                     </button>
                   ))}
                 </div>
@@ -307,7 +307,7 @@ export const Contact: React.FC = () => {
                       </h4>
                       {activeCentreData.status === 'opening-soon' ? (
                         <span style={{ fontSize: '0.7rem', fontWeight: 800, backgroundColor: '#fef3c7', color: '#b45309', padding: '0.15rem 0.45rem', borderRadius: '4px' }}>
-                          🚧 Opening Soon
+                          Opening Soon
                         </span>
                       ) : activeCentreData.type === 'outreach-clinic' ? (
                         <span style={{ fontSize: '0.7rem', fontWeight: 800, backgroundColor: '#e0f2fe', color: '#0369a1', padding: '0.15rem 0.45rem', borderRadius: '4px' }}>
@@ -407,7 +407,7 @@ export const Contact: React.FC = () => {
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
                   <h3 style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--navy-primary)', margin: 0 }}>
-                    📍 {centre.area}
+                    {centre.area}
                   </h3>
                   {centre.type === 'outreach-clinic' ? (
                     <span style={{ fontSize: '0.7rem', fontWeight: 800, backgroundColor: '#fef3c7', color: '#b45309', padding: '0.15rem 0.45rem', borderRadius: '4px' }}>

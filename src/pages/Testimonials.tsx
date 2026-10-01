@@ -304,7 +304,7 @@ export const Testimonials: React.FC = () => {
                 transition: 'all 0.2s ease'
               }}
             >
-              ★ All Reviews ({testimonialsData.length})
+              All Reviews ({testimonialsData.length})
             </button>
 
             <button
@@ -322,7 +322,7 @@ export const Testimonials: React.FC = () => {
                 transition: 'all 0.2s ease'
               }}
             >
-              🦴 Knee Care ({testimonialsData.filter(r => r.category === 'knee').length})
+              Knee Care ({testimonialsData.filter(r => r.category === 'knee').length})
             </button>
 
             <button
@@ -340,7 +340,7 @@ export const Testimonials: React.FC = () => {
                 transition: 'all 0.2s ease'
               }}
             >
-              ⚡ Spine & Neck ({testimonialsData.filter(r => r.category === 'spine-neck').length})
+              Spine & Neck ({testimonialsData.filter(r => r.category === 'spine-neck').length})
             </button>
 
             <button
@@ -358,7 +358,7 @@ export const Testimonials: React.FC = () => {
                 transition: 'all 0.2s ease'
               }}
             >
-              🛡️ Trauma & X-Ray ({testimonialsData.filter(r => r.category === 'trauma-xray').length})
+              Trauma & X-Ray ({testimonialsData.filter(r => r.category === 'trauma-xray').length})
             </button>
 
             <button
@@ -376,7 +376,7 @@ export const Testimonials: React.FC = () => {
                 transition: 'all 0.2s ease'
               }}
             >
-              🏥 Orthopedic Care ({testimonialsData.filter(r => r.category === 'general').length})
+              General Orthopedics ({testimonialsData.filter(r => r.category === 'general').length})
             </button>
           </div>
 
@@ -790,7 +790,7 @@ export const Testimonials: React.FC = () => {
                           paddingTop: '1rem',
                           backgroundColor: '#ffffff'
                         }}
-                        className="faq-answer-body"
+                        className="faq-answer-body faq-answer-animated"
                       >
                         <p style={{ margin: 0 }}>
                           {faq.a}

@@ -160,7 +160,7 @@ export const Centres: React.FC = () => {
                   transition: 'all 0.2s ease'
                 }}
               >
-                📍 {centre.area} {centre.type === 'outreach-clinic' ? '(Outreach)' : 'Centre'}
+                {centre.area} {centre.type === 'outreach-clinic' ? '(Outreach)' : 'Centre'}
               </button>
             ))}
           </div>
