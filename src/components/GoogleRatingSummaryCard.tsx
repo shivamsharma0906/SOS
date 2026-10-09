@@ -71,7 +71,7 @@ export const GoogleRatingSummaryCard: React.FC<GoogleRatingSummaryCardProps> = (
           flexShrink: 0
         }}>
           <CheckCircle2 size={12} />
-          <span>Verified 5.0</span>
+          <span>Verified 4.9</span>
         </div>
       </div>
 
@@ -93,7 +93,7 @@ export const GoogleRatingSummaryCard: React.FC<GoogleRatingSummaryCardProps> = (
             ))}
           </div>
           <div style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--navy-primary)' }}>
-            100% 5-Star Experience
+            4.9★ Top-Rated Patient Experience
           </div>
           <div style={{ fontSize: '0.74rem', color: '#64748b' }}>
             Based on {googleReviewsSummary.totalReviews} genuine patient reviews
@@ -104,11 +104,11 @@ export const GoogleRatingSummaryCard: React.FC<GoogleRatingSummaryCardProps> = (
       {/* ── 3. Rating Breakdown Bars ── */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', backgroundColor: '#f8fafc', padding: '0.85rem 1rem', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
         {[
-          { stars: 5, count: 10, pct: 100 },
-          { stars: 4, count: 0, pct: 0 },
-          { stars: 3, count: 0, pct: 0 },
-          { stars: 2, count: 0, pct: 0 },
-          { stars: 1, count: 0, pct: 0 }
+          { stars: 5, count: googleReviewsSummary.ratingBreakdown[5], pct: Math.round((googleReviewsSummary.ratingBreakdown[5] / googleReviewsSummary.totalReviews) * 100) },
+          { stars: 4, count: googleReviewsSummary.ratingBreakdown[4], pct: Math.round((googleReviewsSummary.ratingBreakdown[4] / googleReviewsSummary.totalReviews) * 100) },
+          { stars: 3, count: googleReviewsSummary.ratingBreakdown[3], pct: Math.round((googleReviewsSummary.ratingBreakdown[3] / googleReviewsSummary.totalReviews) * 100) },
+          { stars: 2, count: googleReviewsSummary.ratingBreakdown[2], pct: Math.round((googleReviewsSummary.ratingBreakdown[2] / googleReviewsSummary.totalReviews) * 100) },
+          { stars: 1, count: googleReviewsSummary.ratingBreakdown[1], pct: Math.round((googleReviewsSummary.ratingBreakdown[1] / googleReviewsSummary.totalReviews) * 100) }
         ].map(item => (
           <div key={item.stars} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.73rem' }}>
             <span style={{ width: '38px', color: '#475569', fontWeight: 600 }}>{item.stars} star</span>

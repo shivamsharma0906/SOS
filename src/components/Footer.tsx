@@ -105,7 +105,7 @@ export const Footer: React.FC = () => {
                 { name: 'Surgical Mentors', path: '/mentors' },
                 { name: 'Doorstep Home Services', path: '/home-services' },
                 { name: 'Centres & Outreach', path: '/centres' },
-                { name: 'Patient Reviews', path: '/testimonials' },
+                { name: 'Orthopedic Health Blog', path: '/blog' },
                 { name: 'Book Priority OPD', path: '/contact' }
               ].map(link => (
                 <li key={link.path}>
@@ -250,7 +250,7 @@ export const Footer: React.FC = () => {
                   { name: 'Mentors', path: '/mentors' },
                   { name: 'Home Services', path: '/home-services' },
                   { name: 'Centres', path: '/centres' },
-                  { name: 'Reviews', path: '/testimonials' }
+                  { name: 'Health Blog', path: '/blog' }
                 ].map(item => (
                   <li key={item.path}>
                     <Link to={item.path} style={{ color: '#cbd5e1', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', transition: 'color 0.2s ease' }}>

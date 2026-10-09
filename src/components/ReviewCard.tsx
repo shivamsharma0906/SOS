@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Star, ShieldCheck, Stethoscope, CornerDownRight, ChevronDown, ChevronUp, Camera } from 'lucide-react';
+import { Star, ShieldCheck, Stethoscope, ChevronDown, ChevronUp, Camera, MapPin } from 'lucide-react';
 import { Testimonial } from '../data/testimonials';
 import { GoogleIcon } from './GoogleIcon';
 
@@ -26,9 +26,9 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
   const theme = getAvatarTheme(review.patientName);
   const initial = review.patientName.charAt(0).toUpperCase() || 'P';
 
-  const isLongComment = review.comment.length > 200;
+  const isLongComment = review.comment.length > 360;
   const displayComment = isLongComment && !isExpanded
-    ? `${review.comment.slice(0, 195)}...`
+    ? `${review.comment.slice(0, 350)}...`
     : review.comment;
 
   return (
@@ -242,44 +242,26 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
         )}
       </div>
 
-      {/* ── 4. Nested Owner Response (if available) ── */}
-      {review.ownerResponse && (
-        <div
-          style={{
-            backgroundColor: '#f8fafc',
-            border: '1px solid #e2e8f0',
-            borderLeft: '3px solid var(--blue-brand)',
-            borderRadius: '10px',
-            padding: '0.85rem 0.95rem',
-            fontSize: '0.8rem',
-            lineHeight: 1.5,
-            color: '#475569',
-            marginTop: '0.25rem'
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.35rem', flexWrap: 'wrap', gap: '0.35rem' }}>
-            <div style={{ 
-              fontWeight: 800, 
-              color: 'var(--navy-primary)', 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: '0.35rem', 
-              fontSize: '0.74rem',
-              textTransform: 'uppercase',
-              letterSpacing: '0.04em',
-              whiteSpace: 'nowrap'
-            }}>
-              <CornerDownRight size={13} color="var(--blue-brand)" /> Response from the owner
-            </div>
-            <span style={{ fontSize: '0.68rem', color: '#94a3b8', fontWeight: 600, whiteSpace: 'nowrap' }}>
-              {review.ownerResponse.timeAgo}
-            </span>
-          </div>
-          <p style={{ margin: 0, color: '#475569', fontSize: '0.79rem' }}>
-            {review.ownerResponse.text}
-          </p>
+      {/* ── 4. Card Bottom Footer: Clinic Location & Verification ── */}
+      <div 
+        style={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'space-between', 
+          paddingTop: '0.75rem', 
+          borderTop: '1px solid #f1f5f9',
+          fontSize: '0.72rem',
+          color: '#64748b',
+          fontWeight: 600,
+          marginTop: 'auto'
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+          <MapPin size={11} color="var(--blue-brand)" />
+          <span>SOS Kandivali West</span>
         </div>
-      )}
+        
+      </div>
     </div>
   );
 };

@@ -101,8 +101,8 @@ export const Centres: React.FC = () => {
                 <Star size={20} fill="#b45309" />
               </div>
               <div>
-                <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#b45309', lineHeight: 1 }}>5.0★</div>
-                <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', fontWeight: 600, marginTop: '0.15rem' }}>5-Star Google Rating</div>
+                <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#b45309', lineHeight: 1 }}>4.9★</div>
+                <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', fontWeight: 600, marginTop: '0.15rem' }}>33 Google Reviews</div>
               </div>
             </div>
 

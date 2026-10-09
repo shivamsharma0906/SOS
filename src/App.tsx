@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { WhatsAppFloatButton } from './components/WhatsAppFloatButton';
@@ -10,7 +10,7 @@ import { Services } from './pages/Services';
 import { ServiceDetail } from './pages/ServiceDetail';
 import { Doctors } from './pages/Doctors';
 import { Centres } from './pages/Centres';
-import { Testimonials } from './pages/Testimonials';
+import { Blog } from './pages/Blog';
 import { Contact } from './pages/Contact';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { Terms } from './pages/Terms';
@@ -50,7 +50,9 @@ export const App: React.FC = () => {
           <Route path="/doctors" element={<Doctors />} />
           <Route path="/centres" element={<Centres />} />
           <Route path="/mentors" element={<Mentors />} />
-          <Route path="/testimonials" element={<Testimonials />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blogs" element={<Blog />} />
+          <Route path="/testimonials" element={<Navigate to="/blog" replace />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<Terms />} />

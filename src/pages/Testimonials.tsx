@@ -80,8 +80,8 @@ export const Testimonials: React.FC = () => {
   return (
     <>
       <SEOHead
-        title="Patient Reviews & 5.0★ Google Ratings | SOS Speciality Orthopedic Clinic"
-        description="Explore 100% verified 5-star Google reviews for SOS Speciality Orthopedic Clinic in Kandivali West, Mumbai. Expert knee care, spine relief, robotic joint surgery, and in-house X-rays."
+        title="Patient Reviews & 4.9★ Google Ratings | SOS Speciality Orthopedic Clinic"
+        description="Explore verified 4.9-star Google reviews (33 patient reviews) for SOS Speciality Orthopedic Clinic in Kandivali West, Mumbai. Expert knee care, spine relief, robotic joint surgery, and in-house X-rays."
         canonicalUrl={`${BUSINESS_INFO.website}/testimonials`}
       />
 
@@ -126,7 +126,7 @@ export const Testimonials: React.FC = () => {
                 borderRadius: 'var(--radius-pill)', 
                 fontWeight: 800 
               }}>
-                5.0 ★★★★★
+                4.9 ★★★★★
               </span>
             </div>
 
@@ -190,7 +190,7 @@ export const Testimonials: React.FC = () => {
                 <GoogleIcon size={24} />
               </div>
               <div>
-                <div style={{ fontSize: '1.4rem', fontWeight: 900, color: 'var(--navy-primary)', lineHeight: 1.1 }}>5.0 / 5.0</div>
+                <div style={{ fontSize: '1.4rem', fontWeight: 900, color: 'var(--navy-primary)', lineHeight: 1.1 }}>4.9 / 5.0</div>
                 <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', fontWeight: 600 }}>Google Business Rating</div>
               </div>
             </div>
@@ -205,15 +205,15 @@ export const Testimonials: React.FC = () => {
                   color: 'var(--blue-brand)', 
                   display: 'flex', 
                   alignItems: 'center', 
-                  justifyContent: 'center',
+                  justifyContent: 'center', 
                   flexShrink: 0 
                 }}
               >
                 <Award size={24} />
               </div>
               <div>
-                <div style={{ fontSize: '1.4rem', fontWeight: 900, color: 'var(--navy-primary)', lineHeight: 1.1 }}>100%</div>
-                <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', fontWeight: 600 }}>5-Star Satisfaction Rate</div>
+                <div style={{ fontSize: '1.4rem', fontWeight: 900, color: 'var(--navy-primary)', lineHeight: 1.1 }}>33</div>
+                <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', fontWeight: 600 }}>Google Patient Reviews</div>
               </div>
             </div>
 

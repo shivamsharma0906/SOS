@@ -100,28 +100,7 @@ export const CentreCard: React.FC<CentreCardProps> = ({ centre }) => {
           <span>{isOutreach ? 'Outreach Clinic' : `${centre.area} Centre`}</span>
         </div>
 
-        {/* Top-Right: Operational Status Badge */}
-        <div style={{
-          position: 'absolute',
-          top: '0.65rem',
-          right: '0.65rem',
-          backgroundColor: isUpcoming ? 'rgba(217, 119, 6, 0.95)' : (isOutreach ? 'rgba(2, 132, 199, 0.95)' : 'rgba(7, 21, 46, 0.88)'),
-          backdropFilter: 'blur(8px)',
-          color: '#ffffff',
-          padding: '0.25rem 0.65rem',
-          borderRadius: '9999px',
-          fontSize: '0.68rem',
-          fontWeight: 800,
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.35rem',
-          border: '1px solid rgba(255, 255, 255, 0.2)',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
-          zIndex: 2
-        }}>
-          <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: isUpcoming ? '#fbbf24' : '#22c55e', display: 'inline-block', boxShadow: `0 0 0 2px ${isUpcoming ? 'rgba(251, 191, 36, 0.35)' : 'rgba(34, 197, 94, 0.35)'}` }} />
-          <span>{isUpcoming ? 'Opening Soon' : (isOutreach ? '' : 'OPD Open Today')}</span>
-        </div>
+
 
         {/* Photo / Map Toggle Button Bar */}
         <div style={{

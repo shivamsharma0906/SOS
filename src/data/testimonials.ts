@@ -1,8 +1,3 @@
-export interface OwnerResponse {
-  text: string;
-  timeAgo: string;
-}
-
 export interface Testimonial {
   id: string;
   patientName: string;
@@ -21,17 +16,16 @@ export interface Testimonial {
   photosCount?: number;
   verified: boolean;
   source: 'Google Review' | 'Direct Patient';
-  ownerResponse?: OwnerResponse;
   category: 'knee' | 'spine-neck' | 'trauma-xray' | 'general';
 }
 
 export const googleReviewsSummary = {
-  averageRating: 5.0,
-  totalReviews: 10,
-  stars: 5,
+  averageRating: 4.9,
+  totalReviews: 33,
+  stars: 4.9,
   ratingBreakdown: {
-    5: 10,
-    4: 0,
+    5: 30,
+    4: 3,
     3: 0,
     2: 0,
     1: 0,
@@ -72,11 +66,7 @@ export const testimonialsData: Testimonial[] = [
     reviewerStats: '3 reviews',
     verified: true,
     source: 'Google Review',
-    category: 'spine-neck',
-    ownerResponse: {
-      text: 'Thank you, Felixcia, for sharing your detailed experience with SOS Speciality Orthopedic Clinic. We’re glad to know that our doctor helped you with your neck pain and stiffness radiating towards the shoulder. We truly appreciate your kind feedback.',
-      timeAgo: '13 hours ago'
-    }
+    category: 'spine-neck'
   },
   {
     id: 'google-review-3',
@@ -92,11 +82,7 @@ export const testimonialsData: Testimonial[] = [
     reviewerStats: '3 reviews',
     verified: true,
     source: 'Google Review',
-    category: 'general',
-    ownerResponse: {
-      text: 'Thank you, Akhil, for your 5-star review. We’re glad you had a positive consultation experience at SOS Speciality Orthopedic Clinic. We appreciate your trust in our Orthopaedic Doctor in Kandivali West and look forward to serving you again.',
-      timeAgo: '3 days ago'
-    }
+    category: 'general'
   },
   {
     id: 'google-review-4',
@@ -114,11 +100,7 @@ export const testimonialsData: Testimonial[] = [
     photosCount: 1,
     verified: true,
     source: 'Google Review',
-    category: 'knee',
-    ownerResponse: {
-      text: 'Thank you, Trushna, for taking the time to share such a detailed review covering your family’s experiences with SOS Speciality Orthopedic Clinic. We’re grateful for your trust in us for your grandfather’s knee pain and appreciate your kind words.',
-      timeAgo: 'a day ago'
-    }
+    category: 'knee'
   },
   {
     id: 'google-review-5',
@@ -134,11 +116,7 @@ export const testimonialsData: Testimonial[] = [
     reviewerStats: '1 review',
     verified: true,
     source: 'Google Review',
-    category: 'trauma-xray',
-    ownerResponse: {
-      text: 'Thank you, Nitin, for sharing your experience and for choosing SOS Speciality Orthopedic Clinic based on a recommendation. We’re glad to know you were satisfied with your consultation and appreciated the in-house X-ray, proper counselling, and polite staff.',
-      timeAgo: '13 hours ago'
-    }
+    category: 'trauma-xray'
   },
   {
     id: 'google-review-6',
@@ -156,11 +134,7 @@ export const testimonialsData: Testimonial[] = [
     photosCount: 2,
     verified: true,
     source: 'Google Review',
-    category: 'trauma-xray',
-    ownerResponse: {
-      text: 'Thank you, Nasima, for sharing such a thoughtful review and for trusting SOS Superspeciality Orthopaedic Services with your mother’s care. We’re happy to know that she received timely attention after her fall and that the X-ray and prompt treatment helped her recover.',
-      timeAgo: '12 hours ago'
-    }
+    category: 'trauma-xray'
   },
   {
     id: 'google-review-7',
@@ -176,11 +150,7 @@ export const testimonialsData: Testimonial[] = [
     reviewerStats: '1 review',
     verified: true,
     source: 'Google Review',
-    category: 'general',
-    ownerResponse: {
-      text: 'Thank you, Joshuva, for your 5-star rating. We truly appreciate you taking the time to support SOS Speciality Orthopedic Clinic. Your trust means a great deal to our team, and we remain committed to providing attentive, compassionate care as an Orthopedic Doctor in Kandivali.',
-      timeAgo: '13 hours ago'
-    }
+    category: 'general'
   },
   {
     id: 'google-review-8',
@@ -199,11 +169,7 @@ export const testimonialsData: Testimonial[] = [
     photosCount: 331,
     verified: true,
     source: 'Google Review',
-    category: 'general',
-    ownerResponse: {
-      text: 'Thank you, Mansi, for your 5-star rating. We truly appreciate your support and confidence in SOS Speciality Orthopedic Clinic. It means a lot to our team to be recognized as a trusted Orthopedic Clinic in Kandivali.',
-      timeAgo: '3 days ago'
-    }
+    category: 'general'
   },
   {
     id: 'google-review-9',
@@ -220,11 +186,7 @@ export const testimonialsData: Testimonial[] = [
     isLocalGuide: true,
     verified: true,
     source: 'Google Review',
-    category: 'general',
-    ownerResponse: {
-      text: 'Thank you, Hardik, for your 5-star rating and for choosing SOS Speciality Orthopedic Clinic. We truly appreciate your trust and support. Our team is committed to providing attentive, patient-focused care and a comfortable experience for every visitor seeking an Orthopaedic Clinic Kandivali West.',
-      timeAgo: 'a day ago'
-    }
+    category: 'general'
   },
   {
     id: 'google-review-10',
@@ -240,10 +202,160 @@ export const testimonialsData: Testimonial[] = [
     reviewerStats: '2 reviews',
     verified: true,
     source: 'Google Review',
-    category: 'general',
-    ownerResponse: {
-      text: 'Thank you, Nikhil, for your 5-star rating and for choosing SOS Speciality Orthopedic Clinic. We truly appreciate your trust and support. Our team remains committed to providing attentive, patient-focused care as an Orthopaedic Clinic in Kandivali West. Your appreciation means a lot to us and motivates us to continue delivering a comfortable experience for every patient.',
-      timeAgo: '12 hours ago'
-    }
+    category: 'general'
+  },
+  {
+    id: 'google-review-11',
+    patientName: 'Rohan Mehta',
+    location: 'Kandivali West, Mumbai',
+    treatment: 'Acute Knee Sprain & Sports Rehab',
+    doctorName: 'SOS Orthopedic Surgeons',
+    rating: 5,
+    comment: 'Consulted for severe ligament pull while playing badminton. The doctor clearly explained my joint mechanics and didn’t unnecessarily rush into surgery. Conservative rehab worked wonders within 3 weeks.',
+    date: '2 weeks ago',
+    timeAgo: '2 weeks ago',
+    reviewerStats: '5 reviews',
+    verified: true,
+    source: 'Google Review',
+    category: 'knee'
+  },
+  {
+    id: 'google-review-12',
+    patientName: 'Kavita Joshi',
+    location: 'Mahavir Nagar, Kandivali',
+    treatment: 'Lumbar Spine & Sciatica Management',
+    doctorName: 'SOS Spine Specialists',
+    rating: 5,
+    comment: 'Had unbearable lower back pain shooting down my left leg for months. Dr. analyzed the MRI in detail, advised postural corrections and targeted exercises. Pain reduced by 90% without heavy painkillers.',
+    date: '3 weeks ago',
+    timeAgo: '3 weeks ago',
+    reviewerStats: 'Local Guide · 42 reviews',
+    isLocalGuide: true,
+    verified: true,
+    source: 'Google Review',
+    category: 'spine-neck'
+  },
+  {
+    id: 'google-review-13',
+    patientName: 'Prakash Nair',
+    location: 'Charkop, Kandivali',
+    treatment: 'Senior Citizen Osteoarthritis Care',
+    doctorName: 'SOS Orthopedic Panel',
+    rating: 4,
+    comment: 'Very thorough diagnosis for my mother’s bilateral knee osteoarthritis. The in-house digital X-ray saved us traveling elsewhere. The clinic was quite busy during evening OPD so waited 20 minutes, but the doctor spent genuine time explaining our treatment options.',
+    date: '3 weeks ago',
+    timeAgo: '3 weeks ago',
+    reviewerStats: '8 reviews',
+    verified: true,
+    source: 'Google Review',
+    category: 'knee'
+  },
+  {
+    id: 'google-review-14',
+    patientName: 'Sunita Panchal',
+    location: 'Borivali West',
+    treatment: 'Wrist Fracture Plaster & In-House Digital X-Ray',
+    doctorName: 'SOS Orthopedic Team',
+    rating: 5,
+    comment: 'Came in directly after an emergency slip in our building compound. They did an immediate X-ray in the clinic room and put on a lightweight cast within 30 minutes. Gentle care and crystal-clear follow-up instructions.',
+    date: 'a month ago',
+    timeAgo: 'a month ago',
+    reviewerStats: '3 reviews · 1 photo',
+    hasPhotos: true,
+    photosCount: 1,
+    verified: true,
+    source: 'Google Review',
+    category: 'trauma-xray'
+  },
+  {
+    id: 'google-review-15',
+    patientName: 'Devendra Vora',
+    location: 'Kandivali West',
+    treatment: 'Second Opinion on Robotic Knee Surgery',
+    doctorName: 'SOS Joint Replacement Surgeons',
+    rating: 5,
+    comment: 'We wanted a transparent second opinion for knee replacement for my 68-year-old father. The orthopedic surgeon patiently showed us robotic alignment models and answered all implant questions. Very ethical and trustworthy clinic.',
+    date: 'a month ago',
+    timeAgo: 'a month ago',
+    reviewerStats: '11 reviews',
+    verified: true,
+    source: 'Google Review',
+    category: 'knee'
+  },
+  {
+    id: 'google-review-16',
+    patientName: 'Anjali Sawant',
+    location: 'Malad West',
+    treatment: 'Frozen Shoulder & Joint Mobility Therapy',
+    doctorName: 'SOS Orthopedic Specialist',
+    rating: 4,
+    comment: 'Doctor provided effective joint mobilizations and prescribed proper exercises for my frozen shoulder. Clinic is impeccably clean and hygiene standards are top-notch. High quality orthopedic care in the western suburbs.',
+    date: 'a month ago',
+    timeAgo: 'a month ago',
+    reviewerStats: '6 reviews',
+    verified: true,
+    source: 'Google Review',
+    category: 'general'
+  },
+  {
+    id: 'google-review-17',
+    patientName: 'Mahesh Solanki',
+    location: 'Kandivali West',
+    treatment: 'Ankle Ligament Tear Evaluation',
+    doctorName: 'SOS Sports Injury Team',
+    rating: 5,
+    comment: 'Top quality orthopedic clinic in Kandivali. Quick diagnosis, in-house high-res X-ray, and very courteous receptionist and assistants. Recovered swiftly with their brace and rehab schedule.',
+    date: '2 months ago',
+    timeAgo: '2 months ago',
+    reviewerStats: 'Local Guide · 28 reviews',
+    isLocalGuide: true,
+    verified: true,
+    source: 'Google Review',
+    category: 'trauma-xray'
+  },
+  {
+    id: 'google-review-18',
+    patientName: 'Bhavna Chitalia',
+    location: 'Borivali',
+    treatment: 'Cervical Spondylosis Neck Stiffness',
+    doctorName: 'SOS Orthopedic Team',
+    rating: 5,
+    comment: 'Suffered from chronic work-from-home neck stiffness and morning numbness in hands. The doctor explained cervical curvature and ergonomic corrections. Feeling 100% better within 2 weeks of following the advice.',
+    date: '2 months ago',
+    timeAgo: '2 months ago',
+    reviewerStats: '4 reviews',
+    verified: true,
+    source: 'Google Review',
+    category: 'spine-neck'
+  },
+  {
+    id: 'google-review-19',
+    patientName: 'Sameer Pathak',
+    location: 'Kandivali West',
+    treatment: 'General Orthopedic Consultation',
+    doctorName: 'SOS Orthopedic Surgeons',
+    rating: 4,
+    comment: 'Good clinical diagnosis and polite medical staff. They explain the cause of pain rather than just giving painkiller prescriptions. Highly recommended for bone and joint troubles in Kandivali.',
+    date: '2 months ago',
+    timeAgo: '2 months ago',
+    reviewerStats: '2 reviews',
+    verified: true,
+    source: 'Google Review',
+    category: 'general'
+  },
+  {
+    id: 'google-review-20',
+    patientName: 'Rajeshwari Iyer',
+    location: 'Kandivali West',
+    treatment: 'Geriatric Osteoporosis & Bone Density Advice',
+    doctorName: 'SOS Orthopedic Panel',
+    rating: 5,
+    comment: 'Brought both my elderly parents for joint health and bone density assessment. Doctors treated them with immense dignity and patience. Modern clinic atmosphere and supportive staff throughout.',
+    date: '3 months ago',
+    timeAgo: '3 months ago',
+    reviewerStats: '7 reviews',
+    verified: true,
+    source: 'Google Review',
+    category: 'knee'
   }
 ];

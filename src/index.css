@@ -1266,4 +1266,48 @@ html, body {
   transform: scale(0.97) !important;
 }
 
+/* ==========================================================================
+   Blog & Clinical Insights Hub Styles
+   ========================================================================== */
+.blog-card {
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease !important;
+}
 
+.blog-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 16px 36px rgba(10, 31, 68, 0.12) !important;
+  border-color: rgba(2, 132, 199, 0.35) !important;
+}
+
+.blog-title-link {
+  transition: color 0.2s ease;
+}
+
+.blog-title-link:hover {
+  color: var(--blue-brand) !important;
+}
+
+.featured-article-card {
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.featured-article-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 45px rgba(10, 31, 68, 0.12) !important;
+}
+
+/* Reader Modal Animation */
+@keyframes readerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.blog-reader-card {
+  animation: readerFadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

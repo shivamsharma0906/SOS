@@ -186,7 +186,7 @@ export const Hero: React.FC = () => {
               <span style={{ color: '#94a3b8' }}>•</span>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
                 <Star size={13} fill="#f59e0b" color="#f59e0b" />
-                <span><strong>5.0★</strong> Google Reviews</span>
+                <span><strong>4.9★</strong> Google Reviews</span>
               </div>
             </div>
 
@@ -279,8 +279,8 @@ export const Hero: React.FC = () => {
               <div style={{ display: 'flex', color: '#fbbc04' }}>
                 <Star size={16} fill="#fbbc04" />
               </div>
-              <span style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--navy-primary)' }}>5.0</span>
-              <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', fontWeight: 600 }}>(10 Google Reviews)</span>
+              <span style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--navy-primary)' }}>4.9</span>
+              <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', fontWeight: 600 }}>(33 Google Reviews)</span>
             </div>
 
           </div>
