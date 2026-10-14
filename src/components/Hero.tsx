@@ -11,7 +11,7 @@ export const Hero: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section 
+    <section
       style={{
         position: 'relative',
         background: 'linear-gradient(180deg, #ffffff 0%, #f0f6fc 50%, #e8f1fa 100%)',
@@ -26,7 +26,7 @@ export const Hero: React.FC = () => {
       className="hero-section"
     >
       {/* Ambient Radial Background Accents */}
-      <div 
+      <div
         style={{
           position: 'absolute',
           top: '-10%',
@@ -39,7 +39,7 @@ export const Hero: React.FC = () => {
           zIndex: 0
         }}
       />
-      <div 
+      <div
         style={{
           position: 'absolute',
           bottom: '-15%',
@@ -61,24 +61,24 @@ export const Hero: React.FC = () => {
       {/* Full-Screen Fluid Container */}
       <div className="hero-wide-container" style={{ position: 'relative', zIndex: 2, width: '100%', margin: '0 auto' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1.15fr 0.85fr', gap: '3.5rem', alignItems: 'center' }} className="hero-grid">
-          
+
           {/* ── Left Column: Copy & Actions ── */}
           <div className="animate-fade-in hero-copy-col">
-            
+
             {/* Top Badge (Single icon + single concise text line) */}
-            <div 
-              style={{ 
-                display: 'inline-flex', 
-                alignItems: 'center', 
-                gap: '0.45rem', 
-                padding: '0.35rem 0.95rem', 
-                backgroundColor: 'rgba(2, 132, 199, 0.08)', 
-                color: 'var(--blue-brand)', 
-                fontWeight: 700, 
-                fontSize: '0.82rem', 
-                borderRadius: 'var(--radius-pill)', 
-                border: '1px solid rgba(2, 132, 199, 0.25)', 
-                textTransform: 'uppercase', 
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.45rem',
+                padding: '0.35rem 0.95rem',
+                backgroundColor: 'rgba(2, 132, 199, 0.08)',
+                color: 'var(--blue-brand)',
+                fontWeight: 700,
+                fontSize: '0.82rem',
+                borderRadius: 'var(--radius-pill)',
+                border: '1px solid rgba(2, 132, 199, 0.25)',
+                textTransform: 'uppercase',
                 letterSpacing: '0.05em',
                 marginBottom: '1.25rem',
                 boxShadow: '0 2px 8px rgba(2, 132, 199, 0.06)'
@@ -92,7 +92,7 @@ export const Hero: React.FC = () => {
             {/* Expansive Headline */}
             <h1 className="hero-title" style={{ color: 'var(--navy-primary)', marginBottom: '1.25rem', lineHeight: 1.15, fontWeight: 800 }}>
               Relief for Bone, Joint, <br className="hidden-mobile" />
-              <span style={{ 
+              <span style={{
                 background: 'linear-gradient(135deg, var(--navy-primary) 0%, var(--blue-brand) 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
@@ -103,12 +103,12 @@ export const Hero: React.FC = () => {
             </h1>
 
             {/* Subtitle */}
-            <p 
+            <p
               className="hero-subhead"
-              style={{ 
-                color: 'var(--text-secondary)', 
-                marginBottom: '1.75rem', 
-                lineHeight: 1.65, 
+              style={{
+                color: 'var(--text-secondary)',
+                marginBottom: '1.75rem',
+                lineHeight: 1.65,
                 fontSize: '1.12rem',
                 maxWidth: '680px',
                 textAlign: 'left'
@@ -118,16 +118,16 @@ export const Hero: React.FC = () => {
             </p>
 
             {/* Micro Trust Feature Badges */}
-            <div 
+            <div
               className="hero-trust-badges"
-              style={{ 
-                display: 'flex', 
-                gap: '0.75rem 1.5rem', 
-                flexWrap: 'wrap', 
-                marginBottom: '2.25rem', 
-                fontSize: '0.92rem', 
+              style={{
+                display: 'flex',
+                gap: '0.75rem 1.5rem',
+                flexWrap: 'wrap',
+                marginBottom: '2.25rem',
+                fontSize: '0.92rem',
                 color: 'var(--navy-primary)',
-                fontWeight: 700 
+                fontWeight: 700
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', backgroundColor: 'rgba(255, 255, 255, 0.85)', padding: '0.4rem 0.85rem', borderRadius: 'var(--radius-pill)', border: '1px solid rgba(10, 31, 68, 0.08)', boxShadow: '0 2px 6px rgba(10, 31, 68, 0.04)' }}>
@@ -146,7 +146,7 @@ export const Hero: React.FC = () => {
 
             {/* CTA Buttons Group */}
             <div className="hero-cta-group" style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
-              <button 
+              <button
                 onClick={() => setIsModalOpen(true)}
                 className="btn btn-primary btn-lg"
                 style={{ padding: '0.9rem 2rem', fontSize: '1.02rem', boxShadow: '0 8px 24px rgba(2, 132, 199, 0.35)' }}
@@ -154,7 +154,7 @@ export const Hero: React.FC = () => {
                 <Calendar size={20} /> Book Appointment
               </button>
 
-              <Link 
+              <Link
                 to="/services"
                 className="btn btn-secondary btn-lg"
                 style={{ padding: '0.9rem 1.85rem', fontSize: '1.02rem', gap: '0.5rem', backgroundColor: '#ffffff' }}
@@ -164,7 +164,7 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Mobile-Only Compact Social Proof Row (Plain text + icons, no blur/glass effect, visually muted) */}
-            <div 
+            <div
               className="hero-mobile-social-proof mobile-flex"
               style={{
                 display: 'none',
@@ -186,7 +186,7 @@ export const Hero: React.FC = () => {
               <span style={{ color: '#94a3b8' }}>•</span>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
                 <Star size={13} fill="#f59e0b" color="#f59e0b" />
-                <span><strong>4.9★</strong> Google Reviews</span>
+                <span><strong>4.5+★</strong> Google Reviews</span>
               </div>
             </div>
 
@@ -194,13 +194,13 @@ export const Hero: React.FC = () => {
 
           {/* ── Right Column: Grand Visual with 2 High-End Floating Glass Badges ── */}
           <div className="hero-visual-col" style={{ position: 'relative' }}>
-            
+
             {/* Main Visual Frame with Soft Glow & Depth */}
-            <div 
-              style={{ 
-                position: 'relative', 
-                borderRadius: '24px', 
-                overflow: 'hidden', 
+            <div
+              style={{
+                position: 'relative',
+                borderRadius: '24px',
+                overflow: 'hidden',
                 boxShadow: '0 24px 60px rgba(10, 31, 68, 0.18)',
                 border: '4px solid #ffffff'
               }}
@@ -217,7 +217,7 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Floating Glass Panel: Patients Treated (Bottom Left) */}
-            <div 
+            <div
               className="glass-panel-light animate-float-up desktop-only"
               style={{
                 position: 'absolute',
@@ -235,7 +235,7 @@ export const Hero: React.FC = () => {
                 zIndex: 4
               }}
             >
-              <div 
+              <div
                 style={{
                   width: '50px',
                   height: '50px',
@@ -257,7 +257,7 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Floating Rating Badge (Top Right) */}
-            <div 
+            <div
               className="glass-panel-light animate-float-down desktop-only"
               style={{
                 position: 'absolute',
@@ -279,7 +279,7 @@ export const Hero: React.FC = () => {
               <div style={{ display: 'flex', color: '#fbbc04' }}>
                 <Star size={16} fill="#fbbc04" />
               </div>
-              <span style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--navy-primary)' }}>4.9</span>
+              <span style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--navy-primary)' }}>4.5+</span>
               <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', fontWeight: 600 }}>(33 Google Reviews)</span>
             </div>
 
@@ -287,10 +287,10 @@ export const Hero: React.FC = () => {
         </div>
       </div>
 
-      <AppointmentModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        defaultService={servicesData[0]?.id} 
+      <AppointmentModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        defaultService={servicesData[0]?.id}
       />
 
       <style>{`

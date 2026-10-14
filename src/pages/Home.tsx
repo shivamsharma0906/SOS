@@ -8,14 +8,15 @@ import { ServicesCards } from '../components/ServicesCards';
 import { DoctorCard } from '../components/DoctorCard';
 import { CentreCard } from '../components/CentreCard';
 import { TestimonialCarousel } from '../components/TestimonialCarousel';
-import { EnquiryForm } from '../components/EnquiryForm';
+import { AppointmentModal } from '../components/AppointmentModal';
 import { doctorsData } from '../data/doctors';
 import { centresData } from '../data/centres';
 import { InfoVideo } from '../components/InfoVideo';
 import { BUSINESS_INFO } from '../config/business';
 
 export const Home: React.FC = () => {
-  const [selectedDoctorForForm, setSelectedDoctorForForm] = useState('');
+  const [isAppointmentOpen, setIsAppointmentOpen] = useState(false);
+  const [selectedDoctor, setSelectedDoctor] = useState('');
 
   return (
     <>
@@ -66,7 +67,10 @@ export const Home: React.FC = () => {
               <DoctorCard 
                 key={doctor.id} 
                 doctor={doctor} 
-                onSelectDoctor={(docId) => setSelectedDoctorForForm(docId)}
+                onSelectDoctor={() => {
+                  setSelectedDoctor(doctor.name);
+                  setIsAppointmentOpen(true);
+                }}
               />
             ))}
           </div>
@@ -121,16 +125,11 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 8. Priority Consultation Booking (Original Form Destination) */}
-      <section style={{ padding: '4.5rem 0' }} id="book-consultation" className="section-tint">
-        <div className="container container-narrow">
-          <EnquiryForm
-            defaultDoctor={selectedDoctorForForm}
-            title="Book Your Priority Orthopedic Consultation"
-            subtitle="Schedule an appointment at your nearest SOS Centre or request a 24/7 Home X-Ray visit."
-          />
-        </div>
-      </section>
+      <AppointmentModal
+        isOpen={isAppointmentOpen}
+        onClose={() => setIsAppointmentOpen(false)}
+        defaultDoctor={selectedDoctor}
+      />
     </>
   );
 };

@@ -55,6 +55,7 @@ export const CentreCard: React.FC<CentreCardProps> = ({ centre }) => {
               width: '100%',
               height: '100%',
               objectFit: 'cover',
+              objectPosition: centre.imagePosition || 'center center',
               filter: 'brightness(0.92)',
               display: 'block',
               transition: 'transform 0.4s ease'

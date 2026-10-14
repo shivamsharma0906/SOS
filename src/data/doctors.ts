@@ -1,6 +1,5 @@
 // SCALABILITY & DATA NOTE:
-// Replace TODO fields with real credentials, biographies, registration numbers, and photos
-// as they are supplied. Doctors data array is scalable and consumed across all doctor cards,
+// Doctors data array is scalable and consumed across all doctor cards,
 // filter pages, and enquiry modals.
 
 export interface Doctor {
@@ -21,6 +20,7 @@ export interface Doctor {
   degrees?: string[];
   fellowships?: string[];
   honorBadge?: string;
+  imagePosition?: string;
 }
 
 export const doctorsData: Doctor[] = [
@@ -31,7 +31,8 @@ export const doctorsData: Doctor[] = [
     qualifications: 'MBBS, D Orth, Fellowship in Hip & Knee Arthroplasty (Mumbai), Fellowship in Trauma and Ilizarov Surgery (Dahod)',
     specialization: 'Hip & Knee Specialist — Joint Replacement & Trauma',
     experienceYears: 12,
-    photoUrl: '/assets/dr-maulik-joshi.webp',
+    photoUrl: '/assets/dr-maulik-joshi.png',
+    imagePosition: 'center 8%',
     bio: 'Consultant trauma and orthopedic surgeon specialized in hip and knee arthroplasty, complex trauma reconstructions, and Ilizarov limb deformity corrections.',
     expertiseList: ['Hip & Knee Joint Arthroplasty', 'Complex Trauma Reconstruction', 'Ilizarov & Deformity Surgery', 'Fracture Care'],
     centresAvailable: ['Kandivali', 'Malad', 'Borivali', 'Goregaon'],
@@ -50,7 +51,8 @@ export const doctorsData: Doctor[] = [
     qualifications: 'DNB Orthopedics, Fellowship in Joint Replacement Surgery (MUHS), Fellowship in Revision and Complex Joint Replacement (South Korea), Fellowship in Robotic Joint Replacement (Mumbai)',
     specialization: 'Joint Replacement Surgery & Robotic Arthroplasty',
     experienceYears: 11,
-    photoUrl: '/assets/dr-shobit-deshmukh.webp',
+    photoUrl: '/assets/dr-shobit-deshmukh.png',
+    imagePosition: 'center 8%',
     bio: 'Consultant orthopedic surgeon with super-specialized fellowship expertise in robotic-assisted joint replacement, revision arthroplasty, and advanced knee and hip surgeries.',
     expertiseList: ['Robotic Joint Replacement', 'Revision Joint Replacement', 'Complex Knee & Hip Reconstruction', 'Arthroscopy'],
     centresAvailable: ['Kandivali', 'Malad', 'Borivali', 'Goregaon'],
@@ -64,12 +66,13 @@ export const doctorsData: Doctor[] = [
   },
   {
     id: 'dr-omkar',
-    name: 'Dr. Omkar',
+    name: 'Dr. Omkar Rashinkar',
     title: 'Consultant Spine & Orthopedic Surgeon',
     qualifications: 'MS Orthopaedics, Fellowship in Minimally Invasive Spine Surgery, Fellowship in Arthroscopy & Sports Medicine',
     specialization: 'Spine Care, Arthroscopy & Joint Restoration',
     experienceYears: 10,
     photoUrl: '/assets/dr-omkar.png',
+    imagePosition: 'center 5%',
     bio: 'Consultant orthopedic surgeon specializing in minimally invasive endoscopic spine decompression, sciatica nerve relief, disc management, and arthroscopic joint reconstructions.',
     expertiseList: ['Endoscopic Spine Surgery', 'Sciatica & Disc Decompression', 'Sports Arthroscopy & Joint Care', 'Minimally Invasive Spine Procedures'],
     centresAvailable: ['Kandivali', 'Malad', 'Borivali', 'Goregaon'],

@@ -58,8 +58,8 @@ export const MentorCard: React.FC<MentorCardProps> = ({ mentor }) => {
       <div 
         style={{ 
           position: 'relative', 
-          height: '245px', 
-          backgroundColor: '#0a1f44', 
+          height: '295px', 
+          backgroundColor: '#f8fafc', 
           overflow: 'hidden' 
         }} 
         className="mentor-card-media"
@@ -73,7 +73,7 @@ export const MentorCard: React.FC<MentorCardProps> = ({ mentor }) => {
               width: '100%',
               height: '100%',
               objectFit: 'cover',
-              objectPosition: 'center 15%',
+              objectPosition: mentor.imagePosition || 'center 10%',
               display: 'block',
               transition: 'transform 0.4s ease'
             }}
@@ -144,40 +144,17 @@ export const MentorCard: React.FC<MentorCardProps> = ({ mentor }) => {
           }} 
         />
 
-        {/* Top-Right: Academic Status Badge */}
+        {/* Bottom-Left: Global Fellowship Tag (matching DoctorCard & ConsultantCard layout) */}
         <div style={{
           position: 'absolute',
-          top: '0.7rem',
-          right: '0.7rem',
-          backgroundColor: 'rgba(7, 21, 46, 0.88)',
+          bottom: '0.75rem',
+          left: '0.75rem',
+          background: 'linear-gradient(135deg, rgba(10, 31, 68, 0.94) 0%, rgba(2, 132, 199, 0.95) 100%)',
           backdropFilter: 'blur(8px)',
           color: '#ffffff',
           padding: '0.28rem 0.7rem',
           borderRadius: '9999px',
-          fontSize: '0.68rem',
-          fontWeight: 800,
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.35rem',
-          border: '1px solid rgba(255, 255, 255, 0.2)',
-          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)',
-          zIndex: 2
-        }}>
-          <ShieldCheck size={12} color="#38bdf8" />
-          <span>Surgical Faculty</span>
-        </div>
-
-        {/* Bottom-Left: Global Fellowship Tag (matching DoctorCard & ConsultantCard layout) */}
-        <div style={{
-          position: 'absolute',
-          bottom: '0.85rem',
-          left: '0.85rem',
-          background: 'linear-gradient(135deg, rgba(10, 31, 68, 0.94) 0%, rgba(2, 132, 199, 0.95) 100%)',
-          backdropFilter: 'blur(8px)',
-          color: '#ffffff',
-          padding: '0.3rem 0.72rem',
-          borderRadius: '9999px',
-          fontSize: '0.71rem',
+          fontSize: '0.7rem',
           fontWeight: 800,
           display: 'flex',
           alignItems: 'center',
@@ -186,7 +163,7 @@ export const MentorCard: React.FC<MentorCardProps> = ({ mentor }) => {
           boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25)',
           letterSpacing: '0.02em',
           zIndex: 2,
-          maxWidth: 'calc(100% - 1.7rem)'
+          maxWidth: 'calc(100% - 1.5rem)'
         }}>
           <Globe size={12} color="#38bdf8" style={{ flexShrink: 0 }} />
           <span>Global Fellow</span>

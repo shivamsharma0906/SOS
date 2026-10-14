@@ -27,6 +27,7 @@ export interface Centre {
   googleRating: number;
   reviewsCount: number;
   features: string[];
+  imagePosition?: string;
   geo: {
     latitude: number;
     longitude: number;
@@ -48,8 +49,9 @@ export const centresData: Centre[] = [
     email: BUSINESS_INFO.email,
     timings: 'Mon - Sat: 8:00 AM - 10:00 PM | Sunday OPD Available',
     mapEmbedUrl: 'https://maps.google.com/maps?q=Mahavir+Majesty+Kandivali+West+Mumbai&t=&z=16&ie=UTF8&iwloc=&output=embed',
-    photoUrl: '/assets/centre-kandivali.webp',
-    googleRating: 4.9,
+    photoUrl: '/assets/clinic-kandivali.jpg',
+    imagePosition: 'center 15%',
+    googleRating: 4.5 ,
     reviewsCount: 33,
     features: ['Orthopedic OPD', 'Emergency Care', 'Home X-Ray Booking Desk', 'Physiotherapy'],
     geo: {

@@ -76,8 +76,8 @@ export const ConsultantCard: React.FC<ConsultantCardProps> = ({ doctor, onSelect
       <div
         style={{
           position: 'relative',
-          height: '270px',
-          backgroundColor: '#f1f5f9',
+          height: '320px',
+          backgroundColor: '#f8fafc',
           overflow: 'hidden'
         }}
         className="consultant-card-media"
@@ -91,7 +91,7 @@ export const ConsultantCard: React.FC<ConsultantCardProps> = ({ doctor, onSelect
               width: '100%',
               height: '100%',
               objectFit: 'cover',
-              objectPosition: 'center 10%',
+              objectPosition: doctor.imagePosition || 'center 10%',
               display: 'block',
               transition: 'transform 0.5s ease'
             }}
@@ -119,32 +119,32 @@ export const ConsultantCard: React.FC<ConsultantCardProps> = ({ doctor, onSelect
           style={{
             position: 'absolute',
             inset: 0,
-            background: 'linear-gradient(to top, rgba(7, 21, 46, 0.5) 0%, rgba(7, 21, 46, 0.1) 40%, transparent 70%)',
+            background: 'linear-gradient(to top, rgba(7, 21, 46, 0.45) 0%, rgba(7, 21, 46, 0.08) 35%, transparent 65%)',
             pointerEvents: 'none'
           }}
         />
 
-        {/* Bottom-Left: Super-Specialist Honor Badge (Separated from top to eliminate overlap) */}
+        {/* Bottom-Left: Super-Specialist Honor Badge */}
         {doctor.honorBadge && (
           <div style={{
             position: 'absolute',
-            bottom: '0.85rem',
-            left: '0.85rem',
+            bottom: '0.75rem',
+            left: '0.75rem',
             background: 'linear-gradient(135deg, rgba(10, 31, 68, 0.94) 0%, rgba(2, 132, 199, 0.95) 100%)',
             backdropFilter: 'blur(8px)',
             color: '#ffffff',
-            padding: '0.32rem 0.75rem',
+            padding: '0.28rem 0.7rem',
             borderRadius: '9999px',
-            fontSize: '0.72rem',
+            fontSize: '0.7rem',
             fontWeight: 800,
             display: 'flex',
             alignItems: 'center',
             gap: '0.35rem',
             border: '1px solid rgba(255, 255, 255, 0.25)',
-            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25)',
             letterSpacing: '0.02em',
             zIndex: 2,
-            maxWidth: 'calc(100% - 1.7rem)'
+            maxWidth: 'calc(100% - 1.5rem)'
           }}>
             <Award size={13} color="#fcd34d" style={{ flexShrink: 0 }} />
             <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{doctor.honorBadge}</span>

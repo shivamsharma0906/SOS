@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  ShieldCheck, 
-  Phone, 
-  Calendar, 
-  ExternalLink, 
-  Award, 
-  Activity, 
-  ChevronDown, 
-  MessageSquare, 
+import {
+  ShieldCheck,
+  Phone,
+  Calendar,
+  ExternalLink,
+  Award,
+  Activity,
+  ChevronDown,
+  MessageSquare,
   Sparkles,
   MapPin,
   HeartHandshake,
@@ -80,17 +80,17 @@ export const Testimonials: React.FC = () => {
   return (
     <>
       <SEOHead
-        title="Patient Reviews & 4.9★ Google Ratings | SOS Speciality Orthopedic Clinic"
-        description="Explore verified 4.9-star Google reviews (33 patient reviews) for SOS Speciality Orthopedic Clinic in Kandivali West, Mumbai. Expert knee care, spine relief, robotic joint surgery, and in-house X-rays."
+        title="Patient Reviews & 4.5+★ Google Ratings | SOS Speciality Orthopedic Clinic"
+        description="Explore verified 4.5+-star Google reviews (33 patient reviews) for SOS Speciality Orthopedic Clinic in Kandivali West, Mumbai. Expert knee care, spine relief, robotic joint surgery, and in-house X-rays."
         canonicalUrl={`${BUSINESS_INFO.website}/testimonials`}
       />
 
       {/* ── 1. Hero Section ── */}
-      <section 
-        className="page-hero-section" 
-        style={{ 
-          position: 'relative', 
-          overflow: 'hidden', 
+      <section
+        className="page-hero-section"
+        style={{
+          position: 'relative',
+          overflow: 'hidden',
           padding: '3.5rem 0 3rem 0'
         }}
       >
@@ -99,34 +99,34 @@ export const Testimonials: React.FC = () => {
 
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto' }}>
-            <div 
-              style={{ 
-                display: 'inline-flex', 
-                alignItems: 'center', 
-                gap: '0.45rem', 
-                backgroundColor: 'var(--blue-soft)', 
-                color: 'var(--blue-brand)', 
-                padding: '0.35rem 0.95rem', 
-                borderRadius: 'var(--radius-pill)', 
-                fontSize: '0.82rem', 
-                fontWeight: 700, 
-                border: '1px solid rgba(2, 132, 199, 0.25)', 
-                marginBottom: '1rem', 
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.45rem',
+                backgroundColor: 'var(--blue-soft)',
+                color: 'var(--blue-brand)',
+                padding: '0.35rem 0.95rem',
+                borderRadius: 'var(--radius-pill)',
+                fontSize: '0.82rem',
+                fontWeight: 700,
+                border: '1px solid rgba(2, 132, 199, 0.25)',
+                marginBottom: '1rem',
                 textTransform: 'uppercase',
                 letterSpacing: '0.05em'
               }}
             >
               <GoogleIcon size={16} />
               <span>Verified Google Reviews</span>
-              <span style={{ 
-                backgroundColor: '#10b981', 
-                color: '#ffffff', 
-                fontSize: '0.72rem', 
-                padding: '0.15rem 0.55rem', 
-                borderRadius: 'var(--radius-pill)', 
-                fontWeight: 800 
+              <span style={{
+                backgroundColor: '#10b981',
+                color: '#ffffff',
+                fontSize: '0.72rem',
+                padding: '0.15rem 0.55rem',
+                borderRadius: 'var(--radius-pill)',
+                fontWeight: 800
               }}>
-                4.9 ★★★★★
+                4.5+ ★
               </span>
             </div>
 
@@ -140,10 +140,10 @@ export const Testimonials: React.FC = () => {
             </p>
 
             <div style={{ display: 'flex', justifyContent: 'center', gap: '0.85rem', flexWrap: 'wrap' }}>
-              <a 
-                href={googleReviewsSummary.writeReviewUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href={googleReviewsSummary.writeReviewUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn btn-primary btn-md"
                 style={{ gap: '0.5rem', boxShadow: '0 4px 16px rgba(2, 132, 199, 0.3)' }}
               >
@@ -161,10 +161,10 @@ export const Testimonials: React.FC = () => {
       {/* ── 2. Trust Scorecard Banner ── */}
       <section style={{ padding: '0', marginTop: '-1.5rem', position: 'relative', zIndex: 3 }}>
         <div className="container">
-          <div 
-            style={{ 
-              backgroundColor: '#ffffff', 
-              borderRadius: 'var(--radius-lg)', 
+          <div
+            style={{
+              backgroundColor: '#ffffff',
+              borderRadius: 'var(--radius-lg)',
               boxShadow: '0 12px 36px rgba(10, 31, 68, 0.08)',
               border: '1px solid rgba(10, 31, 68, 0.08)',
               padding: '1.75rem 2rem',
@@ -174,39 +174,39 @@ export const Testimonials: React.FC = () => {
             className="review-metrics-bar"
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-              <div 
-                style={{ 
-                  width: '50px', 
-                  height: '50px', 
-                  borderRadius: '14px', 
-                  backgroundColor: '#f0fdf4', 
-                  color: '#16a34a', 
-                  display: 'flex', 
-                  alignItems: 'center', 
+              <div
+                style={{
+                  width: '50px',
+                  height: '50px',
+                  borderRadius: '14px',
+                  backgroundColor: '#f0fdf4',
+                  color: '#16a34a',
+                  display: 'flex',
+                  alignItems: 'center',
                   justifyContent: 'center',
-                  flexShrink: 0 
+                  flexShrink: 0
                 }}
               >
                 <GoogleIcon size={24} />
               </div>
               <div>
-                <div style={{ fontSize: '1.4rem', fontWeight: 900, color: 'var(--navy-primary)', lineHeight: 1.1 }}>4.9 / 5.0</div>
+                <div style={{ fontSize: '1.4rem', fontWeight: 900, color: 'var(--navy-primary)', lineHeight: 1.1 }}>4.5+ / 5.0</div>
                 <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', fontWeight: 600 }}>Google Business Rating</div>
               </div>
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-              <div 
-                style={{ 
-                  width: '50px', 
-                  height: '50px', 
-                  borderRadius: '14px', 
-                  backgroundColor: 'var(--blue-soft)', 
-                  color: 'var(--blue-brand)', 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center', 
-                  flexShrink: 0 
+              <div
+                style={{
+                  width: '50px',
+                  height: '50px',
+                  borderRadius: '14px',
+                  backgroundColor: 'var(--blue-soft)',
+                  color: 'var(--blue-brand)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0
                 }}
               >
                 <Award size={24} />
@@ -218,17 +218,17 @@ export const Testimonials: React.FC = () => {
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-              <div 
-                style={{ 
-                  width: '50px', 
-                  height: '50px', 
-                  borderRadius: '14px', 
-                  backgroundColor: '#fef3c7', 
-                  color: '#d97706', 
-                  display: 'flex', 
-                  alignItems: 'center', 
+              <div
+                style={{
+                  width: '50px',
+                  height: '50px',
+                  borderRadius: '14px',
+                  backgroundColor: '#fef3c7',
+                  color: '#d97706',
+                  display: 'flex',
+                  alignItems: 'center',
                   justifyContent: 'center',
-                  flexShrink: 0 
+                  flexShrink: 0
                 }}
               >
                 <Activity size={24} />
@@ -240,17 +240,17 @@ export const Testimonials: React.FC = () => {
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-              <div 
-                style={{ 
-                  width: '50px', 
-                  height: '50px', 
-                  borderRadius: '14px', 
-                  backgroundColor: '#f5f3ff', 
-                  color: '#7c3aed', 
-                  display: 'flex', 
-                  alignItems: 'center', 
+              <div
+                style={{
+                  width: '50px',
+                  height: '50px',
+                  borderRadius: '14px',
+                  backgroundColor: '#f5f3ff',
+                  color: '#7c3aed',
+                  display: 'flex',
+                  alignItems: 'center',
                   justifyContent: 'center',
-                  flexShrink: 0 
+                  flexShrink: 0
                 }}
               >
                 <MapPin size={24} />
@@ -396,9 +396,9 @@ export const Testimonials: React.FC = () => {
           {filteredReviews.length === 0 && (
             <div style={{ textAlign: 'center', padding: '3rem 1rem', color: 'var(--text-secondary)' }}>
               <p style={{ fontSize: '1.05rem', fontWeight: 600 }}>No reviews found matching this filter.</p>
-              <button 
-                onClick={() => setSelectedCategory('all')} 
-                className="btn btn-secondary btn-sm" 
+              <button
+                onClick={() => setSelectedCategory('all')}
+                className="btn btn-secondary btn-sm"
                 style={{ marginTop: '0.75rem' }}
               >
                 View All Reviews
@@ -446,11 +446,11 @@ export const Testimonials: React.FC = () => {
                 desc: 'Patients consistently praise our polite staff, spotless clinic hygiene, and ethical, doctor-led counselling with zero pushy procedures.'
               }
             ].map((card, i) => (
-              <div 
-                key={i} 
-                style={{ 
-                  backgroundColor: '#ffffff', 
-                  borderRadius: 'var(--radius-lg)', 
+              <div
+                key={i}
+                style={{
+                  backgroundColor: '#ffffff',
+                  borderRadius: 'var(--radius-lg)',
                   padding: '2rem 1.75rem',
                   border: '1px solid rgba(10, 31, 68, 0.06)',
                   boxShadow: '0 4px 18px rgba(10, 31, 68, 0.03)',
@@ -459,15 +459,15 @@ export const Testimonials: React.FC = () => {
                   gap: '0.85rem'
                 }}
               >
-                <div 
-                  style={{ 
-                    width: '46px', 
-                    height: '46px', 
-                    borderRadius: '12px', 
-                    backgroundColor: 'var(--bg-subtle)', 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    justifyContent: 'center' 
+                <div
+                  style={{
+                    width: '46px',
+                    height: '46px',
+                    borderRadius: '12px',
+                    backgroundColor: 'var(--bg-subtle)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
                   }}
                 >
                   {card.icon}
@@ -487,11 +487,11 @@ export const Testimonials: React.FC = () => {
       {/* ── 5. Review Submission Guide ── */}
       <section style={{ padding: '4.5rem 0', backgroundColor: '#ffffff', borderTop: '1px solid var(--border-color)' }}>
         <div className="container">
-          <div 
-            style={{ 
-              backgroundColor: 'var(--navy-primary)', 
-              color: '#ffffff', 
-              borderRadius: 'var(--radius-lg)', 
+          <div
+            style={{
+              backgroundColor: 'var(--navy-primary)',
+              color: '#ffffff',
+              borderRadius: 'var(--radius-lg)',
               padding: '3rem 2.5rem',
               display: 'grid',
               gridTemplateColumns: '1.2fr 0.8fr',
@@ -515,10 +515,10 @@ export const Testimonials: React.FC = () => {
               </p>
 
               <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                <a 
-                  href={googleReviewsSummary.writeReviewUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href={googleReviewsSummary.writeReviewUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn btn-primary btn-md"
                   style={{ gap: '0.5rem', backgroundColor: '#ffffff', color: 'var(--navy-primary)', borderColor: '#ffffff' }}
                 >
@@ -545,21 +545,21 @@ export const Testimonials: React.FC = () => {
       {/* ── 6. Redesigned Premium FAQs Section ── */}
       <section style={{ padding: '5rem 0', backgroundColor: '#f8fafc', borderTop: '1px solid var(--border-color)', position: 'relative' }}>
         <div className="container">
-          
+
           {/* Header */}
           <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 3.5rem auto' }}>
-            <div 
-              style={{ 
-                display: 'inline-flex', 
-                alignItems: 'center', 
-                gap: '0.4rem', 
-                padding: '0.35rem 0.9rem', 
-                backgroundColor: 'var(--blue-soft)', 
-                color: 'var(--blue-brand)', 
-                borderRadius: 'var(--radius-pill)', 
-                fontSize: '0.8rem', 
-                fontWeight: 700, 
-                border: '1px solid rgba(2, 132, 199, 0.2)', 
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                padding: '0.35rem 0.9rem',
+                backgroundColor: 'var(--blue-soft)',
+                color: 'var(--blue-brand)',
+                borderRadius: 'var(--radius-pill)',
+                fontSize: '0.8rem',
+                fontWeight: 700,
+                border: '1px solid rgba(2, 132, 199, 0.2)',
                 marginBottom: '0.85rem',
                 textTransform: 'uppercase',
                 letterSpacing: '0.05em'
@@ -579,22 +579,22 @@ export const Testimonials: React.FC = () => {
           </div>
 
           {/* 2-Column Responsive Layout */}
-          <div 
-            style={{ 
-              display: 'grid', 
-              gridTemplateColumns: '1fr 1.75fr', 
-              gap: '2.5rem', 
-              alignItems: 'start' 
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1.75fr',
+              gap: '2.5rem',
+              alignItems: 'start'
             }}
             className="faq-interactive-grid"
           >
             {/* Left Side: Support & Fast Action Box */}
-            <div 
-              style={{ 
-                position: 'sticky', 
+            <div
+              style={{
+                position: 'sticky',
                 top: '100px',
-                backgroundColor: '#ffffff', 
-                borderRadius: 'var(--radius-lg)', 
+                backgroundColor: '#ffffff',
+                borderRadius: 'var(--radius-lg)',
                 padding: '2.25rem',
                 border: '1px solid rgba(10, 31, 68, 0.08)',
                 boxShadow: '0 10px 30px rgba(10, 31, 68, 0.04)',
@@ -604,15 +604,15 @@ export const Testimonials: React.FC = () => {
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
-                <div 
-                  style={{ 
-                    width: '46px', 
-                    height: '46px', 
-                    borderRadius: '12px', 
-                    background: 'linear-gradient(135deg, var(--blue-soft) 0%, #e0f2fe 100%)', 
-                    color: 'var(--blue-brand)', 
-                    display: 'flex', 
-                    alignItems: 'center', 
+                <div
+                  style={{
+                    width: '46px',
+                    height: '46px',
+                    borderRadius: '12px',
+                    background: 'linear-gradient(135deg, var(--blue-soft) 0%, #e0f2fe 100%)',
+                    color: 'var(--blue-brand)',
+                    display: 'flex',
+                    alignItems: 'center',
                     justifyContent: 'center',
                     boxShadow: '0 2px 8px rgba(2, 132, 199, 0.15)'
                   }}
@@ -635,17 +635,17 @@ export const Testimonials: React.FC = () => {
               </p>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                <a 
-                  href={`tel:${BUSINESS_INFO.phone}`} 
+                <a
+                  href={`tel:${BUSINESS_INFO.phone}`}
                   className="btn btn-primary btn-md"
                   style={{ width: '100%', justifyContent: 'center', gap: '0.5rem', fontSize: '0.88rem' }}
                 >
                   <Phone size={16} /> Call Helpline: {BUSINESS_INFO.phone}
                 </a>
 
-                <a 
-                  href={`https://wa.me/91${BUSINESS_INFO.phone}?text=Hello%20SOS%20Orthopedic%20Clinic,%20I%20have%20an%20enquiry%20regarding%20consultation`} 
-                  target="_blank" 
+                <a
+                  href={`https://wa.me/91${BUSINESS_INFO.phone}?text=Hello%20SOS%20Orthopedic%20Clinic,%20I%20have%20an%20enquiry%20regarding%20consultation`}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-secondary btn-md"
                   style={{ width: '100%', justifyContent: 'center', gap: '0.5rem', fontSize: '0.88rem', backgroundColor: '#f0fdf4', borderColor: '#bbf7d0', color: '#166534' }}
@@ -653,8 +653,8 @@ export const Testimonials: React.FC = () => {
                   <MessageSquare size={16} color="#16a34a" /> WhatsApp Consultation
                 </a>
 
-                <Link 
-                  to="/contact" 
+                <Link
+                  to="/contact"
                   className="btn btn-secondary btn-md"
                   style={{ width: '100%', justifyContent: 'center', gap: '0.5rem', fontSize: '0.88rem' }}
                 >
@@ -679,11 +679,11 @@ export const Testimonials: React.FC = () => {
                     style={{
                       backgroundColor: '#ffffff',
                       borderRadius: 'var(--radius-md)',
-                      border: isOpen 
-                        ? '1px solid var(--blue-brand)' 
+                      border: isOpen
+                        ? '1px solid var(--blue-brand)'
                         : '1px solid rgba(10, 31, 68, 0.08)',
-                      boxShadow: isOpen 
-                        ? '0 8px 24px rgba(2, 132, 199, 0.08)' 
+                      boxShadow: isOpen
+                        ? '0 8px 24px rgba(2, 132, 199, 0.08)'
                         : '0 2px 10px rgba(10, 31, 68, 0.02)',
                       overflow: 'hidden',
                       transition: 'all 0.25s ease'
@@ -706,7 +706,7 @@ export const Testimonials: React.FC = () => {
                     >
                       <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
                         {/* Number Badge */}
-                        <div 
+                        <div
                           style={{
                             width: '32px',
                             height: '32px',
@@ -727,23 +727,23 @@ export const Testimonials: React.FC = () => {
 
                         <div>
                           {/* Category Tag */}
-                          <div 
-                            style={{ 
-                              fontSize: '0.7rem', 
-                              fontWeight: 700, 
-                              color: 'var(--blue-brand)', 
-                              textTransform: 'uppercase', 
+                          <div
+                            style={{
+                              fontSize: '0.7rem',
+                              fontWeight: 700,
+                              color: 'var(--blue-brand)',
+                              textTransform: 'uppercase',
                               letterSpacing: '0.04em',
-                              marginBottom: '0.25rem' 
+                              marginBottom: '0.25rem'
                             }}
                           >
                             {faq.category}
                           </div>
 
-                          <div 
-                            style={{ 
-                              fontSize: '1rem', 
-                              fontWeight: 800, 
+                          <div
+                            style={{
+                              fontSize: '1rem',
+                              fontWeight: 800,
                               color: isOpen ? 'var(--blue-brand)' : 'var(--navy-primary)',
                               lineHeight: 1.4,
                               transition: 'color 0.2s ease'
@@ -755,7 +755,7 @@ export const Testimonials: React.FC = () => {
                       </div>
 
                       {/* Circle Chevron Button */}
-                      <div 
+                      <div
                         style={{
                           width: '32px',
                           height: '32px',
@@ -780,13 +780,13 @@ export const Testimonials: React.FC = () => {
                     </button>
 
                     {isOpen && (
-                      <div 
-                        style={{ 
-                          padding: '0 1.5rem 1.5rem 4.15rem', 
-                          fontSize: '0.92rem', 
-                          color: 'var(--text-secondary)', 
-                          lineHeight: 1.7, 
-                          borderTop: '1px solid #f1f5f9', 
+                      <div
+                        style={{
+                          padding: '0 1.5rem 1.5rem 4.15rem',
+                          fontSize: '0.92rem',
+                          color: 'var(--text-secondary)',
+                          lineHeight: 1.7,
+                          borderTop: '1px solid #f1f5f9',
                           paddingTop: '1rem',
                           backgroundColor: '#ffffff'
                         }}

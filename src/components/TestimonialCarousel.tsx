@@ -29,13 +29,13 @@ export const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({ showTi
     : testimonialsData.filter(r => r.category === activeCategory).slice(0, 6);
 
   return (
-    <section 
-      style={{ 
-        padding: '5rem 0', 
+    <section
+      style={{
+        padding: '5rem 0',
         backgroundColor: '#f8fafc',
         borderTop: '1px solid #e2e8f0',
         borderBottom: '1px solid #e2e8f0',
-        color: 'var(--navy-primary)' 
+        color: 'var(--navy-primary)'
       }}
       id="patient-reviews"
     >
@@ -43,15 +43,15 @@ export const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({ showTi
         {/* ── 1. Section Header ── */}
         {showTitle && (
           <div style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 2.5rem auto' }}>
-            <div 
-              style={{ 
-                display: 'inline-flex', 
-                alignItems: 'center', 
-                gap: '0.45rem', 
-                backgroundColor: '#ffffff', 
-                padding: '0.35rem 0.95rem', 
-                borderRadius: 'var(--radius-pill)', 
-                marginBottom: '1rem', 
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.45rem',
+                backgroundColor: '#ffffff',
+                padding: '0.35rem 0.95rem',
+                borderRadius: 'var(--radius-pill)',
+                marginBottom: '1rem',
                 boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
                 border: '1px solid #e2e8f0'
               }}
@@ -59,7 +59,7 @@ export const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({ showTi
               <GoogleIcon size={16} />
               <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#4b5563' }}>Verified Google Reviews</span>
               <span style={{ backgroundColor: '#10b981', color: '#ffffff', fontSize: '0.72rem', padding: '0.12rem 0.5rem', borderRadius: 'var(--radius-pill)', fontWeight: 800 }}>
-                4.9 ★ (33 Reviews)
+                4.5+ ★ 
               </span>
             </div>
 
@@ -126,10 +126,10 @@ export const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({ showTi
           </div>
 
           {/* Column B: Score & Authentic Rating Breakdown */}
-          <div 
-            style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
               gap: '1.5rem',
               paddingLeft: '1.5rem',
               paddingRight: '1.5rem',
@@ -140,7 +140,7 @@ export const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({ showTi
           >
             <div style={{ textAlign: 'center', flexShrink: 0 }}>
               <div style={{ fontSize: '2.5rem', fontWeight: 900, color: 'var(--navy-primary)', lineHeight: 1 }}>
-                4.9
+                4.5+
               </div>
               <div style={{ display: 'flex', gap: '2px', justifyContent: 'center', marginTop: '0.25rem' }}>
                 {[...Array(5)].map((_, i) => (

@@ -20,9 +20,9 @@ export interface Testimonial {
 }
 
 export const googleReviewsSummary = {
-  averageRating: 4.9,
+  averageRating: 4.5,
   totalReviews: 33,
-  stars: 4.9,
+  stars: 4.5,
   ratingBreakdown: {
     5: 30,
     4: 3,

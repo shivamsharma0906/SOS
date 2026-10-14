@@ -33,8 +33,14 @@
 
   <url>
     <loc>https://www.sosorth.com/blog</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://www.sosorth.com/blog/robotic-knee-replacement-surgery</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.85</priority>
   </url>
 
   <url>

@@ -96,8 +96,8 @@ export const DoctorCard: React.FC<DoctorCardProps> = ({ doctor, onSelectDoctor }
       <div
         style={{
           position: 'relative',
-          height: '260px',
-          backgroundColor: '#f1f5f9',
+          height: '320px',
+          backgroundColor: '#f8fafc',
           overflow: 'hidden'
         }}
         className="doctor-card-media"
@@ -111,7 +111,7 @@ export const DoctorCard: React.FC<DoctorCardProps> = ({ doctor, onSelectDoctor }
               width: '100%',
               height: '100%',
               objectFit: 'cover',
-              objectPosition: 'center 12%',
+              objectPosition: doctor.imagePosition || 'center 10%',
               display: 'block',
               transition: 'transform 0.5s ease'
             }}
@@ -141,25 +141,23 @@ export const DoctorCard: React.FC<DoctorCardProps> = ({ doctor, onSelectDoctor }
           style={{
             position: 'absolute',
             inset: 0,
-            background: 'linear-gradient(to top, rgba(7, 21, 46, 0.5) 0%, rgba(7, 21, 46, 0.1) 35%, transparent 65%)',
+            background: 'linear-gradient(to top, rgba(7, 21, 46, 0.45) 0%, rgba(7, 21, 46, 0.08) 35%, transparent 65%)',
             pointerEvents: 'none'
           }}
         />
 
-
-
-        {/* Bottom-Left: Specialty Badge on Vignette (No overlap!) */}
+        {/* Bottom-Left: Specialty Badge on Vignette */}
         <div
           style={{
             position: 'absolute',
-            bottom: '0.85rem',
-            left: '0.85rem',
+            bottom: '0.75rem',
+            left: '0.75rem',
             background: photoBadge.bg,
             backdropFilter: 'blur(8px)',
             color: '#ffffff',
-            padding: '0.3rem 0.75rem',
+            padding: '0.28rem 0.7rem',
             borderRadius: '9999px',
-            fontSize: '0.71rem',
+            fontSize: '0.7rem',
             fontWeight: 800,
             display: 'flex',
             alignItems: 'center',
@@ -168,7 +166,7 @@ export const DoctorCard: React.FC<DoctorCardProps> = ({ doctor, onSelectDoctor }
             boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25)',
             letterSpacing: '0.02em',
             zIndex: 2,
-            maxWidth: 'calc(100% - 1.7rem)'
+            maxWidth: 'calc(100% - 1.5rem)'
           }}
         >
           {photoBadge.icon}

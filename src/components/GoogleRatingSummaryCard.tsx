@@ -71,7 +71,7 @@ export const GoogleRatingSummaryCard: React.FC<GoogleRatingSummaryCardProps> = (
           flexShrink: 0
         }}>
           <CheckCircle2 size={12} />
-          <span>Verified 4.9</span>
+          <span>Verified 4.5+</span>
         </div>
       </div>
 
@@ -93,7 +93,7 @@ export const GoogleRatingSummaryCard: React.FC<GoogleRatingSummaryCardProps> = (
             ))}
           </div>
           <div style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--navy-primary)' }}>
-            4.9★ Top-Rated Patient Experience
+            4.5+★ Top-Rated Patient Experience
           </div>
           <div style={{ fontSize: '0.74rem', color: '#64748b' }}>
             Based on {googleReviewsSummary.totalReviews} genuine patient reviews

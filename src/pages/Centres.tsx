@@ -35,20 +35,20 @@ export const Centres: React.FC = () => {
 
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div style={{ textAlign: 'center', maxWidth: '840px', margin: '0 auto' }}>
-            <div 
-              style={{ 
-                display: 'inline-flex', 
-                alignItems: 'center', 
-                gap: '0.45rem', 
-                backgroundColor: 'var(--blue-soft)', 
-                color: 'var(--blue-brand)', 
-                padding: '0.35rem 0.95rem', 
-                borderRadius: 'var(--radius-pill)', 
-                fontSize: '0.82rem', 
-                fontWeight: 700, 
-                border: '1px solid rgba(2, 132, 199, 0.25)', 
-                marginBottom: '1rem', 
-                textTransform: 'uppercase', 
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.45rem',
+                backgroundColor: 'var(--blue-soft)',
+                color: 'var(--blue-brand)',
+                padding: '0.35rem 0.95rem',
+                borderRadius: 'var(--radius-pill)',
+                fontSize: '0.82rem',
+                fontWeight: 700,
+                border: '1px solid rgba(2, 132, 199, 0.25)',
+                marginBottom: '1rem',
+                textTransform: 'uppercase',
                 letterSpacing: '0.05em'
               }}
             >
@@ -101,7 +101,7 @@ export const Centres: React.FC = () => {
                 <Star size={20} fill="#b45309" />
               </div>
               <div>
-                <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#b45309', lineHeight: 1 }}>4.9★</div>
+                <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#b45309', lineHeight: 1 }}>4.5+★</div>
                 <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', fontWeight: 600, marginTop: '0.15rem' }}>33 Google Reviews</div>
               </div>
             </div>
@@ -122,7 +122,7 @@ export const Centres: React.FC = () => {
       {/* ── 2. Filter & Centres Grid ── */}
       <section style={{ padding: '3.5rem 0', backgroundColor: '#ffffff' }}>
         <div className="container">
-          
+
           {/* Location Filter Pills */}
           <div style={{ display: 'flex', gap: '0.65rem', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '2.5rem' }}>
             <button
@@ -166,9 +166,9 @@ export const Centres: React.FC = () => {
           </div>
 
           {/* Centres Grid */}
-          <div 
+          <div
             className="centres-grid-4col"
-            style={{ 
+            style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
               gap: '1.25rem'
@@ -196,10 +196,10 @@ export const Centres: React.FC = () => {
             </p>
           </div>
 
-          <div 
-            style={{ 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
               gap: '1.5rem',
               maxWidth: '1160px',
               margin: '0 auto'
@@ -256,52 +256,7 @@ export const Centres: React.FC = () => {
         </div>
       </section>
 
-      {/* ── 4. Booking Prompt CTA Banner ── */}
-      <section style={{ padding: '3.5rem 0', backgroundColor: '#ffffff' }}>
-        <div className="container">
-          <div 
-            style={{
-              background: 'linear-gradient(135deg, #07152e 0%, #0a1f44 60%, #0369a1 100%)',
-              borderRadius: '20px',
-              padding: '2.5rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              flexWrap: 'wrap',
-              gap: '1.75rem',
-              boxShadow: '0 16px 40px rgba(10, 31, 68, 0.16)'
-            }}
-            className="centres-cta-banner"
-          >
-            <div style={{ maxWidth: '640px' }}>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#ffffff', marginBottom: '0.5rem', lineHeight: 1.25 }}>
-                Visit Your Nearest SOS Centre or Request Home X-Ray
-              </h3>
-              <p style={{ color: '#cbd5e1', fontSize: '0.92rem', lineHeight: 1.6, margin: 0 }}>
-                Direct senior surgeon appointments available daily across Kandivali, Malad, Borivali, and Goregaon centres.
-              </p>
-            </div>
 
-            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }} className="centres-cta-buttons">
-              <button
-                onClick={() => setIsModalOpen(true)}
-                className="btn btn-primary btn-lg"
-                style={{ padding: '0.85rem 1.75rem', fontSize: '0.96rem' }}
-              >
-                <Calendar size={18} /> Book Centre Consultation
-              </button>
-
-              <a
-                href={`tel:${BUSINESS_INFO.phone}`}
-                className="btn btn-secondary btn-lg"
-                style={{ padding: '0.85rem 1.75rem', fontSize: '0.96rem', backgroundColor: '#ffffff' }}
-              >
-                <Phone size={18} /> Call: {BUSINESS_INFO.phone}
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <AppointmentModal
         isOpen={isModalOpen}
