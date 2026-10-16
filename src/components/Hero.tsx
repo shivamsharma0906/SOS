@@ -280,7 +280,6 @@ export const Hero: React.FC = () => {
                 <Star size={16} fill="#fbbc04" />
               </div>
               <span style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--navy-primary)' }}>4.5+</span>
-              {/* <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', fontWeight: 600 }}>(33 Google Reviews)</span> */}
             </div>
 
           </div>

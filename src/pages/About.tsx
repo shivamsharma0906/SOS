@@ -44,7 +44,7 @@ const stats = [
   { value: '10,000+', label: 'Patients Treated', icon: <Users size={20} /> },
   { value: '4 Centres', label: 'Network Locations', icon: <MapPin size={20} /> },
   { value: '50+ Yrs', label: 'Combined Experience', icon: <Clock size={20} /> },
-  { value: '4.5+★', label: 'Google Rating (33 Reviews)', icon: <Star size={20} /> },
+  { value: '4.5+★', label: 'Google Patient Rating', icon: <Star size={20} /> },
 ];
 
 export const About: React.FC = () => {

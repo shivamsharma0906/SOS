@@ -79,7 +79,7 @@ export const GoogleRatingSummaryCard: React.FC<GoogleRatingSummaryCardProps> = (
       <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
         <div style={{ textAlign: 'center' }}>
           <div style={{ fontSize: '2.8rem', fontWeight: 900, color: 'var(--navy-primary)', lineHeight: 1 }}>
-            {googleReviewsSummary.averageRating.toFixed(1)}
+            4.5+
           </div>
           <div style={{ fontSize: '0.72rem', fontWeight: 700, color: '#64748b', marginTop: '0.25rem' }}>
             out of 5.0
@@ -96,37 +96,25 @@ export const GoogleRatingSummaryCard: React.FC<GoogleRatingSummaryCardProps> = (
             4.5+★ Top-Rated Patient Experience
           </div>
           <div style={{ fontSize: '0.74rem', color: '#64748b' }}>
-            Based on {googleReviewsSummary.totalReviews} genuine patient reviews
+            Based on authentic patient reviews on Google
           </div>
         </div>
       </div>
 
-      {/* ── 3. Rating Breakdown Bars ── */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', backgroundColor: '#f8fafc', padding: '0.85rem 1rem', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
-        {[
-          { stars: 5, count: googleReviewsSummary.ratingBreakdown[5], pct: Math.round((googleReviewsSummary.ratingBreakdown[5] / googleReviewsSummary.totalReviews) * 100) },
-          { stars: 4, count: googleReviewsSummary.ratingBreakdown[4], pct: Math.round((googleReviewsSummary.ratingBreakdown[4] / googleReviewsSummary.totalReviews) * 100) },
-          { stars: 3, count: googleReviewsSummary.ratingBreakdown[3], pct: Math.round((googleReviewsSummary.ratingBreakdown[3] / googleReviewsSummary.totalReviews) * 100) },
-          { stars: 2, count: googleReviewsSummary.ratingBreakdown[2], pct: Math.round((googleReviewsSummary.ratingBreakdown[2] / googleReviewsSummary.totalReviews) * 100) },
-          { stars: 1, count: googleReviewsSummary.ratingBreakdown[1], pct: Math.round((googleReviewsSummary.ratingBreakdown[1] / googleReviewsSummary.totalReviews) * 100) }
-        ].map(item => (
-          <div key={item.stars} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.73rem' }}>
-            <span style={{ width: '38px', color: '#475569', fontWeight: 600 }}>{item.stars} star</span>
-            <div style={{ flexGrow: 1, height: '6px', backgroundColor: '#e2e8f0', borderRadius: '9999px', overflow: 'hidden' }}>
-              <div
-                style={{
-                  width: `${item.pct}%`,
-                  height: '100%',
-                  backgroundColor: item.pct > 0 ? '#f59e0b' : 'transparent',
-                  borderRadius: '9999px'
-                }}
-              />
-            </div>
-            <span style={{ width: '18px', textAlign: 'right', color: '#64748b', fontWeight: 700 }}>
-              {item.count}
-            </span>
-          </div>
-        ))}
+      {/* ── 3. Patient Trust Highlights ── */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', backgroundColor: '#f8fafc', padding: '0.95rem 1.1rem', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.76rem', color: '#334155', fontWeight: 700 }}>
+          <CheckCircle2 size={14} color="#16a34a" />
+          <span>Consistent 4.5+ Patient Satisfaction</span>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.76rem', color: '#475569', fontWeight: 600 }}>
+          <CheckCircle2 size={14} color="#16a34a" />
+          <span>Direct Consultant Orthopedic Evaluations</span>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.76rem', color: '#475569', fontWeight: 600 }}>
+          <CheckCircle2 size={14} color="#16a34a" />
+          <span>In-House Immediate Digital Radiography</span>
+        </div>
       </div>
 
       {/* ── 4. Write a Review CTA ── */}

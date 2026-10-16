@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { centresData } from '../data/centres';
-import { googleReviewsSummary } from '../data/testimonials';
+import { googleReviewsSummary, testimonialsData } from '../data/testimonials';
 import { BUSINESS_INFO } from '../config/business';
 
 export const LocalBusinessSchema: React.FC = () => {
@@ -21,8 +21,8 @@ export const LocalBusinessSchema: React.FC = () => {
       "medicalSpecialty": ["Orthopedic", "Rheumatology", "SportsMedicine", "PediatricOrthopedics"],
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": googleReviewsSummary.averageRating.toString(),
-        "reviewCount": googleReviewsSummary.totalReviews.toString(),
+        "ratingValue": "4.5",
+        "reviewCount": testimonialsData.length.toString(),
         "bestRating": "5",
         "worstRating": "1"
       },

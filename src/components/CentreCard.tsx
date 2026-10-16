@@ -168,8 +168,7 @@ export const CentreCard: React.FC<CentreCardProps> = ({ centre }) => {
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', backgroundColor: '#fef3c7', border: '1px solid #fde68a', padding: '0.2rem 0.45rem', borderRadius: '6px', fontSize: '0.72rem', fontWeight: 800, color: '#b45309', flexShrink: 0 }}>
             <Star size={11} fill="#b45309" color="#b45309" />
-            <span>{centre.googleRating % 1 === 0 ? `${centre.googleRating}.0` : centre.googleRating}</span>
-            <span style={{ fontSize: '0.66rem', color: '#92400e', fontWeight: 600 }}>({centre.reviewsCount})</span>
+            <span>4.5+★</span>
           </div>
         </div>
 

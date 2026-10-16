@@ -21,15 +21,8 @@ export interface Testimonial {
 
 export const googleReviewsSummary = {
   averageRating: 4.5,
-  totalReviews: 33,
+  ratingDisplay: '4.5+',
   stars: 4.5,
-  ratingBreakdown: {
-    5: 30,
-    4: 3,
-    3: 0,
-    2: 0,
-    1: 0,
-  },
   placeName: 'SOS Speciality Orthopedic Clinic',
   location: 'Kandivali West, Mumbai',
   writeReviewUrl: 'https://maps.google.com/?q=SOS+Speciality+Orthopedic+Clinic+Kandivali+West',

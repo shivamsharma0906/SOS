@@ -81,7 +81,7 @@ export const Testimonials: React.FC = () => {
     <>
       <SEOHead
         title="Patient Reviews & 4.5+★ Google Ratings | SOS Speciality Orthopedic Clinic"
-        description="Explore verified 4.5+-star Google reviews (33 patient reviews) for SOS Speciality Orthopedic Clinic in Kandivali West, Mumbai. Expert knee care, spine relief, robotic joint surgery, and in-house X-rays."
+        description="Explore verified 4.5+-star Google reviews for SOS Speciality Orthopedic Clinic in Kandivali West, Mumbai. Expert knee care, spine relief, robotic joint surgery, and in-house X-rays."
         canonicalUrl={`${BUSINESS_INFO.website}/testimonials`}
       />
 
@@ -212,7 +212,7 @@ export const Testimonials: React.FC = () => {
                 <Award size={24} />
               </div>
               <div>
-                <div style={{ fontSize: '1.4rem', fontWeight: 900, color: 'var(--navy-primary)', lineHeight: 1.1 }}>33</div>
+                <div style={{ fontSize: '1.4rem', fontWeight: 900, color: 'var(--navy-primary)', lineHeight: 1.1 }}>Verified</div>
                 <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', fontWeight: 600 }}>Google Patient Reviews</div>
               </div>
             </div>
@@ -304,7 +304,7 @@ export const Testimonials: React.FC = () => {
                 transition: 'all 0.2s ease'
               }}
             >
-              All Reviews ({testimonialsData.length})
+              All Reviews
             </button>
 
             <button

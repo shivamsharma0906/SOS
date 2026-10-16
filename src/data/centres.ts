@@ -24,8 +24,7 @@ export interface Centre {
   timings: string;
   mapEmbedUrl: string;
   photoUrl: string;
-  googleRating: number;
-  reviewsCount: number;
+  googleRating: string;
   features: string[];
   imagePosition?: string;
   geo: {
@@ -51,8 +50,7 @@ export const centresData: Centre[] = [
     mapEmbedUrl: 'https://maps.google.com/maps?q=Mahavir+Majesty+Kandivali+West+Mumbai&t=&z=16&ie=UTF8&iwloc=&output=embed',
     photoUrl: '/assets/clinic-kandivali.jpg',
     imagePosition: 'center 15%',
-    googleRating: 4.5 ,
-    reviewsCount: 33,
+    googleRating: '4.5+',
     features: ['Orthopedic OPD', 'Emergency Care', 'Home X-Ray Booking Desk', 'Physiotherapy'],
     geo: {
       latitude: 19.2064,
@@ -74,8 +72,7 @@ export const centresData: Centre[] = [
     timings: 'Scheduled Outreach Days & ',
     mapEmbedUrl: 'https://maps.google.com/maps?q=Raheja+Exotica+Pascal+Wadi+Madh+Mumbai+400061&t=&z=16&ie=UTF8&iwloc=&output=embed',
     photoUrl: '/assets/centre-malad.webp',
-    googleRating: 4.8,
-    reviewsCount: 85,
+    googleRating: '4.5+',
     features: ['Outreach Orthopedic OPD', 'Consultation & Triage', 'Referral & Follow-up Support'],
     geo: {
       latitude: 19.1432,
@@ -97,8 +94,7 @@ export const centresData: Centre[] = [
     timings: 'Under Construction • Opening Soon (Enquiries Open)',
     mapEmbedUrl: 'https://maps.google.com/maps?q=Borivali+West,Mumbai&t=&z=14&ie=UTF8&iwloc=&output=embed',
     photoUrl: '/assets/centre-borivali.webp',
-    googleRating: 5,
-    reviewsCount: 135,
+    googleRating: '4.5+',
     features: ['Specialist Orthopedic Consultations', 'Joint & Spine Care', '24/7 Home X-Ray Dispatch'],
     geo: {
       latitude: 19.2307,
@@ -120,8 +116,7 @@ export const centresData: Centre[] = [
     timings: 'Under Construction • Opening Soon (Enquiries Open)',
     mapEmbedUrl: 'https://maps.google.com/maps?q=Goregaon+West,Mumbai&t=&z=14&ie=UTF8&iwloc=&output=embed',
     photoUrl: '/assets/centre-goregaon.webp',
-    googleRating: 4.8,
-    reviewsCount: 110,
+    googleRating: '4.5+',
     features: ['Orthopedic OPD Clinic', 'Digital Radiography Support', 'Fracture & Sports Care'],
     geo: {
       latitude: 19.1663,

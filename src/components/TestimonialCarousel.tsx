@@ -148,29 +148,22 @@ export const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({ showTi
                 ))}
               </div>
               <div style={{ fontSize: '0.74rem', fontWeight: 800, color: '#0284c7', marginTop: '0.2rem' }}>
-                33 reviews
+                Patient Rating
               </div>
             </div>
 
-            <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.72rem' }}>
-                <span style={{ width: '38px', color: '#475569', fontWeight: 600 }}>5 star</span>
-                <div style={{ flexGrow: 1, height: '7px', backgroundColor: '#e2e8f0', borderRadius: '9999px', overflow: 'hidden' }}>
-                  <div style={{ width: '91%', height: '100%', backgroundColor: '#f59e0b', borderRadius: '9999px' }} />
-                </div>
-                <span style={{ width: '20px', textAlign: 'right', color: '#64748b', fontWeight: 700 }}>30</span>
+            <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.78rem', color: 'var(--navy-primary)', fontWeight: 700 }}>
+                <CheckCircle2 size={14} color="#16a34a" />
+                <span>4.5+ Star Rated Care</span>
               </div>
-
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.72rem' }}>
-                <span style={{ width: '38px', color: '#475569', fontWeight: 600 }}>4 star</span>
-                <div style={{ flexGrow: 1, height: '7px', backgroundColor: '#e2e8f0', borderRadius: '9999px', overflow: 'hidden' }}>
-                  <div style={{ width: '9%', height: '100%', backgroundColor: '#f59e0b', borderRadius: '9999px' }} />
-                </div>
-                <span style={{ width: '20px', textAlign: 'right', color: '#64748b', fontWeight: 700 }}>3</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.78rem', color: '#475569', fontWeight: 600 }}>
+                <CheckCircle2 size={14} color="#16a34a" />
+                <span>Verified Patient Consultations</span>
               </div>
-
-              <div style={{ fontSize: '0.7rem', color: '#94a3b8', marginTop: '0.1rem' }}>
-                3, 2, 1 star: 0 reviews (100% positive sentiment)
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.78rem', color: '#475569', fontWeight: 600 }}>
+                <CheckCircle2 size={14} color="#16a34a" />
+                <span>In-House Digital Radiography</span>
               </div>
             </div>
           </div>
@@ -209,7 +202,7 @@ export const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({ showTi
         {/* ── 3. Category Filter Tabs ── */}
         <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '1.75rem' }}>
           {[
-            { id: 'all', label: 'All Featured (6)' },
+            { id: 'all', label: 'All Featured' },
             { id: 'knee', label: 'Knee & Robotic Replacement' },
             { id: 'spine-neck', label: 'Spine & Neck Relief' },
             { id: 'trauma-xray', label: 'In-House X-Ray & Trauma' },
