@@ -69,9 +69,10 @@ export const centresData: Centre[] = [
     phone: BUSINESS_INFO.phone,
     whatsapp: `91${BUSINESS_INFO.phone}`,
     email: BUSINESS_INFO.email,
-    timings: 'Scheduled Outreach Days & ',
+    timings: 'Scheduled Outreach Days & By Appointment',
     mapEmbedUrl: 'https://maps.google.com/maps?q=Raheja+Exotica+Pascal+Wadi+Madh+Mumbai+400061&t=&z=16&ie=UTF8&iwloc=&output=embed',
-    photoUrl: '/assets/centre-malad.webp',
+    photoUrl: '/assets/clinic-consultation-suite.jpg',
+    imagePosition: 'center center',
     googleRating: '4.5+',
     features: ['Outreach Orthopedic OPD', 'Consultation & Triage', 'Referral & Follow-up Support'],
     geo: {
@@ -93,7 +94,8 @@ export const centresData: Centre[] = [
     email: BUSINESS_INFO.email,
     timings: 'Under Construction • Opening Soon (Enquiries Open)',
     mapEmbedUrl: 'https://maps.google.com/maps?q=Borivali+West,Mumbai&t=&z=14&ie=UTF8&iwloc=&output=embed',
-    photoUrl: '/assets/centre-borivali.webp',
+    photoUrl: '/assets/clinic-digital-xray.jpg',
+    imagePosition: 'center center',
     googleRating: '4.5+',
     features: ['Specialist Orthopedic Consultations', 'Joint & Spine Care', '24/7 Home X-Ray Dispatch'],
     geo: {
@@ -115,7 +117,8 @@ export const centresData: Centre[] = [
     email: BUSINESS_INFO.email,
     timings: 'Under Construction • Opening Soon (Enquiries Open)',
     mapEmbedUrl: 'https://maps.google.com/maps?q=Goregaon+West,Mumbai&t=&z=14&ie=UTF8&iwloc=&output=embed',
-    photoUrl: '/assets/centre-goregaon.webp',
+    photoUrl: '/assets/clinic-lounge-reception.jpg',
+    imagePosition: 'center center',
     googleRating: '4.5+',
     features: ['Orthopedic OPD Clinic', 'Digital Radiography Support', 'Fracture & Sports Care'],
     geo: {

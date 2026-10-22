@@ -39,7 +39,7 @@ export const CentreCard: React.FC<CentreCardProps> = ({ centre }) => {
       }}
     >
       {/* ── 1. Header: Photo or Map with Interactive Toggle ── */}
-      <div style={{ position: 'relative', height: '195px', backgroundColor: 'var(--navy-dark)', overflow: 'hidden' }} className="centre-media-box">
+      <div style={{ position: 'relative', height: '215px', backgroundColor: 'var(--navy-dark)', overflow: 'hidden' }} className="centre-media-box">
         {activeTab === 'photo' ? (
           <img
             src={centre.photoUrl}
@@ -48,7 +48,7 @@ export const CentreCard: React.FC<CentreCardProps> = ({ centre }) => {
               const target = e.currentTarget;
               if (!target.dataset.fallbackTried) {
                 target.dataset.fallbackTried = 'true';
-                target.src = '/assets/centre-kandivali.webp';
+                target.src = '/assets/clinic-kandivali.jpg';
               }
             }}
             style={{
@@ -56,7 +56,7 @@ export const CentreCard: React.FC<CentreCardProps> = ({ centre }) => {
               height: '100%',
               objectFit: 'cover',
               objectPosition: centre.imagePosition || 'center center',
-              filter: 'brightness(0.92)',
+              filter: 'brightness(0.96)',
               display: 'block',
               transition: 'transform 0.4s ease'
             }}
@@ -76,14 +76,14 @@ export const CentreCard: React.FC<CentreCardProps> = ({ centre }) => {
         )}
 
         {/* Soft bottom vignette overlay */}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(7, 21, 46, 0.4) 0%, transparent 40%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(7, 21, 46, 0.5) 0%, rgba(7, 21, 46, 0.05) 50%, rgba(7, 21, 46, 0.25) 100%)', pointerEvents: 'none' }} />
 
-        {/* Top-Left: Centre / Outreach Type Badge */}
+        {/* Bottom-Left: Centre / Outreach Type Badge (Positioned at bottom so top signboard is unobstructed) */}
         <div style={{
           position: 'absolute',
-          top: '0.65rem',
-          left: '0.65rem',
-          backgroundColor: isOutreach ? 'rgba(217, 119, 6, 0.95)' : 'rgba(7, 21, 46, 0.88)',
+          bottom: '0.55rem',
+          left: '0.55rem',
+          backgroundColor: isOutreach ? 'rgba(217, 119, 6, 0.95)' : 'rgba(7, 21, 46, 0.9)',
           backdropFilter: 'blur(8px)',
           color: '#ffffff',
           padding: '0.25rem 0.65rem',
@@ -91,7 +91,7 @@ export const CentreCard: React.FC<CentreCardProps> = ({ centre }) => {
           fontSize: '0.7rem',
           fontWeight: 800,
           border: '1px solid rgba(255, 255, 255, 0.2)',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.25)',
           display: 'flex',
           alignItems: 'center',
           gap: '0.3rem',
