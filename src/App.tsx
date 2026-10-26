@@ -55,6 +55,8 @@ export const App: React.FC = () => {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blogs" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPostDetail />} />
+          <Route path="/robotic-knee-replacement-recovery-mumbai" element={<Navigate to="/blog/robotic-knee-replacement-recovery-mumbai" replace />} />
+          <Route path="/robotic-knee-replacement-surgery" element={<Navigate to="/blog/robotic-knee-replacement-surgery" replace />} />
           <Route path="/testimonials" element={<Navigate to="/blog" replace />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />

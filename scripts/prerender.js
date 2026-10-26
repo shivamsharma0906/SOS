@@ -1,13 +1,14 @@
 /**
- * Build-time Prerendering Script for SOS Orthopedic Clinic Blog
+ * Build-time Prerendering Script for SOS Speciality Orthopedic Clinic
  * 
  * Lightweight zero-dependency static HTML generator:
  * - Runs post-build (after `vite build`)
- * - Injects SEO meta tags, Open Graph, Twitter cards, JSON-LD schemas,
- *   and full semantic HTML (H1, H2s, H3s, OL, UL, FAQs) into the static HTML
- * - Writes to `dist/blog/robotic-knee-replacement-surgery/index.html`
- * - When deployed on Vercel, this static page is served directly to search engine
- *   crawlers (Googlebot, Bingbot, social media scrapers) without requiring JavaScript.
+ * - Generates static pre-rendered HTML for all key site pages and blog posts
+ * - Injects exact page titles, meta descriptions, canonical URLs, Open Graph tags,
+ *   Twitter cards, robots directives, JSON-LD schemas, and semantic HTML into #root.
+ * - Generates both `dist/<route>/index.html` and `dist/<route>.html` to ensure
+ *   search engine crawlers (Googlebot, Bingbot) and CDNs (Vercel) receive 200 OK
+ *   with full static content without requiring client-side JavaScript execution.
  */
 
 import fs from 'fs';
@@ -27,35 +28,132 @@ if (!fs.existsSync(templatePath)) {
 
 const template = fs.readFileSync(templatePath, 'utf-8');
 
-// Blog Post Metadata
-const post = {
+function renderPage({ page, structuredData, bodyHtml, targetFiles }) {
+  let outputHtml = template;
+
+  // 1. Title & Meta Title
+  outputHtml = outputHtml.replace(
+    /<title>.*?<\/title>/i,
+    `<title>${page.metaTitle}</title>`
+  );
+  outputHtml = outputHtml.replace(
+    /<meta name="title" content=".*?" \/>/i,
+    `<meta name="title" content="${page.metaTitle}" />`
+  );
+
+  // 2. Meta Description
+  outputHtml = outputHtml.replace(
+    /<meta name="description"[\s\S]*?content=".*?" \/>/i,
+    `<meta name="description" content="${page.metaDescription}" />`
+  );
+
+  // 3. Keywords
+  if (page.keywords) {
+    outputHtml = outputHtml.replace(
+      /<meta name="keywords"[\s\S]*?content=".*?" \/>/i,
+      `<meta name="keywords" content="${page.keywords}" />`
+    );
+  }
+
+  // 4. Canonical URL
+  outputHtml = outputHtml.replace(
+    /<link rel="canonical" href=".*?" \/>/i,
+    `<link rel="canonical" href="${page.canonicalUrl}" />`
+  );
+
+  // 5. Open Graph
+  outputHtml = outputHtml.replace(
+    /<meta property="og:type" content=".*?" \/>/i,
+    `<meta property="og:type" content="${page.ogType || 'website'}" />`
+  );
+  outputHtml = outputHtml.replace(
+    /<meta property="og:url" content=".*?" \/>/i,
+    `<meta property="og:url" content="${page.canonicalUrl}" />`
+  );
+  outputHtml = outputHtml.replace(
+    /<meta property="og:title" content=".*?" \/>/i,
+    `<meta property="og:title" content="${page.metaTitle}" />`
+  );
+  outputHtml = outputHtml.replace(
+    /<meta property="og:description"[\s\S]*?content=".*?" \/>/i,
+    `<meta property="og:description" content="${page.metaDescription}" />`
+  );
+  if (page.ogImage) {
+    outputHtml = outputHtml.replace(
+      /<meta property="og:image" content=".*?" \/>/i,
+      `<meta property="og:image" content="${page.ogImage}" />`
+    );
+    outputHtml = outputHtml.replace(
+      /<meta name="twitter:image" content=".*?" \/>/i,
+      `<meta name="twitter:image" content="${page.ogImage}" />`
+    );
+  }
+
+  // 6. Twitter
+  outputHtml = outputHtml.replace(
+    /<meta name="twitter:title" content=".*?" \/>/i,
+    `<meta name="twitter:title" content="${page.metaTitle}" />`
+  );
+  outputHtml = outputHtml.replace(
+    /<meta name="twitter:description" content=".*?" \/>/i,
+    `<meta name="twitter:description" content="${page.metaDescription}" />`
+  );
+
+  // 7. Robots & JSON-LD
+  const headInjections = `
+  <meta name="robots" content="index, follow" />
+  ${structuredData ? `<script type="application/ld+json">\n${JSON.stringify(structuredData, null, 2)}\n  </script>` : ''}
+`;
+  outputHtml = outputHtml.replace('</head>', `${headInjections}\n</head>`);
+
+  // 8. Body HTML in #root
+  if (bodyHtml) {
+    outputHtml = outputHtml.replace(
+      '<div id="root"></div>',
+      `<div id="root">${bodyHtml}</div>`
+    );
+  }
+
+  // 9. Write to each target file
+  for (const targetFile of targetFiles) {
+    fs.mkdirSync(path.dirname(targetFile), { recursive: true });
+    fs.writeFileSync(targetFile, outputHtml, 'utf-8');
+    console.log(`[Prerender] Generated: ${path.relative(distDir, targetFile)}`);
+  }
+}
+
+// ========================================================
+// 1. BLOG ARTICLE 1: What Is Robotic Knee Replacement Surgery?
+// ========================================================
+const post1 = {
   slug: 'robotic-knee-replacement-surgery',
   url: 'https://www.sosorth.com/blog/robotic-knee-replacement-surgery',
+  canonicalUrl: 'https://www.sosorth.com/blog/robotic-knee-replacement-surgery',
   metaTitle: 'Robotic Knee Replacement Mumbai | SOS Orthopedic Clinic',
   metaDescription: 'Learn about robotic knee replacement surgery, its benefits, risks, and recovery, and understand knee replacement treatment options.',
   keywords: 'Robotic Knee Replacement Mumbai, knee replacement surgery benefits, robotic knee surgery recovery, knee osteoarthritis treatment, SOS Speciality Orthopedic Clinic',
   ogImage: 'https://www.sosorth.com/assets/robotic-knee-consultation.png',
+  ogType: 'article',
   h1: 'What Is Robotic Knee Replacement Surgery? Benefits, Risks and Recovery',
   datePublished: '2026-10-14',
   dateModified: '2026-10-14',
   author: 'Dr. Shobit Nitin Deshmukh'
 };
 
-// JSON-LD Schemas
-const structuredData = [
+const structuredData1 = [
   {
     "@context": "https://schema.org",
     "@type": "MedicalWebPage",
-    "@id": `${post.url}#webpage`,
-    "url": post.url,
-    "name": post.metaTitle,
-    "headline": post.h1,
-    "description": post.metaDescription,
-    "image": post.ogImage,
+    "@id": `${post1.url}#webpage`,
+    "url": post1.url,
+    "name": post1.metaTitle,
+    "headline": post1.h1,
+    "description": post1.metaDescription,
+    "image": post1.ogImage,
     "inLanguage": "en-IN",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": post.url
+      "@id": post1.url
     },
     "publisher": {
       "@type": "Organization",
@@ -68,15 +166,15 @@ const structuredData = [
     },
     "author": {
       "@type": "Person",
-      "name": post.author
+      "name": post1.author
     },
-    "datePublished": post.datePublished,
-    "dateModified": post.dateModified
+    "datePublished": post1.datePublished,
+    "dateModified": post1.dateModified
   },
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "@id": `${post.url}#faq`,
+    "@id": `${post1.url}#faq`,
     "mainEntity": [
       {
         "@type": "Question",
@@ -123,7 +221,7 @@ const structuredData = [
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "@id": `${post.url}#breadcrumb`,
+    "@id": `${post1.url}#breadcrumb`,
     "itemListElement": [
       {
         "@type": "ListItem",
@@ -140,22 +238,21 @@ const structuredData = [
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "What Is Robotic Knee Replacement Surgery? Benefits, Risks and Recovery",
-        "item": post.url
+        "name": post1.h1,
+        "item": post1.url
       }
     ]
   }
 ];
 
-// Semantic Pre-rendered Content HTML
-const prerenderedArticleContent = `
+const prerenderedArticleContent1 = `
 <div class="blog-article-page-wrap">
   <nav aria-label="Breadcrumb" class="blog-breadcrumb-nav">
     <div class="container">
       <ol class="breadcrumb-list">
         <li class="breadcrumb-item"><a href="/">Home</a> / </li>
         <li class="breadcrumb-item"><a href="/blog">Blog</a> / </li>
-        <li class="breadcrumb-item active" aria-current="page">${post.h1}</li>
+        <li class="breadcrumb-item active" aria-current="page">${post1.h1}</li>
       </ol>
     </div>
   </nav>
@@ -166,9 +263,9 @@ const prerenderedArticleContent = `
         <div class="blog-article-main-col">
           <header class="blog-article-header">
             <span class="blog-category-tag">Joint Replacement &amp; Knee</span>
-            <h1 class="blog-article-h1" itemprop="headline">${post.h1}</h1>
+            <h1 class="blog-article-h1" itemprop="headline">${post1.h1}</h1>
             <div class="blog-article-meta-bar">
-              <span>Author: <strong class="meta-author-name">${post.author}</strong></span>
+              <span>Author: <strong class="meta-author-name">${post1.author}</strong></span>
               <span> &bull; Last updated: <time datetime="2026-10-14">October 14, 2026</time></span>
             </div>
             <figure class="blog-hero-figure">
@@ -265,7 +362,7 @@ const prerenderedArticleContent = `
               </div>
               <div class="blog-subsection">
                 <h3 class="blog-h3">Returning to Daily Activities</h3>
-                <p>Many patients gradually resume routine activities over several weeks, while more complete recovery may take several months. The timeline depends on individual progress. Returning to driving, work and exercise should be guided by the treating surgeon.</p>
+                <p>Many patients gradually resume routine activities over several weeks, while more complete recovery can take several months. The timeline depends on individual progress. Returning to driving, work and exercise should be guided by the treating surgeon.</p>
               </div>
             </section>
 
@@ -291,11 +388,11 @@ const prerenderedArticleContent = `
             <section class="blog-content-section blog-faq-section">
               <h2 class="blog-h2">Frequently Asked Questions About Robotic Knee Replacement</h2>
               <div class="blog-faq-accordion">
-                <div class="blog-faq-item active">
-                  <button type="button" class="blog-faq-trigger" aria-expanded="true">
+                <div class="blog-faq-item">
+                  <button type="button" class="blog-faq-trigger" aria-expanded="false">
                     <span class="blog-faq-question-text">How Painful Is Robotic Knee Replacement Surgery?</span>
                   </button>
-                  <div class="blog-faq-panel expanded">
+                  <div class="blog-faq-panel collapsed">
                     <div class="blog-faq-answer-inner">
                       <p>Pain, swelling and stiffness are expected to some degree after knee replacement. Pain-management measures and prescribed rehabilitation can help manage discomfort as healing progresses. The recovery timeline varies between individuals.</p>
                     </div>
@@ -368,94 +465,609 @@ const prerenderedArticleContent = `
 </div>
 `;
 
-// Build customized HTML
-let outputHtml = template;
+renderPage({
+  page: post1,
+  structuredData: structuredData1,
+  bodyHtml: prerenderedArticleContent1,
+  targetFiles: [
+    path.resolve(distDir, 'blog', post1.slug, 'index.html'),
+    path.resolve(distDir, 'blog', `${post1.slug}.html`)
+  ]
+});
 
-// 1. Replace <title>
-outputHtml = outputHtml.replace(
-  /<title>.*?<\/title>/i,
-  `<title>${post.metaTitle}</title>`
-);
+// ========================================================
+// 2. BLOG ARTICLE 2: How Long Does It Take to Recover After Robotic Knee Replacement Surgery?
+// ========================================================
+const post2 = {
+  slug: 'robotic-knee-replacement-recovery-mumbai',
+  url: 'https://www.sosorth.com/blog/robotic-knee-replacement-recovery-mumbai',
+  canonicalUrl: 'https://www.sosorth.com/blog/robotic-knee-replacement-recovery-mumbai',
+  metaTitle: 'Planning Robotic Knee Replacement Surgery in Mumbai? Know the Recovery Time',
+  metaDescription: 'Learn about robotic knee replacement recovery, with insights into recovery timelines, pain management, physiotherapy, and treatment considerations for patients exploring care in Mumbai.',
+  keywords: 'Robotic knee replacement recovery Mumbai, robotic knee recovery timeline, knee replacement pain management, physiotherapy after knee replacement Mumbai, robotic knee surgery recovery time',
+  ogImage: 'https://www.sosorth.com/assets/robotic-knee-recovery-mumbai.png',
+  ogType: 'article',
+  h1: 'How Long Does It Take to Recover After Robotic Knee Replacement Surgery?',
+  datePublished: '2026-10-26',
+  dateModified: '2026-10-26',
+  author: 'Dr. Shobit Nitin Deshmukh'
+};
 
-// 2. Replace meta title
-outputHtml = outputHtml.replace(
-  /<meta name="title" content=".*?" \/>/i,
-  `<meta name="title" content="${post.metaTitle}" />`
-);
+const structuredData2 = [
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "@id": `${post2.url}#webpage`,
+    "url": post2.url,
+    "name": post2.metaTitle,
+    "headline": post2.h1,
+    "description": post2.metaDescription,
+    "image": post2.ogImage,
+    "inLanguage": "en-IN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": post2.url
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "SOS Speciality Orthopedic Clinic",
+      "url": "https://www.sosorth.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.sosorth.com/assets/video-poster.jpg"
+      }
+    },
+    "author": {
+      "@type": "Person",
+      "name": post2.author
+    },
+    "datePublished": post2.datePublished,
+    "dateModified": post2.dateModified
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${post2.url}#faq`,
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How Long Does Pain Last After Robotic Knee Replacement?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pain is often most noticeable during the first days and weeks, then gradually improves as healing and movement progress. Some discomfort, stiffness, or swelling may continue for several months, particularly after activity. The pattern varies between patients. Follow your prescribed pain-management plan and contact your healthcare team if pain becomes severe, suddenly worsens, or does not improve as expected."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do You Heal Faster With Robotic Knee Replacement?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Robotic assistance may support surgical planning and precision, but it does not guarantee faster healing. Recovery also depends on your health, knee condition, surgical factors, and rehabilitation. Ask your surgeon what outcomes are realistic for your circumstances and which milestones will help assess your progress."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What Is the Hardest Time After Knee Replacement?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For many patients, the first one or two weeks can be challenging because pain, swelling, sleep disruption, and reliance on walking aids may affect daily life. Progress can vary from day to day. Following your care plan, using support when needed, and attending physiotherapy can make this period more manageable."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What Are the Disadvantages of Robotic Knee Surgery?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Potential disadvantages include additional technology and planning requirements, possible extra costs depending on the setting, and the usual risks of knee replacement, such as infection, blood clots, stiffness, or persistent pain. Robotic assistance does not eliminate surgical risks or guarantee a better result for every patient. Discuss the benefits, limitations, alternatives, and expected costs with your surgeon before deciding."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${post2.url}#breadcrumb`,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.sosorth.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://www.sosorth.com/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": post2.h1,
+        "item": post2.url
+      }
+    ]
+  }
+];
 
-// 3. Replace meta description
-outputHtml = outputHtml.replace(
-  /<meta name="description"[\s\S]*?content=".*?" \/>/i,
-  `<meta name="description" content="${post.metaDescription}" />`
-);
+const prerenderedArticleContent2 = `
+<div class="blog-article-page-wrap">
+  <nav aria-label="Breadcrumb" class="blog-breadcrumb-nav">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        <li class="breadcrumb-item"><a href="/">Home</a> / </li>
+        <li class="breadcrumb-item"><a href="/blog">Blog</a> / </li>
+        <li class="breadcrumb-item active" aria-current="page">${post2.h1}</li>
+      </ol>
+    </div>
+  </nav>
 
-// 4. Replace keywords
-outputHtml = outputHtml.replace(
-  /<meta name="keywords"[\s\S]*?content=".*?" \/>/i,
-  `<meta name="keywords" content="${post.keywords}" />`
-);
+  <article class="blog-article-root" itemscope itemtype="https://schema.org/MedicalWebPage">
+    <div class="container">
+      <div class="blog-article-layout-grid">
+        <div class="blog-article-main-col">
+          <header class="blog-article-header">
+            <span class="blog-category-tag">Joint Replacement &amp; Knee</span>
+            <h1 class="blog-article-h1" itemprop="headline">${post2.h1}</h1>
+            <div class="blog-article-meta-bar">
+              <span>Author: <strong class="meta-author-name">${post2.author}</strong></span>
+              <span> &bull; Last updated: <time datetime="2026-10-26">October 26, 2026</time></span>
+            </div>
+            <figure class="blog-hero-figure">
+              <img src="/assets/robotic-knee-recovery-mumbai.png" alt="Robotic knee replacement surgery and knee recovery in mumbai" width="1672" height="941" loading="eager" fetchpriority="high" class="blog-hero-img" />
+              <figcaption class="blog-hero-caption">Robotic knee replacement surgery and knee recovery in mumbai</figcaption>
+            </figure>
+          </header>
 
-// 5. Replace canonical
-outputHtml = outputHtml.replace(
-  /<link rel="canonical" href=".*?" \/>/i,
-  `<link rel="canonical" href="${post.url}" />`
-);
+          <div class="blog-article-body">
+            <div class="blog-lead-section">
+              <p class="blog-lead-p">Recovering after robotic knee replacement surgery takes time, patience, and a structured rehabilitation plan. Understanding the recovery process helps patients set realistic expectations. Recovery varies according to overall health, knee condition, mobility before surgery, and consistency with rehabilitation.</p>
+              <p class="blog-lead-p">Many patients begin standing and walking with assistance within the first day, although returning to everyday activities takes longer. Robotic assistance helps the surgeon plan and perform the procedure with technology-guided precision, but it does not remove the need for healing, pain management, or physiotherapy. Your orthopaedic team will tailor advice to your needs and progress. Learn more about <a href="https://www.sosorth.com/" class="blog-internal-link">SOS Speciality Orthopedic Clinic</a>.</p>
+            </div>
 
-// 6. Replace Open Graph tags
-outputHtml = outputHtml.replace(
-  /<meta property="og:type" content=".*?" \/>/i,
-  `<meta property="og:type" content="article" />`
-);
-outputHtml = outputHtml.replace(
-  /<meta property="og:url" content=".*?" \/>/i,
-  `<meta property="og:url" content="${post.url}" />`
-);
-outputHtml = outputHtml.replace(
-  /<meta property="og:title" content=".*?" \/>/i,
-  `<meta property="og:title" content="${post.metaTitle}" />`
-);
-outputHtml = outputHtml.replace(
-  /<meta property="og:description"[\s\S]*?content=".*?" \/>/i,
-  `<meta property="og:description" content="${post.metaDescription}" />`
-);
-outputHtml = outputHtml.replace(
-  /<meta property="og:image" content=".*?" \/>/i,
-  `<meta property="og:image" content="${post.ogImage}" />`
-);
+            <section class="blog-content-section">
+              <h2 class="blog-h2">What Happens Immediately After Robotic Knee Replacement Surgery?</h2>
+              <p>After surgery, the clinical team monitors pain, the surgical wound, circulation, and your ability to move safely. Depending on your condition and the hospital’s protocol, you may sit, stand, or take a few assisted steps on the day of surgery or the following day. A walker can provide stability and help reduce the risk of falls.</p>
+              <p>Many patients stay in hospital for one to three days, although the duration varies. Discharge depends on pain control, safe mobility, wound care, and the ability to manage essential activities with support. Before leaving, make sure you understand your medication schedule, incision care instructions, follow-up appointments, and recommended exercises.</p>
+              <p>Preparing for recovery before surgery can make the first few weeks easier. Set up a comfortable resting area, organise meals and essential supplies, and arrange help with shopping or transport if needed. Follow your orthopaedic surgeon’s instructions for recovery. Ask which exercises to begin, how to manage stairs safely, and when to attend follow-up visits. These preparations can reduce unnecessary stress while allowing you to focus on safe movement and gradual progress.</p>
+            </section>
 
-// 7. Replace Twitter tags
-outputHtml = outputHtml.replace(
-  /<meta name="twitter:title" content=".*?" \/>/i,
-  `<meta name="twitter:title" content="${post.metaTitle}" />`
-);
-outputHtml = outputHtml.replace(
-  /<meta name="twitter:description" content=".*?" \/>/i,
-  `<meta name="twitter:description" content="${post.metaDescription}" />`
-);
-outputHtml = outputHtml.replace(
-  /<meta name="twitter:image" content=".*?" \/>/i,
-  `<meta name="twitter:image" content="${post.ogImage}" />`
-);
+            <section class="blog-content-section">
+              <h2 class="blog-h2">Week-by-Week Recovery Timeline After Robotic Knee Replacement Surgery</h2>
+              <div class="blog-recovery-timeline">
+                <div class="blog-timeline-item">
+                  <div class="blog-timeline-header-row"><span class="blog-timeline-badge">24–48 Hours</span></div>
+                  <h3 class="blog-h3">First 24–48 Hours: Initial Movement and Monitoring</h3>
+                  <p>The first two days focus on monitoring and safe movement. Your physiotherapist may guide ankle movements, gentle knee exercises, standing, and short assisted walks. Swelling, stiffness, and discomfort are common. Follow the team’s guidance and do not attempt movements before you are ready; move independently before you are ready.</p>
+                </div>
+                <div class="blog-timeline-item">
+                  <div class="blog-timeline-header-row"><span class="blog-timeline-badge">Weeks 1–2</span></div>
+                  <h3 class="blog-h3">Weeks 1–2: Establishing a Safe Routine</h3>
+                  <p>During the first two weeks, many patients use a walker and practise short, frequent walks. Prescribed exercises improve knee movement and strengthen surrounding muscles. Follow instructions about medication, wound care, bathing, ice, and leg elevation. Increase activity gradually, even when you feel better.</p>
+                </div>
+                <div class="blog-timeline-item">
+                  <div class="blog-timeline-header-row"><span class="blog-timeline-badge">Weeks 3–6</span></div>
+                  <h3 class="blog-h3">Weeks 3–6: Improving Everyday Mobility</h3>
+                  <p>As healing progresses, walking around the home and completing daily tasks may become easier. Regular rehabilitation can improve walking distance and flexibility, although progress varies. Your surgeon or physiotherapist can advise when to reduce walking support, climb stairs, drive, or return to work, based on strength, pain, medication, and activity demands.</p>
+                </div>
+                <div class="blog-timeline-item">
+                  <div class="blog-timeline-header-row"><span class="blog-timeline-badge">Weeks 6–12+</span></div>
+                  <h3 class="blog-h3">Weeks 6–12 and Beyond: Building Strength and Confidence</h3>
+                  <p>Between six and twelve weeks, some patients become more independent. Strength, balance, endurance, and confidence may improve for months. Swelling or stiffness can persist, so follow your rehabilitation plan and attend reviews. Your progress matters more than matching someone else’s timeline.</p>
+                </div>
+              </div>
 
-// 8. Inject robots tag & JSON-LD schemas in <head>
-const headInjections = `
-  <meta name="robots" content="index, follow" />
-  <script type="application/ld+json">
-${JSON.stringify(structuredData, null, 2)}
-  </script>
+              <figure class="blog-hero-figure" style="margin-top: 2.5rem;">
+                <img src="/assets/robotic-knee-replacement-procedure-mumbai.png" alt="Robotic knee replacement surgery procedure in mumbai" width="1672" height="941" loading="lazy" class="blog-hero-img" />
+                <figcaption class="blog-hero-caption">Robotic knee replacement surgery procedure in mumbai</figcaption>
+              </figure>
+            </section>
+
+            <section class="blog-content-section">
+              <h2 class="blog-h2">Factors That Influence Recovery</h2>
+              <p>Recovery after robotic knee replacement surgery depends on several factors, including age, overall health, muscle strength, existing medical conditions, and the severity of knee damage. Patients who experience limited mobility before surgery may require additional time and support to regain strength and confidence during recovery.</p>
+              <p>Physiotherapy after knee replacement plays an important role in improving flexibility, balance, muscle control, and walking ability. Following the prescribed exercises consistently can support progress, while excessive activity may increase pain or swelling. Your physiotherapist can guide you on adjusting exercises and activity levels according to your recovery.</p>
+              <p>Your home environment and support system also influence recovery. Keep walking areas clear, remove loose rugs, wear stable footwear, and arrange assistance with transport and daily tasks when needed. Discuss recovery expectations with experienced <a href="/doctors" class="blog-internal-link">robotic knee replacement surgeons</a> and follow their advice on medication, wound care, walking aids, and follow-up appointments to support a safer, more comfortable recovery.</p>
+            </section>
+
+            <section class="blog-content-section">
+              <h2 class="blog-h2">Managing Pain, Swelling, and Physiotherapy</h2>
+              <p>Pain and swelling are common during the first few weeks. Symptoms usually become more manageable, although progress can fluctuate. Take medication as prescribed and use ice or elevation if recommended. Balance exercise with rest, and seek advice if pain remains uncontrolled or worsens suddenly.</p>
+              <p><a href="/physiotherapy" class="blog-internal-link">Physiotherapy</a> helps improve movement, flexibility, and strength. Your programme may include knee bends, thigh strengthening, balance exercises, and walking practice. Follow your physiotherapist’s instructions. Avoid forcing the knee or adding strenuous activities without approval. Rehabilitation supports recovery but cannot guarantee a particular result.</p>
+            </section>
+
+            <section class="blog-content-section">
+              <h2 class="blog-h2">When Should You Contact Your Doctor?</h2>
+              <p>Contact your doctor promptly if you notice increasing redness, wound drainage, fever, worsening pain, or unusual swelling. Sudden calf pain or swelling requires urgent medical assessment. Seek emergency care if you experience chest pain, sudden shortness of breath, or fainting. These symptoms do not always indicate a complication, but they should never be ignored or assessed only through online information.</p>
+              <p>Attend follow-up appointments so your surgeon can assess healing, movement, and progress. If you are unsure whether an activity is safe, ask your surgeon before attempting it. For appointment scheduling or further assistance with your treatment, <a href="/contact" class="blog-internal-link">our team</a> is available to help.</p>
+            </section>
+
+            <section class="blog-content-section">
+              <h2 class="blog-h2">Is Robotic Knee Replacement the Right Option?</h2>
+              <p>Robotic assistance can help surgeons plan implant positioning and guide parts of the operation. Suitability and benefits depend on your diagnosis, needs, surgeon’s assessment, and technology. It does not guarantee a pain-free result, eliminate every risk, or ensure faster recovery.</p>
+              <p>If you are considering robotic knee replacement in Mumbai, ask your surgeon whether it suits your condition and treatment goals. You can also consult experienced orthopaedic doctors to discuss your treatment options, benefits, limitations, alternatives, and risks before deciding. Before making a decision, consult experienced robotic knee replacement surgeons to understand your treatment options, and learn more about the <a href="/blog/robotic-knee-replacement-surgery" class="blog-internal-link">robotic knee replacement procedure</a>, including its potential benefits, limitations, and suitability for your condition.</p>
+
+              <figure class="blog-hero-figure" style="margin-top: 2.5rem;">
+                <img src="/assets/robotic-knee-consultation.png" alt="Orthopaedic surgeon discussing knee replacement surgery with a patient in mumbai" width="1730" height="909" loading="lazy" class="blog-hero-img" />
+                <figcaption class="blog-hero-caption">Orthopaedic surgeon discussing knee replacement surgery with a patient in mumbai</figcaption>
+              </figure>
+            </section>
+
+            <section class="blog-content-section blog-faq-section">
+              <h2 class="blog-h2">Frequently Asked Questions</h2>
+              <div class="blog-faq-accordion">
+                <div class="blog-faq-item">
+                  <button type="button" class="blog-faq-trigger" aria-expanded="false">
+                    <span class="blog-faq-question-text">How Long Does Pain Last After Robotic Knee Replacement?</span>
+                  </button>
+                  <div class="blog-faq-panel collapsed">
+                    <div class="blog-faq-answer-inner">
+                      <p>Pain is often most noticeable during the first days and weeks, then gradually improves as healing and movement progress. Some discomfort, stiffness, or swelling may continue for several months, particularly after activity. The pattern varies between patients. Follow your prescribed pain-management plan and contact your healthcare team if pain becomes severe, suddenly worsens, or does not improve as expected.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="blog-faq-item">
+                  <button type="button" class="blog-faq-trigger" aria-expanded="false">
+                    <span class="blog-faq-question-text">Do You Heal Faster With Robotic Knee Replacement?</span>
+                  </button>
+                  <div class="blog-faq-panel collapsed">
+                    <div class="blog-faq-answer-inner">
+                      <p>Robotic assistance may support surgical planning and precision, but it does not guarantee faster healing. Recovery also depends on your health, knee condition, surgical factors, and rehabilitation. Ask your surgeon what outcomes are realistic for your circumstances and which milestones will help assess your progress.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="blog-faq-item">
+                  <button type="button" class="blog-faq-trigger" aria-expanded="false">
+                    <span class="blog-faq-question-text">What Is the Hardest Time After Knee Replacement?</span>
+                  </button>
+                  <div class="blog-faq-panel collapsed">
+                    <div class="blog-faq-answer-inner">
+                      <p>For many patients, the first one or two weeks can be challenging because pain, swelling, sleep disruption, and reliance on walking aids may affect daily life. Progress can vary from day to day. Following your care plan, using support when needed, and attending physiotherapy can make this period more manageable.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="blog-faq-item">
+                  <button type="button" class="blog-faq-trigger" aria-expanded="false">
+                    <span class="blog-faq-question-text">What Are the Disadvantages of Robotic Knee Surgery?</span>
+                  </button>
+                  <div class="blog-faq-panel collapsed">
+                    <div class="blog-faq-answer-inner">
+                      <p>Potential disadvantages include additional technology and planning requirements, possible extra costs depending on the setting, and the usual risks of knee replacement, such as infection, blood clots, stiffness, or persistent pain. Robotic assistance does not eliminate surgical risks or guarantee a better result for every patient. Discuss the benefits, limitations, alternatives, and expected costs with your surgeon before deciding.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <aside class="blog-medical-disclaimer">
+              <div>
+                <strong class="disclaimer-heading">Medical Disclaimer</strong>
+                <p class="disclaimer-text">This article is for informational purposes and does not replace professional medical advice. Always consult a qualified orthopaedic surgeon for clinical evaluation and personalised guidance.</p>
+              </div>
+            </aside>
+
+            <div class="blog-cta-box">
+              <span class="blog-cta-eyebrow">ORTHOPEDIC CONSULTATION &amp; OPD</span>
+              <h3 class="blog-cta-title">Concerned About Knee Pain or Considering Replacement?</h3>
+              <p class="blog-cta-desc">Schedule a comprehensive clinical assessment with our senior orthopedic surgeons across our Mumbai centres.</p>
+              <div class="blog-cta-buttons">
+                <a href="/contact" class="btn btn-primary btn-md">Book an Appointment</a>
+                <a href="/contact" class="btn btn-secondary btn-md">Contact SOS Clinic</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
 `;
-outputHtml = outputHtml.replace('</head>', `${headInjections}\n</head>`);
 
-// 9. Inject Pre-rendered Article HTML into #root
-outputHtml = outputHtml.replace(
-  '<div id="root"></div>',
-  `<div id="root">${prerenderedArticleContent}</div>`
-);
+renderPage({
+  page: post2,
+  structuredData: structuredData2,
+  bodyHtml: prerenderedArticleContent2,
+  targetFiles: [
+    path.resolve(distDir, 'blog', post2.slug, 'index.html'),
+    path.resolve(distDir, 'blog', `${post2.slug}.html`),
+    path.resolve(distDir, post2.slug, 'index.html'),
+    path.resolve(distDir, `${post2.slug}.html`)
+  ]
+});
 
-// 10. Write to target file
-const targetDir = path.resolve(distDir, 'blog', post.slug);
-fs.mkdirSync(targetDir, { recursive: true });
-const targetFile = path.resolve(targetDir, 'index.html');
-fs.writeFileSync(targetFile, outputHtml, 'utf-8');
+// ========================================================
+// 3. KEY SITE PAGES (Fixing Google Indexing for Pending Pages)
+// ========================================================
+const sitePages = [
+  {
+    name: 'blog',
+    canonicalUrl: 'https://www.sosorth.com/blog',
+    metaTitle: 'Orthopedic Blog & Patient Recovery Guides | SOS Speciality Clinic Mumbai',
+    metaDescription: 'Evidence-based advice, recovery guides, and practical orthopedic insights from our specialist doctors at SOS Speciality Clinic, Mumbai.',
+    keywords: 'Orthopedic blog Mumbai, Knee replacement guide, Robotic knee surgery Mumbai, Fast recovery joint replacement, SOS Ortho Clinic',
+    h1: 'Expert Insights for a Stronger, Healthier Tomorrow',
+    subhead: 'Evidence-based advice, recovery guides, and practical orthopedic insights from our specialist doctors at SOS Speciality Clinic, Mumbai.',
+    targetFiles: [
+      path.resolve(distDir, 'blog', 'index.html'),
+      path.resolve(distDir, 'blog.html'),
+      path.resolve(distDir, 'blogs', 'index.html'),
+      path.resolve(distDir, 'blogs.html')
+    ]
+  },
+  {
+    name: 'physiotherapy',
+    canonicalUrl: 'https://www.sosorth.com/physiotherapy',
+    metaTitle: 'Orthopedic Physiotherapy & Surgeon-Led Joint Rehab Mumbai | SOS Clinic',
+    metaDescription: 'Comprehensive orthopedic physical therapy and joint rehabilitation in Mumbai. Specialized in-clinic & doorstep home physio for knee replacement, hip surgery, sciatica, and sports injuries.',
+    keywords: 'Orthopedic physiotherapy Mumbai, Knee replacement rehabilitation, Sciatica physical therapy Borivali, Sports rehab Kandivali, Home physiotherapy Mumbai',
+    h1: 'Orthopedic Physiotherapy & Surgeon-Led Joint Rehabilitation',
+    subhead: 'Evidence-based musculoskeletal rehabilitation, pre- and post-operative joint mobility protocols, and personalized physical therapy across our Mumbai clinics and at your doorstep.',
+    targetFiles: [
+      path.resolve(distDir, 'physiotherapy', 'index.html'),
+      path.resolve(distDir, 'physiotherapy.html')
+    ]
+  },
+  {
+    name: 'x-ray-services-at-home',
+    canonicalUrl: 'https://www.sosorth.com/x-ray-services-at-home',
+    metaTitle: '24/7 Digital X-Ray Services at Home in Mumbai | SOS Orthopedic Clinic',
+    metaDescription: 'Fast 20-30 min doorstep portable digital X-ray services across Mumbai (Kandivali, Malad, Borivali, Goregaon). Low-dose high-frequency imaging, instant radiologist reports, certified technicians.',
+    keywords: 'Home X-Ray Mumbai, Portable digital X-Ray at home, Bedside X-Ray Kandivali, Doorstep X-Ray Borivali, 24/7 Emergency X-Ray Malad',
+    h1: '24/7 Portable Digital X-Ray Services at Your Doorstep in Mumbai',
+    subhead: 'Hospital-grade mobile digital radiography brought to the patient’s bedside. Zero painful transit, instant film capture, and direct review by senior orthopedic surgeons.',
+    targetFiles: [
+      path.resolve(distDir, 'x-ray-services-at-home', 'index.html'),
+      path.resolve(distDir, 'x-ray-services-at-home.html'),
+      path.resolve(distDir, 'x-ray-at-home', 'index.html'),
+      path.resolve(distDir, 'x-ray-at-home.html')
+    ]
+  },
+  {
+    name: 'home-services',
+    canonicalUrl: 'https://www.sosorth.com/home-services',
+    metaTitle: 'Comprehensive Orthopedic Home Care & Doorstep Services Mumbai | SOS Clinic',
+    metaDescription: 'Hospital-grade orthopedic healthcare delivered to your doorstep in Mumbai: 24/7 Portable Digital X-Ray, Orthopedic Surgeon Home Visits, Post-Op Physiotherapy, Sterile Wound Care & Lab Phlebotomy.',
+    keywords: 'Orthopedic home care Mumbai, Doctor home visit Mumbai, Portable X-ray home service, Home physiotherapy Mumbai, Bedside blood test phlebotomy',
+    h1: 'Hospital-Grade Orthopedic Care Delivered Directly to Your Home',
+    subhead: 'Specialized geriatric care, post-surgical recovery management, mobile diagnostics, and doctor home visits across Western Mumbai.',
+    targetFiles: [
+      path.resolve(distDir, 'home-services', 'index.html'),
+      path.resolve(distDir, 'home-services.html')
+    ]
+  },
+  {
+    name: 'services',
+    canonicalUrl: 'https://www.sosorth.com/services',
+    metaTitle: 'Our Orthopedic Specialities & Clinical Pathways | SOS Mumbai',
+    metaDescription: 'Explore SOS Speciality Orthopedic divisions: Joint Replacement, Keyhole ACL Repair, Spine Care, Sports Injuries, Pediatric Trauma, and 24/7 Home X-Ray Diagnostics across Mumbai.',
+    keywords: 'Orthopedic Specialities Mumbai, Joint Replacement, Keyhole ACL Repair, Spine Care Mumbai, Sports Injuries, Pediatric Trauma, Home X-Ray Diagnostics',
+    h1: 'Our Orthopedic Specialities & Clinical Pathways',
+    subhead: 'Specialized clinical units led by senior orthopedic surgeons offering advanced diagnosis, surgical intervention, and post-operative recovery across Mumbai.',
+    targetFiles: [
+      path.resolve(distDir, 'services', 'index.html'),
+      path.resolve(distDir, 'services.html')
+    ]
+  },
+  {
+    name: 'mentors',
+    canonicalUrl: 'https://www.sosorth.com/mentors',
+    metaTitle: 'Our Mentors & Surgical Faculty | SOS Speciality Orthopedic Clinic Mumbai',
+    metaDescription: 'Distinguished academic mentors and senior surgical faculty providing clinical governance, cutting-edge surgical masterclasses, and quality oversight at SOS Speciality Orthopedic Clinic Mumbai.',
+    keywords: 'Orthopedic mentors Mumbai, Surgical faculty orthopedic, Academic clinical governance, Joint replacement masterclass, SOS Speciality Orthopedic Clinic',
+    h1: 'Academic Mentors & Surgical Advisory Faculty',
+    subhead: 'Distinguished orthopedic pioneers guiding surgical protocols, clinical masterclasses, and quality assurance across our network.',
+    targetFiles: [
+      path.resolve(distDir, 'mentors', 'index.html'),
+      path.resolve(distDir, 'mentors.html')
+    ]
+  },
+  {
+    name: 'about',
+    canonicalUrl: 'https://www.sosorth.com/about',
+    metaTitle: 'About SOS Speciality Orthopedic Clinic | Geriatric & Specialized Orthopedic Care',
+    metaDescription: 'SOS was founded by practicing orthopedic surgeons to provide accessible, patient-first musculoskeletal care, joint preservation, and 24/7 doorstep diagnostics.',
+    keywords: 'About SOS Orthopedic Clinic, Orthopedic doctors Mumbai, Geriatric bone care Mumbai, Joint preservation clinic',
+    h1: 'Patient-First Musculoskeletal Care & Joint Preservation in Mumbai',
+    subhead: 'Founded by practicing orthopedic surgeons to ensure zero-wait clinical care, ethical surgical pathways, and comprehensive doorstep support.',
+    targetFiles: [
+      path.resolve(distDir, 'about', 'index.html'),
+      path.resolve(distDir, 'about.html')
+    ]
+  },
+  {
+    name: 'doctors',
+    canonicalUrl: 'https://www.sosorth.com/doctors',
+    metaTitle: 'Our Orthopedic Doctors | SOS Speciality Orthopedic Clinic Mumbai',
+    metaDescription: 'Consult experienced orthopedic surgeons at SOS Speciality Orthopedic Clinic. Specialists in Robotic Joint Replacement, Spine Care, Pediatric Trauma, and Sports Arthroscopy across Mumbai.',
+    keywords: 'Orthopedic doctors Mumbai, Joint replacement surgeon Borivali, Spine specialist Kandivali, Knee doctor Malad',
+    h1: 'Consultant Orthopedic Surgeons & Sub-Specialists in Mumbai',
+    subhead: 'Experienced orthopedic consultants leading joint replacement, keyhole arthroscopy, spine preservation, and trauma units.',
+    targetFiles: [
+      path.resolve(distDir, 'doctors', 'index.html'),
+      path.resolve(distDir, 'doctors.html')
+    ]
+  },
+  {
+    name: 'centres',
+    canonicalUrl: 'https://www.sosorth.com/centres',
+    metaTitle: 'Orthopedic Centres & Outreach Clinics | Kandivali, Borivali, Malad, Goregaon | SOS Mumbai',
+    metaDescription: 'Find your nearest SOS Speciality Orthopedic Clinic centre or outreach clinic: Kandivali, Borivali, Malad, Goregaon. Specialist OPD consultations, digital X-ray diagnostics, and 24/7 Home X-Ray care.',
+    keywords: 'Orthopedic clinic Kandivali, Bone specialist Borivali, Spine clinic Malad, Joint doctor Goregaon',
+    h1: 'SOS Orthopedic Clinic Network & Centres Across Mumbai',
+    subhead: 'Modern consultation suites and diagnostic centres located conveniently across Western Mumbai.',
+    targetFiles: [
+      path.resolve(distDir, 'centres', 'index.html'),
+      path.resolve(distDir, 'centres.html')
+    ]
+  },
+  {
+    name: 'contact',
+    canonicalUrl: 'https://www.sosorth.com/contact',
+    metaTitle: 'Contact SOS Speciality Orthopedic Clinic | 24/7 Helpline 093211 44580',
+    metaDescription: 'Connect with SOS Speciality Orthopedic Clinic in Mumbai. Call 093211 44580 for doctor consultations or 24/7 Home X-Ray dispatch across Kandivali, Malad, Borivali, and Goregaon.',
+    keywords: 'Contact SOS Ortho Clinic, Book orthopedic appointment Mumbai, Emergency home X-Ray number Mumbai',
+    h1: 'Contact SOS Speciality Orthopedic Clinic',
+    subhead: '24/7 emergency response, doctor appointment scheduling, and doorstep clinical dispatch across Mumbai.',
+    targetFiles: [
+      path.resolve(distDir, 'contact', 'index.html'),
+      path.resolve(distDir, 'contact.html')
+    ]
+  },
+  {
+    name: 'services-joint-replacement',
+    canonicalUrl: 'https://www.sosorth.com/services/joint-replacement',
+    metaTitle: 'Joint Replacement Care Mumbai | Knee & Hip Replacement | SOS Clinic',
+    metaDescription: 'Precision knee and hip joint replacements, joint preservation therapies, and rapid-recovery rehabilitation at SOS Speciality Orthopedic Clinic Mumbai.',
+    keywords: 'Joint replacement Mumbai, Knee replacement Borivali, Hip replacement Kandivali, Total knee replacement Mumbai',
+    h1: 'Joint Replacement Care & Rapid Recovery',
+    subhead: 'Precision knee and hip joint replacements, joint preservation therapies, and structured rapid-recovery rehabilitation.',
+    targetFiles: [
+      path.resolve(distDir, 'services', 'joint-replacement', 'index.html'),
+      path.resolve(distDir, 'services', 'joint-replacement.html')
+    ]
+  },
+  {
+    name: 'services-acl-ligament',
+    canonicalUrl: 'https://www.sosorth.com/services/acl-ligament',
+    metaTitle: 'ACL & Ligament Reconstruction Mumbai | Keyhole Knee Surgery | SOS Clinic',
+    metaDescription: 'Minimally invasive arthroscopic ACL reconstruction, meniscus repairs, and ligament stabilisation in Mumbai with athlete-focused return-to-sport protocols.',
+    keywords: 'ACL surgery Mumbai, Ligament reconstruction Borivali, Meniscus tear repair Kandivali, Sports knee arthroscopy',
+    h1: 'ACL & Ligament Reconstruction Care',
+    subhead: 'Minimally invasive arthroscopic ACL reconstruction, meniscus repairs, and ligament stabilisation with return-to-sport protocols.',
+    targetFiles: [
+      path.resolve(distDir, 'services', 'acl-ligament', 'index.html'),
+      path.resolve(distDir, 'services', 'acl-ligament.html')
+    ]
+  },
+  {
+    name: 'services-spine-care',
+    canonicalUrl: 'https://www.sosorth.com/services/spine-care',
+    metaTitle: 'Spine Care & Back Pain Specialists Mumbai | SOS Speciality Clinic',
+    metaDescription: 'Non-surgical and surgical spine care in Mumbai: Sciatica management, slipped disc decompression, postural correction, and rehabilitation.',
+    keywords: 'Spine specialist Mumbai, Back pain treatment Borivali, Sciatica doctor Kandivali, Slipped disc treatment Mumbai',
+    h1: 'Spine Care & Non-Surgical Back Pain Management',
+    subhead: 'Comprehensive clinical evaluation, precision spinal diagnostics, sciatica management, and rehabilitation.',
+    targetFiles: [
+      path.resolve(distDir, 'services', 'spine-care', 'index.html'),
+      path.resolve(distDir, 'services', 'spine-care.html')
+    ]
+  },
+  {
+    name: 'services-sports-injury',
+    canonicalUrl: 'https://www.sosorth.com/services/sports-injury',
+    metaTitle: 'Sports Injury & Arthroscopy Clinic Mumbai | SOS Speciality Orthopedic',
+    metaDescription: 'Comprehensive sports medicine and rehabilitation in Mumbai for shoulder dislocations, rotator cuff tears, sprains, and tendon injuries.',
+    keywords: 'Sports injury doctor Mumbai, Rotator cuff repair Borivali, Shoulder dislocation treatment Kandivali',
+    h1: 'Sports Injury & Athletic Rehabilitation',
+    subhead: 'Targeted diagnostics and surgical interventions for athletes and active individuals.',
+    targetFiles: [
+      path.resolve(distDir, 'services', 'sports-injury', 'index.html'),
+      path.resolve(distDir, 'services', 'sports-injury.html')
+    ]
+  },
+  {
+    name: 'services-pediatric-trauma',
+    canonicalUrl: 'https://www.sosorth.com/services/pediatric-trauma',
+    metaTitle: 'Pediatric Orthopedics & Fracture Trauma Mumbai | SOS Clinic',
+    metaDescription: 'Child-centered orthopedic care and rapid trauma response in Mumbai. Growth plate fractures, developmental dysplasia, and cast management.',
+    keywords: 'Pediatric orthopedic Mumbai, Child bone doctor Borivali, Fracture treatment Kandivali',
+    h1: 'Pediatric Orthopedics & Fracture Trauma',
+    subhead: 'Child-centered musculoskeletal evaluation and emergency fracture stabilization.',
+    targetFiles: [
+      path.resolve(distDir, 'services', 'pediatric-trauma', 'index.html'),
+      path.resolve(distDir, 'services', 'pediatric-trauma.html')
+    ]
+  },
+  {
+    name: 'services-home-x-ray',
+    canonicalUrl: 'https://www.sosorth.com/services/home-x-ray',
+    metaTitle: 'Doorstep Digital X-Ray Services Mumbai | SOS Speciality Orthopedic Clinic',
+    metaDescription: 'Hospital-grade portable digital X-ray services delivered directly to your doorstep in Mumbai with instant digital reports.',
+    keywords: 'Home X-Ray Mumbai, Portable digital radiography, Bedside X-Ray service Mumbai',
+    h1: 'Doorstep Portable Digital X-Ray Services',
+    subhead: 'Hospital-grade digital imaging at your bedside across Western Mumbai.',
+    targetFiles: [
+      path.resolve(distDir, 'services', 'home-x-ray', 'index.html'),
+      path.resolve(distDir, 'services', 'home-x-ray.html')
+    ]
+  }
+];
 
-console.log(`[Prerender] Successfully generated static page: ${targetFile}`);
+sitePages.forEach(p => {
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalWebPage",
+      "@id": `${p.canonicalUrl}#webpage`,
+      "url": p.canonicalUrl,
+      "name": p.metaTitle,
+      "headline": p.h1,
+      "description": p.metaDescription,
+      "inLanguage": "en-IN",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": p.canonicalUrl
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "SOS Speciality Orthopedic Clinic",
+        "url": "https://www.sosorth.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.sosorth.com/assets/video-poster.jpg"
+        }
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "@id": `${p.canonicalUrl}#breadcrumb`,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.sosorth.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": p.h1,
+          "item": p.canonicalUrl
+        }
+      ]
+    }
+  ];
+
+  const bodyHtml = `
+<div class="static-prerender-content" style="padding: 2.5rem 1rem; max-width: 1200px; margin: 0 auto;">
+  <nav aria-label="Breadcrumb" style="font-size: 0.85rem; margin-bottom: 1.5rem; color: #64748b;">
+    <a href="/" style="color: #0284c7; text-decoration: none;">Home</a> / 
+    <span style="color: #0f172a; font-weight: 600;">${p.h1}</span>
+  </nav>
+  <header style="margin-bottom: 2.5rem;">
+    <h1 style="font-size: 2.25rem; font-weight: 800; color: #0a1f44; margin-bottom: 1rem; line-height: 1.25;">${p.h1}</h1>
+    <p style="font-size: 1.15rem; color: #475569; line-height: 1.7; max-width: 820px;">${p.subhead}</p>
+  </header>
+  <main>
+    <p style="font-size: 1.05rem; line-height: 1.8; color: #334155; margin-bottom: 1.5rem;">${p.metaDescription}</p>
+    <div style="margin: 2rem 0; padding: 1.5rem; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 4px;">
+      <h2 style="font-size: 1.25rem; color: #0a1f44; margin-top: 0; margin-bottom: 0.5rem;">SOS Speciality Orthopedic Clinic Mumbai</h2>
+      <p style="margin: 0; color: #475569;">Senior Orthopedic OPD Consultations &bull; 24/7 Doorstep Portable Digital X-Ray &bull; Specialized Physiotherapy &bull; Kandivali &bull; Borivali &bull; Malad &bull; Goregaon</p>
+      <div style="margin-top: 1rem;">
+        <a href="/contact" style="display: inline-block; padding: 0.6rem 1.25rem; background: #0284c7; color: #ffffff; text-decoration: none; border-radius: 4px; font-weight: 600;">Contact Helpline: 093211 44580</a>
+      </div>
+    </div>
+  </main>
+</div>
+`;
+
+  renderPage({
+    page: p,
+    structuredData,
+    bodyHtml,
+    targetFiles: p.targetFiles
+  });
+});
+
+console.log('[Prerender] All static pages and blog posts generated successfully.');

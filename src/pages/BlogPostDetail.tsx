@@ -7,21 +7,396 @@ import {
   ChevronDown, 
   ShieldCheck, 
   AlertCircle, 
-  ArrowRight,
-  Phone,
-  CheckCircle2,
-  FileText
+  ArrowRight, 
+  Phone, 
+  CheckCircle2, 
+  FileText 
 } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
 import { AppointmentModal } from '../components/AppointmentModal';
-import { blogPostsData } from '../data/blogs';
+import { blogPostsData, BlogPost } from '../data/blogs';
 import { BUSINESS_INFO } from '../config/business';
+
+// Subcomponent for Recovery Guide body
+const RecoveryPostArticleBody: React.FC<{ post: BlogPost }> = ({ post }) => {
+  const { content } = post;
+  return (
+    <>
+      {/* Lead Section */}
+      <div className="blog-lead-section">
+        {content.leadParagraphs.map((para, i) => (
+          <p key={i} className="blog-lead-p">
+            {para}
+          </p>
+        ))}
+        <p className="blog-lead-p">
+          Learn more about{' '}
+          <Link to="/" className="blog-internal-link">
+            SOS Speciality Orthopedic Clinic
+          </Link>
+          .
+        </p>
+      </div>
+
+      {/* Section 1: What Happens Immediately After Robotic Knee Replacement Surgery? */}
+      {content.whatHappensImmediately && (
+        <section className="blog-content-section" aria-labelledby="section-immediately-after">
+          <h2 id="section-immediately-after" className="blog-h2">
+            {content.whatHappensImmediately.heading}
+          </h2>
+          {content.whatHappensImmediately.paragraphs.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
+        </section>
+      )}
+
+      {/* Section 2: Week-by-Week Recovery Timeline After Robotic Knee Replacement Surgery */}
+      {content.recoveryTimeline && (
+        <section className="blog-content-section" aria-labelledby="section-recovery-timeline">
+          <h2 id="section-recovery-timeline" className="blog-h2">
+            {content.recoveryTimeline.heading}
+          </h2>
+
+          <div className="blog-recovery-timeline">
+            {content.recoveryTimeline.subsections.map((sub, idx) => {
+              const badges = ['24–48 Hours', 'Weeks 1–2', 'Weeks 3–6', 'Weeks 6–12+'];
+              return (
+                <div key={idx} className="blog-timeline-item">
+                  <div className="blog-timeline-header-row">
+                    <span className="blog-timeline-badge">{badges[idx] || `Phase ${idx + 1}`}</span>
+                  </div>
+                  <h3 className="blog-h3">{sub.heading}</h3>
+                  {sub.paragraphs.map((p, pi) => (
+                    <p key={pi}>{p}</p>
+                  ))}
+                </div>
+              );
+            })}
+          </div>
+
+          {post.procedureImage && (
+            <figure className="blog-hero-figure" style={{ marginTop: '2.5rem' }}>
+              <img
+                src={post.procedureImage.src}
+                alt={post.procedureImage.alt}
+                width={post.procedureImage.width}
+                height={post.procedureImage.height}
+                loading="lazy"
+                className="blog-hero-img"
+              />
+              <figcaption className="blog-hero-caption">
+                {post.procedureImage.caption || post.procedureImage.alt}
+              </figcaption>
+            </figure>
+          )}
+        </section>
+      )}
+
+      {/* Section 3: Factors That Influence Recovery */}
+      {content.factors && (
+        <section className="blog-content-section" aria-labelledby="section-factors-recovery">
+          <h2 id="section-factors-recovery" className="blog-h2">
+            {content.factors.heading}
+          </h2>
+          <p>{content.factors.paragraphs[0]}</p>
+          <p>{content.factors.paragraphs[1]}</p>
+          <p>
+            Your home environment and support system also influence recovery. Keep walking areas clear, remove loose rugs, wear stable footwear, and arrange assistance with transport and daily tasks when needed. Discuss recovery expectations with experienced{' '}
+            <Link to="/doctors" className="blog-internal-link">
+              robotic knee replacement surgeons
+            </Link>{' '}
+            and follow their advice on medication, wound care, walking aids, and follow-up appointments to support a safer, more comfortable recovery.
+          </p>
+        </section>
+      )}
+
+      {/* Section 4: Managing Pain, Swelling, and Physiotherapy */}
+      {content.managingPainAndPhysio && (
+        <section className="blog-content-section" aria-labelledby="section-pain-physio">
+          <h2 id="section-pain-physio" className="blog-h2">
+            {content.managingPainAndPhysio.heading}
+          </h2>
+          <p>{content.managingPainAndPhysio.paragraphs[0]}</p>
+          <p>
+            <Link to="/physiotherapy" className="blog-internal-link">
+              Physiotherapy
+            </Link>{' '}
+            helps improve movement, flexibility, and strength. Your programme may include knee bends, thigh strengthening, balance exercises, and walking practice. Follow your physiotherapist’s instructions. Avoid forcing the knee or adding strenuous activities without approval. Rehabilitation supports recovery but cannot guarantee a particular result.
+          </p>
+        </section>
+      )}
+
+      {/* Section 5: When Should You Contact Your Doctor? */}
+      {content.whenToContactDoctor && (
+        <section className="blog-content-section" aria-labelledby="section-contact-doctor">
+          <h2 id="section-contact-doctor" className="blog-h2">
+            {content.whenToContactDoctor.heading}
+          </h2>
+          <p>{content.whenToContactDoctor.paragraphs[0]}</p>
+          <p>
+            Attend follow-up appointments so your surgeon can assess healing, movement, and progress. If you are unsure whether an activity is safe, ask your surgeon before attempting it. For appointment scheduling or further assistance with your treatment,{' '}
+            <Link to="/contact" className="blog-internal-link">
+              our team
+            </Link>{' '}
+            is available to help.
+          </p>
+        </section>
+      )}
+
+      {/* Section 6: Is Robotic Knee Replacement the Right Option? */}
+      {content.isRoboticRightOption && (
+        <section className="blog-content-section" aria-labelledby="section-right-option">
+          <h2 id="section-right-option" className="blog-h2">
+            {content.isRoboticRightOption.heading}
+          </h2>
+          <p>{content.isRoboticRightOption.paragraphs[0]}</p>
+          <p>
+            If you are considering robotic knee replacement in Mumbai, ask your surgeon whether it suits your condition and treatment goals. You can also consult{' '}
+            <Link to="/doctors" className="blog-internal-link">
+              experienced orthopaedic doctors
+            </Link>{' '}
+            to discuss your treatment options, benefits, limitations, alternatives, and risks before deciding. Before making a decision, consult experienced robotic knee replacement surgeons to understand your treatment options, and learn more about the{' '}
+            <Link to="/blog/robotic-knee-replacement-surgery" className="blog-internal-link">
+              robotic knee replacement procedure
+            </Link>
+            , including its potential benefits, limitations, and suitability for your condition.
+          </p>
+
+          {post.consultationImage && (
+            <figure className="blog-hero-figure" style={{ marginTop: '2.5rem' }}>
+              <img
+                src={post.consultationImage.src}
+                alt={post.consultationImage.alt}
+                width={post.consultationImage.width}
+                height={post.consultationImage.height}
+                loading="lazy"
+                className="blog-hero-img"
+              />
+              <figcaption className="blog-hero-caption">
+                {post.consultationImage.caption || post.consultationImage.alt}
+              </figcaption>
+            </figure>
+          )}
+        </section>
+      )}
+    </>
+  );
+};
+
+// Subcomponent for original Surgery post body (100% backward compatible)
+const SurgeryPostArticleBody: React.FC<{ post: BlogPost }> = ({ post }) => {
+  const { content } = post;
+  return (
+    <>
+      {/* Lead Section (3 Intro Paragraphs) */}
+      <div className="blog-lead-section">
+        {content.leadParagraphs.map((para, i) => (
+          <p key={i} className="blog-lead-p">
+            {para}
+          </p>
+        ))}
+      </div>
+
+      {/* Section 1: What Is Robotic Knee Replacement Surgery? */}
+      {content.whatIsRobotic && (
+        <section className="blog-content-section" aria-labelledby="section-what-is-robotic">
+          <h2 id="section-what-is-robotic" className="blog-h2">
+            {content.whatIsRobotic.heading}
+          </h2>
+          {content.whatIsRobotic.paragraphs.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
+        </section>
+      )}
+
+      {/* Section 2: Which Conditions May Require Knee Replacement Surgery? */}
+      {content.conditions && (
+        <section className="blog-content-section" aria-labelledby="section-conditions">
+          <h2 id="section-conditions" className="blog-h2">
+            {content.conditions.heading}
+          </h2>
+          <p>{content.conditions.intro}</p>
+
+          {content.conditions.subsections.map((sub, i) => (
+            <div key={i} className="blog-subsection">
+              <h3 className="blog-h3">{sub.heading}</h3>
+              {sub.paragraphs.map((p, pi) => (
+                <p key={pi}>{p}</p>
+              ))}
+            </div>
+          ))}
+        </section>
+      )}
+
+      {/* Section 3: How Does the Robotic Knee Replacement Procedure Work? */}
+      {content.procedure && (
+        <section className="blog-content-section" aria-labelledby="section-procedure">
+          <h2 id="section-procedure" className="blog-h2">
+            {content.procedure.heading}
+          </h2>
+          <p>{content.procedure.intro}</p>
+
+          <ol className="blog-procedure-ol">
+            {content.procedure.steps.map(step => (
+              <li key={step.stepNumber} className="blog-procedure-li">
+                <h3 className="blog-h3">
+                  {step.stepNumber}. {step.title}
+                </h3>
+                {step.paragraphs.map((p, pi) => (
+                  <p key={pi}>{p}</p>
+                ))}
+                {step.link && (
+                  <p>
+                    {step.link.preText}
+                    <Link to={step.link.url} className="blog-internal-link">
+                      {step.link.anchorText}
+                    </Link>
+                    {step.link.postText}
+                  </p>
+                )}
+              </li>
+            ))}
+          </ol>
+
+          {post.procedureImage && (
+            <figure className="blog-hero-figure" style={{ marginTop: '2rem' }}>
+              <img
+                src={post.procedureImage.src}
+                alt={post.procedureImage.alt}
+                width={post.procedureImage.width}
+                height={post.procedureImage.height}
+                loading="lazy"
+                className="blog-hero-img"
+              />
+              <figcaption className="blog-hero-caption">
+                Intraoperative robotic-assisted surgical system providing real-time alignment and joint balance guidance.
+              </figcaption>
+            </figure>
+          )}
+        </section>
+      )}
+
+      {/* Section 4: What Are the Potential Benefits of Robotic Knee Replacement? */}
+      {content.benefits && (
+        <section className="blog-content-section" aria-labelledby="section-benefits">
+          <h2 id="section-benefits" className="blog-h2">
+            {content.benefits.heading}
+          </h2>
+          <p>{content.benefits.intro}</p>
+
+          <ul className="blog-benefits-ul">
+            {content.benefits.items.map((item, i) => (
+              <li key={i} className="blog-benefits-li">
+                <strong>{item.label}:</strong> {item.description}
+              </li>
+            ))}
+          </ul>
+
+          <p>{content.benefits.conclusion}</p>
+        </section>
+      )}
+
+      {/* Section 5: Robotic vs Conventional Knee Replacement: What Is the Difference? */}
+      {content.roboticVsConventional && (
+        <section className="blog-content-section" aria-labelledby="section-difference">
+          <h2 id="section-difference" className="blog-h2">
+            {content.roboticVsConventional.heading}
+          </h2>
+          {content.roboticVsConventional.paragraphs.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
+        </section>
+      )}
+
+      {/* Section 6: How Long Does Recovery Take After Robotic Knee Replacement Surgery? */}
+      {content.recovery && (
+        <section className="blog-content-section" aria-labelledby="section-recovery">
+          <h2 id="section-recovery" className="blog-h2">
+            {content.recovery.heading}
+          </h2>
+          <p>{content.recovery.intro}</p>
+
+          <div className="blog-subsection">
+            <h3 className="blog-h3">{content.recovery.earlyRecovery.heading}</h3>
+            {content.recovery.earlyRecovery.paragraphs.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </div>
+
+          <div className="blog-subsection">
+            <h3 className="blog-h3">{content.recovery.physiotherapy.heading}</h3>
+            {content.recovery.physiotherapy.paragraphs.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+            <p>
+              {content.recovery.physiotherapy.link.preText}
+              <Link to={content.recovery.physiotherapy.link.url} className="blog-internal-link">
+                {content.recovery.physiotherapy.link.anchorText}
+              </Link>
+              {content.recovery.physiotherapy.link.postText}
+            </p>
+          </div>
+
+          <div className="blog-subsection">
+            <h3 className="blog-h3">{content.recovery.dailyActivities.heading}</h3>
+            {content.recovery.dailyActivities.paragraphs.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Section 7: What Are the Risks and Disadvantages of Robotic Knee Replacement? */}
+      {content.risks && (
+        <section className="blog-content-section" aria-labelledby="section-risks">
+          <h2 id="section-risks" className="blog-h2">
+            {content.risks.heading}
+          </h2>
+          {content.risks.paragraphs.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
+        </section>
+      )}
+
+      {/* Section 8: What Is the Cost of Robotic Knee Replacement? */}
+      {content.cost && (
+        <section className="blog-content-section" aria-labelledby="section-cost">
+          <h2 id="section-cost" className="blog-h2">
+            {content.cost.heading}
+          </h2>
+          {content.cost.paragraphs.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
+        </section>
+      )}
+
+      {/* Section 9: Making an Informed Decision About Knee Replacement */}
+      {content.informedDecision && (
+        <section className="blog-content-section" aria-labelledby="section-decision">
+          <h2 id="section-decision" className="blog-h2">
+            {content.informedDecision.heading}
+          </h2>
+          {content.informedDecision.paragraphs.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
+          <p>
+            {content.informedDecision.link.preText}
+            <Link to={content.informedDecision.link.url} className="blog-internal-link">
+              {content.informedDecision.link.anchorText}
+            </Link>
+            {content.informedDecision.link.postText}
+          </p>
+        </section>
+      )}
+    </>
+  );
+};
 
 export const BlogPostDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // Default to keeping the first FAQ open for immediate engagement, but user can toggle all
-  const [openFaqs, setOpenFaqs] = useState<number[]>([0]);
+  // All FAQs closed by default
+  const [openFaqs, setOpenFaqs] = useState<number[]>([]);
 
   // Find post by slug
   const post = blogPostsData.find(p => p.slug === slug);
@@ -186,7 +561,7 @@ export const BlogPostDetail: React.FC = () => {
                     <span className="meta-dot">&bull;</span>
                     <div className="blog-meta-item">
                       <Calendar size={15} color="var(--text-light)" />
-                      <span>Last updated: <time dateTime="2026-10-14">{post.lastUpdated}</time></span>
+                      <span>Last updated: <time dateTime={post.seo.dateModified}>{post.lastUpdated}</time></span>
                     </div>
                     <span className="meta-dot">&bull;</span>
                     <div className="blog-meta-item">
@@ -208,195 +583,20 @@ export const BlogPostDetail: React.FC = () => {
                       className="blog-hero-img"
                     />
                     <figcaption className="blog-hero-caption">
-                      Orthopedic specialist and patient reviewing computerized 3D knee joint anatomy and implant alignment plan in consultation suite.
+                      {heroImage.caption || heroImage.alt}
                     </figcaption>
                   </figure>
                 </header>
 
                 {/* Article Body Content */}
                 <div className="blog-article-body">
-                  {/* Lead Section (3 Intro Paragraphs) */}
-                  <div className="blog-lead-section">
-                    {content.leadParagraphs.map((para, i) => (
-                      <p key={i} className="blog-lead-p">
-                        {para}
-                      </p>
-                    ))}
-                  </div>
+                  {post.slug === 'robotic-knee-replacement-recovery-mumbai' ? (
+                    <RecoveryPostArticleBody post={post} />
+                  ) : (
+                    <SurgeryPostArticleBody post={post} />
+                  )}
 
-                  {/* Section 1: What Is Robotic Knee Replacement Surgery? */}
-                  <section className="blog-content-section" aria-labelledby="section-what-is-robotic">
-                    <h2 id="section-what-is-robotic" className="blog-h2">
-                      {content.whatIsRobotic.heading}
-                    </h2>
-                    {content.whatIsRobotic.paragraphs.map((p, i) => (
-                      <p key={i}>{p}</p>
-                    ))}
-                  </section>
-
-                  {/* Section 2: Which Conditions May Require Knee Replacement Surgery? */}
-                  <section className="blog-content-section" aria-labelledby="section-conditions">
-                    <h2 id="section-conditions" className="blog-h2">
-                      {content.conditions.heading}
-                    </h2>
-                    <p>{content.conditions.intro}</p>
-
-                    {content.conditions.subsections.map((sub, i) => (
-                      <div key={i} className="blog-subsection">
-                        <h3 className="blog-h3">{sub.heading}</h3>
-                        {sub.paragraphs.map((p, pi) => (
-                          <p key={pi}>{p}</p>
-                        ))}
-                      </div>
-                    ))}
-                  </section>
-
-                  {/* Section 3: How Does the Robotic Knee Replacement Procedure Work? */}
-                  <section className="blog-content-section" aria-labelledby="section-procedure">
-                    <h2 id="section-procedure" className="blog-h2">
-                      {content.procedure.heading}
-                    </h2>
-                    <p>{content.procedure.intro}</p>
-
-                    <ol className="blog-procedure-ol">
-                      {content.procedure.steps.map(step => (
-                        <li key={step.stepNumber} className="blog-procedure-li">
-                          <h3 className="blog-h3">
-                            {step.stepNumber}. {step.title}
-                          </h3>
-                          {step.paragraphs.map((p, pi) => (
-                            <p key={pi}>{p}</p>
-                          ))}
-                          {step.link && (
-                            <p>
-                              {step.link.preText}
-                              <Link to={step.link.url} className="blog-internal-link">
-                                {step.link.anchorText}
-                              </Link>
-                              {step.link.postText}
-                            </p>
-                          )}
-                        </li>
-                      ))}
-                    </ol>
-
-                    <figure className="blog-hero-figure" style={{ marginTop: '2rem' }}>
-                      <img
-                        src={post.procedureImage.src}
-                        alt={post.procedureImage.alt}
-                        width={post.procedureImage.width}
-                        height={post.procedureImage.height}
-                        loading="lazy"
-                        className="blog-hero-img"
-                      />
-                      <figcaption className="blog-hero-caption">
-                        Intraoperative robotic-assisted surgical system providing real-time alignment and joint balance guidance.
-                      </figcaption>
-                    </figure>
-                  </section>
-
-                  {/* Section 4: What Are the Potential Benefits of Robotic Knee Replacement? */}
-                  <section className="blog-content-section" aria-labelledby="section-benefits">
-                    <h2 id="section-benefits" className="blog-h2">
-                      {content.benefits.heading}
-                    </h2>
-                    <p>{content.benefits.intro}</p>
-
-                    <ul className="blog-benefits-ul">
-                      {content.benefits.items.map((item, i) => (
-                        <li key={i} className="blog-benefits-li">
-                          <strong>{item.label}:</strong> {item.description}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <p>{content.benefits.conclusion}</p>
-                  </section>
-
-                  {/* Section 5: Robotic vs Conventional Knee Replacement: What Is the Difference? */}
-                  <section className="blog-content-section" aria-labelledby="section-difference">
-                    <h2 id="section-difference" className="blog-h2">
-                      {content.roboticVsConventional.heading}
-                    </h2>
-                    {content.roboticVsConventional.paragraphs.map((p, i) => (
-                      <p key={i}>{p}</p>
-                    ))}
-                  </section>
-
-                  {/* Section 6: How Long Does Recovery Take After Robotic Knee Replacement Surgery? */}
-                  <section className="blog-content-section" aria-labelledby="section-recovery">
-                    <h2 id="section-recovery" className="blog-h2">
-                      {content.recovery.heading}
-                    </h2>
-                    <p>{content.recovery.intro}</p>
-
-                    <div className="blog-subsection">
-                      <h3 className="blog-h3">{content.recovery.earlyRecovery.heading}</h3>
-                      {content.recovery.earlyRecovery.paragraphs.map((p, i) => (
-                        <p key={i}>{p}</p>
-                      ))}
-                    </div>
-
-                    <div className="blog-subsection">
-                      <h3 className="blog-h3">{content.recovery.physiotherapy.heading}</h3>
-                      {content.recovery.physiotherapy.paragraphs.map((p, i) => (
-                        <p key={i}>{p}</p>
-                      ))}
-                      <p>
-                        {content.recovery.physiotherapy.link.preText}
-                        <Link to={content.recovery.physiotherapy.link.url} className="blog-internal-link">
-                          {content.recovery.physiotherapy.link.anchorText}
-                        </Link>
-                        {content.recovery.physiotherapy.link.postText}
-                      </p>
-                    </div>
-
-                    <div className="blog-subsection">
-                      <h3 className="blog-h3">{content.recovery.dailyActivities.heading}</h3>
-                      {content.recovery.dailyActivities.paragraphs.map((p, i) => (
-                        <p key={i}>{p}</p>
-                      ))}
-                    </div>
-                  </section>
-
-                  {/* Section 7: What Are the Risks and Disadvantages of Robotic Knee Replacement? */}
-                  <section className="blog-content-section" aria-labelledby="section-risks">
-                    <h2 id="section-risks" className="blog-h2">
-                      {content.risks.heading}
-                    </h2>
-                    {content.risks.paragraphs.map((p, i) => (
-                      <p key={i}>{p}</p>
-                    ))}
-                  </section>
-
-                  {/* Section 8: What Is the Cost of Robotic Knee Replacement? */}
-                  <section className="blog-content-section" aria-labelledby="section-cost">
-                    <h2 id="section-cost" className="blog-h2">
-                      {content.cost.heading}
-                    </h2>
-                    {content.cost.paragraphs.map((p, i) => (
-                      <p key={i}>{p}</p>
-                    ))}
-                  </section>
-
-                  {/* Section 9: Making an Informed Decision About Knee Replacement */}
-                  <section className="blog-content-section" aria-labelledby="section-decision">
-                    <h2 id="section-decision" className="blog-h2">
-                      {content.informedDecision.heading}
-                    </h2>
-                    {content.informedDecision.paragraphs.map((p, i) => (
-                      <p key={i}>{p}</p>
-                    ))}
-                    <p>
-                      {content.informedDecision.link.preText}
-                      <Link to={content.informedDecision.link.url} className="blog-internal-link">
-                        {content.informedDecision.link.anchorText}
-                      </Link>
-                      {content.informedDecision.link.postText}
-                    </p>
-                  </section>
-
-                  {/* Section 10: Frequently Asked Questions (Accessible Accordion) */}
+                  {/* Frequently Asked Questions (Accessible Accordion) */}
                   <section className="blog-content-section blog-faq-section" aria-labelledby="section-faqs">
                     <h2 id="section-faqs" className="blog-h2">
                       {content.faqs.heading}
@@ -446,6 +646,35 @@ export const BlogPostDetail: React.FC = () => {
                       <p className="disclaimer-text">{content.medicalDisclaimer}</p>
                     </div>
                   </aside>
+
+                  {/* Related / Next Guide Box */}
+                  <div className="blog-related-guide-box">
+                    <div className="blog-related-guide-content">
+                      {post.slug === 'robotic-knee-replacement-recovery-mumbai' ? (
+                        <>
+                          <h4>Related Guide: What Is Robotic Knee Replacement Surgery?</h4>
+                          <p>Discover surgical steps, computer-guided precision, advantages, risks, and implant planning.</p>
+                        </>
+                      ) : (
+                        <>
+                          <h4>Next Guide: Robotic Knee Replacement Recovery Timeline in Mumbai</h4>
+                          <p>Explore week-by-week recovery milestones, safe movement, pain management, and physiotherapy tips.</p>
+                        </>
+                      )}
+                    </div>
+                    <Link
+                      to={
+                        post.slug === 'robotic-knee-replacement-recovery-mumbai'
+                          ? '/blog/robotic-knee-replacement-surgery'
+                          : '/blog/robotic-knee-replacement-recovery-mumbai'
+                      }
+                      className="btn btn-secondary btn-sm"
+                      style={{ whiteSpace: 'nowrap' }}
+                    >
+                      <span>Read Guide</span>
+                      <ArrowRight size={14} />
+                    </Link>
+                  </div>
 
                   {/* Consultation Booking CTA Card */}
                   <div className="blog-cta-box">
@@ -523,8 +752,25 @@ export const BlogPostDetail: React.FC = () => {
 
                   {/* Related Services Links */}
                   <div className="sidebar-links-card">
-                    <h4 className="sidebar-links-title">Related SOS Services</h4>
+                    <h4 className="sidebar-links-title">Related SOS Guides & Services</h4>
                     <ul className="sidebar-links-list">
+                      <li>
+                        <Link
+                          to={
+                            post.slug === 'robotic-knee-replacement-recovery-mumbai'
+                              ? '/blog/robotic-knee-replacement-surgery'
+                              : '/blog/robotic-knee-replacement-recovery-mumbai'
+                          }
+                          className="sidebar-nav-link"
+                        >
+                          <span>
+                            {post.slug === 'robotic-knee-replacement-recovery-mumbai'
+                              ? 'What Is Robotic Knee Surgery?'
+                              : 'Knee Recovery Timeline Guide'}
+                          </span>
+                          <ChevronRight size={14} />
+                        </Link>
+                      </li>
                       <li>
                         <Link to="/services/joint-replacement" className="sidebar-nav-link">
                           <span>Joint Replacement Services</span>

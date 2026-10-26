@@ -68,6 +68,18 @@ export const Blog: React.FC = () => {
     return blogPostsData.find(p => p.featured) || blogPostsData[0];
   }, []);
 
+  // Is the user actively filtering or searching?
+  const isFiltering = Boolean(searchQuery.trim() || selectedCategory !== 'all' || selectedDoctorFilter);
+
+  // Articles displayed in directory grid:
+  // When not searching/filtering, exclude the featuredArticle so it never duplicates on the page!
+  const gridArticles = useMemo(() => {
+    if (!isFiltering && featuredArticle) {
+      return filteredArticles.filter(a => a.id !== featuredArticle.id);
+    }
+    return filteredArticles;
+  }, [filteredArticles, featuredArticle, isFiltering]);
+
   return (
     <div className="editorial-blog-page">
       <SEOHead
@@ -145,8 +157,8 @@ export const Blog: React.FC = () => {
             {/* Right Column: High-Quality Orthopedic Photograph */}
             <div className="editorial-hero-image-wrap">
               <img 
-                src="/assets/robotic-knee-consultation.png" 
-                alt="Orthopedic surgeon consultation with patient in modern surgical suite"
+                src="/assets/clinic-consultation-suite.jpg" 
+                alt="SOS Speciality Orthopedic Clinic modern consultation suites in Mumbai"
                 className="editorial-hero-image"
                 width="800"
                 height="450"
@@ -154,7 +166,7 @@ export const Blog: React.FC = () => {
               />
               <div className="image-caption-strip">
                 <Stethoscope size={14} color="var(--blue-brand)" />
-                <span>Specialist Musculoskeletal Care & Patient Education &bull; SOS Mumbai</span>
+                <span>Specialist Musculoskeletal Care &amp; Patient Education &bull; SOS Mumbai</span>
               </div>
             </div>
 
@@ -162,8 +174,8 @@ export const Blog: React.FC = () => {
         </div>
       </section>
 
-      {/* ── 2. Featured Article Banner ── */}
-      {featuredArticle && (
+      {/* ── 2. Featured Article Banner (Visible on default view) ── */}
+      {featuredArticle && !isFiltering && (
         <section className="featured-quickreads-section">
           <div className="container">
             <div className="featured-article-card" style={{ width: '100%' }}>
@@ -245,19 +257,21 @@ export const Blog: React.FC = () => {
           <div className="directory-header-bar">
             <div>
               <h2 className="directory-title">
-                {selectedCategory === 'all' && !searchQuery && !selectedDoctorFilter
-                  ? 'All Orthopedic Articles'
-                  : 'Filtered Articles'}
+                {!isFiltering
+                  ? 'More Clinical Guides & Patient Recovery'
+                  : 'Search & Filter Results'}
               </h2>
               <p className="directory-count-text">
-                Showing {filteredArticles.length} {filteredArticles.length === 1 ? 'article' : 'articles'}
+                {!isFiltering
+                  ? `Showing ${gridArticles.length} recent ${gridArticles.length === 1 ? 'guide' : 'guides'} & clinical care pathways`
+                  : `Showing ${gridArticles.length} ${gridArticles.length === 1 ? 'article' : 'articles'}`}
                 {selectedCategory !== 'all' && ` in ${blogCategories.find(c => c.id === selectedCategory)?.label}`}
                 {selectedDoctorFilter && ` authored by ${selectedDoctorFilter}`}
                 {searchQuery && ` matching "${searchQuery}"`}
               </p>
             </div>
 
-            {(selectedCategory !== 'all' || searchQuery || selectedDoctorFilter) && (
+            {isFiltering && (
               <button
                 onClick={() => {
                   setSelectedCategory('all');
@@ -271,7 +285,7 @@ export const Blog: React.FC = () => {
             )}
           </div>
 
-          {filteredArticles.length === 0 ? (
+          {gridArticles.length === 0 ? (
             <div className="empty-results-card">
               <HelpCircle size={44} color="var(--blue-brand)" style={{ margin: '0 auto 1rem auto' }} />
               <h3>No articles found</h3>
@@ -285,7 +299,7 @@ export const Blog: React.FC = () => {
             </div>
           ) : (
             <div className="editorial-articles-grid">
-              {filteredArticles.map(article => (
+              {gridArticles.map(article => (
                 <article 
                   key={article.id} 
                   className="editorial-article-card"
@@ -334,13 +348,65 @@ export const Blog: React.FC = () => {
                         className="article-read-link"
                         aria-label={`Read ${article.title}`}
                       >
-                        <span>Read Article</span>
+                        <span>Read Guide</span>
                         <ArrowRight size={14} />
                       </Link>
                     </div>
                   </div>
                 </article>
               ))}
+
+              {/* Specialist Clinical Consultation & Doorstep Diagnostics Card (shown on default view for balanced layout) */}
+              {!isFiltering && (
+                <article className="editorial-article-card" style={{ borderTop: '3px solid var(--blue-brand)' }}>
+                  <div className="article-card-image-box">
+                    <img 
+                      src="/assets/clinic-digital-xray.jpg" 
+                      alt="24/7 Digital X-Ray and Orthopedic Consultation at SOS Clinic Mumbai"
+                      width="600"
+                      height="340"
+                      className="article-card-img"
+                    />
+                    <span className="article-card-tag" style={{ backgroundColor: '#0284c7', color: '#ffffff', borderColor: '#0284c7' }}>
+                      24/7 Care &amp; OPD
+                    </span>
+                  </div>
+
+                  <div className="article-card-content">
+                    <div className="article-card-meta">
+                      <Stethoscope size={13} color="var(--blue-brand)" />
+                      <span style={{ color: 'var(--blue-brand)', fontWeight: 700 }}>Clinical Pathway</span>
+                      <span className="meta-dot">&bull;</span>
+                      <span>Kandivali &bull; Borivali &bull; Malad</span>
+                    </div>
+
+                    <h3 className="article-card-title">
+                      <Link to="/contact" style={{ color: 'inherit', textDecoration: 'none' }}>
+                        Need Specialist Knee Advice or Doorstep Diagnostics?
+                      </Link>
+                    </h3>
+
+                    <p className="article-card-excerpt">
+                      Schedule an evaluation with our joint replacement surgeons or request 20–30 min portable digital X-rays delivered directly to your bedside across Western Mumbai.
+                    </p>
+
+                    <div className="article-card-footer" style={{ marginTop: 'auto' }}>
+                      <a href="tel:09321144580" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: 'var(--navy-primary)', fontWeight: 700, fontSize: '0.82rem', textDecoration: 'none' }}>
+                        <Phone size={14} color="var(--blue-brand)" />
+                        093211 44580
+                      </a>
+                      <Link 
+                        to="/contact" 
+                        className="article-read-link"
+                        style={{ color: 'var(--blue-brand)', fontWeight: 700 }}
+                      >
+                        <span>Book OPD</span>
+                        <ArrowRight size={14} />
+                      </Link>
+                    </div>
+                  </div>
+                </article>
+              )}
             </div>
           )}
 
@@ -384,11 +450,11 @@ export const Blog: React.FC = () => {
 
                 <div className="doctor-card-actions">
                   <Link
-                    to="/blog/robotic-knee-replacement-surgery"
+                    to="/doctors"
                     className="btn btn-secondary btn-sm"
                     style={{ flex: 1, justifyContent: 'center' }}
                   >
-                    View Guide
+                    View Profile
                   </Link>
 
                   <button
