@@ -1473,13 +1473,7 @@ html, body {
 }
 
 .blog-hero-caption {
-  font-size: 0.82rem;
-  color: var(--text-light);
-  padding: 0.65rem 1rem;
-  background-color: #ffffff;
-  border-top: 1px solid var(--border-color);
-  font-style: italic;
-  line-height: 1.45;
+  display: none !important;
 }
 
 /* Typography & Body Sections */

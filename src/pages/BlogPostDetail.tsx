@@ -84,9 +84,6 @@ const RecoveryPostArticleBody: React.FC<{ post: BlogPost }> = ({ post }) => {
                 loading="lazy"
                 className="blog-hero-img"
               />
-              <figcaption className="blog-hero-caption">
-                {post.procedureImage.caption || post.procedureImage.alt}
-              </figcaption>
             </figure>
           )}
         </section>
@@ -172,9 +169,6 @@ const RecoveryPostArticleBody: React.FC<{ post: BlogPost }> = ({ post }) => {
                 loading="lazy"
                 className="blog-hero-img"
               />
-              <figcaption className="blog-hero-caption">
-                {post.consultationImage.caption || post.consultationImage.alt}
-              </figcaption>
             </figure>
           )}
         </section>
@@ -268,9 +262,6 @@ const SurgeryPostArticleBody: React.FC<{ post: BlogPost }> = ({ post }) => {
                 loading="lazy"
                 className="blog-hero-img"
               />
-              <figcaption className="blog-hero-caption">
-                Intraoperative robotic-assisted surgical system providing real-time alignment and joint balance guidance.
-              </figcaption>
             </figure>
           )}
         </section>
@@ -582,9 +573,6 @@ export const BlogPostDetail: React.FC = () => {
                       fetchpriority="high"
                       className="blog-hero-img"
                     />
-                    <figcaption className="blog-hero-caption">
-                      {heroImage.caption || heroImage.alt}
-                    </figcaption>
                   </figure>
                 </header>
 

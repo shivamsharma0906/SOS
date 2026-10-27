@@ -421,17 +421,17 @@ export const blogPostsData: BlogPost[] = [
   {
     id: 'robotic-knee-replacement-recovery-mumbai',
     slug: 'robotic-knee-replacement-recovery-mumbai',
-    title: 'Planning Robotic Knee Replacement Surgery in Mumbai? Know the Recovery Time',
+    title: 'How Long Does It Take to Recover After Robotic Knee Replacement Surgery?',
     h1: 'How Long Does It Take to Recover After Robotic Knee Replacement Surgery?',
     excerpt: 'Recovering after robotic knee replacement surgery takes time, patience, and a structured rehabilitation plan. Understanding the recovery process helps patients set realistic expectations.',
     category: 'knee',
     categoryLabel: 'Joint Replacement & Knee',
     author: {
-      name: 'Dr. Shobit Nitin Deshmukh',
-      title: 'Consultant Orthopedic & Joint Replacement Surgeon',
-      photoUrl: '/assets/dr-shobit-deshmukh.png',
-      qualifications: 'DNB Orthopedics, Fellowship in Robotic & Revision Arthroplasty (South Korea, MUHS)',
-      specialization: 'Robotic Knee Replacement & Joint Preservation'
+      name: 'Dr. Maulik A. Joshi',
+      title: 'Consultant Trauma & Orthopaedic Surgeon',
+      photoUrl: '/assets/dr-maulik-joshi.png',
+      qualifications: 'MBBS, D Orth, Fellowship in Hip & Knee Arthroplasty (Mumbai)',
+      specialization: 'Hip & Knee Specialist — Joint Replacement & Trauma'
     },
     publishDate: 'October 26, 2026',
     lastUpdated: 'October 26, 2026',
@@ -441,21 +441,18 @@ export const blogPostsData: BlogPost[] = [
     heroImage: {
       src: '/assets/robotic-knee-recovery-mumbai.png',
       alt: 'Robotic knee replacement surgery and knee recovery in mumbai',
-      caption: 'Robotic knee replacement surgery and knee recovery in mumbai',
       width: 1672,
       height: 941
     },
     procedureImage: {
       src: '/assets/robotic-knee-replacement-procedure-mumbai.png',
       alt: 'Robotic knee replacement surgery procedure in mumbai',
-      caption: 'Robotic knee replacement surgery procedure in mumbai',
       width: 1672,
       height: 941
     },
     consultationImage: {
-      src: '/assets/robotic-knee-consultation.png',
+      src: '/assets/robotic-knee-recovery-consultation.png',
       alt: 'Orthopaedic surgeon discussing knee replacement surgery with a patient in mumbai',
-      caption: 'Orthopaedic surgeon discussing knee replacement surgery with a patient in mumbai',
       width: 1730,
       height: 909
     },
@@ -468,7 +465,7 @@ export const blogPostsData: BlogPost[] = [
       keywords: 'Robotic knee replacement recovery Mumbai, robotic knee recovery timeline, knee replacement pain management, physiotherapy after knee replacement Mumbai, robotic knee surgery recovery time',
       datePublished: '2026-10-26',
       dateModified: '2026-10-26',
-      authorNamePlaceholder: 'Dr. Shobit Nitin Deshmukh'
+      authorNamePlaceholder: 'Dr. Maulik A. Joshi'
     },
     content: {
       leadParagraphs: [

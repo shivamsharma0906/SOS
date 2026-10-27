@@ -270,7 +270,6 @@ const prerenderedArticleContent1 = `
             </div>
             <figure class="blog-hero-figure">
               <img src="/assets/robotic-knee-consultation.png" alt="Robotic knee replacement surgery for knee joint treatment" width="1730" height="909" loading="eager" fetchpriority="high" class="blog-hero-img" />
-              <figcaption class="blog-hero-caption">Orthopedic specialist and patient reviewing computerized 3D knee joint anatomy and implant alignment plan in consultation suite.</figcaption>
             </figure>
           </header>
 
@@ -324,7 +323,6 @@ const prerenderedArticleContent1 = `
 
               <figure class="blog-hero-figure" style="margin-top: 2rem;">
                 <img src="/assets/blog-featured-robotic.jpg" alt="Intraoperative robotic knee replacement surgical guidance and bone preparation" width="1376" height="768" loading="lazy" class="blog-hero-img" />
-                <figcaption class="blog-hero-caption">Intraoperative robotic-assisted surgical system providing real-time alignment and joint balance guidance.</figcaption>
               </figure>
             </section>
 
@@ -490,7 +488,7 @@ const post2 = {
   h1: 'How Long Does It Take to Recover After Robotic Knee Replacement Surgery?',
   datePublished: '2026-10-26',
   dateModified: '2026-10-26',
-  author: 'Dr. Shobit Nitin Deshmukh'
+  author: 'Dr. Maulik A. Joshi'
 };
 
 const structuredData2 = [
@@ -615,7 +613,6 @@ const prerenderedArticleContent2 = `
             </div>
             <figure class="blog-hero-figure">
               <img src="/assets/robotic-knee-recovery-mumbai.png" alt="Robotic knee replacement surgery and knee recovery in mumbai" width="1672" height="941" loading="eager" fetchpriority="high" class="blog-hero-img" />
-              <figcaption class="blog-hero-caption">Robotic knee replacement surgery and knee recovery in mumbai</figcaption>
             </figure>
           </header>
 
@@ -659,7 +656,6 @@ const prerenderedArticleContent2 = `
 
               <figure class="blog-hero-figure" style="margin-top: 2.5rem;">
                 <img src="/assets/robotic-knee-replacement-procedure-mumbai.png" alt="Robotic knee replacement surgery procedure in mumbai" width="1672" height="941" loading="lazy" class="blog-hero-img" />
-                <figcaption class="blog-hero-caption">Robotic knee replacement surgery procedure in mumbai</figcaption>
               </figure>
             </section>
 
@@ -688,8 +684,7 @@ const prerenderedArticleContent2 = `
               <p>If you are considering robotic knee replacement in Mumbai, ask your surgeon whether it suits your condition and treatment goals. You can also consult experienced orthopaedic doctors to discuss your treatment options, benefits, limitations, alternatives, and risks before deciding. Before making a decision, consult experienced robotic knee replacement surgeons to understand your treatment options, and learn more about the <a href="/blog/robotic-knee-replacement-surgery" class="blog-internal-link">robotic knee replacement procedure</a>, including its potential benefits, limitations, and suitability for your condition.</p>
 
               <figure class="blog-hero-figure" style="margin-top: 2.5rem;">
-                <img src="/assets/robotic-knee-consultation.png" alt="Orthopaedic surgeon discussing knee replacement surgery with a patient in mumbai" width="1730" height="909" loading="lazy" class="blog-hero-img" />
-                <figcaption class="blog-hero-caption">Orthopaedic surgeon discussing knee replacement surgery with a patient in mumbai</figcaption>
+                <img src="/assets/robotic-knee-recovery-consultation.png" alt="Orthopaedic surgeon discussing knee replacement surgery with a patient in mumbai" width="1730" height="909" loading="lazy" class="blog-hero-img" />
               </figure>
             </section>
 
