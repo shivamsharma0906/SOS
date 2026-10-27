@@ -355,58 +355,6 @@ export const Blog: React.FC = () => {
                   </div>
                 </article>
               ))}
-
-              {/* Specialist Clinical Consultation & Doorstep Diagnostics Card (shown on default view for balanced layout) */}
-              {!isFiltering && (
-                <article className="editorial-article-card" style={{ borderTop: '3px solid var(--blue-brand)' }}>
-                  <div className="article-card-image-box">
-                    <img 
-                      src="/assets/clinic-digital-xray.jpg" 
-                      alt="24/7 Digital X-Ray and Orthopedic Consultation at SOS Clinic Mumbai"
-                      width="600"
-                      height="340"
-                      className="article-card-img"
-                    />
-                    <span className="article-card-tag" style={{ backgroundColor: '#0284c7', color: '#ffffff', borderColor: '#0284c7' }}>
-                      24/7 Care &amp; OPD
-                    </span>
-                  </div>
-
-                  <div className="article-card-content">
-                    <div className="article-card-meta">
-                      <Stethoscope size={13} color="var(--blue-brand)" />
-                      <span style={{ color: 'var(--blue-brand)', fontWeight: 700 }}>Clinical Pathway</span>
-                      <span className="meta-dot">&bull;</span>
-                      <span>Kandivali &bull; Borivali &bull; Malad</span>
-                    </div>
-
-                    <h3 className="article-card-title">
-                      <Link to="/contact" style={{ color: 'inherit', textDecoration: 'none' }}>
-                        Need Specialist Knee Advice or Doorstep Diagnostics?
-                      </Link>
-                    </h3>
-
-                    <p className="article-card-excerpt">
-                      Schedule an evaluation with our joint replacement surgeons or request 20–30 min portable digital X-rays delivered directly to your bedside across Western Mumbai.
-                    </p>
-
-                    <div className="article-card-footer" style={{ marginTop: 'auto' }}>
-                      <a href="tel:09321144580" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: 'var(--navy-primary)', fontWeight: 700, fontSize: '0.82rem', textDecoration: 'none' }}>
-                        <Phone size={14} color="var(--blue-brand)" />
-                        093211 44580
-                      </a>
-                      <Link 
-                        to="/contact" 
-                        className="article-read-link"
-                        style={{ color: 'var(--blue-brand)', fontWeight: 700 }}
-                      >
-                        <span>Book OPD</span>
-                        <ArrowRight size={14} />
-                      </Link>
-                    </div>
-                  </div>
-                </article>
-              )}
             </div>
           )}
 
