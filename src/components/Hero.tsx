@@ -85,7 +85,7 @@ export const Hero: React.FC = () => {
               }}
               className="hero-badge"
             >
-              <ShieldCheck size={16} />
+              <ShieldCheck size={16} aria-hidden="true" />
               <span>Speciality Orthopedic Clinic &bull; Mumbai</span>
             </div>
 
@@ -131,15 +131,15 @@ export const Hero: React.FC = () => {
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', backgroundColor: 'rgba(255, 255, 255, 0.85)', padding: '0.4rem 0.85rem', borderRadius: 'var(--radius-pill)', border: '1px solid rgba(10, 31, 68, 0.08)', boxShadow: '0 2px 6px rgba(10, 31, 68, 0.04)' }}>
-                <CheckCircle2 size={17} color="var(--blue-brand)" />
+                <CheckCircle2 size={17} color="var(--blue-brand)" aria-hidden="true" />
                 <span>24/7 Home X-Ray</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', backgroundColor: 'rgba(255, 255, 255, 0.85)', padding: '0.4rem 0.85rem', borderRadius: 'var(--radius-pill)', border: '1px solid rgba(10, 31, 68, 0.08)', boxShadow: '0 2px 6px rgba(10, 31, 68, 0.04)' }}>
-                <CheckCircle2 size={17} color="var(--blue-brand)" />
+                <CheckCircle2 size={17} color="var(--blue-brand)" aria-hidden="true" />
                 <span>4 Centre Locations</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', backgroundColor: 'rgba(255, 255, 255, 0.85)', padding: '0.4rem 0.85rem', borderRadius: 'var(--radius-pill)', border: '1px solid rgba(10, 31, 68, 0.08)', boxShadow: '0 2px 6px rgba(10, 31, 68, 0.04)' }}>
-                <CheckCircle2 size={17} color="var(--blue-brand)" />
+                <CheckCircle2 size={17} color="var(--blue-brand)" aria-hidden="true" />
                 <span>Zero Wait-Time OPD</span>
               </div>
             </div>
@@ -151,7 +151,7 @@ export const Hero: React.FC = () => {
                 className="btn btn-primary btn-lg"
                 style={{ padding: '0.9rem 2rem', fontSize: '1.02rem', boxShadow: '0 8px 24px rgba(2, 132, 199, 0.35)' }}
               >
-                <Calendar size={20} /> Book Appointment
+                <Calendar size={20} aria-hidden="true" /> Book Appointment
               </button>
 
               <Link
@@ -159,7 +159,7 @@ export const Hero: React.FC = () => {
                 className="btn btn-secondary btn-lg"
                 style={{ padding: '0.9rem 1.85rem', fontSize: '1.02rem', gap: '0.5rem', backgroundColor: '#ffffff' }}
               >
-                <Stethoscope size={20} /> Explore Specialities
+                <Stethoscope size={20} aria-hidden="true" /> Explore Specialities
               </Link>
             </div>
 
@@ -180,12 +180,12 @@ export const Hero: React.FC = () => {
               }}
             >
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-                <Activity size={14} color="var(--blue-brand)" />
+                <Activity size={14} color="var(--blue-brand)" aria-hidden="true" />
                 <span>10,000+ Treated</span>
               </div>
               <span style={{ color: '#94a3b8' }}>•</span>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-                <Star size={13} fill="#f59e0b" color="#f59e0b" />
+                <Star size={13} fill="#f59e0b" color="#f59e0b" aria-hidden="true" />
                 <span><strong>4.5+★</strong> Google Reviews</span>
               </div>
             </div>
@@ -253,7 +253,7 @@ export const Hero: React.FC = () => {
                   flexShrink: 0
                 }}
               >
-                <Activity size={26} />
+                <Activity size={26} aria-hidden="true" />
               </div>
               <div>
                 <div style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--navy-primary)', lineHeight: 1.1 }}>10,000+</div>
@@ -264,6 +264,7 @@ export const Hero: React.FC = () => {
             {/* Floating Rating Badge (Top Right) */}
             <div
               className="glass-panel-light animate-float-down desktop-only"
+              aria-label="Rated 4.5 out of 5 stars on Google Reviews"
               style={{
                 position: 'absolute',
                 top: '-1.25rem',

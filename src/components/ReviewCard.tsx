@@ -89,13 +89,17 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
             
             {/* Star Rating + TimeAgo */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', marginTop: '0.2rem', flexWrap: 'wrap' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '2px', flexShrink: 0 }}>
+              <div 
+                style={{ display: 'flex', alignItems: 'center', gap: '2px', flexShrink: 0 }}
+                aria-label={`${review.rating} out of 5 stars`}
+              >
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
                     size={13}
                     fill={i < review.rating ? '#f59e0b' : 'none'}
                     color={i < review.rating ? '#f59e0b' : '#cbd5e1'}
+                    aria-hidden="true"
                   />
                 ))}
               </div>
@@ -122,7 +126,7 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
             flexShrink: 0
           }}
         >
-          <GoogleIcon size={13} />
+          <GoogleIcon size={13} aria-hidden="true" />
           <span>Google</span>
         </div>
       </div>
@@ -163,7 +167,7 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
               gap: '0.25rem'
             }}
           >
-            <Camera size={11} /> {review.photosCount && review.photosCount > 1 ? `${review.photosCount} photos` : 'Photo'}
+            <Camera size={11} aria-hidden="true" /> {review.photosCount && review.photosCount > 1 ? `${review.photosCount} photos` : 'Photo'}
           </span>
         )}
 
@@ -182,7 +186,7 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
               gap: '0.25rem'
             }}
           >
-            <ShieldCheck size={11} /> Verified
+            <ShieldCheck size={11} aria-hidden="true" /> Verified
           </span>
         )}
 
@@ -192,7 +196,7 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
             style={{
               fontSize: '0.7rem',
               fontWeight: 700,
-              color: 'var(--blue-brand)',
+              color: 'var(--blue-brand-text, #0369a1)',
               backgroundColor: 'var(--blue-soft)',
               border: '1px solid rgba(2, 132, 199, 0.2)',
               padding: '0.18rem 0.55rem',
@@ -202,7 +206,7 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
               gap: '0.3rem'
             }}
           >
-            <Stethoscope size={11} />
+            <Stethoscope size={11} aria-hidden="true" />
             {review.treatment}
           </span>
         )}

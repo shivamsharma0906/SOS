@@ -105,7 +105,7 @@ export const ServicesCards: React.FC<ServicesCardsProps> = ({ limit, showTitle =
                       <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.3rem', fontSize: '0.82rem', color: 'var(--text-secondary)' }}>
                         {service.keyHighlights.slice(0, 2).map((item, idx) => (
                           <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.4rem', lineHeight: 1.35 }}>
-                            <CheckCircle2 size={13} color="var(--blue-brand)" style={{ marginTop: '2px', flexShrink: 0 }} />
+                            <CheckCircle2 size={13} color="var(--blue-brand)" style={{ marginTop: '2px', flexShrink: 0 }} aria-hidden="true" />
                             <span>{item}</span>
                           </li>
                         ))}
@@ -120,7 +120,7 @@ export const ServicesCards: React.FC<ServicesCardsProps> = ({ limit, showTitle =
                         style={{ flexGrow: 1, gap: '0.35rem', fontSize: '0.82rem', padding: '0.55rem 0.75rem', justifyContent: 'center' }}
                       >
                         <span>View Pathway</span>
-                        <ArrowRight size={13} />
+                        <ArrowRight size={13} aria-hidden="true" />
                       </Link>
 
                       <button

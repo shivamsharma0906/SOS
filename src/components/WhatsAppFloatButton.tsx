@@ -51,7 +51,7 @@ export const WhatsAppFloatButton: React.FC = () => {
           onMouseLeave={e => e.currentTarget.style.transform = 'translateX(0)'}
           title="SOS on Facebook"
         >
-          <Facebook size={20} fill="#ffffff" color="#1877F2" />
+          <Facebook size={20} fill="#ffffff" color="#1877F2" aria-hidden="true" />
         </a>
 
         {/* Instagram */}
@@ -77,7 +77,7 @@ export const WhatsAppFloatButton: React.FC = () => {
           onMouseLeave={e => e.currentTarget.style.transform = 'translateX(0)'}
           title="SOS on Instagram"
         >
-          <Instagram size={20} color="#ffffff" />
+          <Instagram size={20} color="#ffffff" aria-hidden="true" />
         </a>
       </div>
 
@@ -149,7 +149,7 @@ export const WhatsAppFloatButton: React.FC = () => {
           onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.08)'}
           onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
         >
-          <FaWhatsapp size={30} className="whatsapp-floating-svg" />
+          <FaWhatsapp size={30} className="whatsapp-floating-svg" aria-hidden="true" />
         </a>
       </div>
 

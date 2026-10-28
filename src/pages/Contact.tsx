@@ -47,7 +47,7 @@ export const Contact: React.FC = () => {
                 letterSpacing: '0.05em'
               }}
             >
-              <ShieldCheck size={16} />
+              <ShieldCheck size={16} aria-hidden="true" />
               <span>Direct Clinical Assistance</span>
             </div>
 
@@ -99,7 +99,7 @@ export const Contact: React.FC = () => {
               }}
             >
               <div style={{ width: '44px', height: '44px', borderRadius: '12px', backgroundColor: 'var(--blue-soft)', color: 'var(--blue-brand)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                <Phone size={20} />
+                <Phone size={20} aria-hidden="true" />
               </div>
               <div style={{ textAlign: 'left', minWidth: 0 }}>
                 <div style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--blue-brand-text, #0369a1)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>24/7 Helpline</div>
@@ -137,7 +137,7 @@ export const Contact: React.FC = () => {
               }}
             >
               <div style={{ width: '44px', height: '44px', borderRadius: '12px', backgroundColor: '#dcfce7', color: '#16a34a', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                <FaWhatsapp size={22} />
+                <FaWhatsapp size={22} aria-hidden="true" />
               </div>
               <div style={{ textAlign: 'left', minWidth: 0 }}>
                 <div style={{ fontSize: '0.72rem', fontWeight: 800, color: '#16a34a', textTransform: 'uppercase', letterSpacing: '0.04em' }}>WhatsApp Support</div>
@@ -173,7 +173,7 @@ export const Contact: React.FC = () => {
               }}
             >
               <div style={{ width: '44px', height: '44px', borderRadius: '12px', backgroundColor: 'var(--blue-soft)', color: 'var(--blue-brand)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                <Mail size={20} />
+                <Mail size={20} aria-hidden="true" />
               </div>
               <div style={{ textAlign: 'left', minWidth: 0, overflow: 'hidden' }}>
                 <div style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--blue-brand-text, #0369a1)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>Official Desk</div>

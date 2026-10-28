@@ -170,15 +170,18 @@ export const CentreCard: React.FC<CentreCardProps> = ({ centre }) => {
             </span>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', backgroundColor: '#fef3c7', border: '1px solid #fde68a', padding: '0.2rem 0.45rem', borderRadius: '6px', fontSize: '0.72rem', fontWeight: 800, color: '#b45309', flexShrink: 0 }}>
-            <Star size={11} fill="#b45309" color="#b45309" />
+          <div 
+            style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', backgroundColor: '#fef3c7', border: '1px solid #fde68a', padding: '0.2rem 0.45rem', borderRadius: '6px', fontSize: '0.72rem', fontWeight: 800, color: '#b45309', flexShrink: 0 }}
+            aria-label="Google rating 4.5 out of 5 stars"
+          >
+            <Star size={11} fill="#b45309" color="#b45309" aria-hidden="true" />
             <span>4.5+★</span>
           </div>
         </div>
 
         {/* Address & Landmark */}
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.45rem', fontSize: '0.82rem', color: 'var(--text-secondary)', marginBottom: '0.5rem', lineHeight: 1.45 }}>
-          <MapPin size={13} color="var(--blue-brand)" style={{ marginTop: '3px', flexShrink: 0 }} />
+          <MapPin size={13} color="var(--blue-brand)" style={{ marginTop: '3px', flexShrink: 0 }} aria-hidden="true" />
           <div>
             <span>{centre.address}</span>
             {centre.landmark && (
@@ -191,7 +194,7 @@ export const CentreCard: React.FC<CentreCardProps> = ({ centre }) => {
 
         {/* Timings */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.78rem', color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
-          <Clock size={12} color="var(--blue-brand)" style={{ flexShrink: 0 }} />
+          <Clock size={12} color="var(--blue-brand)" style={{ flexShrink: 0 }} aria-hidden="true" />
           <span>{centre.timings}</span>
         </div>
 
