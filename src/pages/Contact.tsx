@@ -136,11 +136,11 @@ export const Contact: React.FC = () => {
                 e.currentTarget.style.boxShadow = '0 4px 16px rgba(10, 31, 68, 0.04)';
               }}
             >
-              <div style={{ width: '44px', height: '44px', borderRadius: '12px', backgroundColor: '#dcfce7', color: '#16a34a', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <div style={{ width: '44px', height: '44px', borderRadius: '12px', backgroundColor: '#dcfce7', color: '#15803d', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 <FaWhatsapp size={22} aria-hidden="true" />
               </div>
               <div style={{ textAlign: 'left', minWidth: 0 }}>
-                <div style={{ fontSize: '0.72rem', fontWeight: 800, color: '#16a34a', textTransform: 'uppercase', letterSpacing: '0.04em' }}>WhatsApp Support</div>
+                <div style={{ fontSize: '0.72rem', fontWeight: 800, color: '#15803d', textTransform: 'uppercase', letterSpacing: '0.04em' }}>WhatsApp Support</div>
                 <div style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--navy-primary)', whiteSpace: 'nowrap' }}>Instant Chat</div>
               </div>
             </a>
@@ -214,7 +214,7 @@ export const Contact: React.FC = () => {
                   letterSpacing: '0.04em'
                 }}
               >
-                <Clock size={14} />
+                <Clock size={14} aria-hidden="true" />
                 <span>Central Operations</span>
               </div>
 
@@ -239,7 +239,7 @@ export const Contact: React.FC = () => {
                 className="contact-hours-box"
               >
                 <h3 style={{ fontSize: '1.02rem', fontWeight: 800, color: 'var(--navy-primary)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                  <Clock size={17} color="var(--blue-brand)" /> Consultation & Dispatch Hours
+                  <Clock size={17} color="var(--blue-brand)" aria-hidden="true" /> Consultation & Dispatch Hours
                 </h3>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.88rem' }}>
@@ -254,7 +254,7 @@ export const Contact: React.FC = () => {
                   </div>
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#dc2626', fontWeight: 800, paddingTop: '0.25rem', fontSize: '0.84rem' }}>
-                    <Activity size={14} /> <span>24/7 Mobile Home X-Ray Dispatch Active Everyday</span>
+                    <Activity size={14} aria-hidden="true" /> <span>24/7 Mobile Home X-Ray Dispatch Active Everyday</span>
                   </div>
                 </div>
               </div>
@@ -262,16 +262,17 @@ export const Contact: React.FC = () => {
               {/* Interactive Centre Location Picker */}
               <div>
                 <div style={{ fontSize: '0.82rem', fontWeight: 800, color: 'var(--navy-primary)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                  <MapPin size={15} color="var(--blue-brand)" /> Select a Centre for Address & Desk:
+                  <MapPin size={15} color="var(--blue-brand)" aria-hidden="true" /> Select a Centre for Address & Desk:
                 </div>
 
                 {/* Pill Selector */}
-                <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', marginBottom: '1.15rem' }} className="contact-centre-pills">
+                <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', marginBottom: '1.15rem' }} className="contact-centre-pills" role="group" aria-label="Centres and Clinics Selector">
                   {centresData.map(c => (
                     <button
                       key={c.id}
                       type="button"
                       onClick={() => setSelectedCentre(c.id)}
+                      aria-pressed={selectedCentre === c.id}
                       style={{
                         padding: '0.45rem 0.85rem',
                         borderRadius: 'var(--radius-pill)',
@@ -302,9 +303,9 @@ export const Contact: React.FC = () => {
                     className="contact-selected-centre-card"
                   >
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.45rem', flexWrap: 'wrap', gap: '0.4rem' }}>
-                      <h4 style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--navy-primary)', margin: 0 }}>
+                      <h3 style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--navy-primary)', margin: 0 }}>
                         {activeCentreData.name}
-                      </h4>
+                      </h3>
                       {activeCentreData.status === 'opening-soon' ? (
                         <span style={{ fontSize: '0.7rem', fontWeight: 800, backgroundColor: '#fef3c7', color: '#b45309', padding: '0.15rem 0.45rem', borderRadius: '4px' }}>
                           Opening Soon
@@ -314,7 +315,7 @@ export const Contact: React.FC = () => {
                           Outreach Clinic
                         </span>
                       ) : (
-                        <span style={{ fontSize: '0.7rem', fontWeight: 800, backgroundColor: '#dcfce7', color: '#16a34a', padding: '0.15rem 0.45rem', borderRadius: '4px' }}>
+                        <span style={{ fontSize: '0.7rem', fontWeight: 800, backgroundColor: '#dcfce7', color: '#15803d', padding: '0.15rem 0.45rem', borderRadius: '4px' }}>
                           ● Open Today
                         </span>
                       )}
@@ -330,7 +331,7 @@ export const Contact: React.FC = () => {
                         className="btn btn-primary btn-sm"
                         style={{ justifyContent: 'center', gap: '0.35rem', fontSize: '0.8rem', padding: '0.5rem' }}
                       >
-                        <Phone size={13} /> Call Desk
+                        <Phone size={13} aria-hidden="true" /> Call Desk
                       </a>
 
                       <a 
@@ -340,7 +341,7 @@ export const Contact: React.FC = () => {
                         className="btn btn-whatsapp btn-sm"
                         style={{ justifyContent: 'center', gap: '0.35rem', fontSize: '0.8rem', padding: '0.5rem' }}
                       >
-                        <FaWhatsapp size={14} /> WhatsApp
+                        <FaWhatsapp size={14} aria-hidden="true" /> WhatsApp
                       </a>
                     </div>
                   </div>
@@ -438,7 +439,7 @@ export const Contact: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`Chat with ${centre.area} centre on WhatsApp`}
-                    style={{ fontSize: '0.8rem', fontWeight: 700, color: '#16a34a', display: 'inline-flex', alignItems: 'center', gap: '0.3rem', minHeight: '44px', padding: '0.25rem 0' }}
+                    style={{ fontSize: '0.8rem', fontWeight: 700, color: '#15803d', display: 'inline-flex', alignItems: 'center', gap: '0.3rem', minHeight: '44px', padding: '0.25rem 0' }}
                   >
                     <FaWhatsapp size={14} aria-hidden="true" /> WhatsApp
                   </a>

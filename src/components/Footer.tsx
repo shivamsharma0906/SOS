@@ -84,10 +84,10 @@ export const Footer: React.FC = () => {
             {/* Social Icons Row */}
             <div style={{ display: 'flex', gap: '0.65rem', marginTop: '0.25rem' }}>
               <a href="https://www.facebook.com/profile.php?id=61592799181133" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.08)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Facebook size={17} />
+                <Facebook size={17} aria-hidden="true" />
               </a>
               <a href="https://www.instagram.com/sosorthopaedics/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.08)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Instagram size={17} />
+                <Instagram size={17} aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -223,7 +223,7 @@ export const Footer: React.FC = () => {
               className="btn btn-emergency btn-sm"
               style={{ fontSize: '0.82rem', padding: '0.6rem 0.5rem', gap: '0.35rem', justifyContent: 'center' }}
             >
-              <Phone size={14} /> {BUSINESS_INFO.phone}
+              <Phone size={14} aria-hidden="true" /> {BUSINESS_INFO.phone}
             </a>
             <a 
               href={`https://wa.me/91${BUSINESS_INFO.phone}?text=Hello%20SOS%20Orthopedic%20Clinic,%20I%20would%20like%20to%20enquire%20about%20a%20consultation.`}
@@ -232,7 +232,7 @@ export const Footer: React.FC = () => {
               className="btn btn-whatsapp btn-sm"
               style={{ fontSize: '0.82rem', padding: '0.6rem 0.5rem', gap: '0.35rem', justifyContent: 'center' }}
             >
-              <FaWhatsapp size={16} /> WhatsApp
+              <FaWhatsapp size={16} aria-hidden="true" /> WhatsApp
             </a>
           </div>
 
@@ -316,10 +316,10 @@ export const Footer: React.FC = () => {
           {/* Social Media Row */}
           <div style={{ display: 'flex', justifyContent: 'center', gap: '0.85rem', marginBottom: '1.5rem' }}>
             <a href="https://www.facebook.com/profile.php?id=61592799181133" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style={{ width: '38px', height: '38px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.08)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Facebook size={18} />
+              <Facebook size={18} aria-hidden="true" />
             </a>
             <a href="https://www.instagram.com/sosorthopaedics/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={{ width: '38px', height: '38px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.08)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Instagram size={18} />
+              <Instagram size={18} aria-hidden="true" />
             </a>
           </div>
         </div>

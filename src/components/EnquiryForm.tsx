@@ -373,9 +373,10 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
       {/* ── 2. Mode Selector: Only shown if not doctor-specific ── */}
       {!isDoctorSpecific && (
         <div style={{ padding: '0.4rem 0.85rem 0 0.85rem', backgroundColor: '#f8fafc', borderBottom: '1px solid #e2e8f0' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.35rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.35rem' }} role="group" aria-label="Appointment Mode Selector">
             <button
               type="button"
+              aria-pressed={appointmentType === 'in-clinic'}
               onClick={() => setAppointmentType('in-clinic')}
               style={{
                 padding: '0.45rem 0.5rem',
@@ -384,7 +385,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                 borderColor: appointmentType === 'in-clinic' ? '#0284c7' : 'transparent',
                 borderBottom: appointmentType === 'in-clinic' ? '2px solid #0284c7' : 'none',
                 backgroundColor: appointmentType === 'in-clinic' ? '#ffffff' : 'transparent',
-                color: appointmentType === 'in-clinic' ? '#0a1f44' : '#64748b',
+                color: appointmentType === 'in-clinic' ? '#0a1f44' : '#475569',
                 fontWeight: 800,
                 fontSize: '0.78rem',
                 cursor: 'pointer',
@@ -395,12 +396,13 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                 whiteSpace: 'nowrap'
               }}
             >
-              <Building2 size={14} color={appointmentType === 'in-clinic' ? '#0284c7' : '#64748b'} />
+              <Building2 size={14} color={appointmentType === 'in-clinic' ? '#0284c7' : '#475569'} aria-hidden="true" />
               <span>Clinic Visit</span>
             </button>
 
             <button
               type="button"
+              aria-pressed={appointmentType === 'home-xray'}
               onClick={() => setAppointmentType('home-xray')}
               style={{
                 padding: '0.45rem 0.5rem',
@@ -409,7 +411,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                 borderColor: appointmentType === 'home-xray' ? '#0284c7' : 'transparent',
                 borderBottom: appointmentType === 'home-xray' ? '2px solid #0284c7' : 'none',
                 backgroundColor: appointmentType === 'home-xray' ? '#ffffff' : 'transparent',
-                color: appointmentType === 'home-xray' ? '#0a1f44' : '#64748b',
+                color: appointmentType === 'home-xray' ? '#0a1f44' : '#475569',
                 fontWeight: 800,
                 fontSize: '0.78rem',
                 cursor: 'pointer',
@@ -420,7 +422,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                 whiteSpace: 'nowrap'
               }}
             >
-              <Activity size={14} color={appointmentType === 'home-xray' ? '#0284c7' : '#64748b'} />
+              <Activity size={14} color={appointmentType === 'home-xray' ? '#0284c7' : '#475569'} aria-hidden="true" />
               <span>Home X-Ray</span>
             </button>
           </div>
@@ -438,6 +440,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
           tabIndex={-1} 
           autoComplete="off" 
           aria-hidden="true"
+          aria-label="Do not fill this field"
         />
 
         <div className="unified-booking-card">
@@ -569,11 +572,10 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
 
                 <div>
                   <label id={`${formId}-session-label`} className="hospital-compact-label">OPD Session Slot</label>
-                  <div role="radiogroup" aria-labelledby={`${formId}-session-label`} style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.25rem' }}>
+                  <div role="group" aria-labelledby={`${formId}-session-label`} style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.25rem' }}>
                     <button
                       type="button"
-                      role="radio"
-                      aria-checked={timeSlot === 'morning'}
+                      aria-pressed={timeSlot === 'morning'}
                       onClick={() => setTimeSlot('morning')}
                       className={`compact-slot-btn ${timeSlot === 'morning' ? 'active' : ''}`}
                     >
@@ -583,8 +585,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
 
                     <button
                       type="button"
-                      role="radio"
-                      aria-checked={timeSlot === 'afternoon'}
+                      aria-pressed={timeSlot === 'afternoon'}
                       onClick={() => setTimeSlot('afternoon')}
                       className={`compact-slot-btn ${timeSlot === 'afternoon' ? 'active' : ''}`}
                     >
@@ -594,8 +595,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
 
                     <button
                       type="button"
-                      role="radio"
-                      aria-checked={timeSlot === 'evening'}
+                      aria-pressed={timeSlot === 'evening'}
                       onClick={() => setTimeSlot('evening')}
                       className={`compact-slot-btn ${timeSlot === 'evening' ? 'active' : ''}`}
                     >
@@ -659,7 +659,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
               </div>
 
               <div>
-                <label htmlFor={`${formId}-message`} className="hospital-compact-label">Symptoms / Notes <span style={{ fontWeight: 400, color: '#94a3b8' }}>(Optional)</span></label>
+                <label htmlFor={`${formId}-message`} className="hospital-compact-label">Symptoms / Notes <span style={{ fontWeight: 400, color: '#64748b' }}>(Optional)</span></label>
                 <input
                   id={`${formId}-message`}
                   type="text"
@@ -687,7 +687,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
               <>Registering Appointment...</>
             ) : (
               <>
-                Confirm OPD Consultation <ChevronRight size={15} />
+                Confirm OPD Consultation <ChevronRight size={15} aria-hidden="true" />
               </>
             )}
           </button>
@@ -699,18 +699,18 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
             gap: '0.5rem',
             marginTop: '0.35rem',
             fontSize: '0.68rem',
-            color: '#64748b'
+            color: '#475569'
           }}>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.2rem' }}>
-              <ShieldCheck size={11} color="#0284c7" /> Zero Wait
+              <ShieldCheck size={11} color="#0284c7" aria-hidden="true" /> Zero Wait
             </span>
             <span>&bull;</span>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.2rem' }}>
-              <Clock size={10} color="#16a34a" /> 15-Min Call Back
+              <Clock size={10} color="#15803d" aria-hidden="true" /> 15-Min Call Back
             </span>
             <span>&bull;</span>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.2rem' }}>
-              <Award size={11} color="#0284c7" /> Senior Specialist
+              <Award size={11} color="#0284c7" aria-hidden="true" /> Senior Specialist
             </span>
           </div>
         </div>
@@ -814,7 +814,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
           width: 15px;
           height: 15px;
           border-radius: 50%;
-          background: #0284c7;
+          background: #0369a1;
           color: #ffffff;
           display: inline-flex;
           align-items: center;

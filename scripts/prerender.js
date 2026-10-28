@@ -31,9 +31,13 @@ const template = fs.readFileSync(templatePath, 'utf-8');
 function renderPage({ page, structuredData, bodyHtml, targetFiles }) {
   let outputHtml = template;
 
-  // Remove homepage unsplash hero preload for inner pages
+  // Remove homepage unsplash hero preload and preconnect for inner pages
   outputHtml = outputHtml.replace(
     /\s*<!-- Preload Hero LCP Image -->\s*<link rel="preload" as="image" href="https:\/\/images\.unsplash\.com[\s\S]*?fetchpriority="high">/i,
+    ''
+  );
+  outputHtml = outputHtml.replace(
+    /\s*<link rel="preconnect" href="https:\/\/images\.unsplash\.com" crossorigin>/i,
     ''
   );
 
@@ -1051,10 +1055,51 @@ sitePages.forEach(p => {
     }
   ];
 
-  const bodyHtml = `
+  const contactPageAboveTheFoldHtml = `
+<main style="flex-grow: 1;">
+  <section class="page-hero-section contact-hero-section" style="position: relative; overflow: hidden; padding: 3rem 0 2rem 0; background: linear-gradient(180deg, #ffffff 0%, #f0f6fc 100%);">
+    <div class="container" style="position: relative; z-index: 2;">
+      <div style="text-align: center; max-width: 820px; margin: 0 auto;">
+        <div style="display: inline-flex; align-items: center; gap: 0.45rem; background-color: #f0f9ff; color: #0369a1; padding: 0.35rem 0.95rem; border-radius: 9999px; font-size: 0.82rem; font-weight: 700; border: 1px solid rgba(2, 132, 199, 0.25); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">
+          <span>Direct Clinical Assistance</span>
+        </div>
+        <h1 class="heading-xl" style="color: #07152e; margin-bottom: 0.85rem; line-height: 1.15; font-size: 2.25rem; font-weight: 800;">
+          Contact <span style="color: #0284c7;">SOS Orthopedic Clinic</span>
+        </h1>
+        <p class="subhead" style="color: #475569; margin: 0 auto 2.25rem auto; max-width: 680px; font-size: 1.05rem; line-height: 1.65;">
+          Reach our central clinical desk 24/7 for orthopedic emergencies, priority surgeon appointments, or rapid at-home digital X-ray dispatch across Mumbai.
+        </p>
+      </div>
+
+      <div class="contact-quick-strip" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; max-width: 960px; margin: 0 auto;">
+        <a href="tel:09321144580" class="contact-quick-card" style="background-color: #ffffff; padding: 1.15rem 1.25rem; border-radius: 16px; border: 1px solid rgba(10, 31, 68, 0.08); box-shadow: 0 4px 16px rgba(10, 31, 68, 0.04); display: flex; align-items: center; gap: 0.85rem; text-decoration: none;">
+          <div style="text-align: left; min-width: 0;">
+            <div style="font-size: 0.72rem; font-weight: 800; color: #0369a1; text-transform: uppercase; letter-spacing: 0.04em;">24/7 Helpline</div>
+            <div style="font-size: 1.15rem; font-weight: 800; color: #07152e; white-space: nowrap;">093211 44580</div>
+          </div>
+        </a>
+        <a href="https://wa.me/9109321144580?text=Hello%20SOS%20Orthopedic%20Clinic,%20I%20would%20like%20to%20enquire%20about%20a%20consultation." target="_blank" rel="noopener noreferrer" class="contact-quick-card" style="background-color: #ffffff; padding: 1.15rem 1.25rem; border-radius: 16px; border: 1px solid rgba(10, 31, 68, 0.08); box-shadow: 0 4px 16px rgba(10, 31, 68, 0.04); display: flex; align-items: center; gap: 0.85rem; text-decoration: none;">
+          <div style="text-align: left; min-width: 0;">
+            <div style="font-size: 0.72rem; font-weight: 800; color: #15803d; text-transform: uppercase; letter-spacing: 0.04em;">WhatsApp Support</div>
+            <div style="font-size: 1.15rem; font-weight: 800; color: #07152e; white-space: nowrap;">Instant Chat</div>
+          </div>
+        </a>
+        <a href="mailto:official.sosortho@gmail.com" class="contact-quick-card" style="background-color: #ffffff; padding: 1.15rem 1.25rem; border-radius: 16px; border: 1px solid rgba(10, 31, 68, 0.08); box-shadow: 0 4px 16px rgba(10, 31, 68, 0.04); display: flex; align-items: center; gap: 0.85rem; text-decoration: none;">
+          <div style="text-align: left; min-width: 0;">
+            <div style="font-size: 0.72rem; font-weight: 800; color: #0369a1; text-transform: uppercase; letter-spacing: 0.04em;">Official Desk</div>
+            <div style="font-size: 0.84rem; font-weight: 800; color: #07152e; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">official.sosortho@gmail.com</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+`;
+
+  const defaultBodyHtml = `
 <div class="static-prerender-content" style="padding: 2.5rem 1rem; max-width: 1200px; margin: 0 auto;">
   <nav aria-label="Breadcrumb" style="font-size: 0.85rem; margin-bottom: 1.5rem; color: #64748b;">
-    <a href="/" style="color: #0284c7; text-decoration: none;">Home</a> / 
+    <a href="/" style="color: #0369a1; text-decoration: none;">Home</a> / 
     <span style="color: #0f172a; font-weight: 600;">${p.h1}</span>
   </nav>
   <header style="margin-bottom: 2.5rem;">
@@ -1063,16 +1108,18 @@ sitePages.forEach(p => {
   </header>
   <main>
     <p style="font-size: 1.05rem; line-height: 1.8; color: #334155; margin-bottom: 1.5rem;">${p.metaDescription}</p>
-    <div style="margin: 2rem 0; padding: 1.5rem; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 4px;">
+    <div style="margin: 2rem 0; padding: 1.5rem; background: #f8fafc; border-left: 4px solid #0369a1; border-radius: 4px;">
       <h2 style="font-size: 1.25rem; color: #0a1f44; margin-top: 0; margin-bottom: 0.5rem;">SOS Speciality Orthopedic Clinic Mumbai</h2>
       <p style="margin: 0; color: #475569;">Senior Orthopedic OPD Consultations &bull; 24/7 Doorstep Portable Digital X-Ray &bull; Specialized Physiotherapy &bull; Kandivali &bull; Borivali &bull; Malad &bull; Goregaon</p>
       <div style="margin-top: 1rem;">
-        <a href="/contact" style="display: inline-block; padding: 0.6rem 1.25rem; background: #0284c7; color: #ffffff; text-decoration: none; border-radius: 4px; font-weight: 600;">Contact Helpline: 093211 44580</a>
+        <a href="/contact" style="display: inline-block; padding: 0.6rem 1.25rem; background: #0369a1; color: #ffffff; text-decoration: none; border-radius: 4px; font-weight: 600;">Contact Helpline: 093211 44580</a>
       </div>
     </div>
   </main>
 </div>
 `;
+
+  const bodyHtml = p.name === 'contact' ? contactPageAboveTheFoldHtml : defaultBodyHtml;
 
   renderPage({
     page: p,
