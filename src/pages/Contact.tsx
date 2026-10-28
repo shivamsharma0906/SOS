@@ -36,7 +36,7 @@ export const Contact: React.FC = () => {
                 alignItems: 'center', 
                 gap: '0.45rem', 
                 backgroundColor: 'var(--blue-soft)', 
-                color: 'var(--blue-brand)', 
+                color: 'var(--blue-brand-text, #0369a1)', 
                 padding: '0.35rem 0.95rem', 
                 borderRadius: 'var(--radius-pill)', 
                 fontSize: '0.82rem', 
@@ -68,7 +68,7 @@ export const Contact: React.FC = () => {
               gap: '1rem',
               maxWidth: '960px',
               margin: '0 auto'
-            }}
+            }} 
             className="contact-quick-strip"
           >
             {/* Helpline Card */}
@@ -102,7 +102,7 @@ export const Contact: React.FC = () => {
                 <Phone size={20} />
               </div>
               <div style={{ textAlign: 'left', minWidth: 0 }}>
-                <div style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--blue-brand)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>24/7 Helpline</div>
+                <div style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--blue-brand-text, #0369a1)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>24/7 Helpline</div>
                 <div style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--navy-primary)', whiteSpace: 'nowrap' }}>{BUSINESS_INFO.phone}</div>
               </div>
             </a>
@@ -176,7 +176,7 @@ export const Contact: React.FC = () => {
                 <Mail size={20} />
               </div>
               <div style={{ textAlign: 'left', minWidth: 0, overflow: 'hidden' }}>
-                <div style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--blue-brand)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>Official Desk</div>
+                <div style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--blue-brand-text, #0369a1)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>Official Desk</div>
                 <div style={{ fontSize: '0.84rem', fontWeight: 800, color: 'var(--navy-primary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{BUSINESS_INFO.email}</div>
               </div>
             </a>
@@ -204,7 +204,7 @@ export const Contact: React.FC = () => {
                   alignItems: 'center', 
                   gap: '0.4rem', 
                   backgroundColor: 'var(--blue-soft)', 
-                  color: 'var(--blue-brand)', 
+                  color: 'var(--blue-brand-text, #0369a1)', 
                   padding: '0.3rem 0.8rem', 
                   borderRadius: 'var(--radius-pill)', 
                   fontSize: '0.78rem', 
@@ -427,18 +427,20 @@ export const Contact: React.FC = () => {
                 <div style={{ marginTop: 'auto', paddingTop: '0.75rem', borderTop: '1px solid #f1f5f9', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem' }}>
                   <a 
                     href={`tel:${centre.phone}`}
-                    style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--navy-primary)', display: 'flex', alignItems: 'center', gap: '0.35rem' }}
+                    aria-label={`Call ${centre.area} centre at ${centre.phone}`}
+                    style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--navy-primary)', display: 'inline-flex', alignItems: 'center', gap: '0.35rem', minHeight: '44px', padding: '0.25rem 0' }}
                   >
-                    <Phone size={13} color="var(--blue-brand)" /> {centre.phone}
+                    <Phone size={13} color="var(--blue-brand)" aria-hidden="true" /> {centre.phone}
                   </a>
 
                   <a 
                     href={`https://wa.me/${centre.whatsapp}?text=Hello%20SOS%20${centre.area}%20Desk,%20I%20would%20like%20to%20enquire%20about%20a%20consultation.`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ fontSize: '0.8rem', fontWeight: 700, color: '#16a34a', display: 'flex', alignItems: 'center', gap: '0.3rem' }}
+                    aria-label={`Chat with ${centre.area} centre on WhatsApp`}
+                    style={{ fontSize: '0.8rem', fontWeight: 700, color: '#16a34a', display: 'inline-flex', alignItems: 'center', gap: '0.3rem', minHeight: '44px', padding: '0.25rem 0' }}
                   >
-                    <FaWhatsapp size={14} /> WhatsApp
+                    <FaWhatsapp size={14} aria-hidden="true" /> WhatsApp
                   </a>
                 </div>
               </div>

@@ -83,9 +83,9 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
           </div>
 
           <div>
-            <h4 style={{ fontSize: '1.02rem', fontWeight: 800, color: 'var(--navy-primary)', margin: 0, lineHeight: 1.25 }}>
+            <h3 style={{ fontSize: '1.02rem', fontWeight: 800, color: 'var(--navy-primary)', margin: 0, lineHeight: 1.25 }}>
               {review.patientName}
-            </h4>
+            </h3>
             
             {/* Star Rating + TimeAgo */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', marginTop: '0.2rem', flexWrap: 'wrap' }}>

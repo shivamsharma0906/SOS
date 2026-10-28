@@ -118,7 +118,9 @@ export const CentreCard: React.FC<CentreCardProps> = ({ centre }) => {
           zIndex: 2
         }}>
           <button
+            type="button"
             onClick={() => setActiveTab('photo')}
+            aria-label={`View photo of ${centre.name}`}
             style={{
               padding: '0.2rem 0.55rem',
               borderRadius: '9999px',
@@ -131,10 +133,12 @@ export const CentreCard: React.FC<CentreCardProps> = ({ centre }) => {
               transition: 'all 0.15s ease'
             }}
           >
-            <Camera size={11} style={{ marginRight: '3px', verticalAlign: 'middle' }} /> Photo
+            <Camera size={11} style={{ marginRight: '3px', verticalAlign: 'middle' }} aria-hidden="true" /> Photo
           </button>
           <button
+            type="button"
             onClick={() => setActiveTab('map')}
+            aria-label={`View map for ${centre.name}`}
             style={{
               padding: '0.2rem 0.55rem',
               borderRadius: '9999px',
@@ -147,7 +151,7 @@ export const CentreCard: React.FC<CentreCardProps> = ({ centre }) => {
               transition: 'all 0.15s ease'
             }}
           >
-            <Map size={11} style={{ marginRight: '3px', verticalAlign: 'middle' }} /> Map
+            <Map size={11} style={{ marginRight: '3px', verticalAlign: 'middle' }} aria-hidden="true" /> Map
           </button>
         </div>
       </div>
@@ -161,7 +165,7 @@ export const CentreCard: React.FC<CentreCardProps> = ({ centre }) => {
             <h3 style={{ fontSize: '1.05rem', color: 'var(--navy-primary)', lineHeight: 1.25, fontWeight: 800, margin: '0 0 0.15rem 0' }}>
               {centre.name}
             </h3>
-            <span style={{ fontSize: '0.74rem', fontWeight: 700, color: 'var(--blue-brand)' }}>
+            <span style={{ fontSize: '0.74rem', fontWeight: 700, color: 'var(--blue-brand-text, #0369a1)' }}>
               SOS {centre.area} Branch
             </span>
           </div>

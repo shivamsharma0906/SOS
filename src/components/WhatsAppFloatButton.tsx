@@ -116,10 +116,12 @@ export const WhatsAppFloatButton: React.FC = () => {
           >
             <span>Need quick doctor advice? Chat on WhatsApp!</span>
             <button 
+              type="button"
               onClick={() => setShowTooltip(false)}
-              style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.7)', cursor: 'pointer', padding: 0 }}
+              aria-label="Dismiss advice notification"
+              style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.7)', cursor: 'pointer', padding: '4px', minWidth: '24px', minHeight: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             >
-              <X size={14} />
+              <X size={14} aria-hidden="true" />
             </button>
           </div>
         )}

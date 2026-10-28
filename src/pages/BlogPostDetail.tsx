@@ -565,12 +565,15 @@ export const BlogPostDetail: React.FC = () => {
                   <figure className="blog-hero-figure">
                     <img
                       src={heroImage.src}
+                      srcSet={heroImage.srcSet}
+                      sizes={heroImage.sizes || '(max-width: 768px) 100vw, 820px'}
                       alt={heroImage.alt}
                       width={heroImage.width}
                       height={heroImage.height}
                       loading="eager"
                       // @ts-expect-error fetchpriority attribute is supported in modern browsers
                       fetchpriority="high"
+                      decoding="async"
                       className="blog-hero-img"
                     />
                   </figure>

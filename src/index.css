@@ -5,6 +5,7 @@
   --navy-accent: #0c2b64;
   --navy-light: #16366f;
   --blue-brand: #0284c7;
+  --blue-brand-text: #0369a1;
   --blue-highlight: #2563eb;
   --blue-soft: #f0f7ff;
   --blue-ghost: #e0f2fe;
@@ -208,7 +209,7 @@ img {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   background-color: var(--blue-ghost);
-  color: var(--blue-brand);
+  color: var(--blue-brand-text, #0369a1);
   border-radius: var(--radius-sm);
 }
 
@@ -1401,7 +1402,7 @@ html, body {
   display: inline-block;
   padding: 0.3rem 0.85rem;
   background-color: var(--blue-soft);
-  color: var(--blue-brand);
+  color: var(--blue-brand-text, #0369a1);
   font-size: 0.8rem;
   font-weight: 700;
   border-radius: var(--radius-pill);
@@ -1600,7 +1601,7 @@ html, body {
   display: inline-block;
   padding: 0.2rem 0.65rem;
   background-color: var(--blue-soft);
-  color: var(--blue-brand);
+  color: var(--blue-brand-text, #0369a1);
   font-size: 0.75rem;
   font-weight: 700;
   border-radius: var(--radius-pill);

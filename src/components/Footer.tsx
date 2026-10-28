@@ -60,7 +60,7 @@ export const Footer: React.FC = () => {
                 <Phone size={18} color="#38bdf8" />
                 <span>{BUSINESS_INFO.phone}</span>
               </a>
-              <div style={{ fontSize: '0.74rem', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700 }}>
+              <div style={{ fontSize: '0.74rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700 }}>
                 24/7 Emergency & Home Visit Helpline
               </div>
               <a 
@@ -76,7 +76,7 @@ export const Footer: React.FC = () => {
                 onMouseEnter={e => e.currentTarget.style.color = '#38bdf8'}
                 onMouseLeave={e => e.currentTarget.style.color = '#cbd5e1'}
               >
-                <Mail size={14} color="#64748b" />
+                <Mail size={14} color="#94a3b8" />
                 <span>{BUSINESS_INFO.email}</span>
               </a>
             </div>
@@ -198,7 +198,7 @@ export const Footer: React.FC = () => {
                   <MapPin size={15} color="#38bdf8" style={{ marginTop: '2px', flexShrink: 0 }} />
                   <div>
                     <strong style={{ color: '#ffffff', display: 'block', fontSize: '0.88rem' }}>{centre.area} {centre.type === 'outreach-clinic' ? '(Outreach)' : 'Centre'}</strong>
-                    <span style={{ color: '#64748b', fontSize: '0.76rem', display: 'block', marginTop: '0.1rem' }}>{centre.landmark}</span>
+                    <span style={{ color: '#94a3b8', fontSize: '0.76rem', display: 'block', marginTop: '0.1rem' }}>{centre.landmark}</span>
                   </div>
                 </div>
               ))}

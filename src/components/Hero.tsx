@@ -73,7 +73,7 @@ export const Hero: React.FC = () => {
                 gap: '0.45rem',
                 padding: '0.35rem 0.95rem',
                 backgroundColor: 'rgba(2, 132, 199, 0.08)',
-                color: 'var(--blue-brand)',
+                color: 'var(--blue-brand-text, #0369a1)',
                 fontWeight: 700,
                 fontSize: '0.82rem',
                 borderRadius: 'var(--radius-pill)',
@@ -207,11 +207,16 @@ export const Hero: React.FC = () => {
               className="hero-image-frame"
             >
               <img
-                src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=1200"
+                src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800"
+                srcSet="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=75&w=480 480w, https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800 800w, https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=1200 1200w"
+                sizes="(max-width: 900px) 100vw, 560px"
                 alt="Senior Orthopedic Surgeon examining patient mobility and joint health at SOS Speciality Orthopedic Clinic Mumbai"
                 style={{ width: '100%', height: '560px', objectFit: 'cover', objectPosition: 'center 20%', display: 'block' }}
                 className="hero-main-img"
                 loading="eager"
+                // @ts-expect-error fetchpriority attribute is supported in modern browsers
+                fetchpriority="high"
+                decoding="async"
               />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(7, 21, 46, 0.35) 0%, transparent 40%)' }} />
             </div>
@@ -275,9 +280,9 @@ export const Hero: React.FC = () => {
                 zIndex: 4
               }}
             >
-              <GoogleIcon size={20} />
-              <div style={{ display: 'flex', color: '#fbbc04' }}>
-                <Star size={16} fill="#fbbc04" />
+              <GoogleIcon size={20} aria-hidden="true" />
+              <div style={{ display: 'flex', color: '#fbbc04' }} aria-hidden="true">
+                <Star size={16} fill="#fbbc04" aria-hidden="true" />
               </div>
               <span style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--navy-primary)' }}>4.5+</span>
             </div>

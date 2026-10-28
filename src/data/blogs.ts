@@ -57,6 +57,8 @@ export interface BlogPost {
   tags: string[];
   heroImage: {
     src: string;
+    srcSet?: string;
+    sizes?: string;
     alt: string;
     caption?: string;
     width: number;
@@ -215,13 +217,15 @@ export const blogPostsData: BlogPost[] = [
     featured: true,
     tags: ['Robotic Knee Replacement', 'Knee Osteoarthritis', 'Joint Replacement Mumbai', 'Knee Recovery', 'Physiotherapy'],
     heroImage: {
-      src: '/assets/robotic-knee-consultation.png',
+      src: '/assets/robotic-knee-consultation.webp',
+      srcSet: '/assets/robotic-knee-consultation-480w.webp 480w, /assets/robotic-knee-consultation-800w.webp 800w, /assets/robotic-knee-consultation.webp 1730w',
+      sizes: '(max-width: 768px) 100vw, 820px',
       alt: 'Robotic knee replacement surgery for knee joint treatment',
       width: 1730,
       height: 909
     },
     procedureImage: {
-      src: '/assets/blog-featured-robotic.jpg',
+      src: '/assets/blog-featured-robotic.webp',
       alt: 'Intraoperative robotic knee replacement surgical guidance and bone preparation',
       width: 1376,
       height: 768
@@ -439,13 +443,15 @@ export const blogPostsData: BlogPost[] = [
     featured: false,
     tags: ['Robotic Knee Replacement', 'Knee Surgery Recovery', 'Knee Rehabilitation Mumbai', 'Joint Replacement Mumbai', 'Physiotherapy'],
     heroImage: {
-      src: '/assets/robotic-knee-recovery-mumbai.png',
+      src: '/assets/robotic-knee-recovery-mumbai.webp',
+      srcSet: '/assets/robotic-knee-recovery-mumbai-480w.webp 480w, /assets/robotic-knee-recovery-mumbai-800w.webp 800w, /assets/robotic-knee-recovery-mumbai.webp 1672w',
+      sizes: '(max-width: 768px) 100vw, 820px',
       alt: 'Robotic knee replacement surgery and knee recovery in mumbai',
       width: 1672,
       height: 941
     },
     procedureImage: {
-      src: '/assets/robotic-knee-replacement-procedure-mumbai.png',
+      src: '/assets/robotic-knee-replacement-procedure-mumbai.webp',
       alt: 'Robotic knee replacement surgery procedure in mumbai',
       width: 1672,
       height: 941

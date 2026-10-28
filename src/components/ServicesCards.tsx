@@ -62,6 +62,7 @@ export const ServicesCards: React.FC<ServicesCardsProps> = ({ limit, showTitle =
                   {/* FRONT SIDE */}
                   <div 
                     className="service-card-front" 
+                    aria-hidden={isFlipped}
                     style={{ 
                       display: 'flex', 
                       flexDirection: 'column', 
@@ -128,6 +129,8 @@ export const ServicesCards: React.FC<ServicesCardsProps> = ({ limit, showTitle =
                           e.preventDefault();
                           toggleFlip(service.id);
                         }}
+                        aria-label={`View clinical details for ${service.title}`}
+                        aria-expanded={isFlipped}
                         style={{
                           display: 'inline-flex',
                           alignItems: 'center',
@@ -151,6 +154,7 @@ export const ServicesCards: React.FC<ServicesCardsProps> = ({ limit, showTitle =
                   {/* BACK SIDE (Detailed View) */}
                   <div 
                     className="service-card-back" 
+                    aria-hidden={!isFlipped}
                     style={{ 
                       display: 'flex', 
                       flexDirection: 'column', 
@@ -165,7 +169,7 @@ export const ServicesCards: React.FC<ServicesCardsProps> = ({ limit, showTitle =
                   >
                     {/* Top Header Row */}
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
-                      <span style={{ fontSize: '0.74rem', fontWeight: 800, color: 'var(--blue-brand)', backgroundColor: 'var(--blue-soft)', padding: '0.2rem 0.6rem', borderRadius: '10px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                      <span style={{ fontSize: '0.74rem', fontWeight: 800, color: 'var(--blue-brand-text, #0369a1)', backgroundColor: 'var(--blue-soft)', padding: '0.2rem 0.6rem', borderRadius: '10px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                         Treatment Summary
                       </span>
                       <button
@@ -174,6 +178,7 @@ export const ServicesCards: React.FC<ServicesCardsProps> = ({ limit, showTitle =
                           e.preventDefault();
                           toggleFlip(service.id);
                         }}
+                        aria-label={`Back to summary for ${service.title}`}
                         className="service-back-flip-btn"
                         style={{
                           display: 'inline-flex',

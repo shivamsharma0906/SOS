@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Phone, Menu, X, Calendar, MapPin, ChevronDown } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
@@ -12,7 +12,6 @@ export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
-  const [navHeight, setNavHeight] = useState<number>(0);
 
   const navbarRef = useRef<HTMLDivElement>(null);
   const lastScrollY = useRef(0);
@@ -20,31 +19,6 @@ export const Navbar: React.FC = () => {
   const isScrolledRef = useRef(false);
   const ticking = useRef(false);
   const location = useLocation();
-
-  // Measure navbar height dynamically to prevent layout shifting
-  useLayoutEffect(() => {
-    const updateHeight = () => {
-      if (navbarRef.current) {
-        setNavHeight(navbarRef.current.offsetHeight);
-      }
-    };
-
-    updateHeight();
-
-    let resizeObserver: ResizeObserver | null = null;
-    if (typeof ResizeObserver !== 'undefined' && navbarRef.current) {
-      resizeObserver = new ResizeObserver(updateHeight);
-      resizeObserver.observe(navbarRef.current);
-    }
-
-    window.addEventListener('resize', updateHeight);
-    return () => {
-      window.removeEventListener('resize', updateHeight);
-      if (resizeObserver) {
-        resizeObserver.disconnect();
-      }
-    };
-  }, []);
 
   // Efficient Chrome mobile-style scroll listener with requestAnimationFrame
   useEffect(() => {
@@ -256,6 +230,8 @@ export const Navbar: React.FC = () => {
                     >
                       <Link
                         to={link.path}
+                        aria-haspopup="true"
+                        aria-expanded={servicesDropdownOpen}
                         style={{
                           fontSize: '0.88rem',
                           fontWeight: isActive ? 700 : 600,
@@ -400,8 +376,6 @@ export const Navbar: React.FC = () => {
       <div 
         className="navbar-spacer" 
         style={{ 
-          height: navHeight > 0 ? `${navHeight}px` : undefined,
-          minHeight: navHeight === 0 ? '90px' : undefined,
           width: '100%',
           flexShrink: 0,
           pointerEvents: 'none',
@@ -517,6 +491,9 @@ export const Navbar: React.FC = () => {
 
       {/* Responsive Style Overrides */}
       <style>{`
+        .navbar-spacer {
+          height: 108px;
+        }
         @media (min-width: 769px) {
           .top-header-bar {
             display: block !important;
@@ -548,6 +525,7 @@ export const Navbar: React.FC = () => {
             padding: 0.4rem 0 !important;
           }
           .navbar-spacer {
+            height: 88px !important;
             min-height: 88px !important;
           }
         }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useId } from 'react';
 import { 
   CheckCircle2, 
   Phone, 
@@ -48,6 +48,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
   isModal = false,
   onClose
 }) => {
+  const formId = useId();
   // Appointment Mode: 'in-clinic' | 'home-xray'
   const [appointmentType, setAppointmentType] = useState<'in-clinic' | 'home-xray'>('in-clinic');
   
@@ -436,6 +437,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
           style={{ display: 'none' }} 
           tabIndex={-1} 
           autoComplete="off" 
+          aria-hidden="true"
         />
 
         <div className="unified-booking-card">
@@ -450,9 +452,10 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
 
               <div className="form-doctor-spec-row">
                 <div>
-                  <label className="hospital-compact-label">Consulting Surgeon</label>
+                  <label htmlFor={`${formId}-doctor`} className="hospital-compact-label">Consulting Surgeon</label>
                   <div className="hospital-input-box">
                     <select
+                      id={`${formId}-doctor`}
                       value={formData.doctor}
                       onChange={e => setFormData({ ...formData, doctor: e.target.value })}
                       className="hospital-compact-select"
@@ -464,14 +467,15 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                         </option>
                       ))}
                     </select>
-                    <User size={13} className="hospital-compact-icon" />
+                    <User size={13} className="hospital-compact-icon" aria-hidden="true" />
                   </div>
                 </div>
 
                 <div>
-                  <label className="hospital-compact-label">Speciality Department</label>
+                  <label htmlFor={`${formId}-service`} className="hospital-compact-label">Speciality Department</label>
                   <div className="hospital-input-box">
                     <select
+                      id={`${formId}-service`}
                       value={formData.service}
                       onChange={e => setFormData({ ...formData, service: e.target.value })}
                       className="hospital-compact-select"
@@ -481,7 +485,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                       ))}
                       <option value="others">Others</option>
                     </select>
-                    <Stethoscope size={13} className="hospital-compact-icon" />
+                    <Stethoscope size={13} className="hospital-compact-icon" aria-hidden="true" />
                   </div>
                 </div>
               </div>
@@ -493,8 +497,10 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                 <span>Speciality Department / Concern</span>
               </div>
               <div>
+                <label htmlFor={`${formId}-service-specific`} className="hospital-compact-label">Speciality Department</label>
                 <div className="hospital-input-box">
                   <select
+                    id={`${formId}-service-specific`}
                     value={formData.service}
                     onChange={e => setFormData({ ...formData, service: e.target.value })}
                     className="hospital-compact-select"
@@ -504,7 +510,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                     ))}
                     <option value="others">Others / General Orthopedic Consultation</option>
                   </select>
-                  <Stethoscope size={13} className="hospital-compact-icon" />
+                  <Stethoscope size={13} className="hospital-compact-icon" aria-hidden="true" />
                 </div>
               </div>
             </div>
@@ -521,9 +527,10 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
               {/* Centre Location */}
               {appointmentType === 'in-clinic' && (
                 <div>
-                  <label className="hospital-compact-label">Select SOS Mumbai Centre</label>
+                  <label htmlFor={`${formId}-centre`} className="hospital-compact-label">Select SOS Mumbai Centre</label>
                   <div className="hospital-input-box">
                     <select
+                      id={`${formId}-centre`}
                       value={formData.centre}
                       onChange={e => setFormData({ ...formData, centre: e.target.value })}
                       className="hospital-compact-select"
@@ -534,7 +541,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                         </option>
                       ))}
                     </select>
-                    <MapPin size={13} className="hospital-compact-icon" />
+                    <MapPin size={13} className="hospital-compact-icon" aria-hidden="true" />
                   </div>
                 </div>
               )}
@@ -542,9 +549,10 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
               {/* Date + Session Slot (Stacked on mobile, side-by-side on tablet/desktop) */}
               <div className="form-date-slot-row">
                 <div>
-                  <label className="hospital-compact-label">Visit Date *</label>
+                  <label htmlFor={`${formId}-date`} className="hospital-compact-label">Visit Date *</label>
                   <div className="hospital-input-box">
                     <input
+                      id={`${formId}-date`}
                       type="date"
                       min={new Date().toISOString().split('T')[0]}
                       value={formData.preferredDate}
@@ -552,7 +560,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                       className="hospital-compact-input"
                       style={{ paddingLeft: '1.9rem', borderColor: errors.preferredDate ? '#ef4444' : undefined }}
                     />
-                    <Calendar size={12} className="hospital-compact-icon" style={{ left: '0.55rem' }} />
+                    <Calendar size={12} className="hospital-compact-icon" style={{ left: '0.55rem' }} aria-hidden="true" />
                   </div>
                   {errors.preferredDate && (
                     <span className="hospital-compact-err"><AlertCircle size={10} style={{ display: 'inline', marginRight: '3px' }} />{errors.preferredDate}</span>
@@ -560,32 +568,38 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                 </div>
 
                 <div>
-                  <label className="hospital-compact-label">OPD Session Slot</label>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.25rem' }}>
+                  <label id={`${formId}-session-label`} className="hospital-compact-label">OPD Session Slot</label>
+                  <div role="radiogroup" aria-labelledby={`${formId}-session-label`} style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.25rem' }}>
                     <button
                       type="button"
+                      role="radio"
+                      aria-checked={timeSlot === 'morning'}
                       onClick={() => setTimeSlot('morning')}
                       className={`compact-slot-btn ${timeSlot === 'morning' ? 'active' : ''}`}
                     >
-                      <Sun size={12} />
+                      <Sun size={12} aria-hidden="true" />
                       <span>Morning</span>
                     </button>
 
                     <button
                       type="button"
+                      role="radio"
+                      aria-checked={timeSlot === 'afternoon'}
                       onClick={() => setTimeSlot('afternoon')}
                       className={`compact-slot-btn ${timeSlot === 'afternoon' ? 'active' : ''}`}
                     >
-                      <Sunset size={12} />
+                      <Sunset size={12} aria-hidden="true" />
                       <span>Noon</span>
                     </button>
 
                     <button
                       type="button"
+                      role="radio"
+                      aria-checked={timeSlot === 'evening'}
                       onClick={() => setTimeSlot('evening')}
                       className={`compact-slot-btn ${timeSlot === 'evening' ? 'active' : ''}`}
                     >
-                      <Moon size={12} />
+                      <Moon size={12} aria-hidden="true" />
                       <span>Evening</span>
                     </button>
                   </div>
@@ -604,9 +618,10 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
               <div className="form-creds-row">
                 <div>
-                  <label className="hospital-compact-label">Patient Name *</label>
+                  <label htmlFor={`${formId}-name`} className="hospital-compact-label">Patient Name *</label>
                   <div className="hospital-input-box">
                     <input
+                      id={`${formId}-name`}
                       type="text"
                       placeholder="e.g. Rahul Sharma"
                       value={formData.fullName}
@@ -614,7 +629,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                       className="hospital-compact-input"
                       style={{ borderColor: errors.fullName ? '#ef4444' : undefined }}
                     />
-                    <User size={13} className="hospital-compact-icon" />
+                    <User size={13} className="hospital-compact-icon" aria-hidden="true" />
                   </div>
                   {errors.fullName && (
                     <span className="hospital-compact-err"><AlertCircle size={10} style={{ display: 'inline', marginRight: '3px' }} />{errors.fullName}</span>
@@ -622,12 +637,13 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                 </div>
 
                 <div>
-                  <label className="hospital-compact-label">Mobile / WhatsApp *</label>
+                  <label htmlFor={`${formId}-phone`} className="hospital-compact-label">Mobile / WhatsApp *</label>
                   <div className="hospital-input-box" style={{ display: 'flex', alignItems: 'center' }}>
                     <div style={{ position: 'absolute', left: '0.45rem', display: 'flex', alignItems: 'center', pointerEvents: 'none', color: '#0a1f44', fontWeight: 700, fontSize: '0.72rem' }}>
                       <span>+91</span>
                     </div>
                     <input
+                      id={`${formId}-phone`}
                       type="tel"
                       placeholder="10-digit number"
                       value={formData.phone}
@@ -643,8 +659,9 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
               </div>
 
               <div>
-                <label className="hospital-compact-label">Symptoms / Notes <span style={{ fontWeight: 400, color: '#94a3b8' }}>(Optional)</span></label>
+                <label htmlFor={`${formId}-message`} className="hospital-compact-label">Symptoms / Notes <span style={{ fontWeight: 400, color: '#94a3b8' }}>(Optional)</span></label>
                 <input
+                  id={`${formId}-message`}
                   type="text"
                   placeholder="e.g. Knee pain, fracture, stiffness"
                   value={formData.message}

@@ -185,9 +185,13 @@ export const Blog: React.FC = () => {
                 <div className="featured-image-holder">
                   <img 
                     src={featuredArticle.heroImage.src} 
+                    srcSet={featuredArticle.heroImage.srcSet}
+                    sizes="(max-width: 900px) 100vw, 540px"
                     alt={featuredArticle.heroImage.alt}
                     width={featuredArticle.heroImage.width}
                     height={featuredArticle.heroImage.height}
+                    loading="eager"
+                    decoding="async"
                     className="featured-cover-image"
                   />
                   <span className="featured-badge-overlay">
@@ -307,9 +311,13 @@ export const Blog: React.FC = () => {
                   <div className="article-card-image-box">
                     <img 
                       src={article.heroImage.src} 
+                      srcSet={article.heroImage.srcSet}
+                      sizes="(max-width: 768px) 100vw, 380px"
                       alt={article.heroImage.alt} 
                       width={article.heroImage.width}
                       height={article.heroImage.height}
+                      loading="lazy"
+                      decoding="async"
                       className="article-card-img"
                     />
                     <span className="article-card-tag">{article.categoryLabel}</span>

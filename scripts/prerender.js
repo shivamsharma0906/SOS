@@ -31,6 +31,12 @@ const template = fs.readFileSync(templatePath, 'utf-8');
 function renderPage({ page, structuredData, bodyHtml, targetFiles }) {
   let outputHtml = template;
 
+  // Remove homepage unsplash hero preload for inner pages
+  outputHtml = outputHtml.replace(
+    /\s*<!-- Preload Hero LCP Image -->\s*<link rel="preload" as="image" href="https:\/\/images\.unsplash\.com[\s\S]*?fetchpriority="high">/i,
+    ''
+  );
+
   // 1. Title & Meta Title
   outputHtml = outputHtml.replace(
     /<title>.*?<\/title>/i,
@@ -99,9 +105,10 @@ function renderPage({ page, structuredData, bodyHtml, targetFiles }) {
     `<meta name="twitter:description" content="${page.metaDescription}" />`
   );
 
-  // 7. Robots & JSON-LD
+  // 7. Robots, Image Preload & JSON-LD
   const headInjections = `
   <meta name="robots" content="index, follow" />
+  ${page.preloadImage ? `<link rel="preload" as="image" href="${page.preloadImage.src}" ${page.preloadImage.srcSet ? `imagesrcset="${page.preloadImage.srcSet}"` : ''} ${page.preloadImage.sizes ? `imagesizes="${page.preloadImage.sizes}"` : ''} fetchpriority="high" />` : ''}
   ${structuredData ? `<script type="application/ld+json">\n${JSON.stringify(structuredData, null, 2)}\n  </script>` : ''}
 `;
   outputHtml = outputHtml.replace('</head>', `${headInjections}\n</head>`);
@@ -132,8 +139,13 @@ const post1 = {
   metaTitle: 'Robotic Knee Replacement Mumbai | SOS Orthopedic Clinic',
   metaDescription: 'Learn about robotic knee replacement surgery, its benefits, risks, and recovery, and understand knee replacement treatment options.',
   keywords: 'Robotic Knee Replacement Mumbai, knee replacement surgery benefits, robotic knee surgery recovery, knee osteoarthritis treatment, SOS Speciality Orthopedic Clinic',
-  ogImage: 'https://www.sosorth.com/assets/robotic-knee-consultation.png',
+  ogImage: 'https://www.sosorth.com/assets/robotic-knee-consultation.webp',
   ogType: 'article',
+  preloadImage: {
+    src: '/assets/robotic-knee-consultation.webp',
+    srcSet: '/assets/robotic-knee-consultation-480w.webp 480w, /assets/robotic-knee-consultation-800w.webp 800w, /assets/robotic-knee-consultation.webp 1730w',
+    sizes: '(max-width: 768px) 100vw, 820px'
+  },
   h1: 'What Is Robotic Knee Replacement Surgery? Benefits, Risks and Recovery',
   datePublished: '2026-10-14',
   dateModified: '2026-10-14',
@@ -269,7 +281,7 @@ const prerenderedArticleContent1 = `
               <span> &bull; Last updated: <time datetime="2026-10-14">October 14, 2026</time></span>
             </div>
             <figure class="blog-hero-figure">
-              <img src="/assets/robotic-knee-consultation.png" alt="Robotic knee replacement surgery for knee joint treatment" width="1730" height="909" loading="eager" fetchpriority="high" class="blog-hero-img" />
+              <img src="/assets/robotic-knee-consultation.webp" srcset="/assets/robotic-knee-consultation-480w.webp 480w, /assets/robotic-knee-consultation-800w.webp 800w, /assets/robotic-knee-consultation.webp 1730w" sizes="(max-width: 768px) 100vw, 820px" alt="Robotic knee replacement surgery for knee joint treatment" width="1730" height="909" loading="eager" fetchpriority="high" decoding="async" class="blog-hero-img" />
             </figure>
           </header>
 
@@ -483,8 +495,13 @@ const post2 = {
   metaTitle: 'Planning Robotic Knee Replacement Surgery in Mumbai? Know the Recovery Time',
   metaDescription: 'Learn about robotic knee replacement recovery, with insights into recovery timelines, pain management, physiotherapy, and treatment considerations for patients exploring care in Mumbai.',
   keywords: 'Robotic knee replacement recovery Mumbai, robotic knee recovery timeline, knee replacement pain management, physiotherapy after knee replacement Mumbai, robotic knee surgery recovery time',
-  ogImage: 'https://www.sosorth.com/assets/robotic-knee-recovery-mumbai.png',
+  ogImage: 'https://www.sosorth.com/assets/robotic-knee-recovery-mumbai.webp',
   ogType: 'article',
+  preloadImage: {
+    src: '/assets/robotic-knee-recovery-mumbai.webp',
+    srcSet: '/assets/robotic-knee-recovery-mumbai-480w.webp 480w, /assets/robotic-knee-recovery-mumbai-800w.webp 800w, /assets/robotic-knee-recovery-mumbai.webp 1672w',
+    sizes: '(max-width: 768px) 100vw, 820px'
+  },
   h1: 'How Long Does It Take to Recover After Robotic Knee Replacement Surgery?',
   datePublished: '2026-10-26',
   dateModified: '2026-10-26',
@@ -612,7 +629,7 @@ const prerenderedArticleContent2 = `
               <span> &bull; Last updated: <time datetime="2026-10-26">October 26, 2026</time></span>
             </div>
             <figure class="blog-hero-figure">
-              <img src="/assets/robotic-knee-recovery-mumbai.png" alt="Robotic knee replacement surgery and knee recovery in mumbai" width="1672" height="941" loading="eager" fetchpriority="high" class="blog-hero-img" />
+              <img src="/assets/robotic-knee-recovery-mumbai.webp" srcset="/assets/robotic-knee-recovery-mumbai-480w.webp 480w, /assets/robotic-knee-recovery-mumbai-800w.webp 800w, /assets/robotic-knee-recovery-mumbai.webp 1672w" sizes="(max-width: 768px) 100vw, 820px" alt="Robotic knee replacement surgery and knee recovery in mumbai" width="1672" height="941" loading="eager" fetchpriority="high" decoding="async" class="blog-hero-img" />
             </figure>
           </header>
 
@@ -1064,5 +1081,62 @@ sitePages.forEach(p => {
     targetFiles: p.targetFiles
   });
 });
+
+// ========================================================
+// 15. HOMEPAGE ABOVE-THE-FOLD PRERENDER (dist/index.html)
+// ========================================================
+const homepageAboveTheFoldHtml = `
+<header class="navbar-wrapper">
+  <div class="top-bar-emergency">
+    <div class="container top-bar-content">
+      <div class="top-bar-left">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span class="top-bar-tagline"><strong>24/7 Doorstep Emergency Dispatch:</strong> Mobile Digital X-Ray &amp; Orthopedic Care across Mumbai</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="tel:09321144580" class="top-bar-phone">Helpline: <strong>093211 44580</strong></a>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="navbar-spacer"></div>
+<main style="flex-grow: 1;">
+  <section class="hero-section" style="position: relative; background: linear-gradient(180deg, #ffffff 0%, #f0f6fc 50%, #e8f1fa 100%); overflow: hidden; color: var(--navy-primary); border-bottom: 1px solid var(--border-color); display: flex; align-items: center; min-height: calc(100vh - 108px); padding: 2.5rem 0;">
+    <div class="hero-wide-container" style="position: relative; z-index: 2; width: 100%; margin: 0 auto;">
+      <div class="hero-grid" style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 3.5rem; align-items: center;">
+        <div class="hero-copy-col">
+          <div class="hero-badge" style="display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.35rem 0.95rem; background-color: rgba(2, 132, 199, 0.08); color: var(--blue-brand-text, #0369a1); font-weight: 700; font-size: 0.82rem; border-radius: var(--radius-pill); border: 1px solid rgba(2, 132, 199, 0.25); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.25rem;">
+            <span>Speciality Orthopedic Clinic &bull; Mumbai</span>
+          </div>
+          <h1 class="hero-title" style="color: var(--navy-primary); margin-bottom: 1.25rem; line-height: 1.15; font-weight: 800;">
+            Relief for Bone, Joint, <br class="hidden-mobile" />
+            <span style="background: linear-gradient(135deg, var(--navy-primary) 0%, var(--blue-brand) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Spine &amp; Sports Injuries</span>
+          </h1>
+          <p class="hero-subhead" style="color: var(--text-secondary); margin-bottom: 1.75rem; line-height: 1.65; font-size: 1.12rem; max-width: 680px; text-align: left;">
+            Consultant orthopedic surgeon OPDs, joint preservation care, and 24/7 doorstep Home X-Ray diagnostics across Mumbai centres.
+          </p>
+          <div class="hero-cta-group" style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-bottom: 1.5rem;">
+            <a href="/contact" class="btn btn-primary btn-lg" style="padding: 0.9rem 2rem; font-size: 1.02rem; text-decoration: none;">Book Appointment</a>
+            <a href="/services" class="btn btn-secondary btn-lg" style="padding: 0.9rem 1.85rem; font-size: 1.02rem; background-color: #ffffff; text-decoration: none;">Explore Specialities</a>
+          </div>
+        </div>
+        <div class="hero-visual-col" style="position: relative;">
+          <div class="hero-image-frame" style="position: relative; border-radius: 24px; overflow: hidden; box-shadow: 0 24px 60px rgba(10, 31, 68, 0.18); border: 4px solid #ffffff;">
+            <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800" srcset="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=75&w=480 480w, https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800 800w, https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=1200 1200w" sizes="(max-width: 900px) 100vw, 560px" alt="Senior Orthopedic Surgeon examining patient mobility and joint health at SOS Speciality Orthopedic Clinic Mumbai" style="width: 100%; height: 560px; object-fit: cover; object-position: center 20%; display: block;" class="hero-main-img" loading="eager" fetchpriority="high" decoding="async" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+`;
+
+let distIndexHtml = fs.readFileSync(templatePath, 'utf-8');
+distIndexHtml = distIndexHtml.replace(
+  '<div id="root"></div>',
+  `<div id="root">${homepageAboveTheFoldHtml}</div>`
+);
+fs.writeFileSync(templatePath, distIndexHtml, 'utf-8');
+console.log('[Prerender] Prerendered homepage above-the-fold content into dist/index.html');
 
 console.log('[Prerender] All static pages and blog posts generated successfully.');
