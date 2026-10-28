@@ -225,16 +225,16 @@ export const blogPostsData: BlogPost[] = [
       srcSet: '/assets/robotic-knee-consultation-480w.webp 480w, /assets/robotic-knee-consultation-800w.webp 800w, /assets/robotic-knee-consultation.webp 1730w',
       sizes: '(max-width: 768px) 100vw, 820px',
       alt: 'Robotic knee replacement surgery for knee joint treatment',
-      width: 1730,
-      height: 909
+      width: 1280,
+      height: 720
     },
     procedureImage: {
       src: '/assets/blog-featured-robotic.webp',
       srcSet: '/assets/blog-featured-robotic-480w.webp 480w, /assets/blog-featured-robotic-800w.webp 800w, /assets/blog-featured-robotic.webp 1376w',
       sizes: '(max-width: 768px) 100vw, 820px',
       alt: 'Intraoperative robotic knee replacement surgical guidance and bone preparation',
-      width: 1376,
-      height: 768
+      width: 1280,
+      height: 720
     },
     seo: {
       metaTitle: 'Robotic Knee Replacement Mumbai | SOS Orthopedic Clinic',
@@ -453,24 +453,24 @@ export const blogPostsData: BlogPost[] = [
       srcSet: '/assets/robotic-knee-recovery-mumbai-480w.webp 480w, /assets/robotic-knee-recovery-mumbai-800w.webp 800w, /assets/robotic-knee-recovery-mumbai.webp 1672w',
       sizes: '(max-width: 768px) 100vw, 820px',
       alt: 'Robotic knee replacement surgery and knee recovery in mumbai',
-      width: 1672,
-      height: 941
+      width: 1280,
+      height: 720
     },
     procedureImage: {
       src: '/assets/robotic-knee-replacement-procedure-mumbai.webp',
       srcSet: '/assets/robotic-knee-replacement-procedure-mumbai-480w.webp 480w, /assets/robotic-knee-replacement-procedure-mumbai-800w.webp 800w, /assets/robotic-knee-replacement-procedure-mumbai.webp 1672w',
       sizes: '(max-width: 768px) 100vw, 820px',
       alt: 'Robotic knee replacement surgery procedure in mumbai',
-      width: 1672,
-      height: 941
+      width: 1280,
+      height: 720
     },
     consultationImage: {
       src: '/assets/robotic-knee-recovery-consultation.webp',
       srcSet: '/assets/robotic-knee-recovery-consultation-480w.webp 480w, /assets/robotic-knee-recovery-consultation-800w.webp 800w, /assets/robotic-knee-recovery-consultation.webp 1730w',
       sizes: '(max-width: 768px) 100vw, 820px',
       alt: 'Orthopaedic surgeon discussing knee replacement surgery with a patient in mumbai',
-      width: 1730,
-      height: 909
+      width: 1280,
+      height: 720
     },
     seo: {
       metaTitle: 'Planning Robotic Knee Replacement Surgery in Mumbai? Know the Recovery Time',

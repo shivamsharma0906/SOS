@@ -43,15 +43,23 @@ export const ConsultationBanner: React.FC = () => {
             </div>
 
             <div className="consultation-banner-image-wrap">
-              <img 
-                src="/assets/clinic-kandivali.jpg" 
-                alt="SOS Speciality Orthopedic Clinic Mumbai - Kandivali West" 
-                className="consultation-clinic-img"
-                style={{ objectPosition: 'center 15%' }}
-                loading="lazy"
-                width={768}
-                height={1024}
-              />
+              <picture>
+                <source
+                  type="image/webp"
+                  srcSet="/assets/clinic-kandivali-480w.webp 480w, /assets/clinic-kandivali.webp 768w"
+                  sizes="(max-width: 768px) 100vw, 420px"
+                />
+                <img 
+                  src="/assets/clinic-kandivali.webp" 
+                  alt="SOS Speciality Orthopedic Clinic Mumbai - Kandivali West" 
+                  className="consultation-clinic-img"
+                  style={{ objectPosition: 'center 15%' }}
+                  loading="lazy"
+                  decoding="async"
+                  width={768}
+                  height={1024}
+                />
+              </picture>
             </div>
           </div>
         </div>

@@ -26,7 +26,30 @@ if (!fs.existsSync(templatePath)) {
   process.exit(1);
 }
 
-const template = fs.readFileSync(templatePath, 'utf-8');
+function injectIntoRoot(html, bodyHtml) {
+  const rootStartIdx = html.indexOf('<div id="root">');
+  if (rootStartIdx === -1) return html;
+  
+  const scriptIdx = html.indexOf('<script', rootStartIdx);
+  if (scriptIdx !== -1) {
+    const beforeRoot = html.substring(0, rootStartIdx);
+    const afterRoot = html.substring(scriptIdx);
+    return `${beforeRoot}<div id="root">${bodyHtml ? `\n${bodyHtml}\n` : ''}</div>\n  ${afterRoot}`;
+  }
+  
+  const bodyCloseIdx = html.indexOf('</body>', rootStartIdx);
+  if (bodyCloseIdx !== -1) {
+    const beforeRoot = html.substring(0, rootStartIdx);
+    const afterRoot = html.substring(bodyCloseIdx);
+    return `${beforeRoot}<div id="root">${bodyHtml ? `\n${bodyHtml}\n` : ''}</div>\n${afterRoot}`;
+  }
+  
+  return html;
+}
+
+const rawTemplate = fs.readFileSync(templatePath, 'utf-8');
+// Always clean out #root so inner pages start with a pristine <div id="root"></div>
+const template = injectIntoRoot(rawTemplate, '');
 
 function renderPage({ page, structuredData, bodyHtml, targetFiles }) {
   let outputHtml = template;
@@ -119,10 +142,7 @@ function renderPage({ page, structuredData, bodyHtml, targetFiles }) {
 
   // 8. Body HTML in #root
   if (bodyHtml) {
-    outputHtml = outputHtml.replace(
-      '<div id="root"></div>',
-      `<div id="root">${bodyHtml}</div>`
-    );
+    outputHtml = injectIntoRoot(outputHtml, bodyHtml);
   }
 
   // 9. Write to each target file
@@ -261,7 +281,135 @@ const structuredData1 = [
   }
 ];
 
+const prerenderNavbarHtml = `
+<div class="mobile-sticky-helpline-bar" style="display: none; background-color: var(--navy-dark, #07152e); color: #ffffff; padding: 0.45rem 1rem; font-size: 0.8rem; font-weight: 700; align-items: center; justify-content: center; gap: 0.5rem; text-decoration: none; position: fixed; top: 0; left: 0; right: 0; z-index: 1001; height: 38px;">
+  <a href="tel:09321144580" style="color: #ffffff; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%;">
+    <span>24/7 Helpline: <strong style="color: #38bdf8;">093211 44580</strong></span>
+  </a>
+</div>
+<div class="navbar-fixed-wrapper navbar-visible" style="position: fixed; top: 0; left: 0; right: 0; width: 100%; z-index: 1000;">
+  <div class="top-header-bar" style="width: 100%; background-color: var(--navy-dark, #07152e); color: #ffffff; font-size: 0.82rem; padding: 0.45rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+    <div class="container top-header-container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+      <div class="top-header-centres" style="display: flex; align-items: center; gap: 0.5rem; white-space: nowrap;">
+        <span>Centres &amp; Clinics: <strong>Kandivali &bull; Borivali &bull; Malad &bull; Goregaon</strong></span>
+      </div>
+      <div class="top-header-actions" style="display: flex; align-items: center; gap: 1.25rem; margin-left: auto; white-space: nowrap;">
+        <a href="tel:09321144580" style="display: inline-flex; align-items: center; gap: 0.35rem; color: #ffffff; font-weight: 600; text-decoration: none;">
+          <span>24/7 Helpline: <strong>093211 44580</strong></span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <header style="background-color: #ffffff; box-shadow: 0 2px 10px rgba(10, 31, 68, 0.04); padding: 0.6rem 0;" class="main-navbar-header">
+    <div class="container navbar-container" style="display: flex; align-items: center; justify-content: space-between; gap: 1rem;">
+      <a href="/" aria-label="SOS Speciality Orthopedic Clinic Home" style="display: flex; align-items: center; text-decoration: none;">
+        <span style="font-family: 'Cinzel', serif; font-weight: 800; font-size: 1.45rem; color: #07152e; letter-spacing: 0.04em;">SOS</span>
+        <span style="display: inline-block; width: 1.5px; height: 1.25rem; background-color: rgba(7, 21, 46, 0.2); margin: 0 0.5rem;"></span>
+        <span style="font-size: 0.72rem; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; line-height: 1.2;">Speciality<br/>Orthopedic</span>
+      </a>
+      <nav style="display: flex; align-items: center; gap: 1.15rem;" class="desktop-nav">
+        <a href="/" style="font-size: 0.88rem; font-weight: 600; color: var(--text-secondary, #475569); text-decoration: none; padding: 0.35rem 0;">Home</a>
+        <a href="/about" style="font-size: 0.88rem; font-weight: 600; color: var(--text-secondary, #475569); text-decoration: none; padding: 0.35rem 0;">About</a>
+        <a href="/services" style="font-size: 0.88rem; font-weight: 600; color: var(--text-secondary, #475569); text-decoration: none; padding: 0.35rem 0;">Services</a>
+        <a href="/x-ray-services-at-home" style="font-size: 0.88rem; font-weight: 600; color: var(--text-secondary, #475569); text-decoration: none; padding: 0.35rem 0;">X-Ray at Home</a>
+        <a href="/doctors" style="font-size: 0.88rem; font-weight: 600; color: var(--text-secondary, #475569); text-decoration: none; padding: 0.35rem 0;">Doctors</a>
+        <a href="/centres" style="font-size: 0.88rem; font-weight: 600; color: var(--text-secondary, #475569); text-decoration: none; padding: 0.35rem 0;">Centres</a>
+        <a href="/blog" style="font-size: 0.88rem; font-weight: 700; color: var(--navy-primary, #07152e); text-decoration: none; padding: 0.35rem 0; position: relative;">
+          Blog
+          <span style="position: absolute; bottom: -2px; left: 0; right: 0; height: 2.5px; background-color: var(--navy-primary, #07152e); border-radius: 2px;"></span>
+        </a>
+        <a href="/contact" style="font-size: 0.88rem; font-weight: 600; color: var(--text-secondary, #475569); text-decoration: none; padding: 0.35rem 0;">Contact</a>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 0.65rem;" class="desktop-actions">
+        <a href="/contact" class="btn btn-primary btn-sm" style="gap: 0.4rem; white-space: nowrap;">
+          Book Appointment
+        </a>
+      </div>
+    </div>
+  </header>
+</div>
+<div class="navbar-spacer" style="width: 100%; flex-shrink: 0; pointer-events: none; visibility: hidden;" aria-hidden="true"></div>
+`;
+
+function getPrerenderSidebarHtml(relatedSlug, relatedTitle) {
+  return `
+        <aside class="blog-article-sidebar" aria-label="Article Sidebar">
+          <div class="sticky-sidebar-inner">
+            <div class="sidebar-clinic-card">
+              <span class="sidebar-pill">SOS Speciality Clinic</span>
+              <h3 class="sidebar-clinic-name">Joint Replacement Desk</h3>
+              <p class="sidebar-clinic-text">
+                Consultant orthopedic surgeon OPDs, robotic knee replacements, joint preservation therapies, and rapid-recovery rehabilitation across Mumbai.
+              </p>
+              <div class="sidebar-checklist">
+                <div class="sidebar-check-item">
+                  <span style="color: #15803d; font-weight: bold; margin-right: 0.4rem;">&#10003;</span>
+                  <span>Zero Wait-Time OPD Sessions</span>
+                </div>
+                <div class="sidebar-check-item">
+                  <span style="color: #15803d; font-weight: bold; margin-right: 0.4rem;">&#10003;</span>
+                  <span>Sub-millimeter Robotic Precision</span>
+                </div>
+                <div class="sidebar-check-item">
+                  <span style="color: #15803d; font-weight: bold; margin-right: 0.4rem;">&#10003;</span>
+                  <span>Surgeon-Guided Rehabilitation</span>
+                </div>
+              </div>
+
+              <a
+                href="/contact"
+                class="btn btn-primary btn-sm sidebar-cta-btn"
+                style="display: flex; align-items: center; justify-content: center; gap: 0.4rem; text-decoration: none;"
+              >
+                <span>Book Consultation</span>
+              </a>
+
+              <a
+                href="tel:09321144580"
+                class="sidebar-phone-link"
+              >
+                <span>Helpline: <strong>093211 44580</strong></span>
+              </a>
+            </div>
+
+            <div class="sidebar-links-card">
+              <h4 class="sidebar-links-title">Related SOS Guides &amp; Services</h4>
+              <ul class="sidebar-links-list">
+                <li>
+                  <a href="/blog/${relatedSlug}" class="sidebar-nav-link">
+                    <span>${relatedTitle}</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/services/joint-replacement" class="sidebar-nav-link">
+                    <span>Joint Replacement Services</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/physiotherapy" class="sidebar-nav-link">
+                    <span>Physiotherapy &amp; Rehabilitation</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/doctors" class="sidebar-nav-link">
+                    <span>Consultant Orthopedic Surgeons</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/centres" class="sidebar-nav-link">
+                    <span>SOS Mumbai Clinic Centres</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+  `;
+}
+
 const prerenderedArticleContent1 = `
+${prerenderNavbarHtml}
+<main style="flex-grow: 1;">
 <div class="blog-article-page-wrap">
   <nav aria-label="Breadcrumb" class="blog-breadcrumb-nav">
     <div class="container">
@@ -285,7 +433,7 @@ const prerenderedArticleContent1 = `
               <span> &bull; Last updated: <time datetime="2026-10-14">October 14, 2026</time></span>
             </div>
             <figure class="blog-hero-figure">
-              <img src="/assets/robotic-knee-consultation.webp" srcset="/assets/robotic-knee-consultation-480w.webp 480w, /assets/robotic-knee-consultation-800w.webp 800w, /assets/robotic-knee-consultation.webp 1730w" sizes="(max-width: 768px) 100vw, 820px" alt="Robotic knee replacement surgery for knee joint treatment" width="1730" height="909" loading="eager" fetchpriority="high" decoding="async" class="blog-hero-img" />
+              <img src="/assets/robotic-knee-consultation.webp" srcset="/assets/robotic-knee-consultation-480w.webp 480w, /assets/robotic-knee-consultation-800w.webp 800w, /assets/robotic-knee-consultation.webp 1730w" sizes="(max-width: 768px) 100vw, 820px" alt="Robotic knee replacement surgery for knee joint treatment" width="1280" height="720" loading="eager" fetchpriority="high" decoding="async" class="blog-hero-img" />
             </figure>
           </header>
 
@@ -338,7 +486,7 @@ const prerenderedArticleContent1 = `
               </ol>
 
               <figure class="blog-hero-figure" style="margin-top: 2rem;">
-                <img src="/assets/blog-featured-robotic.webp" srcset="/assets/blog-featured-robotic-480w.webp 480w, /assets/blog-featured-robotic-800w.webp 800w, /assets/blog-featured-robotic.webp 1376w" sizes="(max-width: 768px) 100vw, 820px" alt="Intraoperative robotic knee replacement surgical guidance and bone preparation" width="1376" height="768" loading="lazy" decoding="async" class="blog-hero-img" />
+                <img src="/assets/blog-featured-robotic.webp" srcset="/assets/blog-featured-robotic-480w.webp 480w, /assets/blog-featured-robotic-800w.webp 800w, /assets/blog-featured-robotic.webp 1376w" sizes="(max-width: 768px) 100vw, 820px" alt="Intraoperative robotic knee replacement surgical guidance and bone preparation" width="1280" height="720" loading="lazy" decoding="async" class="blog-hero-img" />
               </figure>
             </section>
 
@@ -473,10 +621,13 @@ const prerenderedArticleContent1 = `
             </div>
           </div>
         </div>
+
+        ${getPrerenderSidebarHtml('robotic-knee-replacement-recovery-mumbai', 'Knee Recovery Timeline Guide')}
       </div>
     </div>
   </article>
 </div>
+</main>
 `;
 
 renderPage({
@@ -610,6 +761,8 @@ const structuredData2 = [
 ];
 
 const prerenderedArticleContent2 = `
+${prerenderNavbarHtml}
+<main style="flex-grow: 1;">
 <div class="blog-article-page-wrap">
   <nav aria-label="Breadcrumb" class="blog-breadcrumb-nav">
     <div class="container">
@@ -633,7 +786,7 @@ const prerenderedArticleContent2 = `
               <span> &bull; Last updated: <time datetime="2026-10-26">October 26, 2026</time></span>
             </div>
             <figure class="blog-hero-figure">
-              <img src="/assets/robotic-knee-recovery-mumbai.webp" srcset="/assets/robotic-knee-recovery-mumbai-480w.webp 480w, /assets/robotic-knee-recovery-mumbai-800w.webp 800w, /assets/robotic-knee-recovery-mumbai.webp 1672w" sizes="(max-width: 768px) 100vw, 820px" alt="Robotic knee replacement surgery and knee recovery in mumbai" width="1672" height="941" loading="eager" fetchpriority="high" decoding="async" class="blog-hero-img" />
+              <img src="/assets/robotic-knee-recovery-mumbai.webp" srcset="/assets/robotic-knee-recovery-mumbai-480w.webp 480w, /assets/robotic-knee-recovery-mumbai-800w.webp 800w, /assets/robotic-knee-recovery-mumbai.webp 1672w" sizes="(max-width: 768px) 100vw, 820px" alt="Robotic knee replacement surgery and knee recovery in mumbai" width="1280" height="720" loading="eager" fetchpriority="high" decoding="async" class="blog-hero-img" />
             </figure>
           </header>
 
@@ -676,7 +829,7 @@ const prerenderedArticleContent2 = `
               </div>
 
               <figure class="blog-hero-figure" style="margin-top: 2.5rem;">
-                <img src="/assets/robotic-knee-replacement-procedure-mumbai.webp" srcset="/assets/robotic-knee-replacement-procedure-mumbai-480w.webp 480w, /assets/robotic-knee-replacement-procedure-mumbai-800w.webp 800w, /assets/robotic-knee-replacement-procedure-mumbai.webp 1672w" sizes="(max-width: 768px) 100vw, 820px" alt="Robotic knee replacement surgery procedure in mumbai" width="1672" height="941" loading="lazy" decoding="async" class="blog-hero-img" />
+                <img src="/assets/robotic-knee-replacement-procedure-mumbai.webp" srcset="/assets/robotic-knee-replacement-procedure-mumbai-480w.webp 480w, /assets/robotic-knee-replacement-procedure-mumbai-800w.webp 800w, /assets/robotic-knee-replacement-procedure-mumbai.webp 1672w" sizes="(max-width: 768px) 100vw, 820px" alt="Robotic knee replacement surgery procedure in mumbai" width="1280" height="720" loading="lazy" decoding="async" class="blog-hero-img" />
               </figure>
             </section>
 
@@ -705,7 +858,7 @@ const prerenderedArticleContent2 = `
               <p>If you are considering robotic knee replacement in Mumbai, ask your surgeon whether it suits your condition and treatment goals. You can also consult experienced orthopaedic doctors to discuss your treatment options, benefits, limitations, alternatives, and risks before deciding. Before making a decision, consult experienced robotic knee replacement surgeons to understand your treatment options, and learn more about the <a href="/blog/robotic-knee-replacement-surgery" class="blog-internal-link">robotic knee replacement procedure</a>, including its potential benefits, limitations, and suitability for your condition.</p>
 
               <figure class="blog-hero-figure" style="margin-top: 2.5rem;">
-                <img src="/assets/robotic-knee-recovery-consultation.png" alt="Orthopaedic surgeon discussing knee replacement surgery with a patient in mumbai" width="1730" height="909" loading="lazy" class="blog-hero-img" />
+                <img src="/assets/robotic-knee-recovery-consultation.webp" srcset="/assets/robotic-knee-recovery-consultation-480w.webp 480w, /assets/robotic-knee-recovery-consultation-800w.webp 800w, /assets/robotic-knee-recovery-consultation.webp 1730w" sizes="(max-width: 768px) 100vw, 820px" alt="Orthopaedic surgeon discussing knee replacement surgery with a patient in mumbai" width="1280" height="720" loading="lazy" decoding="async" class="blog-hero-img" />
               </figure>
             </section>
 
@@ -773,10 +926,13 @@ const prerenderedArticleContent2 = `
             </div>
           </div>
         </div>
+
+        ${getPrerenderSidebarHtml('robotic-knee-replacement-surgery', 'What Is Robotic Knee Surgery?')}
       </div>
     </div>
   </article>
 </div>
+</main>
 `;
 
 renderPage({
@@ -1179,10 +1335,7 @@ const homepageAboveTheFoldHtml = `
 `;
 
 let distIndexHtml = fs.readFileSync(templatePath, 'utf-8');
-distIndexHtml = distIndexHtml.replace(
-  '<div id="root"></div>',
-  `<div id="root">${homepageAboveTheFoldHtml}</div>`
-);
+distIndexHtml = injectIntoRoot(distIndexHtml, homepageAboveTheFoldHtml);
 fs.writeFileSync(templatePath, distIndexHtml, 'utf-8');
 console.log('[Prerender] Prerendered homepage above-the-fold content into dist/index.html');
 

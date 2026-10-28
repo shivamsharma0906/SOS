@@ -90,6 +90,52 @@ img {
   display: block;
 }
 
+/* Navbar Document Flow Spacer to prevent Cumulative Layout Shift */
+.navbar-spacer {
+  height: 108px;
+  width: 100%;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+@media (min-width: 769px) {
+  .top-header-bar {
+    display: block !important;
+    width: 100% !important;
+  }
+  .mobile-sticky-helpline-bar {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .desktop-nav, .desktop-actions {
+    display: none !important;
+  }
+  .mobile-toggle {
+    display: block !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-header-bar {
+    display: none !important;
+  }
+  .mobile-sticky-helpline-bar {
+    display: flex !important;
+  }
+  .navbar-fixed-wrapper {
+    top: 38px !important;
+  }
+  .main-navbar-header {
+    padding: 0.4rem 0 !important;
+  }
+  .navbar-spacer {
+    height: 88px !important;
+    min-height: 88px !important;
+  }
+}
+
 /* Full-Bleed Section Backgrounds with Depth Accents */
 .section-light,
 .section-tint {
@@ -1462,11 +1508,12 @@ html, body {
   overflow: hidden;
   box-shadow: var(--shadow-md);
   background-color: #e2e8f0;
+  aspect-ratio: 16 / 9;
 }
 
 .blog-hero-img {
   width: 100%;
-  height: auto;
+  height: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
   object-position: right center;
