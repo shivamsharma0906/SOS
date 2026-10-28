@@ -78,10 +78,13 @@ const RecoveryPostArticleBody: React.FC<{ post: BlogPost }> = ({ post }) => {
             <figure className="blog-hero-figure" style={{ marginTop: '2.5rem' }}>
               <img
                 src={post.procedureImage.src}
+                srcSet={post.procedureImage.srcSet}
+                sizes={post.procedureImage.sizes || '(max-width: 768px) 100vw, 820px'}
                 alt={post.procedureImage.alt}
                 width={post.procedureImage.width}
                 height={post.procedureImage.height}
                 loading="lazy"
+                decoding="async"
                 className="blog-hero-img"
               />
             </figure>
@@ -163,10 +166,13 @@ const RecoveryPostArticleBody: React.FC<{ post: BlogPost }> = ({ post }) => {
             <figure className="blog-hero-figure" style={{ marginTop: '2.5rem' }}>
               <img
                 src={post.consultationImage.src}
+                srcSet={post.consultationImage.srcSet}
+                sizes={post.consultationImage.sizes || '(max-width: 768px) 100vw, 820px'}
                 alt={post.consultationImage.alt}
                 width={post.consultationImage.width}
                 height={post.consultationImage.height}
                 loading="lazy"
+                decoding="async"
                 className="blog-hero-img"
               />
             </figure>
@@ -256,10 +262,13 @@ const SurgeryPostArticleBody: React.FC<{ post: BlogPost }> = ({ post }) => {
             <figure className="blog-hero-figure" style={{ marginTop: '2rem' }}>
               <img
                 src={post.procedureImage.src}
+                srcSet={post.procedureImage.srcSet}
+                sizes={post.procedureImage.sizes || '(max-width: 768px) 100vw, 820px'}
                 alt={post.procedureImage.alt}
                 width={post.procedureImage.width}
                 height={post.procedureImage.height}
                 loading="lazy"
+                decoding="async"
                 className="blog-hero-img"
               />
             </figure>
@@ -533,7 +542,7 @@ export const BlogPostDetail: React.FC = () => {
                       {post.categoryLabel}
                     </span>
                     <span className="blog-editorial-badge">
-                      <ShieldCheck size={14} color="var(--blue-brand)" />
+                      <ShieldCheck size={14} color="var(--blue-brand)" aria-hidden="true" />
                       <span>Medically Reviewed</span>
                     </span>
                   </div>
@@ -546,17 +555,17 @@ export const BlogPostDetail: React.FC = () => {
                   {/* Metadata Bar: Author & Last Updated */}
                   <div className="blog-article-meta-bar">
                     <div className="blog-meta-item">
-                      <FileText size={15} color="var(--blue-brand)" />
+                      <FileText size={15} color="var(--blue-brand)" aria-hidden="true" />
                       <span>Author: <strong className="meta-author-name">{post.author.name}</strong></span>
                     </div>
                     <span className="meta-dot">&bull;</span>
                     <div className="blog-meta-item">
-                      <Calendar size={15} color="var(--text-light)" />
+                      <Calendar size={15} color="var(--text-light)" aria-hidden="true" />
                       <span>Last updated: <time dateTime={post.seo.dateModified}>{post.lastUpdated}</time></span>
                     </div>
                     <span className="meta-dot">&bull;</span>
                     <div className="blog-meta-item">
-                      <Clock size={15} color="var(--text-light)" />
+                      <Clock size={15} color="var(--text-light)" aria-hidden="true" />
                       <span>{post.readTime}</span>
                     </div>
                   </div>
@@ -643,12 +652,12 @@ export const BlogPostDetail: React.FC = () => {
                     <div className="blog-related-guide-content">
                       {post.slug === 'robotic-knee-replacement-recovery-mumbai' ? (
                         <>
-                          <h4>Related Guide: What Is Robotic Knee Replacement Surgery?</h4>
+                          <h3 style={{ fontSize: '1.05rem', fontWeight: 700, margin: '0 0 0.35rem 0', color: 'var(--navy-primary)' }}>Related Guide: What Is Robotic Knee Replacement Surgery?</h3>
                           <p>Discover surgical steps, computer-guided precision, advantages, risks, and implant planning.</p>
                         </>
                       ) : (
                         <>
-                          <h4>Next Guide: Robotic Knee Replacement Recovery Timeline in Mumbai</h4>
+                          <h3 style={{ fontSize: '1.05rem', fontWeight: 700, margin: '0 0 0.35rem 0', color: 'var(--navy-primary)' }}>Next Guide: Robotic Knee Replacement Recovery Timeline in Mumbai</h3>
                           <p>Explore week-by-week recovery milestones, safe movement, pain management, and physiotherapy tips.</p>
                         </>
                       )}
@@ -663,7 +672,7 @@ export const BlogPostDetail: React.FC = () => {
                       style={{ whiteSpace: 'nowrap' }}
                     >
                       <span>Read Guide</span>
-                      <ArrowRight size={14} />
+                      <ArrowRight size={14} aria-hidden="true" />
                     </Link>
                   </div>
 
@@ -710,15 +719,15 @@ export const BlogPostDetail: React.FC = () => {
                     </p>
                     <div className="sidebar-checklist">
                       <div className="sidebar-check-item">
-                        <CheckCircle2 size={15} color="#10b981" />
+                        <CheckCircle2 size={15} color="#15803d" aria-hidden="true" />
                         <span>Zero Wait-Time OPD Sessions</span>
                       </div>
                       <div className="sidebar-check-item">
-                        <CheckCircle2 size={15} color="#10b981" />
+                        <CheckCircle2 size={15} color="#15803d" aria-hidden="true" />
                         <span>Sub-millimeter Robotic Precision</span>
                       </div>
                       <div className="sidebar-check-item">
-                        <CheckCircle2 size={15} color="#10b981" />
+                        <CheckCircle2 size={15} color="#15803d" aria-hidden="true" />
                         <span>Surgeon-Guided Rehabilitation</span>
                       </div>
                     </div>
@@ -728,7 +737,7 @@ export const BlogPostDetail: React.FC = () => {
                       onClick={() => setIsModalOpen(true)}
                       className="btn btn-primary btn-sm sidebar-cta-btn"
                     >
-                      <Calendar size={14} />
+                      <Calendar size={14} aria-hidden="true" />
                       <span>Book Consultation</span>
                     </button>
 
@@ -736,7 +745,7 @@ export const BlogPostDetail: React.FC = () => {
                       href={`tel:${BUSINESS_INFO.phone}`}
                       className="sidebar-phone-link"
                     >
-                      <Phone size={14} color="var(--blue-brand)" />
+                      <Phone size={14} color="var(--blue-brand)" aria-hidden="true" />
                       <span>Helpline: <strong>{BUSINESS_INFO.phone}</strong></span>
                     </a>
                   </div>
@@ -759,31 +768,31 @@ export const BlogPostDetail: React.FC = () => {
                               ? 'What Is Robotic Knee Surgery?'
                               : 'Knee Recovery Timeline Guide'}
                           </span>
-                          <ChevronRight size={14} />
+                          <ChevronRight size={14} aria-hidden="true" />
                         </Link>
                       </li>
                       <li>
                         <Link to="/services/joint-replacement" className="sidebar-nav-link">
                           <span>Joint Replacement Services</span>
-                          <ChevronRight size={14} />
+                          <ChevronRight size={14} aria-hidden="true" />
                         </Link>
                       </li>
                       <li>
                         <Link to="/physiotherapy" className="sidebar-nav-link">
                           <span>Physiotherapy & Rehabilitation</span>
-                          <ChevronRight size={14} />
+                          <ChevronRight size={14} aria-hidden="true" />
                         </Link>
                       </li>
                       <li>
                         <Link to="/doctors" className="sidebar-nav-link">
                           <span>Consultant Orthopedic Surgeons</span>
-                          <ChevronRight size={14} />
+                          <ChevronRight size={14} aria-hidden="true" />
                         </Link>
                       </li>
                       <li>
                         <Link to="/centres" className="sidebar-nav-link">
                           <span>SOS Mumbai Clinic Centres</span>
-                          <ChevronRight size={14} />
+                          <ChevronRight size={14} aria-hidden="true" />
                         </Link>
                       </li>
                     </ul>

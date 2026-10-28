@@ -338,7 +338,7 @@ const prerenderedArticleContent1 = `
               </ol>
 
               <figure class="blog-hero-figure" style="margin-top: 2rem;">
-                <img src="/assets/blog-featured-robotic.jpg" alt="Intraoperative robotic knee replacement surgical guidance and bone preparation" width="1376" height="768" loading="lazy" class="blog-hero-img" />
+                <img src="/assets/blog-featured-robotic.webp" srcset="/assets/blog-featured-robotic-480w.webp 480w, /assets/blog-featured-robotic-800w.webp 800w, /assets/blog-featured-robotic.webp 1376w" sizes="(max-width: 768px) 100vw, 820px" alt="Intraoperative robotic knee replacement surgical guidance and bone preparation" width="1376" height="768" loading="lazy" decoding="async" class="blog-hero-img" />
               </figure>
             </section>
 
@@ -676,7 +676,7 @@ const prerenderedArticleContent2 = `
               </div>
 
               <figure class="blog-hero-figure" style="margin-top: 2.5rem;">
-                <img src="/assets/robotic-knee-replacement-procedure-mumbai.png" alt="Robotic knee replacement surgery procedure in mumbai" width="1672" height="941" loading="lazy" class="blog-hero-img" />
+                <img src="/assets/robotic-knee-replacement-procedure-mumbai.webp" srcset="/assets/robotic-knee-replacement-procedure-mumbai-480w.webp 480w, /assets/robotic-knee-replacement-procedure-mumbai-800w.webp 800w, /assets/robotic-knee-replacement-procedure-mumbai.webp 1672w" sizes="(max-width: 768px) 100vw, 820px" alt="Robotic knee replacement surgery procedure in mumbai" width="1672" height="941" loading="lazy" decoding="async" class="blog-hero-img" />
               </figure>
             </section>
 

@@ -1634,6 +1634,7 @@ html, body {
   gap: 1.5rem;
 }
 
+.blog-related-guide-content h3,
 .blog-related-guide-content h4 {
   margin: 0 0 0.35rem 0;
   font-size: 1.05rem;
@@ -1681,7 +1682,7 @@ html, body {
 
 /* Internal Links */
 .blog-internal-link {
-  color: var(--blue-brand);
+  color: var(--blue-brand-text, #0369a1);
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -1920,7 +1921,7 @@ html, body {
   display: inline-block;
   padding: 0.2rem 0.65rem;
   background-color: var(--blue-soft);
-  color: var(--blue-brand);
+  color: var(--blue-brand-text, #0369a1);
   font-size: 0.75rem;
   font-weight: 700;
   border-radius: var(--radius-pill);

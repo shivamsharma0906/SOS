@@ -35,11 +35,14 @@ if __name__ == '__main__':
         'robotic-knee-consultation.png',
         'robotic-knee-recovery-mumbai.png',
         'robotic-knee-replacement-procedure-mumbai.png',
+        'robotic-knee-recovery-consultation.png',
         'blog-featured-robotic.jpg',
         'clinic-lounge-reception.jpg',
         'clinic-consultation-suite.jpg',
         'clinic-digital-xray.jpg',
-        'clinic-kandivali.jpg'
+        'clinic-kandivali.jpg',
+        'dr-shobit-deshmukh.png',
+        'dr-maulik-joshi.png'
     ]
     for img in images_to_optimize:
         optimize_image(img)

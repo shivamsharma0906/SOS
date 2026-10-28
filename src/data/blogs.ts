@@ -66,6 +66,8 @@ export interface BlogPost {
   };
   procedureImage?: {
     src: string;
+    srcSet?: string;
+    sizes?: string;
     alt: string;
     caption?: string;
     width: number;
@@ -73,6 +75,8 @@ export interface BlogPost {
   };
   consultationImage?: {
     src: string;
+    srcSet?: string;
+    sizes?: string;
     alt: string;
     caption?: string;
     width: number;
@@ -207,7 +211,7 @@ export const blogPostsData: BlogPost[] = [
     author: {
       name: 'Dr. Shobit Nitin Deshmukh',
       title: 'Consultant Orthopedic & Joint Replacement Surgeon',
-      photoUrl: '/assets/dr-shobit-deshmukh.png',
+      photoUrl: '/assets/dr-shobit-deshmukh.webp',
       qualifications: 'DNB Orthopedics, Fellowship in Robotic & Revision Arthroplasty (South Korea, MUHS)',
       specialization: 'Robotic Knee Replacement & Joint Preservation'
     },
@@ -226,6 +230,8 @@ export const blogPostsData: BlogPost[] = [
     },
     procedureImage: {
       src: '/assets/blog-featured-robotic.webp',
+      srcSet: '/assets/blog-featured-robotic-480w.webp 480w, /assets/blog-featured-robotic-800w.webp 800w, /assets/blog-featured-robotic.webp 1376w',
+      sizes: '(max-width: 768px) 100vw, 820px',
       alt: 'Intraoperative robotic knee replacement surgical guidance and bone preparation',
       width: 1376,
       height: 768
@@ -235,7 +241,7 @@ export const blogPostsData: BlogPost[] = [
       metaDescription: 'Learn about robotic knee replacement surgery, its benefits, risks, and recovery, and understand knee replacement treatment options.',
       canonicalUrl: 'https://www.sosorth.com/blog/robotic-knee-replacement-surgery',
       imageAlt: 'Robotic knee replacement surgery for knee joint treatment',
-      ogImage: 'https://www.sosorth.com/assets/robotic-knee-consultation.png',
+      ogImage: 'https://www.sosorth.com/assets/robotic-knee-consultation.webp',
       keywords: 'Robotic Knee Replacement Mumbai, knee replacement surgery benefits, robotic knee surgery recovery, knee osteoarthritis treatment, SOS Speciality Orthopedic Clinic',
       datePublished: '2026-10-14',
       dateModified: '2026-10-14',
@@ -433,7 +439,7 @@ export const blogPostsData: BlogPost[] = [
     author: {
       name: 'Dr. Maulik A. Joshi',
       title: 'Consultant Trauma & Orthopaedic Surgeon',
-      photoUrl: '/assets/dr-maulik-joshi.png',
+      photoUrl: '/assets/dr-maulik-joshi.webp',
       qualifications: 'MBBS, D Orth, Fellowship in Hip & Knee Arthroplasty (Mumbai)',
       specialization: 'Hip & Knee Specialist — Joint Replacement & Trauma'
     },
@@ -452,12 +458,16 @@ export const blogPostsData: BlogPost[] = [
     },
     procedureImage: {
       src: '/assets/robotic-knee-replacement-procedure-mumbai.webp',
+      srcSet: '/assets/robotic-knee-replacement-procedure-mumbai-480w.webp 480w, /assets/robotic-knee-replacement-procedure-mumbai-800w.webp 800w, /assets/robotic-knee-replacement-procedure-mumbai.webp 1672w',
+      sizes: '(max-width: 768px) 100vw, 820px',
       alt: 'Robotic knee replacement surgery procedure in mumbai',
       width: 1672,
       height: 941
     },
     consultationImage: {
-      src: '/assets/robotic-knee-recovery-consultation.png',
+      src: '/assets/robotic-knee-recovery-consultation.webp',
+      srcSet: '/assets/robotic-knee-recovery-consultation-480w.webp 480w, /assets/robotic-knee-recovery-consultation-800w.webp 800w, /assets/robotic-knee-recovery-consultation.webp 1730w',
+      sizes: '(max-width: 768px) 100vw, 820px',
       alt: 'Orthopaedic surgeon discussing knee replacement surgery with a patient in mumbai',
       width: 1730,
       height: 909
@@ -467,7 +477,7 @@ export const blogPostsData: BlogPost[] = [
       metaDescription: 'Learn about robotic knee replacement recovery, with insights into recovery timelines, pain management, physiotherapy, and treatment considerations for patients exploring care in Mumbai.',
       canonicalUrl: 'https://www.sosorth.com/blog/robotic-knee-replacement-recovery-mumbai',
       imageAlt: 'Robotic knee replacement surgery and knee recovery in mumbai',
-      ogImage: 'https://www.sosorth.com/assets/robotic-knee-recovery-mumbai.png',
+      ogImage: 'https://www.sosorth.com/assets/robotic-knee-recovery-mumbai.webp',
       keywords: 'Robotic knee replacement recovery Mumbai, robotic knee recovery timeline, knee replacement pain management, physiotherapy after knee replacement Mumbai, robotic knee surgery recovery time',
       datePublished: '2026-10-26',
       dateModified: '2026-10-26',
