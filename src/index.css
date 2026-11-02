@@ -783,7 +783,7 @@ img {
   }
 
   /* 2. Responsive Spacing & Section Padding */
-  section {
+  section:not(.blog-content-section):not(.blog-faq-section) {
     padding: 2.75rem 0 !important;
     overflow: hidden !important;
   }

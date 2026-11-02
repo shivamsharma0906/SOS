@@ -75,7 +75,7 @@ const RecoveryPostArticleBody: React.FC<{ post: BlogPost }> = ({ post }) => {
           </div>
 
           {post.procedureImage && (
-            <figure className="blog-hero-figure" style={{ marginTop: '2.5rem' }}>
+            <figure className="blog-body-figure">
               <img
                 src={post.procedureImage.src}
                 srcSet={post.procedureImage.srcSet}
@@ -163,7 +163,7 @@ const RecoveryPostArticleBody: React.FC<{ post: BlogPost }> = ({ post }) => {
           </p>
 
           {post.consultationImage && (
-            <figure className="blog-hero-figure" style={{ marginTop: '2.5rem' }}>
+            <figure className="blog-body-figure">
               <img
                 src={post.consultationImage.src}
                 srcSet={post.consultationImage.srcSet}
@@ -259,7 +259,7 @@ const SurgeryPostArticleBody: React.FC<{ post: BlogPost }> = ({ post }) => {
           </ol>
 
           {post.procedureImage && (
-            <figure className="blog-hero-figure" style={{ marginTop: '2rem' }}>
+            <figure className="blog-body-figure">
               <img
                 src={post.procedureImage.src}
                 srcSet={post.procedureImage.srcSet}
@@ -442,7 +442,7 @@ const BackPainArticleBody: React.FC<{ post: BlogPost }> = ({ post }) => {
 
           {/* Image 2: Poor Posture and Ergonomic Setup */}
           {post.procedureImage && (
-            <figure className="blog-hero-figure" style={{ marginTop: '2rem', marginBottom: '2.5rem' }}>
+            <figure className="blog-body-figure">
               <img
                 src={post.procedureImage.src}
                 srcSet={post.procedureImage.srcSet}
@@ -518,7 +518,7 @@ const BackPainArticleBody: React.FC<{ post: BlogPost }> = ({ post }) => {
 
           {/* Image 3: Symptoms / Back and Neck Pain in Young Adults */}
           {post.consultationImage && (
-            <figure className="blog-hero-figure" style={{ marginTop: '2rem', marginBottom: '2.5rem' }}>
+            <figure className="blog-body-figure">
               <img
                 src={post.consultationImage.src}
                 srcSet={post.consultationImage.srcSet}

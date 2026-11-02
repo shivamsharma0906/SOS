@@ -497,7 +497,7 @@ ${prerenderNavbarHtml}
                 </li>
               </ol>
 
-              <figure class="blog-hero-figure" style="margin-top: 2rem;">
+              <figure class="blog-body-figure">
                 <img src="/assets/blog-featured-robotic.webp" srcset="/assets/blog-featured-robotic-480w.webp 480w, /assets/blog-featured-robotic-800w.webp 800w, /assets/blog-featured-robotic.webp 1376w" sizes="(max-width: 768px) 100vw, 820px" alt="Intraoperative robotic knee replacement surgical guidance and bone preparation" width="1280" height="720" loading="lazy" decoding="async" class="blog-hero-img" />
               </figure>
             </section>
@@ -840,7 +840,7 @@ ${prerenderNavbarHtml}
                 </div>
               </div>
 
-              <figure class="blog-hero-figure" style="margin-top: 2.5rem;">
+              <figure class="blog-body-figure">
                 <img src="/assets/robotic-knee-replacement-procedure-mumbai.webp" srcset="/assets/robotic-knee-replacement-procedure-mumbai-480w.webp 480w, /assets/robotic-knee-replacement-procedure-mumbai-800w.webp 800w, /assets/robotic-knee-replacement-procedure-mumbai.webp 1672w" sizes="(max-width: 768px) 100vw, 820px" alt="Robotic knee replacement surgery procedure in mumbai" width="1280" height="720" loading="lazy" decoding="async" class="blog-hero-img" />
               </figure>
             </section>
@@ -869,7 +869,7 @@ ${prerenderNavbarHtml}
               <p>Robotic assistance can help surgeons plan implant positioning and guide parts of the operation. Suitability and benefits depend on your diagnosis, needs, surgeon’s assessment, and technology. It does not guarantee a pain-free result, eliminate every risk, or ensure faster recovery.</p>
               <p>If you are considering robotic knee replacement in Mumbai, ask your surgeon whether it suits your condition and treatment goals. You can also consult experienced orthopaedic doctors to discuss your treatment options, benefits, limitations, alternatives, and risks before deciding. Before making a decision, consult experienced robotic knee replacement surgeons to understand your treatment options, and learn more about the <a href="/blog/robotic-knee-replacement-surgery" class="blog-internal-link">robotic knee replacement procedure</a>, including its potential benefits, limitations, and suitability for your condition.</p>
 
-              <figure class="blog-hero-figure" style="margin-top: 2.5rem;">
+              <figure class="blog-body-figure">
                 <img src="/assets/robotic-knee-recovery-consultation.webp" srcset="/assets/robotic-knee-recovery-consultation-480w.webp 480w, /assets/robotic-knee-recovery-consultation-800w.webp 800w, /assets/robotic-knee-recovery-consultation.webp 1730w" sizes="(max-width: 768px) 100vw, 820px" alt="Orthopaedic surgeon discussing knee replacement surgery with a patient in mumbai" width="1280" height="720" loading="lazy" decoding="async" class="blog-hero-img" />
               </figure>
             </section>
@@ -1134,7 +1134,7 @@ ${prerenderNavbarHtml}
                 <p>Good posture does not mean holding one rigid position throughout the day. Regular movement and comfortable positioning are equally important for reducing unnecessary strain.</p>
               </div>
 
-              <figure class="blog-hero-figure" style="margin-top: 2rem; margin-bottom: 2.5rem;">
+              <figure class="blog-body-figure">
                 <img src="/assets/poor-posture-ergonomics-back-pain.webp" srcset="/assets/poor-posture-ergonomics-back-pain-480w.webp 480w, /assets/poor-posture-ergonomics-back-pain-800w.webp 800w, /assets/poor-posture-ergonomics-back-pain.webp 1666w" sizes="(max-width: 768px) 100vw, 820px" alt="Poor posture and bone and joint strain contributing to back pain" width="1666" height="944" loading="lazy" decoding="async" class="blog-hero-img" />
               </figure>
 
@@ -1168,7 +1168,7 @@ ${prerenderNavbarHtml}
               <p>An <a href="/doctors" class="blog-internal-link">orthopedic surgeon</a> spine specialist may be involved when a spinal condition requires specialist evaluation. If you are looking for the best orthopedic surgeon in Mumbai, consider relevant qualifications, experience with the suspected condition, and whether the clinician explains available non-surgical and surgical options where appropriate.</p>
               <p>For someone searching for a doctor for orthopedic concerns, choosing a qualified clinician who can assess symptoms and recommend suitable treatment is more important than relying on a general remedy. If back pain continues to affect daily life, you can <a href="/contact" class="blog-internal-link">contact SOS Speciality Orthopedic Clinic</a> to enquire about consultations.</p>
 
-              <figure class="blog-hero-figure" style="margin-top: 2rem; margin-bottom: 2.5rem;">
+              <figure class="blog-body-figure">
                 <img src="/assets/young-adult-back-neck-pain.webp" srcset="/assets/young-adult-back-neck-pain-480w.webp 480w, /assets/young-adult-back-neck-pain-800w.webp 800w, /assets/young-adult-back-neck-pain.webp 1536w" sizes="(max-width: 768px) 100vw, 820px" alt="Back pain in young adults affecting the neck and lower back" width="1536" height="1024" loading="lazy" decoding="async" class="blog-hero-img" />
               </figure>
             </section>
