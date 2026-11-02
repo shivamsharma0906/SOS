@@ -331,15 +331,22 @@ const prerenderNavbarHtml = `
 <div class="navbar-spacer" style="width: 100%; flex-shrink: 0; pointer-events: none; visibility: hidden;" aria-hidden="true"></div>
 `;
 
-function getPrerenderSidebarHtml(relatedSlug, relatedTitle) {
+function getPrerenderSidebarHtml(relatedSlug, relatedTitle, isSpine = false) {
+  const deskName = isSpine ? 'Spine &amp; Back Care Desk' : 'Joint Replacement Desk';
+  const deskText = isSpine 
+    ? 'Consultant orthopedic spine OPDs, sciatica decompression, digital diagnostics, and posture rehabilitation across Mumbai.'
+    : 'Consultant orthopedic surgeon OPDs, robotic knee replacements, joint preservation therapies, and rapid-recovery rehabilitation across Mumbai.';
+  const check2 = isSpine ? 'Minimally Invasive Spine &amp; Disc Care' : 'Sub-millimeter Robotic Precision';
+  const check3 = isSpine ? 'Dedicated Posture &amp; Physio Guidance' : 'Surgeon-Guided Rehabilitation';
+
   return `
         <aside class="blog-article-sidebar" aria-label="Article Sidebar">
           <div class="sticky-sidebar-inner">
             <div class="sidebar-clinic-card">
               <span class="sidebar-pill">SOS Speciality Clinic</span>
-              <h3 class="sidebar-clinic-name">Joint Replacement Desk</h3>
+              <h3 class="sidebar-clinic-name">${deskName}</h3>
               <p class="sidebar-clinic-text">
-                Consultant orthopedic surgeon OPDs, robotic knee replacements, joint preservation therapies, and rapid-recovery rehabilitation across Mumbai.
+                ${deskText}
               </p>
               <div class="sidebar-checklist">
                 <div class="sidebar-check-item">
@@ -348,11 +355,11 @@ function getPrerenderSidebarHtml(relatedSlug, relatedTitle) {
                 </div>
                 <div class="sidebar-check-item">
                   <span style="color: #15803d; font-weight: bold; margin-right: 0.4rem;">&#10003;</span>
-                  <span>Sub-millimeter Robotic Precision</span>
+                  <span>${check2}</span>
                 </div>
                 <div class="sidebar-check-item">
                   <span style="color: #15803d; font-weight: bold; margin-right: 0.4rem;">&#10003;</span>
-                  <span>Surgeon-Guided Rehabilitation</span>
+                  <span>${check3}</span>
                 </div>
               </div>
 
@@ -376,8 +383,13 @@ function getPrerenderSidebarHtml(relatedSlug, relatedTitle) {
               <h4 class="sidebar-links-title">Related SOS Guides &amp; Services</h4>
               <ul class="sidebar-links-list">
                 <li>
-                  <a href="/blog/${relatedSlug}" class="sidebar-nav-link">
-                    <span>${relatedTitle}</span>
+                  <a href="${isSpine ? '/services/spine-care' : `/blog/${relatedSlug}`}" class="sidebar-nav-link">
+                    <span>${isSpine ? 'Spine Care &amp; Sciatica Services' : relatedTitle}</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/x-ray-services-at-home" class="sidebar-nav-link">
+                    <span>Doorstep Home Digital X-Ray</span>
                   </a>
                 </li>
                 <li>
@@ -944,6 +956,320 @@ renderPage({
     path.resolve(distDir, 'blog', `${post2.slug}.html`),
     path.resolve(distDir, post2.slug, 'index.html'),
     path.resolve(distDir, `${post2.slug}.html`)
+  ]
+});
+
+
+// ========================================================
+// 2.5. BLOG ARTICLE 3: Why Is Back Pain Becoming Common Among Young Adults?
+// ========================================================
+const post3 = {
+  slug: 'back-pain-in-young-adults',
+  url: 'https://www.sosorth.com/blog/back-pain-in-young-adults',
+  canonicalUrl: 'https://www.sosorth.com/blog/back-pain-in-young-adults',
+  metaTitle: 'Understanding Back Pain in Young Adults | Orthopedic Care in Mumbai',
+  metaDescription: 'Discover why back pain in young adults is becoming common, learn prevention tips, and know when to consult an orthopedic spine doctor in Mumbai.',
+  keywords: 'Back pain in young adults, spine doctor Mumbai, causes of back pain young adults, orthopedic surgeon Mumbai, poor posture back pain, herniated disc young adults, SOS Speciality Orthopedic Clinic',
+  ogImage: 'https://www.sosorth.com/assets/herniated-disc-back-pain-young-adults.webp',
+  ogType: 'article',
+  preloadImage: {
+    src: '/assets/herniated-disc-back-pain-young-adults.webp',
+    srcSet: '/assets/herniated-disc-back-pain-young-adults-480w.webp 480w, /assets/herniated-disc-back-pain-young-adults-800w.webp 800w, /assets/herniated-disc-back-pain-young-adults.webp 1702w',
+    sizes: '(max-width: 768px) 100vw, 820px'
+  },
+  h1: 'Why Is Back Pain Becoming Common Among Young Adults?',
+  datePublished: '2026-11-02',
+  dateModified: '2026-11-02',
+  author: 'Dr. Omkar Rashinkar'
+};
+
+const structuredData3 = [
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "@id": `${post3.url}#webpage`,
+    "url": post3.url,
+    "name": post3.metaTitle,
+    "headline": post3.h1,
+    "description": post3.metaDescription,
+    "image": post3.ogImage,
+    "inLanguage": "en-IN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": post3.url
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "SOS Speciality Orthopedic Clinic",
+      "url": "https://www.sosorth.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.sosorth.com/assets/video-poster.jpg"
+      }
+    },
+    "author": {
+      "@type": "Person",
+      "name": post3.author
+    },
+    "datePublished": post3.datePublished,
+    "dateModified": post3.dateModified
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${post3.url}#faq`,
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How to Avoid Back Pain Later in Life?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Maintain regular physical activity, strengthen supporting muscles, take breaks from prolonged sitting, use suitable lifting techniques, and address recurring discomfort early. Consistent habits can support spinal health over time."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Calcium Cure Back Pain?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Calcium does not directly cure most causes of back pain. It supports bone health, but back pain may result from muscular strain, disc problems, posture, or other conditions. Supplements should be taken when appropriate, based on dietary needs and professional advice."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How Did I Cure My Lower Back Pain?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The right approach depends on the cause. Some cases improve with activity modification and appropriate exercises, while others need physiotherapy or medical treatment. Persistent or severe symptoms should be assessed rather than relying on a single remedy."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What Is the Best Sleeping Position for Back Pain?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sleeping on your side with a pillow between your knees can help maintain spinal alignment and reduce pressure on the lower back. If you prefer sleeping on your back, placing a pillow under your knees may provide additional support. Avoid sleeping on your stomach, as it can place extra strain on your neck and spine."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${post3.url}#breadcrumb`,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.sosorth.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://www.sosorth.com/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": post3.h1,
+        "item": post3.canonicalUrl
+      }
+    ]
+  }
+];
+
+const prerenderedArticleContent3 = `
+${prerenderNavbarHtml}
+<main style="flex-grow: 1;">
+<div class="blog-article-page-wrap">
+  <nav aria-label="Breadcrumb" class="blog-breadcrumb-nav">
+    <div class="container">
+      <ol class="breadcrumb-list" style="display: flex; list-style: none; padding: 0.75rem 0; margin: 0; font-size: 0.85rem; color: #64748b; gap: 0.5rem; align-items: center;">
+        <li class="breadcrumb-item"><a href="/" style="color: #0369a1; text-decoration: none;">Home</a> / </li>
+        <li class="breadcrumb-item"><a href="/blog" style="color: #0369a1; text-decoration: none;">Blog</a> / </li>
+        <li class="breadcrumb-item active" aria-current="page" style="color: #334155;">${post3.h1}</li>
+      </ol>
+    </div>
+  </nav>
+
+  <article class="blog-article-root" itemscope itemtype="https://schema.org/MedicalWebPage">
+    <div class="container">
+      <div class="blog-article-layout-grid">
+        <div class="blog-article-main-col">
+          <header class="blog-article-header">
+            <span class="blog-category-tag">Spine &amp; Back Care</span>
+            <h1 class="blog-article-h1" itemprop="headline">${post3.h1}</h1>
+            <div class="blog-article-meta-bar">
+              <span>Author: <strong>${post3.author}</strong></span> &bull;
+              <span>Last updated: ${post3.dateModified}</span> &bull;
+              <span>6 min read</span>
+            </div>
+            <figure class="blog-hero-figure">
+              <img src="/assets/herniated-disc-back-pain-young-adults.webp" srcset="/assets/herniated-disc-back-pain-young-adults-480w.webp 480w, /assets/herniated-disc-back-pain-young-adults-800w.webp 800w, /assets/herniated-disc-back-pain-young-adults.webp 1702w" sizes="(max-width: 768px) 100vw, 820px" alt="Herniated spinal disc causing nerve compression and back pain in young adults" width="1702" height="924" loading="eager" fetchpriority="high" decoding="async" class="blog-hero-img" />
+            </figure>
+          </header>
+
+          <div class="blog-article-body">
+            <div class="blog-lead-section">
+              <p class="blog-lead-p">Back pain is increasingly affecting young adults who spend long hours sitting, working on computers, using smartphones, and managing demanding daily schedules. Although back pain is often associated with ageing, younger people can also experience discomfort because of poor posture, limited physical activity, muscle weakness, stress, and repetitive strain.</p>
+              <p class="blog-lead-p">For students and working professionals, these habits can gradually affect spinal health and make everyday activities uncomfortable. Understanding the causes of back pain in young adults is an important first step towards prevention, early assessment, and appropriate treatment.</p>
+            </div>
+
+            <section class="blog-content-section">
+              <h2 class="blog-h2">What Is Causing Back Pain in Young Adults?</h2>
+              <p>Back pain can develop because of several lifestyle-related, muscular, and spinal factors. Identifying the possible cause helps determine which preventive measures or treatment options may be appropriate.</p>
+
+              <div class="blog-subsection">
+                <h3 class="blog-h3">1. Prolonged Sitting and Sedentary Lifestyles</h3>
+                <p>Many young adults spend several hours sitting at desks, attending online classes, working remotely, or travelling. Remaining in one position for extended periods can increase discomfort and place additional demands on the muscles supporting the spine.</p>
+                <p>A sedentary routine may also contribute to reduced flexibility and weaker supporting muscles. Taking regular movement breaks, standing periodically, and including suitable physical activity in your daily routine can help reduce the strain associated with prolonged sitting. These simple habits play an important role in <a href="/" class="blog-internal-link">bone and joint care</a> and maintaining a healthy, active lifestyle.</p>
+              </div>
+
+              <div class="blog-subsection">
+                <h3 class="blog-h3">2. Poor Posture and Excessive Screen Time</h3>
+                <p>Looking down at a smartphone, leaning towards a laptop, or working at an unsuitable desk can contribute to neck, shoulder, and back discomfort. Maintaining the same position for long periods may increase muscular fatigue, particularly when there are few opportunities to move.</p>
+                <p>Young adults can improve their working posture by keeping screens at a comfortable height, supporting the lower back, and placing their feet firmly on the floor when seated. Alternating between sitting and standing can also help.</p>
+                <p>Good posture does not mean holding one rigid position throughout the day. Regular movement and comfortable positioning are equally important for reducing unnecessary strain.</p>
+              </div>
+
+              <figure class="blog-hero-figure" style="margin-top: 2rem; margin-bottom: 2.5rem;">
+                <img src="/assets/poor-posture-ergonomics-back-pain.webp" srcset="/assets/poor-posture-ergonomics-back-pain-480w.webp 480w, /assets/poor-posture-ergonomics-back-pain-800w.webp 800w, /assets/poor-posture-ergonomics-back-pain.webp 1666w" sizes="(max-width: 768px) 100vw, 820px" alt="Poor posture and bone and joint strain contributing to back pain" width="1666" height="944" loading="lazy" decoding="async" class="blog-hero-img" />
+              </figure>
+
+              <div class="blog-subsection">
+                <h3 class="blog-h3">3. Weak Core and Back Muscles</h3>
+                <p>The abdominal, back, and pelvic muscles help support the spine during everyday movement. Limited physical activity may reduce strength and endurance, making some tasks more demanding.</p>
+                <p>Activities such as walking, swimming, and suitable strengthening exercises can support general fitness. However, exercises should be selected according to an individual's ability and symptoms. People experiencing persistent pain should seek professional guidance before starting an intensive exercise routine.</p>
+                <p>An orthopedic spine doctor can assess persistent symptoms and help determine whether further investigation or specialist treatment may be necessary. Appropriate assessment is particularly important when pain repeatedly returns or affects normal movement.</p>
+              </div>
+
+              <div class="blog-subsection">
+                <h3 class="blog-h3">4. Stress, Anxiety, and Poor Sleep</h3>
+                <p>Mental stress and inadequate sleep can influence how the body experiences pain. During stressful periods, people may unconsciously tense their muscles, reduce physical activity, or adopt uncomfortable working positions.</p>
+                <p>Poor sleep can also make it harder to manage discomfort and maintain healthy routines. Establishing a regular sleep schedule, taking breaks from work, and using relaxation techniques may support overall wellbeing.</p>
+                <p>Stress should not automatically be considered the cause of back pain. Persistent symptoms still need appropriate assessment to rule out other possible explanations.</p>
+              </div>
+
+              <div class="blog-subsection">
+                <h3 class="blog-h3">5. Commuting and Poor work setup</h3>
+                <p>Long commutes, uncomfortable seating, carrying heavy bags, and repetitive lifting can contribute to back discomfort. Young adults who combine desk work with lengthy travel may spend much of the day in positions that leave little opportunity for movement.</p>
+                <p>Using a well-fitted backpack, distributing its weight evenly, adjusting workstation equipment, and avoiding repeated awkward lifting can help reduce unnecessary strain.</p>
+                <p>Sports and gym activities can also contribute to symptoms when training intensity increases too quickly or exercises are performed with unsuitable technique. Orthopedic sports doctors can assess musculoskeletal problems related to physical activity and help determine appropriate next steps.</p>
+              </div>
+            </section>
+
+            <section class="blog-content-section">
+              <h2 class="blog-h2">When Should You Consult an Orthopedic Specialist?</h2>
+              <p>Occasional mild back discomfort may improve with appropriate activity modification. However, pain that persists, worsens, repeatedly returns, or interferes with walking, working, sleeping, or other daily activities should be assessed by a healthcare professional.</p>
+              <p>Seek medical advice if you experience pain that travels into the leg, persistent tingling, numbness, or weakness. A clinician can assess your symptoms and determine whether further investigations or specialist care are necessary.</p>
+              <p>Seek emergency medical care if back pain occurs with new loss of bladder or bowel control, numbness around the groin or saddle area, or significant or progressive leg weakness. Severe pain following a major accident also requires urgent assessment.</p>
+              <p>An <a href="/doctors" class="blog-internal-link">orthopedic surgeon</a> spine specialist may be involved when a spinal condition requires specialist evaluation. If you are looking for the best orthopedic surgeon in Mumbai, consider relevant qualifications, experience with the suspected condition, and whether the clinician explains available non-surgical and surgical options where appropriate.</p>
+              <p>For someone searching for a doctor for orthopedic concerns, choosing a qualified clinician who can assess symptoms and recommend suitable treatment is more important than relying on a general remedy. If back pain continues to affect daily life, you can <a href="/contact" class="blog-internal-link">contact SOS Speciality Orthopedic Clinic</a> to enquire about consultations.</p>
+
+              <figure class="blog-hero-figure" style="margin-top: 2rem; margin-bottom: 2.5rem;">
+                <img src="/assets/young-adult-back-neck-pain.webp" srcset="/assets/young-adult-back-neck-pain-480w.webp 480w, /assets/young-adult-back-neck-pain-800w.webp 800w, /assets/young-adult-back-neck-pain.webp 1536w" sizes="(max-width: 768px) 100vw, 820px" alt="Back pain in young adults affecting the neck and lower back" width="1536" height="1024" loading="lazy" decoding="async" class="blog-hero-img" />
+              </figure>
+            </section>
+
+            <section class="blog-content-section">
+              <h2 class="blog-h2">How Is Back Pain Diagnosed and Treated?</h2>
+              <p>Assessment generally begins with a review of the patient's symptoms, medical history, daily activities, and any previous injuries. A physical examination may include checking movement, strength, sensation, and other findings relevant to the suspected cause.</p>
+              <p>Imaging tests are not required for every case. X-rays or other investigations may be recommended when the clinical assessment indicates that they are needed. When diagnostic imaging is recommended, <a href="/x-ray-services-at-home" class="blog-internal-link">X-ray services at home</a> may be an option, depending on clinical requirements and availability.</p>
+              <p>Treatment depends on the cause and severity of the symptoms. It may include activity modification, guided exercises, physiotherapy, medication when appropriate, or further specialist management. Surgery is considered only for selected conditions when the clinical findings and expected benefits justify it.</p>
+              <p>People researching for the best orthopedic surgeon in Mumbai should understand that not every case of back pain requires surgery. The appropriate treatment depends on the underlying condition, symptoms, and clinical findings. A dr for orthopedic concerns can help determine which care options may be suitable following an assessment.</p>
+            </section>
+
+            <section class="blog-content-section">
+              <h2 class="blog-h2">Finding the Right Orthopedic Care</h2>
+              <p>Back pain can arise from several different causes, ranging from muscular strain to spinal conditions. Identifying the underlying problem is important because the most suitable treatment depends on the diagnosis.</p>
+              <p>If back pain is restricting your movement, disturbing your sleep, or affecting daily activities, consider seeking professional guidance rather than repeatedly ignoring the symptoms. The clinic's <a href="/centres" class="blog-internal-link">centres</a> provide information about its locations for people considering an in-person consultation.</p>
+              <p>Early assessment can help clarify possible causes and identify appropriate next steps. Not every case requires advanced treatment, but persistent or severe symptoms should not be overlooked.</p>
+            </section>
+
+            <section class="blog-content-section blog-faq-section">
+              <h2 class="blog-h2">Frequently Asked Questions</h2>
+              <div class="blog-faq-accordion">
+                <div class="blog-faq-item">
+                  <button type="button" class="blog-faq-trigger" aria-expanded="false">
+                    <span class="blog-faq-question-text">How to Avoid Back Pain Later in Life?</span>
+                  </button>
+                  <div class="blog-faq-panel collapsed">
+                    <div class="blog-faq-answer-inner">
+                      <p>Maintain regular physical activity, strengthen supporting muscles, take breaks from prolonged sitting, use suitable lifting techniques, and address recurring discomfort early. Consistent habits can support spinal health over time.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="blog-faq-item">
+                  <button type="button" class="blog-faq-trigger" aria-expanded="false">
+                    <span class="blog-faq-question-text">Can Calcium Cure Back Pain?</span>
+                  </button>
+                  <div class="blog-faq-panel collapsed">
+                    <div class="blog-faq-answer-inner">
+                      <p>Calcium does not directly cure most causes of back pain. It supports bone health, but back pain may result from muscular strain, disc problems, posture, or other conditions. Supplements should be taken when appropriate, based on dietary needs and professional advice.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="blog-faq-item">
+                  <button type="button" class="blog-faq-trigger" aria-expanded="false">
+                    <span class="blog-faq-question-text">How Did I Cure My Lower Back Pain?</span>
+                  </button>
+                  <div class="blog-faq-panel collapsed">
+                    <div class="blog-faq-answer-inner">
+                      <p>The right approach depends on the cause. Some cases improve with activity modification and appropriate exercises, while others need physiotherapy or medical treatment. Persistent or severe symptoms should be assessed rather than relying on a single remedy.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="blog-faq-item">
+                  <button type="button" class="blog-faq-trigger" aria-expanded="false">
+                    <span class="blog-faq-question-text">What Is the Best Sleeping Position for Back Pain?</span>
+                  </button>
+                  <div class="blog-faq-panel collapsed">
+                    <div class="blog-faq-answer-inner">
+                      <p>Sleeping on your side with a pillow between your knees can help maintain spinal alignment and reduce pressure on the lower back. If you prefer sleeping on your back, placing a pillow under your knees may provide additional support. Avoid sleeping on your stomach, as it can place extra strain on your neck and spine.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <aside class="blog-medical-disclaimer">
+              <div>
+                <strong class="disclaimer-heading">Medical Disclaimer</strong>
+                <p class="disclaimer-text">This article is for informational purposes and does not replace professional medical advice. Always consult a qualified orthopedic spine specialist for clinical evaluation and personalised guidance.</p>
+              </div>
+            </aside>
+
+            <div class="blog-cta-box">
+              <span class="blog-cta-eyebrow">SPINE &amp; ORTHOPEDIC CONSULTATION &amp; OPD</span>
+              <h3 class="blog-cta-title">Experiencing Back Pain, Nerve Tingling, or Posture Strain?</h3>
+              <p class="blog-cta-desc">Schedule a comprehensive clinical assessment with Dr. Omkar Rashinkar and our senior orthopedic spine surgeons across our Mumbai centres in Kandivali, Borivali, Malad, and Goregaon.</p>
+              <div class="blog-cta-buttons">
+                <a href="/contact" class="btn btn-primary btn-md">Book an Appointment</a>
+                <a href="/contact" class="btn btn-secondary btn-md">Contact SOS Clinic</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        ${getPrerenderSidebarHtml('robotic-knee-replacement-surgery', 'Robotic Knee Surgery Guide', true)}
+      </div>
+    </div>
+  </article>
+</div>
+</main>
+`;
+
+renderPage({
+  page: post3,
+  structuredData: structuredData3,
+  bodyHtml: prerenderedArticleContent3,
+  targetFiles: [
+    path.resolve(distDir, 'blog', post3.slug, 'index.html'),
+    path.resolve(distDir, 'blog', `${post3.slug}.html`),
+    path.resolve(distDir, post3.slug, 'index.html'),
+    path.resolve(distDir, `${post3.slug}.html`)
   ]
 });
 

@@ -392,6 +392,192 @@ const SurgeryPostArticleBody: React.FC<{ post: BlogPost }> = ({ post }) => {
   );
 };
 
+
+// Subcomponent for Back Pain in Young Adults article body
+const BackPainArticleBody: React.FC<{ post: BlogPost }> = ({ post }) => {
+  const { content } = post;
+  return (
+    <>
+      {/* Lead Section */}
+      <div className="blog-lead-section">
+        {content.leadParagraphs.map((para, i) => (
+          <p key={i} className="blog-lead-p">
+            {para}
+          </p>
+        ))}
+      </div>
+
+      {/* Section 1: What Is Causing Back Pain in Young Adults? */}
+      {content.causes && (
+        <section className="blog-content-section" aria-labelledby="section-causes">
+          <h2 id="section-causes" className="blog-h2">
+            {content.causes.heading}
+          </h2>
+          <p>{content.causes.intro}</p>
+
+          {/* Subsection 1: Prolonged Sitting */}
+          {content.causes.subsections[0] && (
+            <div className="blog-subsection">
+              <h3 className="blog-h3">{content.causes.subsections[0].heading}</h3>
+              <p>{content.causes.subsections[0].paragraphs[0]}</p>
+              <p>
+                A sedentary routine may also contribute to reduced flexibility and weaker supporting muscles. Taking regular movement breaks, standing periodically, and including suitable physical activity in your daily routine can help reduce the strain associated with prolonged sitting. These simple habits play an important role in{' '}
+                <Link to="/" className="blog-internal-link">
+                  bone and joint care
+                </Link>{' '}
+                and maintaining a healthy, active lifestyle.
+              </p>
+            </div>
+          )}
+
+          {/* Subsection 2: Poor Posture & Screen Time */}
+          {content.causes.subsections[1] && (
+            <div className="blog-subsection">
+              <h3 className="blog-h3">{content.causes.subsections[1].heading}</h3>
+              {content.causes.subsections[1].paragraphs.map((p, pi) => (
+                <p key={pi}>{p}</p>
+              ))}
+            </div>
+          )}
+
+          {/* Image 2: Poor Posture and Ergonomic Setup */}
+          {post.procedureImage && (
+            <figure className="blog-hero-figure" style={{ marginTop: '2rem', marginBottom: '2.5rem' }}>
+              <img
+                src={post.procedureImage.src}
+                srcSet={post.procedureImage.srcSet}
+                sizes={post.procedureImage.sizes || '(max-width: 768px) 100vw, 820px'}
+                alt={post.procedureImage.alt}
+                width={post.procedureImage.width}
+                height={post.procedureImage.height}
+                loading="lazy"
+                decoding="async"
+                className="blog-hero-img"
+              />
+              <figcaption style={{ fontSize: '0.875rem', color: '#64748b', textAlign: 'center', marginTop: '0.6rem', fontStyle: 'italic' }}>
+                Poor posture and bone and joint strain contributing to back pain — ergonomic workstation alignment comparison.
+              </figcaption>
+            </figure>
+          )}
+
+          {/* Subsection 3: Weak Core and Back Muscles */}
+          {content.causes.subsections[2] && (
+            <div className="blog-subsection">
+              <h3 className="blog-h3">{content.causes.subsections[2].heading}</h3>
+              {content.causes.subsections[2].paragraphs.map((p, pi) => (
+                <p key={pi}>{p}</p>
+              ))}
+            </div>
+          )}
+
+          {/* Subsection 4: Stress, Anxiety, and Poor Sleep */}
+          {content.causes.subsections[3] && (
+            <div className="blog-subsection">
+              <h3 className="blog-h3">{content.causes.subsections[3].heading}</h3>
+              {content.causes.subsections[3].paragraphs.map((p, pi) => (
+                <p key={pi}>{p}</p>
+              ))}
+            </div>
+          )}
+
+          {/* Subsection 5: Commuting and Poor work setup */}
+          {content.causes.subsections[4] && (
+            <div className="blog-subsection">
+              <h3 className="blog-h3">{content.causes.subsections[4].heading}</h3>
+              {content.causes.subsections[4].paragraphs.map((p, pi) => (
+                <p key={pi}>{p}</p>
+              ))}
+            </div>
+          )}
+        </section>
+      )}
+
+      {/* Section 2: When Should You Consult an Orthopedic Specialist? */}
+      {content.whenToConsult && (
+        <section className="blog-content-section" aria-labelledby="section-when-to-consult">
+          <h2 id="section-when-to-consult" className="blog-h2">
+            {content.whenToConsult.heading}
+          </h2>
+          <p>{content.whenToConsult.paragraphs[0]}</p>
+          <p>{content.whenToConsult.paragraphs[1]}</p>
+          <p>{content.whenToConsult.paragraphs[2]}</p>
+          <p>
+            An{' '}
+            <Link to="/doctors" className="blog-internal-link">
+              orthopedic surgeon
+            </Link>{' '}
+            spine specialist may be involved when a spinal condition requires specialist evaluation. If you are looking for the best orthopedic surgeon in Mumbai, consider relevant qualifications, experience with the suspected condition, and whether the clinician explains available non-surgical and surgical options where appropriate.
+          </p>
+          <p>
+            For someone searching for a doctor for orthopedic concerns, choosing a qualified clinician who can assess symptoms and recommend suitable treatment is more important than relying on a general remedy. If back pain continues to affect daily life, you can{' '}
+            <Link to="/contact" className="blog-internal-link">
+              contact SOS Speciality Orthopedic Clinic
+            </Link>{' '}
+            to enquire about consultations.
+          </p>
+
+          {/* Image 3: Symptoms / Back and Neck Pain in Young Adults */}
+          {post.consultationImage && (
+            <figure className="blog-hero-figure" style={{ marginTop: '2rem', marginBottom: '2.5rem' }}>
+              <img
+                src={post.consultationImage.src}
+                srcSet={post.consultationImage.srcSet}
+                sizes={post.consultationImage.sizes || '(max-width: 768px) 100vw, 820px'}
+                alt={post.consultationImage.alt}
+                width={post.consultationImage.width}
+                height={post.consultationImage.height}
+                loading="lazy"
+                decoding="async"
+                className="blog-hero-img"
+              />
+              <figcaption style={{ fontSize: '0.875rem', color: '#64748b', textAlign: 'center', marginTop: '0.6rem', fontStyle: 'italic' }}>
+                Back pain in young adults affecting the neck and lower back requiring specialized clinical evaluation.
+              </figcaption>
+            </figure>
+          )}
+        </section>
+      )}
+
+      {/* Section 3: How Is Back Pain Diagnosed and Treated? */}
+      {content.diagnosisAndTreatment && (
+        <section className="blog-content-section" aria-labelledby="section-diagnosis-treatment">
+          <h2 id="section-diagnosis-treatment" className="blog-h2">
+            {content.diagnosisAndTreatment.heading}
+          </h2>
+          <p>{content.diagnosisAndTreatment.paragraphs[0]}</p>
+          <p>
+            Imaging tests are not required for every case. X-rays or other investigations may be recommended when the clinical assessment indicates that they are needed. When diagnostic imaging is recommended,{' '}
+            <Link to="/x-ray-services-at-home" className="blog-internal-link">
+              X-ray services at home
+            </Link>{' '}
+            may be an option, depending on clinical requirements and availability.
+          </p>
+          <p>{content.diagnosisAndTreatment.paragraphs[2]}</p>
+          <p>{content.diagnosisAndTreatment.paragraphs[3]}</p>
+        </section>
+      )}
+
+      {/* Section 4: Finding the Right Orthopedic Care */}
+      {content.findingCare && (
+        <section className="blog-content-section" aria-labelledby="section-finding-care">
+          <h2 id="section-finding-care" className="blog-h2">
+            {content.findingCare.heading}
+          </h2>
+          <p>{content.findingCare.paragraphs[0]}</p>
+          <p>
+            If back pain is restricting your movement, disturbing your sleep, or affecting daily activities, consider seeking professional guidance rather than repeatedly ignoring the symptoms. The clinic's{' '}
+            <Link to="/centres" className="blog-internal-link">
+              centres
+            </Link>{' '}
+            provide information about its locations for people considering an in-person consultation.
+          </p>
+          <p>{content.findingCare.paragraphs[2]}</p>
+        </section>
+      )}
+    </>
+  );
+};
+
 export const BlogPostDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -592,6 +778,8 @@ export const BlogPostDetail: React.FC = () => {
                 <div className="blog-article-body">
                   {post.slug === 'robotic-knee-replacement-recovery-mumbai' ? (
                     <RecoveryPostArticleBody post={post} />
+                  ) : post.slug === 'back-pain-in-young-adults' ? (
+                    <BackPainArticleBody post={post} />
                   ) : (
                     <SurgeryPostArticleBody post={post} />
                   )}
@@ -655,6 +843,11 @@ export const BlogPostDetail: React.FC = () => {
                           <h3 style={{ fontSize: '1.05rem', fontWeight: 700, margin: '0 0 0.35rem 0', color: 'var(--navy-primary)' }}>Related Guide: What Is Robotic Knee Replacement Surgery?</h3>
                           <p>Discover surgical steps, computer-guided precision, advantages, risks, and implant planning.</p>
                         </>
+                      ) : post.slug === 'back-pain-in-young-adults' ? (
+                        <>
+                          <h3 style={{ fontSize: '1.05rem', fontWeight: 700, margin: '0 0 0.35rem 0', color: 'var(--navy-primary)' }}>Related Guide: What Is Robotic Knee Replacement Surgery?</h3>
+                          <p>Discover joint restoration techniques, computer-assisted precision, and comprehensive orthopedic care.</p>
+                        </>
                       ) : (
                         <>
                           <h3 style={{ fontSize: '1.05rem', fontWeight: 700, margin: '0 0 0.35rem 0', color: 'var(--navy-primary)' }}>Next Guide: Robotic Knee Replacement Recovery Timeline in Mumbai</h3>
@@ -665,6 +858,8 @@ export const BlogPostDetail: React.FC = () => {
                     <Link
                       to={
                         post.slug === 'robotic-knee-replacement-recovery-mumbai'
+                          ? '/blog/robotic-knee-replacement-surgery'
+                          : post.slug === 'back-pain-in-young-adults'
                           ? '/blog/robotic-knee-replacement-surgery'
                           : '/blog/robotic-knee-replacement-recovery-mumbai'
                       }
@@ -679,10 +874,18 @@ export const BlogPostDetail: React.FC = () => {
                   {/* Consultation Booking CTA Card */}
                   <div className="blog-cta-box">
                     <div className="blog-cta-content">
-                      <span className="blog-cta-eyebrow">ORTHOPEDIC CONSULTATION & OPD</span>
-                      <h3 className="blog-cta-title">Concerned About Knee Pain or Considering Replacement?</h3>
+                      <span className="blog-cta-eyebrow">
+                        {post.category === 'spine' ? 'SPINE & ORTHOPEDIC CONSULTATION & OPD' : 'ORTHOPEDIC CONSULTATION & OPD'}
+                      </span>
+                      <h3 className="blog-cta-title">
+                        {post.category === 'spine'
+                          ? 'Experiencing Back Pain, Nerve Tingling, or Posture Strain?'
+                          : 'Concerned About Knee Pain or Considering Replacement?'}
+                      </h3>
                       <p className="blog-cta-desc">
-                        Schedule a comprehensive clinical assessment with our senior orthopedic surgeons across our Mumbai centres in Kandivali, Borivali, Malad, and Goregaon.
+                        {post.category === 'spine'
+                          ? 'Schedule a comprehensive clinical assessment with Dr. Omkar Rashinkar and our senior orthopedic spine surgeons across our Mumbai centres in Kandivali, Borivali, Malad, and Goregaon.'
+                          : 'Schedule a comprehensive clinical assessment with our senior orthopedic surgeons across our Mumbai centres in Kandivali, Borivali, Malad, and Goregaon.'}
                       </p>
                       <div className="blog-cta-buttons">
                         <button
@@ -713,9 +916,13 @@ export const BlogPostDetail: React.FC = () => {
                   {/* Clinic Card */}
                   <div className="sidebar-clinic-card">
                     <span className="sidebar-pill">SOS Speciality Clinic</span>
-                    <h3 className="sidebar-clinic-name">Joint Replacement Desk</h3>
+                    <h3 className="sidebar-clinic-name">
+                      {post.category === 'spine' ? 'Spine & Back Care Desk' : 'Joint Replacement Desk'}
+                    </h3>
                     <p className="sidebar-clinic-text">
-                      Consultant orthopedic surgeon OPDs, robotic knee replacements, joint preservation therapies, and rapid-recovery rehabilitation across Mumbai.
+                      {post.category === 'spine'
+                        ? 'Consultant orthopedic spine OPDs, sciatica decompression, digital diagnostics, and posture rehabilitation across Mumbai.'
+                        : 'Consultant orthopedic surgeon OPDs, robotic knee replacements, joint preservation therapies, and rapid-recovery rehabilitation across Mumbai.'}
                     </p>
                     <div className="sidebar-checklist">
                       <div className="sidebar-check-item">
@@ -724,11 +931,11 @@ export const BlogPostDetail: React.FC = () => {
                       </div>
                       <div className="sidebar-check-item">
                         <CheckCircle2 size={15} color="#15803d" aria-hidden="true" />
-                        <span>Sub-millimeter Robotic Precision</span>
+                        <span>{post.category === 'spine' ? 'Minimally Invasive Spine & Disc Care' : 'Sub-millimeter Robotic Precision'}</span>
                       </div>
                       <div className="sidebar-check-item">
                         <CheckCircle2 size={15} color="#15803d" aria-hidden="true" />
-                        <span>Surgeon-Guided Rehabilitation</span>
+                        <span>{post.category === 'spine' ? 'Ergonomic & Physio Rehabilitation' : 'Surgeon-Guided Rehabilitation'}</span>
                       </div>
                     </div>
 
@@ -809,7 +1016,7 @@ export const BlogPostDetail: React.FC = () => {
       <AppointmentModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        defaultService="Joint Replacement Care"
+        defaultService={post.category === 'spine' ? 'Spine Care & Sciatica' : 'Joint Replacement Care'}
       />
     </>
   );
