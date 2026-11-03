@@ -1520,6 +1520,7 @@ html, body {
   display: block;
 }
 
+figcaption,
 .blog-hero-caption {
   display: none !important;
 }

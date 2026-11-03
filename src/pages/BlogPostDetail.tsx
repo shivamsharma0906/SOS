@@ -454,9 +454,6 @@ const BackPainArticleBody: React.FC<{ post: BlogPost }> = ({ post }) => {
                 decoding="async"
                 className="blog-hero-img"
               />
-              <figcaption style={{ fontSize: '0.875rem', color: '#64748b', textAlign: 'center', marginTop: '0.6rem', fontStyle: 'italic' }}>
-                Poor posture and bone and joint strain contributing to back pain — ergonomic workstation alignment comparison.
-              </figcaption>
             </figure>
           )}
 
@@ -530,9 +527,6 @@ const BackPainArticleBody: React.FC<{ post: BlogPost }> = ({ post }) => {
                 decoding="async"
                 className="blog-hero-img"
               />
-              <figcaption style={{ fontSize: '0.875rem', color: '#64748b', textAlign: 'center', marginTop: '0.6rem', fontStyle: 'italic' }}>
-                Back pain in young adults affecting the neck and lower back requiring specialized clinical evaluation.
-              </figcaption>
             </figure>
           )}
         </section>
