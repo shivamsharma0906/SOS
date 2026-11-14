@@ -45,7 +45,7 @@ assert(canonMatch && canonMatch[1] === 'https://www.sosorth.com/blog/robotic-kne
 assert(html.includes('<meta property="og:type" content="article" />'), 'OG type is article');
 assert(html.includes('<meta property="og:url" content="https://www.sosorth.com/blog/robotic-knee-replacement-recovery-mumbai" />'), 'OG url match');
 assert(html.includes('<meta property="og:title" content="Planning Robotic Knee Replacement Surgery in Mumbai? Know the Recovery Time" />'), 'OG title match');
-assert(html.includes('<meta property="og:image" content="https://www.sosorth.com/assets/robotic-knee-recovery-mumbai.png" />'), 'OG image match');
+assert(html.includes('<meta property="og:image" content="https://www.sosorth.com/blog/robotic-knee-replacement-recovery-mumbai/robotic-knee-recovery-mumbai.webp" />'), 'OG image match');
 
 // 5. Twitter Card
 assert(html.includes('<meta name="twitter:card" content="summary_large_image" />'), 'Twitter card is summary_large_image');

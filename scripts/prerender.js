@@ -163,11 +163,11 @@ const post1 = {
   metaTitle: 'Robotic Knee Replacement Mumbai | SOS Orthopedic Clinic',
   metaDescription: 'Learn about robotic knee replacement surgery, its benefits, risks, and recovery, and understand knee replacement treatment options.',
   keywords: 'Robotic Knee Replacement Mumbai, knee replacement surgery benefits, robotic knee surgery recovery, knee osteoarthritis treatment, SOS Speciality Orthopedic Clinic',
-  ogImage: 'https://www.sosorth.com/assets/robotic-knee-consultation.webp',
+  ogImage: 'https://www.sosorth.com/blog/robotic-knee-replacement-surgery/robotic-knee-consultation.webp',
   ogType: 'article',
   preloadImage: {
-    src: '/assets/robotic-knee-consultation.webp',
-    srcSet: '/assets/robotic-knee-consultation-480w.webp 480w, /assets/robotic-knee-consultation-800w.webp 800w, /assets/robotic-knee-consultation.webp 1730w',
+    src: '/blog/robotic-knee-replacement-surgery/robotic-knee-consultation.webp',
+    srcSet: '/blog/robotic-knee-replacement-surgery/robotic-knee-consultation-480w.webp 480w, /blog/robotic-knee-replacement-surgery/robotic-knee-consultation-800w.webp 800w, /blog/robotic-knee-replacement-surgery/robotic-knee-consultation.webp 1730w',
     sizes: '(max-width: 768px) 100vw, 820px'
   },
   h1: 'What Is Robotic Knee Replacement Surgery? Benefits, Risks and Recovery',
@@ -464,7 +464,7 @@ ${prerenderNavbarHtml}
               <span> &bull; Last updated: <time datetime="2026-10-14">October 14, 2026</time></span>
             </div>
             <figure class="blog-hero-figure">
-              <img src="/assets/robotic-knee-consultation.webp" srcset="/assets/robotic-knee-consultation-480w.webp 480w, /assets/robotic-knee-consultation-800w.webp 800w, /assets/robotic-knee-consultation.webp 1730w" sizes="(max-width: 768px) 100vw, 820px" alt="Robotic knee replacement surgery for knee joint treatment" width="1280" height="720" loading="eager" fetchpriority="high" decoding="async" class="blog-hero-img" />
+              <img src="/blog/robotic-knee-replacement-surgery/robotic-knee-consultation.webp" srcset="/blog/robotic-knee-replacement-surgery/robotic-knee-consultation-480w.webp 480w, /blog/robotic-knee-replacement-surgery/robotic-knee-consultation-800w.webp 800w, /blog/robotic-knee-replacement-surgery/robotic-knee-consultation.webp 1730w" sizes="(max-width: 768px) 100vw, 820px" alt="Robotic knee replacement surgery for knee joint treatment" width="1730" height="909" loading="eager" fetchpriority="high" decoding="async" class="blog-hero-img" />
             </figure>
           </header>
 
@@ -517,7 +517,7 @@ ${prerenderNavbarHtml}
               </ol>
 
               <figure class="blog-body-figure">
-                <img src="/assets/blog-featured-robotic.webp" srcset="/assets/blog-featured-robotic-480w.webp 480w, /assets/blog-featured-robotic-800w.webp 800w, /assets/blog-featured-robotic.webp 1376w" sizes="(max-width: 768px) 100vw, 820px" alt="Intraoperative robotic knee replacement surgical guidance and bone preparation" width="1280" height="720" loading="lazy" decoding="async" class="blog-hero-img" />
+                <img src="/blog/robotic-knee-replacement-surgery/blog-featured-robotic.webp" srcset="/blog/robotic-knee-replacement-surgery/blog-featured-robotic-480w.webp 480w, /blog/robotic-knee-replacement-surgery/blog-featured-robotic-800w.webp 800w, /blog/robotic-knee-replacement-surgery/blog-featured-robotic.webp 1376w" sizes="(max-width: 768px) 100vw, 820px" alt="Intraoperative robotic knee replacement surgical guidance and bone preparation" width="1280" height="720" loading="lazy" decoding="async" class="blog-hero-img" />
               </figure>
             </section>
 
@@ -681,11 +681,11 @@ const post2 = {
   metaTitle: 'Planning Robotic Knee Replacement Surgery in Mumbai? Know the Recovery Time',
   metaDescription: 'Learn about robotic knee replacement recovery, with insights into recovery timelines, pain management, physiotherapy, and treatment considerations for patients exploring care in Mumbai.',
   keywords: 'Robotic knee replacement recovery Mumbai, robotic knee recovery timeline, knee replacement pain management, physiotherapy after knee replacement Mumbai, robotic knee surgery recovery time',
-  ogImage: 'https://www.sosorth.com/assets/robotic-knee-recovery-mumbai.webp',
+  ogImage: 'https://www.sosorth.com/blog/robotic-knee-replacement-recovery-mumbai/robotic-knee-recovery-mumbai.webp',
   ogType: 'article',
   preloadImage: {
-    src: '/assets/robotic-knee-recovery-mumbai.webp',
-    srcSet: '/assets/robotic-knee-recovery-mumbai-480w.webp 480w, /assets/robotic-knee-recovery-mumbai-800w.webp 800w, /assets/robotic-knee-recovery-mumbai.webp 1672w',
+    src: '/blog/robotic-knee-replacement-recovery-mumbai/robotic-knee-recovery-mumbai.webp',
+    srcSet: '/blog/robotic-knee-replacement-recovery-mumbai/robotic-knee-recovery-mumbai-480w.webp 480w, /blog/robotic-knee-replacement-recovery-mumbai/robotic-knee-recovery-mumbai-800w.webp 800w, /blog/robotic-knee-replacement-recovery-mumbai/robotic-knee-recovery-mumbai.webp 1672w',
     sizes: '(max-width: 768px) 100vw, 820px'
   },
   h1: 'How Long Does It Take to Recover After Robotic Knee Replacement Surgery?',
@@ -817,7 +817,7 @@ ${prerenderNavbarHtml}
               <span> &bull; Last updated: <time datetime="2026-10-26">October 26, 2026</time></span>
             </div>
             <figure class="blog-hero-figure">
-              <img src="/assets/robotic-knee-recovery-mumbai.webp" srcset="/assets/robotic-knee-recovery-mumbai-480w.webp 480w, /assets/robotic-knee-recovery-mumbai-800w.webp 800w, /assets/robotic-knee-recovery-mumbai.webp 1672w" sizes="(max-width: 768px) 100vw, 820px" alt="Robotic knee replacement surgery and knee recovery in mumbai" width="1280" height="720" loading="eager" fetchpriority="high" decoding="async" class="blog-hero-img" />
+              <img src="/blog/robotic-knee-replacement-recovery-mumbai/robotic-knee-recovery-mumbai.webp" srcset="/blog/robotic-knee-replacement-recovery-mumbai/robotic-knee-recovery-mumbai-480w.webp 480w, /blog/robotic-knee-replacement-recovery-mumbai/robotic-knee-recovery-mumbai-800w.webp 800w, /blog/robotic-knee-replacement-recovery-mumbai/robotic-knee-recovery-mumbai.webp 1672w" sizes="(max-width: 768px) 100vw, 820px" alt="Robotic knee replacement surgery and knee recovery in mumbai" width="1280" height="720" loading="eager" fetchpriority="high" decoding="async" class="blog-hero-img" />
             </figure>
           </header>
 
@@ -860,7 +860,7 @@ ${prerenderNavbarHtml}
               </div>
 
               <figure class="blog-body-figure">
-                <img src="/assets/robotic-knee-replacement-procedure-mumbai.webp" srcset="/assets/robotic-knee-replacement-procedure-mumbai-480w.webp 480w, /assets/robotic-knee-replacement-procedure-mumbai-800w.webp 800w, /assets/robotic-knee-replacement-procedure-mumbai.webp 1672w" sizes="(max-width: 768px) 100vw, 820px" alt="Robotic knee replacement surgery procedure in mumbai" width="1280" height="720" loading="lazy" decoding="async" class="blog-hero-img" />
+                <img src="/blog/robotic-knee-replacement-recovery-mumbai/robotic-knee-replacement-procedure-mumbai.webp" srcset="/blog/robotic-knee-replacement-recovery-mumbai/robotic-knee-replacement-procedure-mumbai-480w.webp 480w, /blog/robotic-knee-replacement-recovery-mumbai/robotic-knee-replacement-procedure-mumbai-800w.webp 800w, /blog/robotic-knee-replacement-recovery-mumbai/robotic-knee-replacement-procedure-mumbai.webp 1672w" sizes="(max-width: 768px) 100vw, 820px" alt="Robotic knee replacement surgery procedure in mumbai" width="1280" height="720" loading="lazy" decoding="async" class="blog-hero-img" />
               </figure>
             </section>
 
@@ -889,7 +889,7 @@ ${prerenderNavbarHtml}
               <p>If you are considering robotic knee replacement in Mumbai, ask your surgeon whether it suits your condition and treatment goals. You can also consult experienced orthopaedic doctors to discuss your treatment options, benefits, limitations, alternatives, and risks before deciding. Before making a decision, consult experienced robotic knee replacement surgeons to understand your treatment options, and learn more about the <a href="/blog/robotic-knee-replacement-surgery" class="blog-internal-link">robotic knee replacement procedure</a>, including its potential benefits, limitations, and suitability for your condition.</p>
 
               <figure class="blog-body-figure">
-                <img src="/assets/robotic-knee-recovery-consultation.webp" srcset="/assets/robotic-knee-recovery-consultation-480w.webp 480w, /assets/robotic-knee-recovery-consultation-800w.webp 800w, /assets/robotic-knee-recovery-consultation.webp 1730w" sizes="(max-width: 768px) 100vw, 820px" alt="Orthopaedic surgeon discussing knee replacement surgery with a patient in mumbai" width="1280" height="720" loading="lazy" decoding="async" class="blog-hero-img" />
+                <img src="/blog/robotic-knee-replacement-recovery-mumbai/robotic-knee-recovery-consultation.webp" srcset="/blog/robotic-knee-replacement-recovery-mumbai/robotic-knee-recovery-consultation-480w.webp 480w, /blog/robotic-knee-replacement-recovery-mumbai/robotic-knee-recovery-consultation-800w.webp 800w, /blog/robotic-knee-replacement-recovery-mumbai/robotic-knee-recovery-consultation.webp 1730w" sizes="(max-width: 768px) 100vw, 820px" alt="Orthopaedic surgeon discussing knee replacement surgery with a patient in mumbai" width="1280" height="720" loading="lazy" decoding="async" class="blog-hero-img" />
               </figure>
             </section>
 
@@ -989,11 +989,11 @@ const post3 = {
   metaTitle: 'Understanding Back Pain in Young Adults | Orthopedic Care in Mumbai',
   metaDescription: 'Discover why back pain in young adults is becoming common, learn prevention tips, and know when to consult an orthopedic spine doctor in Mumbai.',
   keywords: 'Back pain in young adults, spine doctor Mumbai, causes of back pain young adults, orthopedic surgeon Mumbai, poor posture back pain, herniated disc young adults, SOS Speciality Orthopedic Clinic',
-  ogImage: 'https://www.sosorth.com/assets/herniated-disc-back-pain-young-adults.webp',
+  ogImage: 'https://www.sosorth.com/blog/back-pain-in-young-adults/herniated-disc-back-pain-young-adults.webp',
   ogType: 'article',
   preloadImage: {
-    src: '/assets/herniated-disc-back-pain-young-adults.webp',
-    srcSet: '/assets/herniated-disc-back-pain-young-adults-480w.webp 480w, /assets/herniated-disc-back-pain-young-adults-800w.webp 800w, /assets/herniated-disc-back-pain-young-adults.webp 1702w',
+    src: '/blog/back-pain-in-young-adults/herniated-disc-back-pain-young-adults.webp',
+    srcSet: '/blog/back-pain-in-young-adults/herniated-disc-back-pain-young-adults-480w.webp 480w, /blog/back-pain-in-young-adults/herniated-disc-back-pain-young-adults-800w.webp 800w, /blog/back-pain-in-young-adults/herniated-disc-back-pain-young-adults.webp 1702w',
     sizes: '(max-width: 768px) 100vw, 820px'
   },
   h1: 'Why Is Back Pain Becoming Common Among Young Adults?',
@@ -1126,7 +1126,7 @@ ${prerenderNavbarHtml}
               <span>6 min read</span>
             </div>
             <figure class="blog-hero-figure">
-              <img src="/assets/herniated-disc-back-pain-young-adults.webp" srcset="/assets/herniated-disc-back-pain-young-adults-480w.webp 480w, /assets/herniated-disc-back-pain-young-adults-800w.webp 800w, /assets/herniated-disc-back-pain-young-adults.webp 1702w" sizes="(max-width: 768px) 100vw, 820px" alt="Herniated spinal disc causing nerve compression and back pain in young adults" width="1702" height="924" loading="eager" fetchpriority="high" decoding="async" class="blog-hero-img" />
+              <img src="/blog/back-pain-in-young-adults/herniated-disc-back-pain-young-adults.webp" srcset="/blog/back-pain-in-young-adults/herniated-disc-back-pain-young-adults-480w.webp 480w, /blog/back-pain-in-young-adults/herniated-disc-back-pain-young-adults-800w.webp 800w, /blog/back-pain-in-young-adults/herniated-disc-back-pain-young-adults.webp 1702w" sizes="(max-width: 768px) 100vw, 820px" alt="Herniated spinal disc causing nerve compression and back pain in young adults" width="1702" height="924" loading="eager" fetchpriority="high" decoding="async" class="blog-hero-img" />
             </figure>
           </header>
 
@@ -1154,7 +1154,7 @@ ${prerenderNavbarHtml}
               </div>
 
               <figure class="blog-body-figure">
-                <img src="/assets/poor-posture-ergonomics-back-pain.webp" srcset="/assets/poor-posture-ergonomics-back-pain-480w.webp 480w, /assets/poor-posture-ergonomics-back-pain-800w.webp 800w, /assets/poor-posture-ergonomics-back-pain.webp 1666w" sizes="(max-width: 768px) 100vw, 820px" alt="Poor posture and bone and joint strain contributing to back pain" width="1666" height="944" loading="lazy" decoding="async" class="blog-hero-img" />
+                <img src="/blog/back-pain-in-young-adults/poor-posture-ergonomics-back-pain.webp" srcset="/blog/back-pain-in-young-adults/poor-posture-ergonomics-back-pain-480w.webp 480w, /blog/back-pain-in-young-adults/poor-posture-ergonomics-back-pain-800w.webp 800w, /blog/back-pain-in-young-adults/poor-posture-ergonomics-back-pain.webp 1666w" sizes="(max-width: 768px) 100vw, 820px" alt="Poor posture and bone and joint strain contributing to back pain" width="1666" height="944" loading="lazy" decoding="async" class="blog-hero-img" />
               </figure>
 
               <div class="blog-subsection">
@@ -1188,7 +1188,7 @@ ${prerenderNavbarHtml}
               <p>For someone searching for a doctor for orthopedic concerns, choosing a qualified clinician who can assess symptoms and recommend suitable treatment is more important than relying on a general remedy. If back pain continues to affect daily life, you can <a href="/contact" class="blog-internal-link">contact SOS Speciality Orthopedic Clinic</a> to enquire about consultations.</p>
 
               <figure class="blog-body-figure">
-                <img src="/assets/young-adult-back-neck-pain.webp" srcset="/assets/young-adult-back-neck-pain-480w.webp 480w, /assets/young-adult-back-neck-pain-800w.webp 800w, /assets/young-adult-back-neck-pain.webp 1536w" sizes="(max-width: 768px) 100vw, 820px" alt="Back pain in young adults affecting the neck and lower back" width="1536" height="1024" loading="lazy" decoding="async" class="blog-hero-img" />
+                <img src="/blog/back-pain-in-young-adults/young-adult-back-neck-pain.webp" srcset="/blog/back-pain-in-young-adults/young-adult-back-neck-pain-480w.webp 480w, /blog/back-pain-in-young-adults/young-adult-back-neck-pain-800w.webp 800w, /blog/back-pain-in-young-adults/young-adult-back-neck-pain.webp 1536w" sizes="(max-width: 768px) 100vw, 820px" alt="Back pain in young adults affecting the neck and lower back" width="1536" height="1024" loading="lazy" decoding="async" class="blog-hero-img" />
               </figure>
             </section>
 
@@ -1302,11 +1302,11 @@ const post4 = {
   metaTitle: 'Ankle Sprain & Fracture: Causes, Symptoms and Treatment | Mumbai-63',
   metaDescription: 'Understand ankle sprain and ankle fracture symptoms, diagnosis, and recovery options at SOS Speciality Orthopedic Clinic in Mumbai.',
   keywords: 'Ankle sprain vs ankle fracture, broken ankle symptoms, ankle ligament injury, fracture care Mumbai, orthopedic trauma doctor Mumbai, ankle swelling treatment, SOS Speciality Orthopedic Clinic',
-  ogImage: 'https://www.sosorth.com/assets/ankle-joint-anatomy-sprain-fracture.webp',
+  ogImage: 'https://www.sosorth.com/blog/ankle-sprain-vs-ankle-fracture/ankle-joint-anatomy-sprain-fracture.webp',
   ogType: 'article',
   preloadImage: {
-    src: '/assets/ankle-joint-anatomy-sprain-fracture.webp',
-    srcSet: '/assets/ankle-joint-anatomy-sprain-fracture-480w.webp 480w, /assets/ankle-joint-anatomy-sprain-fracture-800w.webp 800w, /assets/ankle-joint-anatomy-sprain-fracture-1200w.webp 1200w, /assets/ankle-joint-anatomy-sprain-fracture.webp 2110w',
+    src: '/blog/ankle-sprain-vs-ankle-fracture/ankle-joint-anatomy-sprain-fracture.webp',
+    srcSet: '/blog/ankle-sprain-vs-ankle-fracture/ankle-joint-anatomy-sprain-fracture-480w.webp 480w, /blog/ankle-sprain-vs-ankle-fracture/ankle-joint-anatomy-sprain-fracture-800w.webp 800w, /blog/ankle-sprain-vs-ankle-fracture/ankle-joint-anatomy-sprain-fracture-1200w.webp 1200w, /blog/ankle-sprain-vs-ankle-fracture/ankle-joint-anatomy-sprain-fracture.webp 2110w',
     sizes: '(max-width: 768px) 100vw, 820px'
   },
   h1: 'Ankle Sprain vs. Ankle Fracture: How to Identify the Difference',
@@ -1341,7 +1341,7 @@ const structuredData4 = [
         "url": "https://www.sosorth.com/assets/logo.png"
       }
     },
-    "image": "https://www.sosorth.com/assets/ankle-joint-anatomy-sprain-fracture.webp",
+    "image": "https://www.sosorth.com/blog/ankle-sprain-vs-ankle-fracture/ankle-joint-anatomy-sprain-fracture.webp",
     "about": [
       { "@type": "MedicalCondition", "name": "Ankle Sprain" },
       { "@type": "MedicalCondition", "name": "Ankle Fracture" }
@@ -1446,8 +1446,8 @@ ${prerenderNavbarHtml}
             </div>
             <figure class="blog-hero-figure">
               <img
-                src="/assets/ankle-joint-anatomy-sprain-fracture.webp"
-                srcset="/assets/ankle-joint-anatomy-sprain-fracture-480w.webp 480w, /assets/ankle-joint-anatomy-sprain-fracture-800w.webp 800w, /assets/ankle-joint-anatomy-sprain-fracture-1200w.webp 1200w, /assets/ankle-joint-anatomy-sprain-fracture.webp 2110w"
+                src="/blog/ankle-sprain-vs-ankle-fracture/ankle-joint-anatomy-sprain-fracture.webp"
+                srcset="/blog/ankle-sprain-vs-ankle-fracture/ankle-joint-anatomy-sprain-fracture-480w.webp 480w, /blog/ankle-sprain-vs-ankle-fracture/ankle-joint-anatomy-sprain-fracture-800w.webp 800w, /blog/ankle-sprain-vs-ankle-fracture/ankle-joint-anatomy-sprain-fracture-1200w.webp 1200w, /blog/ankle-sprain-vs-ankle-fracture/ankle-joint-anatomy-sprain-fracture.webp 2110w"
                 sizes="(max-width: 768px) 100vw, 820px"
                 alt="Ankle joint anatomy showing ligaments and bones affected by sprains and fractures"
                 width="2110"
@@ -1510,7 +1510,7 @@ ${prerenderNavbarHtml}
                 <p>Initial care may include rest, ice, compression, and elevation (RICE) to help manage pain and swelling. A doctor may recommend support, medication, or limiting weight-bearing, depending on the injury. More significant ligament injuries may need a structured rehabilitation plan.</p>
                 <p>When appropriate, <a href="/physiotherapy" class="blog-internal-link">physiotherapy treatment</a> can help restore ankle movement, strength, balance, and stability. Exercises should be progressed according to the clinician's advice.</p>
                 <figure class="blog-body-figure">
-                  <img src="/assets/ankle-sprain-ligament-injury.webp" srcset="/assets/ankle-sprain-ligament-injury-480w.webp 480w, /assets/ankle-sprain-ligament-injury-800w.webp 800w, /assets/ankle-sprain-ligament-injury-1200w.webp 1200w, /assets/ankle-sprain-ligament-injury.webp 1800w" sizes="(max-width: 768px) 100vw, 820px" alt="Ankle sprain showing ligament injury and swelling around the ankle joint" width="1800" height="1193" loading="lazy" decoding="async" class="blog-body-img" />
+                  <img src="/blog/ankle-sprain-vs-ankle-fracture/ankle-sprain-ligament-injury.webp" srcset="/blog/ankle-sprain-vs-ankle-fracture/ankle-sprain-ligament-injury-480w.webp 480w, /blog/ankle-sprain-vs-ankle-fracture/ankle-sprain-ligament-injury-800w.webp 800w, /blog/ankle-sprain-vs-ankle-fracture/ankle-sprain-ligament-injury-1200w.webp 1200w, /blog/ankle-sprain-vs-ankle-fracture/ankle-sprain-ligament-injury.webp 1800w" sizes="(max-width: 768px) 100vw, 820px" alt="Ankle sprain showing ligament injury and swelling around the ankle joint" width="1800" height="1193" loading="lazy" decoding="async" class="blog-body-img" />
                 </figure>
               </div>
 
@@ -1518,7 +1518,7 @@ ${prerenderNavbarHtml}
                 <h3 class="blog-h3">Ankle Fracture Treatment</h3>
                 <p>Some stable fractures can be treated with a cast, brace, or walking boot to protect the bone while it heals. Weight-bearing may need to be restricted. Displaced or unstable fractures may require surgery to realign and stabilise the bones. Follow-up checks help monitor healing, and rehabilitation may be recommended when suitable.</p>
                 <figure class="blog-body-figure">
-                  <img src="/assets/ankle-fracture-bone-break.webp" srcset="/assets/ankle-fracture-bone-break-480w.webp 480w, /assets/ankle-fracture-bone-break-800w.webp 800w, /assets/ankle-fracture-bone-break-1200w.webp 1200w, /assets/ankle-fracture-bone-break.webp 1942w" sizes="(max-width: 768px) 100vw, 820px" alt="Ankle fracture showing a break in the bones around the ankle joint" width="1942" height="1466" loading="lazy" decoding="async" class="blog-body-img" />
+                  <img src="/blog/ankle-sprain-vs-ankle-fracture/ankle-fracture-bone-break.webp" srcset="/blog/ankle-sprain-vs-ankle-fracture/ankle-fracture-bone-break-480w.webp 480w, /blog/ankle-sprain-vs-ankle-fracture/ankle-fracture-bone-break-800w.webp 800w, /blog/ankle-sprain-vs-ankle-fracture/ankle-fracture-bone-break-1200w.webp 1200w, /blog/ankle-sprain-vs-ankle-fracture/ankle-fracture-bone-break.webp 1942w" sizes="(max-width: 768px) 100vw, 820px" alt="Ankle fracture showing a break in the bones around the ankle joint" width="1942" height="1466" loading="lazy" decoding="async" class="blog-body-img" />
                 </figure>
               </div>
             </section>

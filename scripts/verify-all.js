@@ -27,21 +27,27 @@ function getAllFiles(dir, exts = ['.ts', '.tsx', '.html', '.json']) {
 
 const srcFiles = getAllFiles(SRC_DIR);
 
-// 2. Check all asset references: /assets/...
+// 2. Check all asset references: /assets/... and /blog/...
 let assetErrors = 0;
-const assetRegex = /['"`](\/assets\/[^'"`]+)['"`]/g;
+const assetRegex = /['"`](\/(?:assets|blog)\/[^'"`]+)['"`]/g;
 
 console.log('\n[1/3] Checking asset references in src/...');
 srcFiles.forEach(file => {
   const content = fs.readFileSync(file, 'utf8');
   let match;
   while ((match = assetRegex.exec(content)) !== null) {
-    const assetUrl = match[1];
-    const decodedPath = decodeURIComponent(assetUrl);
-    const localAssetPath = path.join(PUBLIC_DIR, decodedPath);
-    if (!fs.existsSync(localAssetPath)) {
-      console.error(`❌ BROKEN ASSET: "${assetUrl}" referenced in ${path.relative(ROOT_DIR, file)} does not exist at ${localAssetPath}`);
-      assetErrors++;
+    const rawVal = match[1];
+    // If it's a srcset with multiple items separated by comma, test each one
+    const subAssets = rawVal.split(',').map(s => s.trim().split(/\s+/)[0]);
+    for (const assetUrl of subAssets) {
+      if (!assetUrl.startsWith('/assets/') && !assetUrl.startsWith('/blog/')) continue;
+      if (assetUrl.startsWith('/blog/') && !/\.(webp|jpg|jpeg|png|svg|mp4)$/i.test(assetUrl)) continue;
+      const decodedPath = decodeURIComponent(assetUrl);
+      const localAssetPath = path.join(PUBLIC_DIR, decodedPath);
+      if (!fs.existsSync(localAssetPath)) {
+        console.error(`❌ BROKEN ASSET: "${assetUrl}" referenced in ${path.relative(ROOT_DIR, file)} does not exist at ${localAssetPath}`);
+        assetErrors++;
+      }
     }
   }
 });
@@ -75,6 +81,10 @@ const knownRoutes = new Set([
   '/blog/robotic-knee-replacement-recovery-mumbai',
   '/robotic-knee-replacement-recovery-mumbai',
   '/robotic-knee-replacement-surgery',
+  '/blog/back-pain-in-young-adults',
+  '/back-pain-in-young-adults',
+  '/blog/ankle-sprain-vs-ankle-fracture',
+  '/ankle-sprain-vs-ankle-fracture',
   '/testimonials',
   '/contact',
   '/privacy-policy',
@@ -90,7 +100,7 @@ srcFiles.forEach(file => {
   while ((match = linkRegex.exec(content)) !== null) {
     const route = match[1];
     // Skip asset links, api, or external
-    if (route.startsWith('/assets/') || route.startsWith('/favicon') || route.startsWith('/robots.txt') || route.startsWith('/sitemap.xml') || route.startsWith('/vite.svg')) {
+    if (route.startsWith('/assets/') || (route.startsWith('/blog/') && /\.(webp|jpg|png|svg)$/i.test(route)) || route.startsWith('/favicon') || route.startsWith('/robots.txt') || route.startsWith('/sitemap.xml') || route.startsWith('/vite.svg')) {
       continue;
     }
     
