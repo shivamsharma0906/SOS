@@ -61,6 +61,7 @@ export const App: React.FC = () => {
             <Route path="/robotic-knee-replacement-recovery-mumbai" element={<Navigate to="/blog/robotic-knee-replacement-recovery-mumbai" replace />} />
             <Route path="/robotic-knee-replacement-surgery" element={<Navigate to="/blog/robotic-knee-replacement-surgery" replace />} />
             <Route path="/back-pain-in-young-adults" element={<Navigate to="/blog/back-pain-in-young-adults" replace />} />
+            <Route path="/ankle-sprain-vs-ankle-fracture" element={<Navigate to="/blog/ankle-sprain-vs-ankle-fracture" replace />} />
             <Route path="/testimonials" element={<Navigate to="/blog" replace />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />

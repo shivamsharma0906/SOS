@@ -331,13 +331,32 @@ const prerenderNavbarHtml = `
 <div class="navbar-spacer" style="width: 100%; flex-shrink: 0; pointer-events: none; visibility: hidden;" aria-hidden="true"></div>
 `;
 
-function getPrerenderSidebarHtml(relatedSlug, relatedTitle, isSpine = false) {
-  const deskName = isSpine ? 'Spine &amp; Back Care Desk' : 'Joint Replacement Desk';
+function getPrerenderSidebarHtml(relatedSlug, relatedTitle, isSpineOrCategory = false) {
+  const isSpine = isSpineOrCategory === true || isSpineOrCategory === 'spine';
+  const isTrauma = isSpineOrCategory === 'trauma';
+  const deskName = isSpine 
+    ? 'Spine &amp; Back Care Desk' 
+    : isTrauma 
+    ? 'Trauma &amp; Fracture Care Desk' 
+    : 'Joint Replacement Desk';
   const deskText = isSpine 
     ? 'Consultant orthopedic spine OPDs, sciatica decompression, digital diagnostics, and posture rehabilitation across Mumbai.'
+    : isTrauma
+    ? 'Consultant fracture care, ankle ligament rehabilitation, digital &amp; at-home X-ray, and complex injury reconstructions across Mumbai.'
     : 'Consultant orthopedic surgeon OPDs, robotic knee replacements, joint preservation therapies, and rapid-recovery rehabilitation across Mumbai.';
-  const check2 = isSpine ? 'Minimally Invasive Spine &amp; Disc Care' : 'Sub-millimeter Robotic Precision';
-  const check3 = isSpine ? 'Dedicated Posture &amp; Physio Guidance' : 'Surgeon-Guided Rehabilitation';
+  const check2 = isSpine 
+    ? 'Minimally Invasive Spine &amp; Disc Care' 
+    : isTrauma 
+    ? 'Clinic &amp; Home X-Ray Diagnostics' 
+    : 'Sub-millimeter Robotic Precision';
+  const check3 = isSpine 
+    ? 'Dedicated Posture &amp; Physio Guidance' 
+    : isTrauma 
+    ? 'Surgeon-Guided Rehabilitation &amp; Cast Care' 
+    : 'Surgeon-Guided Rehabilitation';
+
+  const link1Href = isSpine ? '/services/spine-care' : isTrauma ? '/blog/back-pain-in-young-adults' : `/blog/${relatedSlug}`;
+  const link1Title = isSpine ? 'Spine Care &amp; Sciatica Services' : isTrauma ? 'Back Pain in Young Adults' : relatedTitle;
 
   return `
         <aside class="blog-article-sidebar" aria-label="Article Sidebar">
@@ -383,8 +402,8 @@ function getPrerenderSidebarHtml(relatedSlug, relatedTitle, isSpine = false) {
               <h4 class="sidebar-links-title">Related SOS Guides &amp; Services</h4>
               <ul class="sidebar-links-list">
                 <li>
-                  <a href="${isSpine ? '/services/spine-care' : `/blog/${relatedSlug}`}" class="sidebar-nav-link">
-                    <span>${isSpine ? 'Spine Care &amp; Sciatica Services' : relatedTitle}</span>
+                  <a href="${link1Href}" class="sidebar-nav-link">
+                    <span>${link1Title}</span>
                   </a>
                 </li>
                 <li>
@@ -393,8 +412,8 @@ function getPrerenderSidebarHtml(relatedSlug, relatedTitle, isSpine = false) {
                   </a>
                 </li>
                 <li>
-                  <a href="/services/joint-replacement" class="sidebar-nav-link">
-                    <span>Joint Replacement Services</span>
+                  <a href="/services/pediatric-trauma" class="sidebar-nav-link">
+                    <span>Trauma &amp; Fracture Services</span>
                   </a>
                 </li>
                 <li>
@@ -1272,6 +1291,340 @@ renderPage({
     path.resolve(distDir, `${post3.slug}.html`)
   ]
 });
+
+// ========================================================
+// 2.6. BLOG ARTICLE 4: Ankle Sprain vs. Ankle Fracture: How to Identify the Difference
+// ========================================================
+const post4 = {
+  slug: 'ankle-sprain-vs-ankle-fracture',
+  url: 'https://www.sosorth.com/blog/ankle-sprain-vs-ankle-fracture',
+  canonicalUrl: 'https://www.sosorth.com/blog/ankle-sprain-vs-ankle-fracture',
+  metaTitle: 'Ankle Sprain & Fracture: Causes, Symptoms and Treatment | Mumbai-63',
+  metaDescription: 'Understand ankle sprain and ankle fracture symptoms, diagnosis, and recovery options at SOS Speciality Orthopedic Clinic in Mumbai.',
+  keywords: 'Ankle sprain vs ankle fracture, broken ankle symptoms, ankle ligament injury, fracture care Mumbai, orthopedic trauma doctor Mumbai, ankle swelling treatment, SOS Speciality Orthopedic Clinic',
+  ogImage: 'https://www.sosorth.com/assets/ankle-joint-anatomy-sprain-fracture.webp',
+  ogType: 'article',
+  preloadImage: {
+    src: '/assets/ankle-joint-anatomy-sprain-fracture.webp',
+    srcSet: '/assets/ankle-joint-anatomy-sprain-fracture-480w.webp 480w, /assets/ankle-joint-anatomy-sprain-fracture-800w.webp 800w, /assets/ankle-joint-anatomy-sprain-fracture-1200w.webp 1200w, /assets/ankle-joint-anatomy-sprain-fracture.webp 2110w',
+    sizes: '(max-width: 768px) 100vw, 820px'
+  },
+  h1: 'Ankle Sprain vs. Ankle Fracture: How to Identify the Difference',
+  datePublished: '2026-11-14',
+  dateModified: '2026-11-14',
+  author: 'Dr. Hardik Desai'
+};
+
+const structuredData4 = [
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "Ankle Sprain vs. Ankle Fracture: How to Identify the Difference",
+    "headline": "Ankle Sprain vs. Ankle Fracture: How to Identify the Difference",
+    "description": "Understand ankle sprain and ankle fracture symptoms, diagnosis, and recovery options at SOS Speciality Orthopedic Clinic in Mumbai.",
+    "url": "https://www.sosorth.com/blog/ankle-sprain-vs-ankle-fracture",
+    "mainEntityOfPage": "https://www.sosorth.com/blog/ankle-sprain-vs-ankle-fracture",
+    "datePublished": "2026-11-14",
+    "dateModified": "2026-11-14",
+    "author": {
+      "@type": "Person",
+      "name": "Dr. Hardik Desai",
+      "jobTitle": "Consultant Trauma and Pediatric Orthopaedic Surgeon",
+      "url": "https://www.sosorth.com/mentors"
+    },
+    "publisher": {
+      "@type": "MedicalOrganization",
+      "name": "SOS Speciality Orthopedic Clinic",
+      "url": "https://www.sosorth.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.sosorth.com/assets/logo.png"
+      }
+    },
+    "image": "https://www.sosorth.com/assets/ankle-joint-anatomy-sprain-fracture.webp",
+    "about": [
+      { "@type": "MedicalCondition", "name": "Ankle Sprain" },
+      { "@type": "MedicalCondition", "name": "Ankle Fracture" }
+    ],
+    "medicalAudience": {
+      "@type": "MedicalAudience",
+      "audienceType": "Patients, Athletes, and Caregivers"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How Do I Know If I Fractured My Ankle or Just Sprained It?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A sprain affects the ligaments, while a fracture is a break in an ankle bone. Both can cause pain, swelling, bruising, and difficulty walking. A clinical examination and, when needed, an X-ray help confirm the injury."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How to Identify Sprain or Fracture?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pain around a ligament may suggest a sprain, while tenderness directly over a bone may raise concern about a fracture. However, symptoms overlap and cannot confirm the diagnosis. A doctor can assess the ankle and decide whether an X-ray is needed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What Are the 7 Signs of a Fracture?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Possible signs include pain, swelling, bruising, tenderness over the bone, difficulty bearing weight, restricted movement, and visible deformity. Not every fracture causes all these signs. Seek medical assessment if you suspect a fracture."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I Still Walk If My Ankle Is Fractured?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Some people can walk with certain stable ankle fractures. Being able to walk does not rule out a fracture. Get medical advice before continuing to put weight on an injured ankle."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.sosorth.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Clinical Guides & Blog",
+        "item": "https://www.sosorth.com/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Ankle Sprain vs. Ankle Fracture",
+        "item": "https://www.sosorth.com/blog/ankle-sprain-vs-ankle-fracture"
+      }
+    ]
+  }
+];
+
+const prerenderedArticleContent4 = `
+${prerenderNavbarHtml}
+<main style="flex-grow: 1;">
+<div class="blog-article-page-wrap">
+  <nav aria-label="Breadcrumb" class="blog-breadcrumb-nav">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        <li class="breadcrumb-item"><a href="/">Home</a> / </li>
+        <li class="breadcrumb-item"><a href="/blog">Blog</a> / </li>
+        <li class="breadcrumb-item active" aria-current="page">${post4.h1}</li>
+      </ol>
+    </div>
+  </nav>
+
+  <article class="blog-article-root" itemscope itemtype="https://schema.org/MedicalWebPage">
+    <div class="container">
+      <div class="blog-article-layout-grid">
+        <div class="blog-article-main-col">
+          <header class="blog-article-header">
+            <div class="blog-header-badge-row">
+              <span class="blog-category-tag">Trauma &amp; Fracture Care</span>
+              <span class="blog-editorial-badge">Medically Reviewed</span>
+            </div>
+            <h1 class="blog-article-h1" itemprop="headline">${post4.h1}</h1>
+            <div class="blog-article-meta-bar">
+              <span>Author: <strong class="meta-author-name">${post4.author}</strong></span>
+              <span> &bull; Last updated: <time datetime="2026-11-14">November 14, 2026</time></span>
+              <span> &bull; 6 min read</span>
+            </div>
+            <figure class="blog-hero-figure">
+              <img
+                src="/assets/ankle-joint-anatomy-sprain-fracture.webp"
+                srcset="/assets/ankle-joint-anatomy-sprain-fracture-480w.webp 480w, /assets/ankle-joint-anatomy-sprain-fracture-800w.webp 800w, /assets/ankle-joint-anatomy-sprain-fracture-1200w.webp 1200w, /assets/ankle-joint-anatomy-sprain-fracture.webp 2110w"
+                sizes="(max-width: 768px) 100vw, 820px"
+                alt="Ankle joint anatomy showing ligaments and bones affected by sprains and fractures"
+                width="2110"
+                height="1400"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+                class="blog-hero-img"
+              />
+            </figure>
+          </header>
+
+          <div class="blog-article-body">
+            <div class="blog-lead-section">
+              <p class="blog-lead-p">
+                Ankle injuries can happen during sports, exercise, walking on uneven surfaces, or everyday activities. A sudden twist, awkward landing, or accidental fall can damage the structures supporting the ankle joint. An ankle sprain and an ankle fracture may cause similar symptoms, but they affect different structures and require different treatment approaches.
+              </p>
+              <p class="blog-lead-p">
+                Pain, swelling, and difficulty walking do not always reveal how serious an injury is. Understanding the differences can help you recognise warning signs and seek timely medical attention.
+              </p>
+            </div>
+
+            <section class="blog-content-section">
+              <h2 class="blog-h2">What Is the Difference Between an Ankle Sprain and an Ankle Fracture?</h2>
+              <p>An ankle sprain occurs when the ligaments supporting the ankle joint are stretched or torn, usually after the foot twists or rolls unexpectedly. Ligaments are strong bands of tissue that connect bones and help stabilise the joint. A sprain can range from mild stretching to a more severe tear.</p>
+              <p>An ankle fracture is a crack or break in one or more bones that form the ankle joint, including the tibia, fibula, or talus. It may happen after a fall, direct impact, accident, or forceful twisting movement. The fracture may be stable or displaced, depending on the position of the broken bone.</p>
+              <p>Both injuries can cause pain, swelling, bruising, and difficulty bearing weight. Symptoms alone cannot reliably distinguish them, so a clinical examination and, when appropriate, an X-ray are important. You can learn more about the <a href="/about" class="blog-internal-link">orthopedic team and clinic</a> involved in patient care.</p>
+            </section>
+
+            <section class="blog-content-section">
+              <h2 class="blog-h2">What Happens If an Ankle Injury Is Left Untreated?</h2>
+              <p>An untreated ankle injury can lead to complications depending on its severity. An improperly healed fracture may affect the alignment of the ankle joint and cause persistent discomfort or restricted movement. Similarly, an inadequately managed ligament injury can result in ongoing ankle instability and repeated sprains.</p>
+              <p>Ignoring persistent pain or swelling may also delay recovery and affect everyday activities. Early assessment and appropriate treatment help identify the injury and reduce the risk of long-term problems.</p>
+            </section>
+
+            <section class="blog-content-section">
+              <h2 class="blog-h2">What Causes Ankle Sprains and Fractures?</h2>
+              <p>An ankle sprain commonly occurs when the foot rolls inward or outward beyond its usual range. Landing awkwardly after a jump, changing direction quickly during sport, walking on uneven ground, or wearing unsuitable footwear can increase the risk.</p>
+              <p>An ankle fracture usually follows greater force, such as a fall, road accident, sports collision, direct blow, or severe twisting injury. The type and severity depend on the force and which ankle bones are affected. People who experience repeated injuries should seek an assessment rather than continuing activities through pain. Following proper sports injury prevention measures can help reduce ankle injuries.</p>
+            </section>
+
+            <section class="blog-content-section">
+              <h2 class="blog-h2">What Are the Common Symptoms of an Ankle Sprain and Fracture?</h2>
+              <p>Both injuries may cause pain, swelling, bruising, tenderness, and restricted movement. A sprain can make the ankle feel weak or unstable, particularly when standing or walking. A fracture may cause marked pain, tenderness over the bone, and difficulty putting weight on the foot. Some fractures can also cause visible deformity.</p>
+              <p>Not every fracture produces an obvious deformity. Do not use pain level alone to decide whether an injury is minor.</p>
+            </section>
+
+            <section class="blog-content-section">
+              <h2 class="blog-h2">How Are Ankle Sprains and Fractures Diagnosed?</h2>
+              <p>A doctor examines the ankle, checks where it is tender, assesses movement, and asks how the injury happened. An X-ray may be recommended if a fracture is suspected. It can show whether an ankle bone is broken and help assess its position. Further imaging may be considered in selected cases.</p>
+              <p>If travelling to a clinic is difficult, patients can enquire about <a href="/x-ray-services-at-home" class="blog-internal-link">home-based X-ray facilities,</a> subject to availability and clinical suitability. Imaging should be guided by a healthcare professional.</p>
+            </section>
+
+            <section class="blog-content-section">
+              <h2 class="blog-h2">What Are the Treatment Options for an Ankle Sprain and an Ankle Fracture?</h2>
+              <p>Treatment depends on the injury, its severity, and the person's overall condition. The aim is to protect the ankle, manage symptoms, and restore safe movement.</p>
+
+              <div class="blog-subsection">
+                <h3 class="blog-h3">Ankle Sprain Treatment</h3>
+                <p>Initial care may include rest, ice, compression, and elevation (RICE) to help manage pain and swelling. A doctor may recommend support, medication, or limiting weight-bearing, depending on the injury. More significant ligament injuries may need a structured rehabilitation plan.</p>
+                <p>When appropriate, <a href="/physiotherapy" class="blog-internal-link">physiotherapy treatment</a> can help restore ankle movement, strength, balance, and stability. Exercises should be progressed according to the clinician's advice.</p>
+                <figure class="blog-body-figure">
+                  <img src="/assets/ankle-sprain-ligament-injury.webp" srcset="/assets/ankle-sprain-ligament-injury-480w.webp 480w, /assets/ankle-sprain-ligament-injury-800w.webp 800w, /assets/ankle-sprain-ligament-injury-1200w.webp 1200w, /assets/ankle-sprain-ligament-injury.webp 1800w" sizes="(max-width: 768px) 100vw, 820px" alt="Ankle sprain showing ligament injury and swelling around the ankle joint" width="1800" height="1193" loading="lazy" decoding="async" class="blog-body-img" />
+                </figure>
+              </div>
+
+              <div class="blog-subsection">
+                <h3 class="blog-h3">Ankle Fracture Treatment</h3>
+                <p>Some stable fractures can be treated with a cast, brace, or walking boot to protect the bone while it heals. Weight-bearing may need to be restricted. Displaced or unstable fractures may require surgery to realign and stabilise the bones. Follow-up checks help monitor healing, and rehabilitation may be recommended when suitable.</p>
+                <figure class="blog-body-figure">
+                  <img src="/assets/ankle-fracture-bone-break.webp" srcset="/assets/ankle-fracture-bone-break-480w.webp 480w, /assets/ankle-fracture-bone-break-800w.webp 800w, /assets/ankle-fracture-bone-break-1200w.webp 1200w, /assets/ankle-fracture-bone-break.webp 1942w" sizes="(max-width: 768px) 100vw, 820px" alt="Ankle fracture showing a break in the bones around the ankle joint" width="1942" height="1466" loading="lazy" decoding="async" class="blog-body-img" />
+                </figure>
+              </div>
+            </section>
+
+            <section class="blog-content-section">
+              <h2 class="blog-h2">When Should You See a Doctor for an Ankle Injury?</h2>
+              <p>Seek urgent medical attention if you cannot put weight on the foot, the ankle looks bent or out of position, or the foot or toes become numb, tingly, or unusually cold. Severe pain, an open wound, or rapidly worsening swelling also needs prompt assessment.</p>
+              <p>Arrange a medical review if pain or swelling is not improving after a few days of home care. An <a href="/doctors" class="blog-internal-link">orthopedic doctor</a> can assess the injury and advise whether imaging or further treatment is needed. SOS Speciality Orthopedic Clinic is also open on Sundays, making it easier for patients to seek medical attention over the weekend. Do not try to force movement or walk on an ankle that may be fractured.</p>
+            </section>
+
+            <section class="blog-content-section">
+              <h2 class="blog-h2">How Long Does Recovery Take After an Ankle Sprain or Fracture?</h2>
+              <p>Recovery depends on the severity of the sprain or fracture, the treatment required, and individual healing. A mild sprain may improve over a few weeks, while a more severe ligament injury can take longer. Fractures may need several weeks or more to heal, and recovery can take longer if surgery is required.</p>
+              <p>Rehabilitation may continue after initial healing to improve strength, flexibility, balance, and walking. Return to sport or strenuous activity should be gradual and guided by a healthcare professional.</p>
+            </section>
+
+            <section class="blog-content-section">
+              <h2 class="blog-h2">Conclusion</h2>
+              <p>An ankle injury can affect your ability to walk, work, or take part in everyday activities. Since sprains and fractures can have similar symptoms, identifying the exact cause is important before starting treatment. A proper assessment helps determine the extent of the injury and the care required for recovery. Avoid ignoring persistent pain, swelling, or difficulty putting weight on the affected foot.</p>
+              <p>For further information about diagnosis and treatment, explore the <a href="/services" class="blog-internal-link">orthopedic services</a> available at SOS. Following medical advice and completing the recommended care plan can help reduce prolonged discomfort and recurring ankle problems.</p>
+            </section>
+
+            <section class="blog-content-section blog-faq-section">
+              <h2 class="blog-h2">Frequently Asked Questions</h2>
+              <div class="blog-faq-accordion">
+                <div class="blog-faq-item">
+                  <button type="button" class="blog-faq-trigger" aria-expanded="false">
+                    <span class="blog-faq-question-text">How Do I Know If I Fractured My Ankle or Just Sprained It?</span>
+                  </button>
+                  <div class="blog-faq-panel collapsed">
+                    <div class="blog-faq-answer-inner">
+                      <p>A sprain affects the ligaments, while a fracture is a break in an ankle bone. Both can cause pain, swelling, bruising, and difficulty walking. A clinical examination and, when needed, an X-ray help confirm the injury.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="blog-faq-item">
+                  <button type="button" class="blog-faq-trigger" aria-expanded="false">
+                    <span class="blog-faq-question-text">How to Identify Sprain or Fracture?</span>
+                  </button>
+                  <div class="blog-faq-panel collapsed">
+                    <div class="blog-faq-answer-inner">
+                      <p>Pain around a ligament may suggest a sprain, while tenderness directly over a bone may raise concern about a fracture. However, symptoms overlap and cannot confirm the diagnosis. A doctor can assess the ankle and decide whether an X-ray is needed.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="blog-faq-item">
+                  <button type="button" class="blog-faq-trigger" aria-expanded="false">
+                    <span class="blog-faq-question-text">What Are the 7 Signs of a Fracture?</span>
+                  </button>
+                  <div class="blog-faq-panel collapsed">
+                    <div class="blog-faq-answer-inner">
+                      <p>Possible signs include pain, swelling, bruising, tenderness over the bone, difficulty bearing weight, restricted movement, and visible deformity. Not every fracture causes all these signs. Seek medical assessment if you suspect a fracture.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="blog-faq-item">
+                  <button type="button" class="blog-faq-trigger" aria-expanded="false">
+                    <span class="blog-faq-question-text">Can I Still Walk If My Ankle Is Fractured?</span>
+                  </button>
+                  <div class="blog-faq-panel collapsed">
+                    <div class="blog-faq-answer-inner">
+                      <p>Yes. Some people can walk with certain stable ankle fractures. Being able to walk does not rule out a fracture. Get medical advice before continuing to put weight on an injured ankle.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <aside class="blog-medical-disclaimer">
+              <div>
+                <strong class="disclaimer-heading">Medical Disclaimer</strong>
+                <p class="disclaimer-text">This article is for informational purposes and does not replace professional medical advice. Always consult a qualified orthopedic trauma specialist for clinical evaluation and personalised guidance.</p>
+              </div>
+            </aside>
+
+            <div class="blog-cta-box">
+              <span class="blog-cta-eyebrow">TRAUMA &amp; FRACTURE CARE OPD</span>
+              <h3 class="blog-cta-title">Suffered an Ankle Twist, Severe Sprain, or Suspected Fracture?</h3>
+              <p class="blog-cta-desc">Schedule an urgent clinical evaluation with Dr. Hardik Desai and our fracture and trauma specialists across our Mumbai centres in Kandivali, Borivali, Malad, and Goregaon (open Sundays).</p>
+              <div class="blog-cta-buttons">
+                <a href="/contact" class="btn btn-primary btn-md">Book an Appointment</a>
+                <a href="/contact" class="btn btn-secondary btn-md">Contact SOS Clinic</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        ${getPrerenderSidebarHtml('back-pain-in-young-adults', 'Back Pain in Young Adults', 'trauma')}
+      </div>
+    </div>
+  </article>
+</div>
+</main>
+`;
+renderPage({
+  page: post4,
+  structuredData: structuredData4,
+  bodyHtml: prerenderedArticleContent4,
+  targetFiles: [
+    path.resolve(distDir, 'blog', post4.slug, 'index.html'),
+    path.resolve(distDir, 'blog', `${post4.slug}.html`),
+    path.resolve(distDir, post4.slug, 'index.html'),
+    path.resolve(distDir, `${post4.slug}.html`)
+  ]
+});
+
 
 // ========================================================
 // 3. KEY SITE PAGES (Fixing Google Indexing for Pending Pages)

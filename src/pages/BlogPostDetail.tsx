@@ -85,7 +85,7 @@ const RecoveryPostArticleBody: React.FC<{ post: BlogPost }> = ({ post }) => {
                 height={post.procedureImage.height}
                 loading="lazy"
                 decoding="async"
-                className="blog-hero-img"
+                className="blog-body-img"
               />
             </figure>
           )}
@@ -173,7 +173,7 @@ const RecoveryPostArticleBody: React.FC<{ post: BlogPost }> = ({ post }) => {
                 height={post.consultationImage.height}
                 loading="lazy"
                 decoding="async"
-                className="blog-hero-img"
+                className="blog-body-img"
               />
             </figure>
           )}
@@ -269,7 +269,7 @@ const SurgeryPostArticleBody: React.FC<{ post: BlogPost }> = ({ post }) => {
                 height={post.procedureImage.height}
                 loading="lazy"
                 decoding="async"
-                className="blog-hero-img"
+                className="blog-body-img"
               />
             </figure>
           )}
@@ -452,7 +452,7 @@ const BackPainArticleBody: React.FC<{ post: BlogPost }> = ({ post }) => {
                 height={post.procedureImage.height}
                 loading="lazy"
                 decoding="async"
-                className="blog-hero-img"
+                className="blog-body-img"
               />
             </figure>
           )}
@@ -525,7 +525,7 @@ const BackPainArticleBody: React.FC<{ post: BlogPost }> = ({ post }) => {
                 height={post.consultationImage.height}
                 loading="lazy"
                 decoding="async"
-                className="blog-hero-img"
+                className="blog-body-img"
               />
             </figure>
           )}
@@ -568,6 +568,188 @@ const BackPainArticleBody: React.FC<{ post: BlogPost }> = ({ post }) => {
           <p>{content.findingCare.paragraphs[2]}</p>
         </section>
       )}
+    </>
+  );
+};
+
+// Subcomponent for Ankle Sprain vs Fracture body
+const AnkleInjuryArticleBody: React.FC<{ post: BlogPost }> = ({ post }) => {
+  const { content } = post;
+  const ankle = content.ankleContent;
+  if (!ankle) return null;
+
+  return (
+    <>
+      {/* Lead Section */}
+      <div className="blog-lead-section">
+        {content.leadParagraphs.map((para, i) => (
+          <p key={i} className="blog-lead-p">
+            {para}
+          </p>
+        ))}
+      </div>
+
+      {/* Section 1: What Is the Difference Between an Ankle Sprain and an Ankle Fracture? */}
+      <section className="blog-content-section" aria-labelledby="section-difference">
+        <h2 id="section-difference" className="blog-h2">
+          {ankle.difference.heading}
+        </h2>
+        <p>{ankle.difference.paragraphs[0]}</p>
+        <p>{ankle.difference.paragraphs[1]}</p>
+        <p>
+          Both injuries can cause pain, swelling, bruising, and difficulty bearing weight. Symptoms alone cannot reliably distinguish them, so a clinical examination and, when appropriate, an X-ray are important. You can learn more about the{' '}
+          <Link to="/about" className="blog-internal-link">
+            orthopedic team and clinic
+          </Link>{' '}
+          involved in patient care.
+        </p>
+      </section>
+
+      {/* Section 2: What Happens If an Ankle Injury Is Left Untreated? */}
+      <section className="blog-content-section" aria-labelledby="section-untreated">
+        <h2 id="section-untreated" className="blog-h2">
+          {ankle.untreated.heading}
+        </h2>
+        {ankle.untreated.paragraphs.map((p, i) => (
+          <p key={i}>{p}</p>
+        ))}
+      </section>
+
+      {/* Section 3: What Causes Ankle Sprains and Fractures? */}
+      <section className="blog-content-section" aria-labelledby="section-causes">
+        <h2 id="section-causes" className="blog-h2">
+          {ankle.causes.heading}
+        </h2>
+        {ankle.causes.paragraphs.map((p, i) => (
+          <p key={i}>{p}</p>
+        ))}
+      </section>
+
+      {/* Section 4: What Are the Common Symptoms of an Ankle Sprain and Fracture? */}
+      <section className="blog-content-section" aria-labelledby="section-symptoms">
+        <h2 id="section-symptoms" className="blog-h2">
+          {ankle.symptoms.heading}
+        </h2>
+        {ankle.symptoms.paragraphs.map((p, i) => (
+          <p key={i}>{p}</p>
+        ))}
+      </section>
+
+      {/* Section 5: How Are Ankle Sprains and Fractures Diagnosed? */}
+      <section className="blog-content-section" aria-labelledby="section-diagnosis">
+        <h2 id="section-diagnosis" className="blog-h2">
+          {ankle.diagnosis.heading}
+        </h2>
+        <p>{ankle.diagnosis.paragraphs[0]}</p>
+        <p>
+          If travelling to a clinic is difficult, patients can enquire about{' '}
+          <Link to="/x-ray-services-at-home" className="blog-internal-link">
+            home-based X-ray facilities,
+          </Link>{' '}
+          subject to availability and clinical suitability. Imaging should be guided by a healthcare professional.
+        </p>
+      </section>
+
+      {/* Section 6: What Are the Treatment Options for an Ankle Sprain and an Ankle Fracture? */}
+      <section className="blog-content-section" aria-labelledby="section-treatment">
+        <h2 id="section-treatment" className="blog-h2">
+          {ankle.treatment.heading}
+        </h2>
+        <p>{ankle.treatment.intro}</p>
+
+        {/* H3: Ankle Sprain Treatment */}
+        <div className="blog-subsection">
+          <h3 className="blog-h3">{ankle.treatment.sprain.heading}</h3>
+          <p>{ankle.treatment.sprain.paragraphs[0]}</p>
+          <p>
+            When appropriate,{' '}
+            <Link to="/physiotherapy" className="blog-internal-link">
+              physiotherapy treatment
+            </Link>{' '}
+            can help restore ankle movement, strength, balance, and stability. Exercises should be progressed according to the clinician's advice.
+          </p>
+
+          {/* Image 2: Ankle Sprain Illustration (NO caption) */}
+          {post.procedureImage && (
+            <figure className="blog-body-figure">
+              <img
+                src={post.procedureImage.src}
+                srcSet={post.procedureImage.srcSet}
+                sizes={post.procedureImage.sizes || '(max-width: 768px) 100vw, 820px'}
+                alt={post.procedureImage.alt}
+                width={post.procedureImage.width}
+                height={post.procedureImage.height}
+                loading="lazy"
+                decoding="async"
+                className="blog-body-img"
+              />
+            </figure>
+          )}
+        </div>
+
+        {/* H3: Ankle Fracture Treatment */}
+        <div className="blog-subsection">
+          <h3 className="blog-h3">{ankle.treatment.fracture.heading}</h3>
+          <p>{ankle.treatment.fracture.paragraphs[0]}</p>
+
+          {/* Image 3: Ankle Fracture Illustration (NO caption) */}
+          {post.consultationImage && (
+            <figure className="blog-body-figure">
+              <img
+                src={post.consultationImage.src}
+                srcSet={post.consultationImage.srcSet}
+                sizes={post.consultationImage.sizes || '(max-width: 768px) 100vw, 820px'}
+                alt={post.consultationImage.alt}
+                width={post.consultationImage.width}
+                height={post.consultationImage.height}
+                loading="lazy"
+                decoding="async"
+                className="blog-body-img"
+              />
+            </figure>
+          )}
+        </div>
+      </section>
+
+      {/* Section 7: When Should You See a Doctor for an Ankle Injury? */}
+      <section className="blog-content-section" aria-labelledby="section-when-to-see-doctor">
+        <h2 id="section-when-to-see-doctor" className="blog-h2">
+          {ankle.whenToSeeDoctor.heading}
+        </h2>
+        <p>{ankle.whenToSeeDoctor.paragraphs[0]}</p>
+        <p>
+          Arrange a medical review if pain or swelling is not improving after a few days of home care. An{' '}
+          <Link to="/doctors" className="blog-internal-link">
+            orthopedic doctor
+          </Link>{' '}
+          can assess the injury and advise whether imaging or further treatment is needed. SOS Speciality Orthopedic Clinic is also open on Sundays, making it easier for patients to seek medical attention over the weekend. Do not try to force movement or walk on an ankle that may be fractured.
+        </p>
+      </section>
+
+      {/* Section 8: How Long Does Recovery Take After an Ankle Sprain or Fracture? */}
+      <section className="blog-content-section" aria-labelledby="section-recovery">
+        <h2 id="section-recovery" className="blog-h2">
+          {ankle.recovery.heading}
+        </h2>
+        {ankle.recovery.paragraphs.map((p, i) => (
+          <p key={i}>{p}</p>
+        ))}
+      </section>
+
+      {/* Section 9: Conclusion */}
+      <section className="blog-content-section" aria-labelledby="section-conclusion">
+        <h2 id="section-conclusion" className="blog-h2">
+          {ankle.conclusion.heading}
+        </h2>
+        <p>{ankle.conclusion.paragraphs[0]}</p>
+        <p>
+          For further information about diagnosis and treatment, explore the{' '}
+          <Link to="/services" className="blog-internal-link">
+            orthopedic services
+          </Link>{' '}
+          available at SOS. Following medical advice and completing the recommended care plan can help reduce prolonged discomfort and recurring ankle problems.
+        </p>
+      </section>
     </>
   );
 };
@@ -774,6 +956,8 @@ export const BlogPostDetail: React.FC = () => {
                     <RecoveryPostArticleBody post={post} />
                   ) : post.slug === 'back-pain-in-young-adults' ? (
                     <BackPainArticleBody post={post} />
+                  ) : post.slug === 'ankle-sprain-vs-ankle-fracture' ? (
+                    <AnkleInjuryArticleBody post={post} />
                   ) : (
                     <SurgeryPostArticleBody post={post} />
                   )}
@@ -842,6 +1026,11 @@ export const BlogPostDetail: React.FC = () => {
                           <h3 style={{ fontSize: '1.05rem', fontWeight: 700, margin: '0 0 0.35rem 0', color: 'var(--navy-primary)' }}>Related Guide: What Is Robotic Knee Replacement Surgery?</h3>
                           <p>Discover joint restoration techniques, computer-assisted precision, and comprehensive orthopedic care.</p>
                         </>
+                      ) : post.slug === 'ankle-sprain-vs-ankle-fracture' ? (
+                        <>
+                          <h3 style={{ fontSize: '1.05rem', fontWeight: 700, margin: '0 0 0.35rem 0', color: 'var(--navy-primary)' }}>Related Guide: Why Is Back Pain Becoming Common Among Young Adults?</h3>
+                          <p>Explore spinal ergonomics, posture strain, nerve decompression, and non-surgical orthopedic care.</p>
+                        </>
                       ) : (
                         <>
                           <h3 style={{ fontSize: '1.05rem', fontWeight: 700, margin: '0 0 0.35rem 0', color: 'var(--navy-primary)' }}>Next Guide: Robotic Knee Replacement Recovery Timeline in Mumbai</h3>
@@ -855,6 +1044,8 @@ export const BlogPostDetail: React.FC = () => {
                           ? '/blog/robotic-knee-replacement-surgery'
                           : post.slug === 'back-pain-in-young-adults'
                           ? '/blog/robotic-knee-replacement-surgery'
+                          : post.slug === 'ankle-sprain-vs-ankle-fracture'
+                          ? '/blog/back-pain-in-young-adults'
                           : '/blog/robotic-knee-replacement-recovery-mumbai'
                       }
                       className="btn btn-secondary btn-sm"
@@ -869,16 +1060,24 @@ export const BlogPostDetail: React.FC = () => {
                   <div className="blog-cta-box">
                     <div className="blog-cta-content">
                       <span className="blog-cta-eyebrow">
-                        {post.category === 'spine' ? 'SPINE & ORTHOPEDIC CONSULTATION & OPD' : 'ORTHOPEDIC CONSULTATION & OPD'}
+                        {post.category === 'spine'
+                          ? 'SPINE & ORTHOPEDIC CONSULTATION & OPD'
+                          : post.category === 'trauma'
+                          ? 'TRAUMA & FRACTURE CARE OPD'
+                          : 'ORTHOPEDIC CONSULTATION & OPD'}
                       </span>
                       <h3 className="blog-cta-title">
                         {post.category === 'spine'
                           ? 'Experiencing Back Pain, Nerve Tingling, or Posture Strain?'
+                          : post.category === 'trauma'
+                          ? 'Suffered an Ankle Twist, Severe Sprain, or Suspected Fracture?'
                           : 'Concerned About Knee Pain or Considering Replacement?'}
                       </h3>
                       <p className="blog-cta-desc">
                         {post.category === 'spine'
                           ? 'Schedule a comprehensive clinical assessment with Dr. Omkar Rashinkar and our senior orthopedic spine surgeons across our Mumbai centres in Kandivali, Borivali, Malad, and Goregaon.'
+                          : post.category === 'trauma'
+                          ? 'Schedule an urgent clinical evaluation with Dr. Hardik Desai and our fracture and trauma specialists across our Mumbai centres in Kandivali, Borivali, Malad, and Goregaon (open Sundays).'
                           : 'Schedule a comprehensive clinical assessment with our senior orthopedic surgeons across our Mumbai centres in Kandivali, Borivali, Malad, and Goregaon.'}
                       </p>
                       <div className="blog-cta-buttons">
@@ -911,11 +1110,17 @@ export const BlogPostDetail: React.FC = () => {
                   <div className="sidebar-clinic-card">
                     <span className="sidebar-pill">SOS Speciality Clinic</span>
                     <h3 className="sidebar-clinic-name">
-                      {post.category === 'spine' ? 'Spine & Back Care Desk' : 'Joint Replacement Desk'}
+                      {post.category === 'spine'
+                        ? 'Spine & Back Care Desk'
+                        : post.category === 'trauma'
+                        ? 'Trauma & Fracture Care Desk'
+                        : 'Joint Replacement Desk'}
                     </h3>
                     <p className="sidebar-clinic-text">
                       {post.category === 'spine'
                         ? 'Consultant orthopedic spine OPDs, sciatica decompression, digital diagnostics, and posture rehabilitation across Mumbai.'
+                        : post.category === 'trauma'
+                        ? 'Consultant fracture care, ankle ligament rehabilitation, digital & at-home X-ray, and complex injury reconstructions across Mumbai.'
                         : 'Consultant orthopedic surgeon OPDs, robotic knee replacements, joint preservation therapies, and rapid-recovery rehabilitation across Mumbai.'}
                     </p>
                     <div className="sidebar-checklist">
@@ -925,11 +1130,23 @@ export const BlogPostDetail: React.FC = () => {
                       </div>
                       <div className="sidebar-check-item">
                         <CheckCircle2 size={15} color="#15803d" aria-hidden="true" />
-                        <span>{post.category === 'spine' ? 'Minimally Invasive Spine & Disc Care' : 'Sub-millimeter Robotic Precision'}</span>
+                        <span>
+                          {post.category === 'spine'
+                            ? 'Minimally Invasive Spine & Disc Care'
+                            : post.category === 'trauma'
+                            ? 'Clinic & Home X-Ray Diagnostics'
+                            : 'Sub-millimeter Robotic Precision'}
+                        </span>
                       </div>
                       <div className="sidebar-check-item">
                         <CheckCircle2 size={15} color="#15803d" aria-hidden="true" />
-                        <span>{post.category === 'spine' ? 'Ergonomic & Physio Rehabilitation' : 'Surgeon-Guided Rehabilitation'}</span>
+                        <span>
+                          {post.category === 'spine'
+                            ? 'Ergonomic & Physio Rehabilitation'
+                            : post.category === 'trauma'
+                            ? 'Surgeon-Guided Rehabilitation & Cast Care'
+                            : 'Surgeon-Guided Rehabilitation'}
+                        </span>
                       </div>
                     </div>
 
@@ -958,14 +1175,18 @@ export const BlogPostDetail: React.FC = () => {
                       <li>
                         <Link
                           to={
-                            post.slug === 'robotic-knee-replacement-recovery-mumbai'
+                            post.slug === 'ankle-sprain-vs-ankle-fracture'
+                              ? '/blog/back-pain-in-young-adults'
+                              : post.slug === 'robotic-knee-replacement-recovery-mumbai'
                               ? '/blog/robotic-knee-replacement-surgery'
                               : '/blog/robotic-knee-replacement-recovery-mumbai'
                           }
                           className="sidebar-nav-link"
                         >
                           <span>
-                            {post.slug === 'robotic-knee-replacement-recovery-mumbai'
+                            {post.slug === 'ankle-sprain-vs-ankle-fracture'
+                              ? 'Back Pain in Young Adults'
+                              : post.slug === 'robotic-knee-replacement-recovery-mumbai'
                               ? 'What Is Robotic Knee Surgery?'
                               : 'Knee Recovery Timeline Guide'}
                           </span>
