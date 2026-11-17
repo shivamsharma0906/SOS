@@ -15,6 +15,13 @@ export const roboticKneeRecoveryPost: BlogPost = {
       qualifications: 'MBBS, D Orth, Fellowship in Hip & Knee Arthroplasty (Mumbai)',
       specialization: 'Hip & Knee Specialist — Joint Replacement & Trauma'
     },
+    reviewer: {
+      name: 'Dr. Shobit Nitin Deshmukh',
+      title: 'Consultant Orthopedic & Joint Replacement Surgeon',
+      photoUrl: '/assets/dr-shobit-deshmukh.webp',
+      qualifications: 'DNB Orthopedics, Fellowship in Robotic & Revision Arthroplasty (South Korea, MUHS)',
+      specialization: 'Robotic Knee Replacement & Joint Preservation'
+    },
     publishDate: 'October 26, 2026',
     lastUpdated: 'October 26, 2026',
     readTime: '7 min read',

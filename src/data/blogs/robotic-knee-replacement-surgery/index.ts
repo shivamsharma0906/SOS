@@ -15,6 +15,13 @@ export const roboticKneeSurgeryPost: BlogPost = {
       qualifications: 'DNB Orthopedics, Fellowship in Robotic & Revision Arthroplasty (South Korea, MUHS)',
       specialization: 'Robotic Knee Replacement & Joint Preservation'
     },
+    reviewer: {
+      name: 'Dr. Akash A. Saraogi',
+      title: 'Mentor & Senior Joint Replacement Surgeon',
+      photoUrl: '/assets/mentor-akash-saraogi.jpg',
+      qualifications: 'MS Orthopaedics, Fellowship in Robotic & Navigation Joint Arthroplasty (Germany, USA)',
+      specialization: 'Robotic Arthroplasty & Complex Knee Reconstruction'
+    },
     publishDate: 'October 14, 2026',
     lastUpdated: 'October 14, 2026',
     readTime: '6 min read',

@@ -15,6 +15,13 @@ export const ankleSprainVsFracturePost: BlogPost = {
       qualifications: "MS Orthopaedics, Fellowship in Adult Reconstruction and Trauma (Switzerland), Fellowship in Pediatric Orthopaedics (Germany)",
       specialization: 'Complex Trauma Reconstruction & Fracture Care'
     },
+    reviewer: {
+      name: 'Dr. Maulik A. Joshi',
+      title: 'Consultant Trauma & Orthopaedic Surgeon',
+      photoUrl: '/assets/dr-maulik-joshi.webp',
+      qualifications: 'MBBS, D Orth, Fellowship in Hip & Knee Arthroplasty (Mumbai)',
+      specialization: 'Hip & Knee Specialist — Joint Replacement & Trauma'
+    },
     publishDate: 'November 14, 2026',
     lastUpdated: 'November 14, 2026',
     readTime: '6 min read',

@@ -15,6 +15,13 @@ export const backPainYoungAdultsPost: BlogPost = {
       qualifications: 'MS Orthopaedics, Fellowship in Minimally Invasive Spine Surgery, Fellowship in Arthroscopy & Sports Medicine',
       specialization: 'Spine Care, Arthroscopy & Joint Restoration'
     },
+    reviewer: {
+      name: 'Dr. Akhil Tawari',
+      title: 'Senior Consultant Spine Surgeon',
+      photoUrl: '/assets/mentor-akhil-tawari.jpg',
+      qualifications: 'MS Orthopaedics, Fellowship in Adult & Pediatric Spine Surgery (Boston University Medical Centre, USA; Miami, USA)',
+      specialization: 'Complex Spine Reconstruction & Endoscopic Discectomy'
+    },
     publishDate: 'November 2, 2026',
     lastUpdated: 'November 2, 2026',
     readTime: '6 min read',

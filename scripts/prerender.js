@@ -206,6 +206,10 @@ const structuredData1 = [
       "@type": "Person",
       "name": post1.author
     },
+    "reviewedBy": {
+      "@type": "Person",
+      "name": "Dr. Akash A. Saraogi"
+    },
     "datePublished": post1.datePublished,
     "dateModified": post1.dateModified
   },
@@ -371,7 +375,7 @@ const prerenderFooterHtml = `
           <li><a href="/services/spine-care" style="color: #cbd5e1; text-decoration: none;">Spine Care &amp; Back Pain</a></li>
           <li><a href="/services/sports-injury" style="color: #cbd5e1; text-decoration: none;">Sports Injury Medicine</a></li>
           <li><a href="/services/pediatric-trauma" style="color: #cbd5e1; text-decoration: none;">Pediatric Trauma &amp; Fractures</a></li>
-          <li><a href="/services/home-x-ray" style="color: #cbd5e1; text-decoration: none;">Home X-Ray Diagnostics</a></li>
+          <li><a href="/x-ray-services-at-home" style="color: #cbd5e1; text-decoration: none;">24/7 Home X-Ray Diagnostics</a></li>
           <li><a href="/physiotherapy" style="color: #cbd5e1; text-decoration: none;">Post-Op Physiotherapy</a></li>
           <li><a href="/x-ray-services-at-home" style="color: #cbd5e1; text-decoration: none;">24/7 Digital X-Ray at Home</a></li>
         </ul>
@@ -533,7 +537,7 @@ ${prerenderNavbarHtml}
             <span class="blog-category-tag">Joint Replacement &amp; Knee</span>
             <h1 class="blog-article-h1" itemprop="headline">${post1.h1}</h1>
             <div class="blog-article-meta-bar">
-              <span>Author: <strong class="meta-author-name">${post1.author}</strong></span>
+              <span>Author: <strong class="meta-author-name">${post1.author}</strong></span> <span> &bull; Reviewed by: <strong class="meta-author-name">Dr. Akash A. Saraogi</strong></span>
               <span> &bull; Last updated: <time datetime="2026-10-14">October 14, 2026</time></span>
             </div>
             <figure class="blog-hero-figure">
@@ -796,6 +800,10 @@ const structuredData2 = [
       "@type": "Person",
       "name": post2.author
     },
+    "reviewedBy": {
+      "@type": "Person",
+      "name": "Dr. Shobit Nitin Deshmukh"
+    },
     "datePublished": post2.datePublished,
     "dateModified": post2.dateModified
   },
@@ -887,7 +895,7 @@ ${prerenderNavbarHtml}
             <span class="blog-category-tag">Joint Replacement &amp; Knee</span>
             <h1 class="blog-article-h1" itemprop="headline">${post2.h1}</h1>
             <div class="blog-article-meta-bar">
-              <span>Author: <strong class="meta-author-name">${post2.author}</strong></span>
+              <span>Author: <strong class="meta-author-name">${post2.author}</strong></span> <span> &bull; Reviewed by: <strong class="meta-author-name">Dr. Shobit Nitin Deshmukh</strong></span>
               <span> &bull; Last updated: <time datetime="2026-10-26">October 26, 2026</time></span>
             </div>
             <figure class="blog-hero-figure">
@@ -1105,6 +1113,10 @@ const structuredData3 = [
       "@type": "Person",
       "name": post3.author
     },
+    "reviewedBy": {
+      "@type": "Person",
+      "name": "Dr. Akhil Tawari"
+    },
     "datePublished": post3.datePublished,
     "dateModified": post3.dateModified
   },
@@ -1196,7 +1208,7 @@ ${prerenderNavbarHtml}
             <span class="blog-category-tag">Spine &amp; Back Care</span>
             <h1 class="blog-article-h1" itemprop="headline">${post3.h1}</h1>
             <div class="blog-article-meta-bar">
-              <span>Author: <strong>${post3.author}</strong></span> &bull;
+              <span>Author: <strong>${post3.author}</strong></span> <span> &bull; Reviewed by: <strong>Dr. Akhil Tawari</strong></span> &bull;
               <span>Last updated: ${post3.dateModified}</span> &bull;
               <span>6 min read</span>
             </div>
@@ -1408,6 +1420,12 @@ const structuredData4 = [
       "jobTitle": "Consultant Trauma and Pediatric Orthopaedic Surgeon",
       "url": "https://www.sosorth.com/mentors"
     },
+    "reviewedBy": {
+      "@type": "Person",
+      "name": "Dr. Maulik A. Joshi",
+      "jobTitle": "Consultant Trauma & Orthopaedic Surgeon",
+      "url": "https://www.sosorth.com/doctors"
+    },
     "publisher": {
       "@type": "MedicalOrganization",
       "name": "SOS Speciality Orthopedic Clinic",
@@ -1516,7 +1534,7 @@ ${prerenderNavbarHtml}
             </div>
             <h1 class="blog-article-h1" itemprop="headline">${post4.h1}</h1>
             <div class="blog-article-meta-bar">
-              <span>Author: <strong class="meta-author-name">${post4.author}</strong></span>
+              <span>Author: <strong class="meta-author-name">${post4.author}</strong></span> <span> &bull; Reviewed by: <strong class="meta-author-name">Dr. Maulik A. Joshi</strong></span>
               <span> &bull; Last updated: <time datetime="2026-11-14">November 14, 2026</time></span>
               <span> &bull; 6 min read</span>
             </div>
@@ -1854,12 +1872,12 @@ const sitePages = [
   {
     name: 'services-joint-replacement',
     canonicalUrl: 'https://www.sosorth.com/services/joint-replacement',
-    metaTitle: 'Joint Replacement Surgery Mumbai | Knee & Hip Care | SOS',
-    metaDescription: 'Precision robotic knee and hip joint replacements, joint preservation therapies, and rapid-recovery rehabilitation at SOS Orthopedic Clinic Mumbai.',
-    keywords: 'Joint replacement Mumbai, Knee replacement Borivali, Hip replacement Kandivali, Total knee replacement Mumbai',
+    metaTitle: 'Joint Replacement Surgery in Mumbai | SOS Clinic',
+    metaDescription: 'Specialized robotic knee and hip joint replacement in Mumbai. Evidence-based joint preservation, rapid recovery protocols, and senior orthopedic surgeons.',
+    keywords: 'Joint replacement Mumbai, Knee replacement Borivali, Hip replacement Kandivali, Total knee replacement Mumbai, Robotic knee replacement',
     ogImage: 'https://www.sosorth.com/assets/video-poster.jpg',
-    h1: 'Joint Replacement Care & Rapid Recovery',
-    subhead: 'Precision knee and hip joint replacements, joint preservation therapies, and structured rapid-recovery rehabilitation.',
+    h1: 'Joint Replacement & Robotic Knee Surgery in Mumbai',
+    subhead: 'Specialized robotic knee and hip joint replacements, joint preservation therapies, and structured rapid-recovery rehabilitation.',
     targetFiles: [
       path.resolve(distDir, 'services', 'joint-replacement', 'index.html'),
       path.resolve(distDir, 'services', 'joint-replacement.html')
@@ -1868,12 +1886,12 @@ const sitePages = [
   {
     name: 'services-acl-ligament',
     canonicalUrl: 'https://www.sosorth.com/services/acl-ligament',
-    metaTitle: 'ACL & Ligament Reconstruction Mumbai | SOS Orthopedic',
-    metaDescription: 'Minimally invasive arthroscopic ACL reconstruction, meniscus repairs, and ligament stabilization in Mumbai with athlete-focused recovery.',
-    keywords: 'ACL surgery Mumbai, Ligament reconstruction Borivali, Meniscus tear repair Kandivali, Sports knee arthroscopy',
+    metaTitle: 'ACL & Ligament Surgery in Mumbai | SOS Clinic',
+    metaDescription: 'Minimally invasive keyhole arthroscopic ACL reconstruction and ligament repair in Mumbai. Sports medicine rehabilitation and athlete return-to-play protocols.',
+    keywords: 'ACL surgery Mumbai, Ligament reconstruction Borivali, Meniscus tear repair Kandivali, Sports knee arthroscopy, Knee ligament surgery',
     ogImage: 'https://www.sosorth.com/assets/video-poster.jpg',
-    h1: 'ACL & Ligament Reconstruction Care',
-    subhead: 'Minimally invasive arthroscopic ACL reconstruction, meniscus repairs, and ligament stabilisation with return-to-sport protocols.',
+    h1: 'ACL & Ligament Reconstruction in Mumbai',
+    subhead: 'Minimally invasive keyhole arthroscopic ACL reconstruction, meniscus repairs, and ligament stabilization with return-to-play protocols.',
     targetFiles: [
       path.resolve(distDir, 'services', 'acl-ligament', 'index.html'),
       path.resolve(distDir, 'services', 'acl-ligament.html')
@@ -1882,12 +1900,12 @@ const sitePages = [
   {
     name: 'services-spine-care',
     canonicalUrl: 'https://www.sosorth.com/services/spine-care',
-    metaTitle: 'Spine Care & Back Pain Specialists Mumbai | SOS Clinic',
-    metaDescription: 'Non-surgical and surgical spine care in Mumbai: Sciatica relief, slipped disc decompression, postural correction, and rehabilitation.',
-    keywords: 'Spine specialist Mumbai, Back pain treatment Borivali, Sciatica doctor Kandivali, Slipped disc treatment Mumbai',
+    metaTitle: 'Spine Care & Treatment in Mumbai | SOS Orthopedic Clinic',
+    metaDescription: 'Expert non-surgical and surgical spine care in Mumbai: Sciatica relief, slipped disc decompression, postural correction, and rehabilitation at SOS Clinic.',
+    keywords: 'Spine specialist Mumbai, Back pain treatment Borivali, Sciatica doctor Kandivali, Slipped disc treatment Mumbai, Spine treatment Mumbai',
     ogImage: 'https://www.sosorth.com/assets/video-poster.jpg',
-    h1: 'Spine Care & Non-Surgical Back Pain Management',
-    subhead: 'Comprehensive clinical evaluation, precision spinal diagnostics, sciatica management, and rehabilitation.',
+    h1: 'Spine Care & Treatment in Mumbai',
+    subhead: 'Comprehensive non-surgical decompression, precision sciatica relief, endoscopic micro-discectomy, and postural rehabilitation in Mumbai.',
     targetFiles: [
       path.resolve(distDir, 'services', 'spine-care', 'index.html'),
       path.resolve(distDir, 'services', 'spine-care.html')
@@ -1896,12 +1914,12 @@ const sitePages = [
   {
     name: 'services-sports-injury',
     canonicalUrl: 'https://www.sosorth.com/services/sports-injury',
-    metaTitle: 'Sports Injury & Arthroscopy Clinic Mumbai | SOS Ortho',
-    metaDescription: 'Comprehensive sports medicine in Mumbai for shoulder dislocations, rotator cuff tears, sprains, and tendon injuries with rapid rehabilitation.',
-    keywords: 'Sports injury doctor Mumbai, Rotator cuff repair Borivali, Shoulder dislocation treatment Kandivali',
+    metaTitle: 'Sports Injury & Arthroscopy in Mumbai | SOS Clinic',
+    metaDescription: 'Advanced sports medicine and arthroscopy in Mumbai for frozen shoulder, rotator cuff tears, dislocations, and tennis elbow with dedicated physiotherapy.',
+    keywords: 'Sports injury doctor Mumbai, Rotator cuff repair Borivali, Shoulder dislocation treatment Kandivali, Frozen shoulder Mumbai',
     ogImage: 'https://www.sosorth.com/assets/video-poster.jpg',
-    h1: 'Sports Injury & Athletic Rehabilitation',
-    subhead: 'Targeted diagnostics and surgical interventions for athletes and active individuals.',
+    h1: 'Sports Injury & Arthroscopy Care in Mumbai',
+    subhead: 'Targeted arthroscopic repair and specialized rehabilitation for frozen shoulder, rotator cuff tears, and athletic joint injuries.',
     targetFiles: [
       path.resolve(distDir, 'services', 'sports-injury', 'index.html'),
       path.resolve(distDir, 'services', 'sports-injury.html')
@@ -1910,32 +1928,45 @@ const sitePages = [
   {
     name: 'services-pediatric-trauma',
     canonicalUrl: 'https://www.sosorth.com/services/pediatric-trauma',
-    metaTitle: 'Pediatric Orthopedics & Fracture Trauma | SOS Mumbai',
-    metaDescription: 'Child-centered orthopedic care and rapid trauma response in Mumbai. Growth plate fractures, developmental dysplasia, and gentle casting.',
-    keywords: 'Pediatric orthopedic Mumbai, Child bone doctor Borivali, Fracture treatment Kandivali',
+    metaTitle: 'Pediatric Orthopedics & Trauma Mumbai | SOS Clinic',
+    metaDescription: 'Child-centered orthopedic care and 24/7 fracture trauma triage in Mumbai. Growth plate preservation, gentle waterproof casting, and deformity correction.',
+    keywords: 'Pediatric orthopedic Mumbai, Child bone doctor Borivali, Fracture treatment Kandivali, Pediatric trauma Mumbai',
     ogImage: 'https://www.sosorth.com/assets/video-poster.jpg',
-    h1: 'Pediatric Orthopedics & Fracture Trauma',
-    subhead: 'Child-centered musculoskeletal evaluation and emergency fracture stabilization.',
+    h1: 'Pediatric Orthopedics & Trauma Care in Mumbai',
+    subhead: 'Child-centered musculoskeletal evaluation, gentle growth plate fracture stabilization, and 24/7 emergency trauma triage.',
     targetFiles: [
       path.resolve(distDir, 'services', 'pediatric-trauma', 'index.html'),
       path.resolve(distDir, 'services', 'pediatric-trauma.html')
     ]
-  },
-  {
-    name: 'services-home-x-ray',
-    canonicalUrl: 'https://www.sosorth.com/services/home-x-ray',
-    metaTitle: 'Doorstep Digital X-Ray Services Mumbai | SOS Clinic',
-    metaDescription: 'Hospital-grade portable digital X-ray services delivered directly to your doorstep in Mumbai with instant digital radiologist reports.',
-    keywords: 'Home X-Ray Mumbai, Portable digital radiography, Bedside X-Ray service Mumbai',
-    ogImage: 'https://www.sosorth.com/assets/video-poster.jpg',
-    h1: 'Doorstep Portable Digital X-Ray Services',
-    subhead: 'Hospital-grade digital imaging at your bedside across Western Mumbai.',
-    targetFiles: [
-      path.resolve(distDir, 'services', 'home-x-ray', 'index.html'),
-      path.resolve(distDir, 'services', 'home-x-ray.html')
-    ]
   }
 ];
+
+// Clean 301 HTML redirects for duplicate home X-ray URLs
+const homeXRayRedirectHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="refresh" content="0;url=/x-ray-services-at-home" />
+  <link rel="canonical" href="https://www.sosorth.com/x-ray-services-at-home" />
+  <title>Redirecting to 24/7 Home X-Ray Services in Mumbai...</title>
+</head>
+<body>
+  <p>Redirecting to <a href="/x-ray-services-at-home">24/7 Home X-Ray Services in Mumbai</a>...</p>
+</body>
+</html>`;
+
+[
+  path.resolve(distDir, 'services', 'home-x-ray', 'index.html'),
+  path.resolve(distDir, 'services', 'home-x-ray.html'),
+  path.resolve(distDir, 'x-ray-at-home', 'index.html'),
+  path.resolve(distDir, 'x-ray-at-home.html')
+].forEach(filePath => {
+  const dir = path.dirname(filePath);
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(filePath, homeXRayRedirectHtml, 'utf-8');
+});
+console.log('[Prerender] Generated 301 static redirects for /services/home-x-ray and /x-ray-at-home');
+
 
 sitePages.forEach(p => {
   const structuredData = [
@@ -1985,6 +2016,311 @@ sitePages.forEach(p => {
 
   let bodyHtml = '';
 
+  if (p.name === 'services-spine-care') {
+    bodyHtml = `
+${prerenderNavbarHtml}
+<main style="flex-grow: 1;">
+  <div class="static-prerender-content" style="padding: 2.5rem 1rem; max-width: 1200px; margin: 0 auto;">
+    <nav aria-label="Breadcrumb" style="font-size: 0.85rem; margin-bottom: 1.5rem; color: #64748b;">
+      <a href="/" style="color: #0369a1; text-decoration: none;">Home</a> / 
+      <a href="/services" style="color: #0369a1; text-decoration: none;">Services</a> / 
+      <span style="color: #0f172a; font-weight: 600;">Spine Care &amp; Treatment</span>
+    </nav>
+    <header style="margin-bottom: 3rem; text-align: center;">
+      <div style="display: inline-flex; align-items: center; gap: 0.45rem; background-color: #f0f9ff; color: #0369a1; padding: 0.35rem 0.95rem; border-radius: 9999px; font-size: 0.82rem; font-weight: 700; border: 1px solid rgba(2, 132, 199, 0.25); margin-bottom: 1rem; text-transform: uppercase;">
+        Spine Care &amp; Sciatica Unit
+      </div>
+      <h1 style="font-size: 2.35rem; font-weight: 800; color: #07152e; margin-bottom: 1rem; line-height: 1.2;">
+        Spine Care &amp; Treatment in Mumbai
+      </h1>
+      <p style="font-size: 1.12rem; color: #475569; line-height: 1.7; max-width: 820px; margin: 0 auto;">
+        Expert non-surgical spinal decompression, precision sciatica relief, endoscopic micro-discectomy, and postural rehabilitation led by consultant orthopedic spine specialists across Western Mumbai.
+      </p>
+    </header>
+
+    <section style="margin-bottom: 3.5rem;">
+      <h2 style="font-size: 1.6rem; font-weight: 800; color: #07152e; margin-bottom: 1.5rem;">
+        Conditions We Diagnose &amp; Treat in Mumbai
+      </h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+        <div style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.75rem; background: #ffffff; box-shadow: 0 4px 16px rgba(10,31,68,0.04);">
+          <h3 style="font-size: 1.25rem; font-weight: 800; color: #07152e; margin-top: 0; margin-bottom: 0.75rem;">
+            Sciatica (Lumbar Radiculopathy)
+          </h3>
+          <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">
+            Irritation or compression of the sciatic nerve roots in the lumbar spine, causing sharp electric burning pain radiating from the lower back through the buttock and down the leg into the foot.
+          </p>
+          <strong style="font-size: 0.88rem; color: #07152e; display: block; margin-bottom: 0.5rem;">Common Symptoms:</strong>
+          <ul style="padding-left: 1.25rem; margin: 0 0 1rem 0; font-size: 0.88rem; color: #64748b; line-height: 1.6;">
+            <li>Shooting pain down one leg aggravated by prolonged sitting</li>
+            <li>Numbness, tingling, or pins-and-needles in the calf or toes</li>
+            <li>Weakness when lifting the foot (foot drop tendency)</li>
+          </ul>
+          <strong style="font-size: 0.88rem; color: #07152e; display: block; margin-bottom: 0.5rem;">Treatment Options:</strong>
+          <p style="font-size: 0.88rem; color: #475569; line-height: 1.5; margin: 0 0 1rem 0;">Non-surgical mechanical decompression, targeted transforaminal nerve root blocks, and endoscopic micro-discectomy for refractory nerve impingement.</p>
+          <div style="border-left: 3px solid #dc2626; background: #fef2f2; padding: 0.65rem 0.85rem; font-size: 0.82rem; color: #991b1b;">
+            <strong>When to consult:</strong> Seek immediate medical attention if leg weakness worsens or if there is numbness around the groin/bladder.
+          </div>
+        </div>
+
+        <div style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.75rem; background: #ffffff; box-shadow: 0 4px 16px rgba(10,31,68,0.04);">
+          <h3 style="font-size: 1.25rem; font-weight: 800; color: #07152e; margin-top: 0; margin-bottom: 0.75rem;">
+            Herniated Disc / Slipped Disc
+          </h3>
+          <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">
+            Displacement of the inner gel nucleus through an annular tear, irritating adjacent spinal nerve roots. Highly prevalent among desk professionals and young adults due to prolonged sitting and posture strain.
+          </p>
+          <strong style="font-size: 0.88rem; color: #07152e; display: block; margin-bottom: 0.5rem;">Common Symptoms:</strong>
+          <ul style="padding-left: 1.25rem; margin: 0 0 1rem 0; font-size: 0.88rem; color: #64748b; line-height: 1.6;">
+            <li>Severe lower back spasms with inability to bend forward</li>
+            <li>Sharp pain aggravated by coughing, sneezing, or lifting</li>
+            <li>Relief experienced when lying flat with knees elevated</li>
+          </ul>
+          <strong style="font-size: 0.88rem; color: #07152e; display: block; margin-bottom: 0.5rem;">Treatment Options:</strong>
+          <p style="font-size: 0.88rem; color: #475569; line-height: 1.5; margin: 0 0 1rem 0;">Conservative McKenzie directional physical therapy, core stability training, ergonomic workstation redesign, and keyhole tubular discectomy.</p>
+          <div style="border-left: 3px solid #dc2626; background: #fef2f2; padding: 0.65rem 0.85rem; font-size: 0.82rem; color: #991b1b;">
+            <strong>When to consult:</strong> Consult an orthopedic spine surgeon if back pain radiates past the knee or persists for over 2 weeks.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-bottom: 3.5rem;">
+      <h2 style="font-size: 1.6rem; font-weight: 800; color: #07152e; margin-bottom: 1.5rem;">
+        Our 4-Step Spine Treatment Pathway
+      </h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem;">
+          <strong style="color: #0284c7; font-size: 0.85rem; text-transform: uppercase;">Step 01</strong>
+          <h3 style="font-size: 1.15rem; color: #07152e; margin: 0.35rem 0 0.5rem 0;">Neurological &amp; MRI Evaluation</h3>
+          <p style="color: #475569; font-size: 0.9rem; line-height: 1.6; margin: 0;">Precision mapping of reflex, sensory, and motor deficits combined with 3T MRI review to pinpoint the affected spinal level.</p>
+        </div>
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem;">
+          <strong style="color: #0284c7; font-size: 0.85rem; text-transform: uppercase;">Step 02</strong>
+          <h3 style="font-size: 1.15rem; color: #07152e; margin: 0.35rem 0 0.5rem 0;">Non-Surgical Decompression</h3>
+          <p style="color: #475569; font-size: 0.9rem; line-height: 1.6; margin: 0;">Evidence-based conservative therapy, core muscle re-education, and ergonomic adjustments prioritized over surgery.</p>
+        </div>
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem;">
+          <strong style="color: #0284c7; font-size: 0.85rem; text-transform: uppercase;">Step 03</strong>
+          <h3 style="font-size: 1.15rem; color: #07152e; margin: 0.35rem 0 0.5rem 0;">Targeted Nerve Blocks</h3>
+          <p style="color: #475569; font-size: 0.9rem; line-height: 1.6; margin: 0;">Selective transforaminal nerve root injections performed under fluoroscopy to provide rapid pain relief and localize nerve irritation.</p>
+        </div>
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem;">
+          <strong style="color: #0284c7; font-size: 0.85rem; text-transform: uppercase;">Step 04</strong>
+          <h3 style="font-size: 1.15rem; color: #07152e; margin: 0.35rem 0 0.5rem 0;">Endoscopic Micro-Discectomy</h3>
+          <p style="color: #475569; font-size: 0.9rem; line-height: 1.6; margin: 0;">When indicated, minimally invasive keyhole decompression relieves persistent nerve pressure without disturbing spinal stability.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-bottom: 3.5rem;">
+      <h2 style="font-size: 1.6rem; font-weight: 800; color: #07152e; margin-bottom: 1.5rem;">
+        Consulting Spine Specialists in Mumbai
+      </h2>
+      <p style="color: #475569; font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.5rem;">
+        Our spine care division is led by Dr. Omkar Rashinkar (Consultant Spine Surgeon) with surgical advisory faculty mentorship from Dr. Akhil Tawari (Senior Consultant Spine Surgeon with adult &amp; pediatric spine fellowships from Boston University Medical Centre and Miami). Consultations are available across our Mumbai centres in Kandivali, Borivali, Malad, and Goregaon.
+      </p>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="/doctors" style="display: inline-block; padding: 0.75rem 1.5rem; background: #07152e; color: #ffffff; text-decoration: none; border-radius: 6px; font-weight: 600;">View Doctor Profiles &rarr;</a>
+        <a href="/blog/back-pain-in-young-adults" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f0f9ff; color: #0284c7; text-decoration: none; border-radius: 6px; font-weight: 600; border: 1px solid rgba(2,132,199,0.3);">Read Back Pain in Young Adults Guide &rarr;</a>
+      </div>
+    </section>
+
+    <section style="margin-bottom: 3.5rem;">
+      <h2 style="font-size: 1.6rem; font-weight: 800; color: #07152e; margin-bottom: 1.5rem;">
+        Frequently Asked Questions About Spine Care &amp; Back Pain
+      </h2>
+      <div style="display: flex; flex-direction: column; gap: 1rem;">
+        <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.25rem;">
+          <h3 style="font-size: 1.05rem; color: #07152e; margin-top: 0; margin-bottom: 0.5rem;">How can I differentiate between regular muscular back pain and sciatica?</h3>
+          <p style="margin: 0; color: #475569; font-size: 0.95rem; line-height: 1.6;">Muscular back pain is typically confined to the lower back region, feels like a dull ache, and is triggered by specific movements. Sciatica is characterized by a sharp, electric shock-like or burning pain that shoots down past the buttock and through the back or side of the leg into the calf or foot.</p>
+        </div>
+        <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.25rem;">
+          <h3 style="font-size: 1.05rem; color: #07152e; margin-top: 0; margin-bottom: 0.5rem;">Can a slipped disc heal without surgery?</h3>
+          <p style="margin: 0; color: #475569; font-size: 0.95rem; line-height: 1.6;">Yes. Up to 85-90% of herniated disc cases improve significantly without surgical intervention through structured non-surgical spinal decompression, targeted physical therapy, ergonomic corrections, and short courses of anti-inflammatory medications.</p>
+        </div>
+        <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.25rem;">
+          <h3 style="font-size: 1.05rem; color: #07152e; margin-top: 0; margin-bottom: 0.5rem;">What non-surgical treatments are available at SOS for back pain in Mumbai?</h3>
+          <p style="margin: 0; color: #475569; font-size: 0.95rem; line-height: 1.6;">SOS provides evidence-based conservative care including McKenzie method physical therapy, core stabilization rehab, postural ergonomic consultations, and fluoroscopy-guided selective nerve root blocks.</p>
+        </div>
+        <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.25rem;">
+          <h3 style="font-size: 1.05rem; color: #07152e; margin-top: 0; margin-bottom: 0.5rem;">When is endoscopic spine surgery recommended over conservative care?</h3>
+          <p style="margin: 0; color: #475569; font-size: 0.95rem; line-height: 1.6;">Endoscopic keyhole spine surgery is considered when severe nerve compression causes progressive muscle weakness (e.g., foot drop), intractable pain unresponsive to 6 weeks of conservative treatment, or in rare cases of cauda equina syndrome.</p>
+        </div>
+        <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.25rem;">
+          <h3 style="font-size: 1.05rem; color: #07152e; margin-top: 0; margin-bottom: 0.5rem;">Which spine doctors consult at SOS centres in Mumbai?</h3>
+          <p style="margin: 0; color: #475569; font-size: 0.95rem; line-height: 1.6;">Our spine unit is led by Dr. Omkar Rashinkar (Consultant Spine Surgeon) with surgical advisory faculty mentorship from Dr. Akhil Tawari (Senior Consultant Spine Surgeon with fellowship training from Boston University Medical Centre).</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="text-align: center; padding: 2.5rem; background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: #ffffff; border-radius: 12px;">
+      <h2 style="font-size: 1.6rem; font-weight: 800; color: #ffffff; margin-top: 0; margin-bottom: 0.75rem;">
+        Book a Spine Specialist Consultation in Mumbai
+      </h2>
+      <p style="color: #e0f2fe; font-size: 1.05rem; max-width: 650px; margin: 0 auto 1.5rem auto; line-height: 1.6;">
+        Schedule an in-person spine evaluation at our Kandivali, Borivali, Malad, or Goregaon centres, or request an emergency 24/7 Home X-Ray.
+      </p>
+      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <a href="/contact" style="display: inline-block; padding: 0.8rem 1.75rem; background: #ffffff; color: #0369a1; text-decoration: none; border-radius: 6px; font-weight: 700;">Book OPD Appointment</a>
+        <a href="tel:09321144580" style="display: inline-block; padding: 0.8rem 1.75rem; background: rgba(255,255,255,0.15); color: #ffffff; text-decoration: none; border-radius: 6px; font-weight: 700; border: 1px solid rgba(255,255,255,0.3);">Call 24/7: 093211 44580</a>
+      </div>
+    </section>
+  </div>
+</main>
+${prerenderFooterHtml}
+`;
+  } else if (p.name === 'centres') {
+    bodyHtml = `
+${prerenderNavbarHtml}
+<main style="flex-grow: 1;">
+  <div class="static-prerender-content" style="padding: 2.5rem 1rem; max-width: 1200px; margin: 0 auto;">
+    <nav aria-label="Breadcrumb" style="font-size: 0.85rem; margin-bottom: 1.5rem; color: #64748b;">
+      <a href="/" style="color: #0369a1; text-decoration: none;">Home</a> / 
+      <span style="color: #0f172a; font-weight: 600;">Centres &amp; Outreach Network</span>
+    </nav>
+    <header style="margin-bottom: 3rem; text-align: center;">
+      <div style="display: inline-flex; align-items: center; gap: 0.45rem; background-color: #f0f9ff; color: #0369a1; padding: 0.35rem 0.95rem; border-radius: 9999px; font-size: 0.82rem; font-weight: 700; border: 1px solid rgba(2, 132, 199, 0.25); margin-bottom: 1rem; text-transform: uppercase;">
+        Multi-Centre Network Across Mumbai
+      </div>
+      <h1 style="font-size: 2.35rem; font-weight: 800; color: #07152e; margin-bottom: 1rem; line-height: 1.2;">
+        Our Orthopedic Centres &amp; Service Network in Mumbai
+      </h1>
+      <p style="font-size: 1.12rem; color: #475569; line-height: 1.7; max-width: 820px; margin: 0 auto;">
+        Modern consultation facilities, dedicated outreach clinics, and a 24/7 mobile digital X-ray dispatch network spanning Kandivali, Borivali, Malad, and Goregaon.
+      </p>
+    </header>
+
+    <div style="display: flex; flex-direction: column; gap: 3rem; margin-bottom: 4rem;">
+      <!-- Kandivali Centre -->
+      <section id="kandivali" style="border: 1px solid #e2e8f0; border-radius: 16px; padding: 2rem; background: #ffffff; box-shadow: 0 4px 20px rgba(10,31,68,0.04);">
+        <div style="display: inline-block; background: #ecfdf5; color: #059669; font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: 9999px; text-transform: uppercase; margin-bottom: 0.75rem;">
+          Primary Operational Centre
+        </div>
+        <h2 style="font-size: 1.7rem; font-weight: 800; color: #07152e; margin-top: 0; margin-bottom: 0.75rem;">
+          Orthopedic Clinic in Kandivali
+        </h2>
+        <p style="color: #475569; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.25rem;">
+          Our primary operational orthopedic centre in Kandivali West is equipped with dedicated surgical consultation suites, digital radiography support, physiotherapy assessment, and emergency fracture triage. Open 6 days a week with priority Sunday clinics.
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; background: #f8fafc; padding: 1.25rem; border-radius: 8px;">
+          <div>
+            <strong style="display: block; color: #07152e; font-size: 0.88rem;">Verified Address:</strong>
+            <span style="color: #64748b; font-size: 0.88rem;">Shop No. 3, Ground Floor, Mahavir Majesty, Kandivali West, Mumbai</span>
+          </div>
+          <div>
+            <strong style="display: block; color: #07152e; font-size: 0.88rem;">Consultation Hours:</strong>
+            <span style="color: #64748b; font-size: 0.88rem;">Mon - Sat: 8:00 AM - 10:00 PM | Sunday OPD Available</span>
+          </div>
+          <div>
+            <strong style="display: block; color: #07152e; font-size: 0.88rem;">Direct Contact:</strong>
+            <span style="color: #0284c7; font-size: 0.88rem; font-weight: 700;">Helpline: 093211 44580</span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="/contact" style="display: inline-block; padding: 0.65rem 1.35rem; background: #0284c7; color: #ffffff; text-decoration: none; border-radius: 6px; font-weight: 600;">Book OPD at Kandivali</a>
+          <a href="tel:09321144580" style="display: inline-block; padding: 0.65rem 1.35rem; background: #f1f5f9; color: #07152e; text-decoration: none; border-radius: 6px; font-weight: 600;">Call Centre Desk</a>
+        </div>
+      </section>
+
+      <!-- Malad Outreach Clinic -->
+      <section id="malad" style="border: 1px solid #e2e8f0; border-radius: 16px; padding: 2rem; background: #ffffff; box-shadow: 0 4px 20px rgba(10,31,68,0.04);">
+        <div style="display: inline-block; background: #fef3c7; color: #b45309; font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: 9999px; text-transform: uppercase; margin-bottom: 0.75rem;">
+          Operational Outreach Clinic
+        </div>
+        <h2 style="font-size: 1.7rem; font-weight: 800; color: #07152e; margin-top: 0; margin-bottom: 0.75rem;">
+          Orthopedic Specialist in Malad
+        </h2>
+        <p style="color: #475569; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.25rem;">
+          Our operational Malad outreach clinic provides specialized orthopedic consultations, pre-operative joint evaluations, and post-operative surgical reviews for residents of Malad, Madh Island, and Link Road.
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; background: #f8fafc; padding: 1.25rem; border-radius: 8px;">
+          <div>
+            <strong style="display: block; color: #07152e; font-size: 0.88rem;">Verified Address:</strong>
+            <span style="color: #64748b; font-size: 0.88rem;">Raheja Exotica, Pascal Wadi, Madh, Mumbai – 400061</span>
+          </div>
+          <div>
+            <strong style="display: block; color: #07152e; font-size: 0.88rem;">Consultation Hours:</strong>
+            <span style="color: #64748b; font-size: 0.88rem;">Scheduled Outreach Days &amp; By Prior Appointment</span>
+          </div>
+          <div>
+            <strong style="display: block; color: #07152e; font-size: 0.88rem;">Direct Contact:</strong>
+            <span style="color: #0284c7; font-size: 0.88rem; font-weight: 700;">Helpline: 093211 44580</span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="/contact" style="display: inline-block; padding: 0.65rem 1.35rem; background: #0284c7; color: #ffffff; text-decoration: none; border-radius: 6px; font-weight: 600;">Schedule Malad Visit</a>
+          <a href="/x-ray-services-at-home" style="display: inline-block; padding: 0.65rem 1.35rem; background: #f1f5f9; color: #07152e; text-decoration: none; border-radius: 6px; font-weight: 600;">Request Malad Home X-Ray</a>
+        </div>
+      </section>
+
+      <!-- Borivali Service Area -->
+      <section id="borivali" style="border: 1px solid #e2e8f0; border-radius: 16px; padding: 2rem; background: #ffffff; box-shadow: 0 4px 20px rgba(10,31,68,0.04);">
+        <div style="display: inline-block; background: #e0f2fe; color: #0369a1; font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: 9999px; text-transform: uppercase; margin-bottom: 0.75rem;">
+          24/7 Doorstep Service Area &bull; Facility Opening Soon
+        </div>
+        <h2 style="font-size: 1.7rem; font-weight: 800; color: #07152e; margin-top: 0; margin-bottom: 0.75rem;">
+          Orthopedic Doctor in Borivali
+        </h2>
+        <p style="color: #475569; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.25rem;">
+          Borivali is an active service area with 24/7 emergency dispatch for portable digital X-rays, doctor home visits, and mobile physiotherapy for bedridden or elderly patients across Borivali West and East. A dedicated physical consultation facility in Borivali West is currently opening soon.
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; background: #f8fafc; padding: 1.25rem; border-radius: 8px;">
+          <div>
+            <strong style="display: block; color: #07152e; font-size: 0.88rem;">Doorstep Service Coverage:</strong>
+            <span style="color: #64748b; font-size: 0.88rem;">20-30 Min Rapid Dispatch Across Borivali West &amp; East</span>
+          </div>
+          <div>
+            <strong style="display: block; color: #07152e; font-size: 0.88rem;">In-Person OPD Consultations:</strong>
+            <span style="color: #64748b; font-size: 0.88rem;">Available at Flagship Kandivali Centre (10 Mins from Borivali)</span>
+          </div>
+          <div>
+            <strong style="display: block; color: #07152e; font-size: 0.88rem;">Emergency Dispatch:</strong>
+            <span style="color: #0284c7; font-size: 0.88rem; font-weight: 700;">24/7 Desk: 093211 44580</span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="/x-ray-services-at-home" style="display: inline-block; padding: 0.65rem 1.35rem; background: #0284c7; color: #ffffff; text-decoration: none; border-radius: 6px; font-weight: 600;">Request Home X-Ray in Borivali</a>
+          <a href="/contact" style="display: inline-block; padding: 0.65rem 1.35rem; background: #f1f5f9; color: #07152e; text-decoration: none; border-radius: 6px; font-weight: 600;">Book Doctor Consultation</a>
+        </div>
+      </section>
+
+      <!-- Goregaon Service Area -->
+      <section id="goregaon" style="border: 1px solid #e2e8f0; border-radius: 16px; padding: 2rem; background: #ffffff; box-shadow: 0 4px 20px rgba(10,31,68,0.04);">
+        <div style="display: inline-block; background: #e0f2fe; color: #0369a1; font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: 9999px; text-transform: uppercase; margin-bottom: 0.75rem;">
+          24/7 Doorstep Service Area &bull; Facility Opening Soon
+        </div>
+        <h2 style="font-size: 1.7rem; font-weight: 800; color: #07152e; margin-top: 0; margin-bottom: 0.75rem;">
+          Orthopedic Surgeon in Goregaon
+        </h2>
+        <p style="color: #475569; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.25rem;">
+          Goregaon is actively covered by our 24/7 doorstep orthopedic mobile fleet. Senior citizens and acute fracture patients across Goregaon West and East receive rapid-response portable digital X-rays and home physiotherapy. A physical consultation centre is opening soon.
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; background: #f8fafc; padding: 1.25rem; border-radius: 8px;">
+          <div>
+            <strong style="display: block; color: #07152e; font-size: 0.88rem;">Doorstep Service Coverage:</strong>
+            <span style="color: #64748b; font-size: 0.88rem;">24/7 Mobile Digital X-Ray Fleet Dispatched Across Goregaon</span>
+          </div>
+          <div>
+            <strong style="display: block; color: #07152e; font-size: 0.88rem;">Surgical Consultations:</strong>
+            <span style="color: #64748b; font-size: 0.88rem;">Consult Senior Surgeons at Kandivali Centre or via Home Visits</span>
+          </div>
+          <div>
+            <strong style="display: block; color: #07152e; font-size: 0.88rem;">Emergency Dispatch:</strong>
+            <span style="color: #0284c7; font-size: 0.88rem; font-weight: 700;">24/7 Desk: 093211 44580</span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="/x-ray-services-at-home" style="display: inline-block; padding: 0.65rem 1.35rem; background: #0284c7; color: #ffffff; text-decoration: none; border-radius: 6px; font-weight: 600;">Request Home X-Ray in Goregaon</a>
+          <a href="/contact" style="display: inline-block; padding: 0.65rem 1.35rem; background: #f1f5f9; color: #07152e; text-decoration: none; border-radius: 6px; font-weight: 600;">Contact Orthopedic Desk</a>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+${prerenderFooterHtml}
+`;
+  } else 
   if (p.name === 'contact') {
     bodyHtml = `
 ${prerenderNavbarHtml}
@@ -2373,7 +2709,7 @@ ${prerenderNavbarHtml}
         <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.75rem; box-shadow: 0 2px 8px rgba(10,31,68,0.04);">
           <h3 style="font-size: 1.25rem; font-weight: 800; color: #07152e; margin-top: 0; margin-bottom: 0.5rem;">24/7 Home Digital X-Ray</h3>
           <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.25rem;">Hospital-grade mobile digital radiography brought to the bedside across Mumbai with instant digital reports.</p>
-          <a href="/services/home-x-ray" style="color: #0284c7; font-weight: 700; text-decoration: none;">Learn more &rarr;</a>
+          <a href="/x-ray-services-at-home" style="color: #0284c7; font-weight: 700; text-decoration: none;">Learn more &rarr;</a>
         </div>
       </div>
     </div>

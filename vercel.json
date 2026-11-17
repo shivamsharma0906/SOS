@@ -49,6 +49,10 @@
       ]
     }
   ],
+  "redirects": [
+    { "source": "/services/home-x-ray", "destination": "/x-ray-services-at-home", "permanent": true },
+    { "source": "/x-ray-at-home", "destination": "/x-ray-services-at-home", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]

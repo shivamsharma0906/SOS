@@ -804,8 +804,14 @@ export const BlogPostDetail: React.FC = () => {
       },
       "author": {
         "@type": "Person",
-        "name": seo.authorNamePlaceholder
+        "name": post.author.name
       },
+      ...(post.reviewer ? {
+        "reviewedBy": {
+          "@type": "Person",
+          "name": post.reviewer.name
+        }
+      } : {}),
       "datePublished": seo.datePublished,
       "dateModified": seo.dateModified
     },
@@ -914,12 +920,21 @@ export const BlogPostDetail: React.FC = () => {
                     {post.h1}
                   </h1>
 
-                  {/* Metadata Bar: Author & Last Updated */}
+                  {/* Metadata Bar: Author, Reviewer & Last Updated */}
                   <div className="blog-article-meta-bar">
                     <div className="blog-meta-item">
                       <FileText size={15} color="var(--blue-brand)" aria-hidden="true" />
                       <span>Author: <strong className="meta-author-name">{post.author.name}</strong></span>
                     </div>
+                    {post.reviewer && (
+                      <>
+                        <span className="meta-dot">&bull;</span>
+                        <div className="blog-meta-item">
+                          <CheckCircle2 size={15} color="#15803d" aria-hidden="true" />
+                          <span>Reviewed by: <strong className="meta-author-name">{post.reviewer.name}</strong></span>
+                        </div>
+                      </>
+                    )}
                     <span className="meta-dot">&bull;</span>
                     <div className="blog-meta-item">
                       <Calendar size={15} color="var(--text-light)" aria-hidden="true" />
@@ -1055,6 +1070,25 @@ export const BlogPostDetail: React.FC = () => {
                       <ArrowRight size={14} aria-hidden="true" />
                     </Link>
                   </div>
+
+                  {/* Medical Review & Editorial Attribution (E-E-A-T) */}
+                  {post.reviewer && (
+                    <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '1.25rem', marginBottom: '2rem' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
+                        <CheckCircle2 size={16} color="#16a34a" aria-hidden="true" />
+                        <span style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#15803d' }}>Medically Reviewed &amp; Verified</span>
+                      </div>
+                      <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#07152e', margin: '0 0 0.35rem 0' }}>
+                        Reviewed by {post.reviewer.name}
+                      </h4>
+                      <p style={{ fontSize: '0.85rem', color: '#475569', margin: '0 0 0.35rem 0', lineHeight: 1.5 }}>
+                        {post.reviewer.title} &bull; {post.reviewer.qualifications}
+                      </p>
+                      <p style={{ fontSize: '0.8rem', color: '#64748b', margin: 0, fontStyle: 'italic' }}>
+                        Specialty: {post.reviewer.specialization}. Information checked against SOS evidence-based orthopedic clinical protocols.
+                      </p>
+                    </div>
+                  )}
 
                   {/* Consultation Booking CTA Card */}
                   <div className="blog-cta-box">

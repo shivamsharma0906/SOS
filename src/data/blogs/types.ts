@@ -50,6 +50,7 @@ export interface BlogPost {
   category: 'knee' | 'spine' | 'trauma';
   categoryLabel: string;
   author: BlogAuthor;
+  reviewer?: BlogAuthor;
   publishDate: string;
   lastUpdated: string;
   readTime: string;
