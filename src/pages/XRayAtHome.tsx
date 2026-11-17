@@ -116,7 +116,7 @@ export const XRayAtHome: React.FC = () => {
       zone: 'Flagship Zone',
       region: 'Kandivali & Borivali West/East',
       eta: '15 – 20 Mins',
-      statusText: 'Active • On Duty',
+      statusText: 'On Duty',
       coverage: 'Mahavir Nagar, Lokhandwala, Gorai, Shimpoli, IC Colony, Chikuwadi',
       statusColor: '#16a34a',
       statusBg: '#dcfce7',
@@ -126,7 +126,7 @@ export const XRayAtHome: React.FC = () => {
       zone: 'Coastal Zone',
       region: 'Malad & Madh Island Belt',
       eta: '20 – 25 Mins',
-      statusText: 'Active • On Duty',
+      statusText: 'On Duty',
       coverage: 'Mindspace, Link Road, Marve Road, Pascal Wadi, Raheja Exotica, Orlem',
       statusColor: '#16a34a',
       statusBg: '#dcfce7',
@@ -136,7 +136,7 @@ export const XRayAtHome: React.FC = () => {
       zone: 'Suburban Zone',
       region: 'Goregaon & Oshiwara',
       eta: '25 – 30 Mins',
-      statusText: 'Active • On Duty',
+      statusText: 'On Duty',
       coverage: 'Goregaon West & East, Lokhandwala Complex, Bangur Nagar, Aarey Colony',
       statusColor: '#16a34a',
       statusBg: '#dcfce7',
@@ -146,7 +146,7 @@ export const XRayAtHome: React.FC = () => {
       zone: 'Extended Zone',
       region: 'Andheri, Juhu & Dahisar',
       eta: '30 – 35 Mins',
-      statusText: 'Standby • Available',
+      statusText: 'Available',
       coverage: 'Andheri West/East, Versova, Juhu Scheme, Dahisar West/East & Mira Road',
       statusColor: '#0284c7',
       statusBg: '#e0f2fe',
@@ -359,7 +359,7 @@ export const XRayAtHome: React.FC = () => {
             style={{ 
               display: 'grid', 
               gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', 
-              gap: '1.5rem', 
+              gap: '1.25rem', 
               maxWidth: '1180px', 
               margin: '0 auto 2.5rem auto' 
             }}
@@ -371,8 +371,8 @@ export const XRayAtHome: React.FC = () => {
                 style={{
                   backgroundColor: '#ffffff',
                   border: '1.5px solid #e2e8f0',
-                  borderRadius: '20px',
-                  padding: '1.75rem',
+                  borderRadius: '18px',
+                  padding: '1.5rem 1.35rem',
                   boxShadow: '0 4px 18px rgba(10, 31, 68, 0.04)',
                   display: 'flex',
                   flexDirection: 'column',
@@ -397,113 +397,116 @@ export const XRayAtHome: React.FC = () => {
                   }} 
                 />
 
-                <div>
-                  {/* Card Header Row: Badge & Live Status */}
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', gap: '0.5rem', flexWrap: 'wrap' }}>
-                    <div 
+                <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+                  {/* Card Header Row: Badge & Live Status (Always 1 Single Row) */}
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.9rem', gap: '0.4rem' }}>
+                    <span 
                       style={{ 
                         display: 'inline-flex', 
                         alignItems: 'center', 
                         gap: '0.35rem', 
                         color: 'var(--blue-brand)', 
                         fontSize: '0.74rem', 
-                        fontWeight: 700, 
-                        backgroundColor: 'rgba(2, 132, 199, 0.08)', 
-                        padding: '0.25rem 0.65rem', 
-                        borderRadius: '9999px',
+                        fontWeight: 800, 
                         textTransform: 'uppercase',
-                        letterSpacing: '0.04em'
+                        letterSpacing: '0.04em',
+                        whiteSpace: 'nowrap'
                       }}
                     >
                       <MapPin size={13} />
                       <span>{item.zone}</span>
-                    </div>
+                    </span>
 
-                    <div 
+                    <span 
                       style={{ 
                         display: 'inline-flex', 
                         alignItems: 'center', 
-                        gap: '0.4rem', 
-                        fontSize: '0.72rem', 
+                        gap: '0.35rem', 
+                        fontSize: '0.7rem', 
                         fontWeight: 700, 
                         backgroundColor: item.statusBg, 
                         color: item.statusColor, 
-                        padding: '0.25rem 0.65rem', 
+                        padding: '0.2rem 0.55rem', 
                         borderRadius: '9999px',
                         textTransform: 'uppercase',
                         letterSpacing: '0.03em',
                         whiteSpace: 'nowrap'
                       }}
                     >
-                      <span className="live-pulse-dot" style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: item.statusColor, display: 'inline-block' }} />
+                      <span className="live-pulse-dot" style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: item.statusColor, display: 'inline-block' }} />
                       <span>{item.statusText}</span>
-                    </div>
+                    </span>
                   </div>
 
-                  {/* Region Title */}
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--navy-primary)', margin: '0 0 0.85rem 0', lineHeight: 1.3 }}>
+                  {/* Region Title with Consistent Height */}
+                  <h3 style={{ fontSize: '1.18rem', fontWeight: 800, color: 'var(--navy-primary)', margin: '0 0 0.85rem 0', lineHeight: 1.3, minHeight: '3.1rem', display: 'flex', alignItems: 'center' }}>
                     {item.region}
                   </h3>
 
-                  {/* Highlighted ETA Box */}
+                  {/* Highlighted ETA Box (Clean & Single-Line) */}
                   <div 
                     style={{ 
                       backgroundColor: '#f0f9ff', 
-                      border: '1px solid #e0f2fe', 
+                      border: '1px solid #bae6fd', 
                       borderRadius: '12px', 
-                      padding: '0.75rem 1rem', 
+                      padding: '0.7rem 0.85rem', 
                       display: 'flex', 
                       alignItems: 'center', 
                       justifyContent: 'space-between', 
-                      marginBottom: '1.15rem' 
+                      marginBottom: '1rem',
+                      gap: '0.5rem'
                     }}
                   >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.8rem', color: '#64748b', fontWeight: 600 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.8rem', color: '#64748b', fontWeight: 600, whiteSpace: 'nowrap' }}>
                       <Clock size={15} color="var(--blue-brand)" />
-                      <span>Estimated Arrival:</span>
+                      <span>Arrival ETA:</span>
                     </div>
-                    <strong style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--blue-brand)', letterSpacing: '-0.01em' }}>
+                    <strong style={{ fontSize: '1.05rem', fontWeight: 900, color: 'var(--blue-brand)', letterSpacing: '-0.01em', whiteSpace: 'nowrap' }}>
                       {item.eta}
                     </strong>
                   </div>
 
-                  {/* Coverage Locations */}
-                  <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: 1.55, margin: '0 0 1.25rem 0' }}>
-                    {item.coverage}
-                  </p>
+                  {/* Coverage Locations with Equal Height */}
+                  <div style={{ flexGrow: 1, marginBottom: '1.25rem' }}>
+                    <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.55, margin: 0, minHeight: '3.8rem' }}>
+                      {item.coverage}
+                    </p>
+                  </div>
                 </div>
 
-                {/* Footer Action Strip */}
+                {/* Footer Action Strip (Evenly Proportioned Two-Column Grid) */}
                 <div 
                   style={{ 
-                    paddingTop: '1.25rem', 
+                    paddingTop: '1rem', 
                     borderTop: '1px solid #f1f5f9', 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    justifyContent: 'space-between',
-                    gap: '0.75rem'
+                    display: 'grid', 
+                    gridTemplateColumns: '1fr 1fr',
+                    gap: '0.6rem',
+                    alignItems: 'center'
                   }}
                 >
                   <a 
                     href={`tel:${BUSINESS_INFO.phone}`}
                     className="fleet-phone-btn"
                     style={{ 
-                      fontSize: '0.85rem', 
+                      fontSize: '0.78rem', 
                       fontWeight: 700, 
                       color: 'var(--navy-primary)', 
                       textDecoration: 'none', 
                       display: 'inline-flex', 
                       alignItems: 'center', 
-                      gap: '0.45rem',
-                      padding: '0.45rem 0.65rem',
-                      borderRadius: '8px',
+                      justifyContent: 'center',
+                      gap: '0.35rem',
+                      padding: '0.6rem 0.35rem',
+                      borderRadius: 'var(--radius-pill)',
                       backgroundColor: '#f8fafc',
-                      border: '1px solid #e2e8f0',
-                      transition: 'all 0.2s ease'
+                      border: '1.5px solid #e2e8f0',
+                      transition: 'all 0.2s ease',
+                      whiteSpace: 'nowrap'
                     }}
                     title={`Call Helpline ${BUSINESS_INFO.phone}`}
                   >
-                    <Phone size={14} color="var(--blue-brand)" />
+                    <Phone size={13} color="var(--blue-brand)" />
                     <span>{BUSINESS_INFO.phone}</span>
                   </a>
 
@@ -511,12 +514,14 @@ export const XRayAtHome: React.FC = () => {
                     onClick={() => setIsModalOpen(true)}
                     className="btn btn-primary btn-sm fleet-cta-btn"
                     style={{ 
-                      padding: '0.55rem 1.15rem', 
+                      padding: '0.6rem 0.5rem', 
                       fontSize: '0.82rem', 
                       fontWeight: 800,
                       gap: '0.35rem',
-                      borderRadius: '9999px',
-                      transition: 'all 0.25s ease'
+                      borderRadius: 'var(--radius-pill)',
+                      justifyContent: 'center',
+                      transition: 'all 0.25s ease',
+                      whiteSpace: 'nowrap'
                     }}
                   >
                     <span>Request</span>
