@@ -91,14 +91,14 @@ export const Hero: React.FC = () => {
 
             {/* Expansive Headline */}
             <h1 className="hero-title" style={{ color: 'var(--navy-primary)', marginBottom: '1.25rem', lineHeight: 1.15, fontWeight: 800 }}>
-              Relief for Bone, Joint, <br className="hidden-mobile" />
+              Orthopedic Care in Mumbai <br className="hidden-mobile" />
               <span style={{
                 background: 'linear-gradient(135deg, var(--navy-primary) 0%, var(--blue-brand) 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 position: 'relative'
               }}>
-                Spine & Sports Injuries
+                Relief for Bone, Joint, Spine & Sports Injuries
               </span>
             </h1>
 

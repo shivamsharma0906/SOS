@@ -18,8 +18,8 @@ export const Contact: React.FC = () => {
   return (
     <>
       <SEOHead
-        title={`Contact ${BUSINESS_INFO.name} | 24/7 Helpline ${BUSINESS_INFO.phone}`}
-        description={`Connect with ${BUSINESS_INFO.name} in Mumbai. Call ${BUSINESS_INFO.phone} for doctor consultations or 24/7 Home X-Ray dispatch across Kandivali, Malad, Borivali, and Goregaon.`}
+        title="Contact SOS Orthopedic Clinic Mumbai"
+        description="Contact SOS Orthopedic Clinic in Mumbai for orthopedic consultations and 24/7 home X-ray services. Call 093211 44580."
         canonicalUrl={`${BUSINESS_INFO.website}/contact`}
       />
 

@@ -44,8 +44,8 @@ export const Services: React.FC = () => {
   return (
     <>
       <SEOHead
-        title="Our Orthopedic Specialities & Clinical Pathways | SOS Mumbai"
-        description="Explore SOS Speciality Orthopedic divisions: Joint Replacement, Keyhole ACL Repair, Spine Care, Sports Injuries, Pediatric Trauma, and 24/7 Home X-Ray Diagnostics across Mumbai."
+        title="Orthopedic Treatments in Mumbai | SOS Clinic"
+        description="Explore orthopedic treatments in Mumbai at SOS Clinic, including joint replacement, ACL repair, spine care, sports injury and pediatric trauma."
         canonicalUrl={`${BUSINESS_INFO.website}/services`}
       />
 

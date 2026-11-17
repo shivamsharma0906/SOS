@@ -4,12 +4,12 @@ import path from 'path';
 const distDir = path.resolve(process.cwd(), 'dist');
 
 const pendingUrls = [
-  { file: 'blog/index.html', canonical: 'https://www.sosorth.com/blog', title: 'Orthopedic Blog & Patient Recovery Guides | SOS Speciality Clinic Mumbai' },
-  { file: 'mentors/index.html', canonical: 'https://www.sosorth.com/mentors', title: 'Our Mentors & Surgical Faculty | SOS Speciality Orthopedic Clinic Mumbai' },
-  { file: 'services/index.html', canonical: 'https://www.sosorth.com/services', title: 'Our Orthopedic Specialities & Clinical Pathways | SOS Mumbai' },
-  { file: 'home-services/index.html', canonical: 'https://www.sosorth.com/home-services', title: 'Comprehensive Orthopedic Home Care & Doorstep Services Mumbai | SOS Clinic' },
-  { file: 'physiotherapy/index.html', canonical: 'https://www.sosorth.com/physiotherapy', title: 'Orthopedic Physiotherapy & Surgeon-Led Joint Rehab Mumbai | SOS Clinic' },
-  { file: 'x-ray-services-at-home/index.html', canonical: 'https://www.sosorth.com/x-ray-services-at-home', title: '24/7 Digital X-Ray Services at Home in Mumbai | SOS Orthopedic Clinic' }
+  { file: 'blog/index.html', canonical: 'https://www.sosorth.com/blog', title: 'Orthopedic Health Blog & Recovery Guides | SOS Clinic Mumbai' },
+  { file: 'mentors/index.html', canonical: 'https://www.sosorth.com/mentors', title: 'Surgical Faculty & Mentors | SOS Orthopedic Clinic' },
+  { file: 'services/index.html', canonical: 'https://www.sosorth.com/services', title: 'Orthopedic Treatments in Mumbai | SOS Clinic' },
+  { file: 'home-services/index.html', canonical: 'https://www.sosorth.com/home-services', title: 'Orthopedic Home Care Services in Mumbai | SOS Clinic' },
+  { file: 'physiotherapy/index.html', canonical: 'https://www.sosorth.com/physiotherapy', title: 'Orthopedic Physiotherapy in Mumbai | SOS Clinic' },
+  { file: 'x-ray-services-at-home/index.html', canonical: 'https://www.sosorth.com/x-ray-services-at-home', title: '24/7 Home X-Ray Services in Mumbai | SOS Clinic' }
 ];
 
 console.log('--- Validating 6 Google Search Console Pending Pages in dist/ ---');
@@ -27,7 +27,7 @@ for (const p of pendingUrls) {
   const hasCanonical = content.includes(`<link rel="canonical" href="${p.canonical}" />`);
   const hasRobots = content.includes('<meta name="robots" content="index, follow" />');
   const hasTitle = content.includes(`<title>${p.title}</title>`);
-  const hasH1 = /<h1[^>]*>.*?<\/h1>/.test(content);
+  const hasH1 = /<h1[^>]*>[\s\S]*?<\/h1>/.test(content);
   const hasJsonLd = content.includes('"@type": "MedicalWebPage"');
   const hasNoRootCanonical = !content.includes('<link rel="canonical" href="https://www.sosorth.com/" />');
 

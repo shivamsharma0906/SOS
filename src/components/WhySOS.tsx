@@ -97,7 +97,7 @@ export const WhySOS: React.FC = () => {
           </div>
 
           <h2 className="heading-lg why-sos-title" style={{ color: 'var(--navy-primary)', marginBottom: '0.85rem' }}>
-            A Modern Standard for <span style={{ color: 'var(--blue-brand)' }}>Specialized Orthopedic Care</span>
+            Why Choose <span style={{ color: 'var(--blue-brand)' }}>SOS Orthopedic Clinic?</span>
           </h2>
 
           <p className="subhead why-sos-subhead" style={{ margin: '0 auto', fontSize: '1.05rem', color: 'var(--text-secondary)' }}>
