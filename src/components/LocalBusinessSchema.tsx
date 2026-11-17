@@ -18,14 +18,15 @@ export const LocalBusinessSchema: React.FC = () => {
       "email": BUSINESS_INFO.email,
       "priceRange": "₹₹",
       "description": "Speciality Orthopedic Clinic in Mumbai offering expert care for bone, joint, spine, and sports injuries with 24/7 Home X-Ray Services across Borivali, Kandivali, Malad, Goregaon, and Andheri.",
-      "medicalSpecialty": ["Orthopedic", "Rheumatology", "SportsMedicine", "PediatricOrthopedics"],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.5",
-        "reviewCount": testimonialsData.length.toString(),
-        "bestRating": "5",
-        "worstRating": "1"
-      },
+      "medicalSpecialty": [
+        "https://schema.org/Musculoskeletal",
+        "https://schema.org/Surgical",
+        "https://schema.org/Physiotherapy",
+        "https://schema.org/Pediatric",
+        "https://schema.org/Emergency",
+        "https://schema.org/Radiography",
+        "https://schema.org/Rheumatologic"
+      ],
       "areaServed": [
         { "@type": "AdministrativeArea", "name": "Borivali" },
         { "@type": "AdministrativeArea", "name": "Kandivali" },
@@ -38,7 +39,7 @@ export const LocalBusinessSchema: React.FC = () => {
         "https://www.instagram.com/sosorthopaedics/"
       ],
       "availableService": [
-        { "@type": "MedicalDiagnosticTest", "name": "24/7 Home X-Ray Service" },
+        { "@type": "MedicalTest", "name": "24/7 Home X-Ray Service" },
         { "@type": "MedicalProcedure", "name": "Joint Care & Robotic Replacement" },
         { "@type": "MedicalProcedure", "name": "Endoscopic Spine Care & Discectomy" },
         { "@type": "MedicalProcedure", "name": "Bone Care & Complex Fracture Fixation" },
