@@ -290,7 +290,7 @@ const structuredData1 = [
 const prerenderNavbarHtml = `
 <div class="mobile-sticky-helpline-bar" style="display: none; background-color: var(--navy-dark, #07152e); color: #ffffff; padding: 0.45rem 1rem; font-size: 0.8rem; font-weight: 700; align-items: center; justify-content: center; gap: 0.5rem; text-decoration: none; position: fixed; top: 0; left: 0; right: 0; z-index: 1001; height: 38px;">
   <a href="tel:09321144580" style="color: #ffffff; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%;">
-    <span>24/7 Helpline: <strong style="color: #38bdf8;">093211 44580</strong></span>
+    <span>Emergency Dispatch: <strong style="color: #38bdf8;">093211 44580</strong></span>
   </a>
 </div>
 <div class="navbar-fixed-wrapper navbar-visible" style="position: fixed; top: 0; left: 0; right: 0; width: 100%; z-index: 1000;">
@@ -328,7 +328,7 @@ const prerenderNavbarHtml = `
       </nav>
       <div style="display: flex; align-items: center; gap: 0.65rem;" class="desktop-actions">
         <a href="/contact" class="btn btn-primary btn-sm" style="gap: 0.4rem; white-space: nowrap;">
-          Book Appointment
+          Book Priority OPD
         </a>
       </div>
     </div>
@@ -336,7 +336,6 @@ const prerenderNavbarHtml = `
 </div>
 <div class="navbar-spacer" style="width: 100%; flex-shrink: 0; pointer-events: none; visibility: hidden;" aria-hidden="true"></div>
 `;
-
 
 const prerenderFooterHtml = `
 <footer class="site-footer" style="background-color: #07152e; color: #ffffff; border-top: 4px solid #0284c7; padding: 3.5rem 0 2rem 0; width: 100%;">
@@ -352,11 +351,16 @@ const prerenderFooterHtml = `
           <a href="tel:09321144580" style="color: #38bdf8; font-size: 1.15rem; font-weight: 800; text-decoration: none; display: block;">093211 44580</a>
           <a href="mailto:official.sosortho@gmail.com" style="color: #cbd5e1; font-size: 0.85rem; text-decoration: none; display: block; margin-top: 0.4rem;">official.sosortho@gmail.com</a>
         </div>
+        <div style="margin-top: 1rem; display: flex; gap: 0.75rem; align-items: center;">
+          <a href="https://www.instagram.com/sosorthopaedics/" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; font-size: 0.82rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem;" title="SOS Orthopedic Clinic Instagram">
+            <span>Instagram: @sosorthopaedics &nearr;</span>
+          </a>
+        </div>
       </div>
       <div>
-        <h3 style="font-size: 0.95rem; font-weight: 800; color: #ffffff; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">Quick Navigation</h3>
+        <p class="footer-col-title" style="font-size: 0.95rem; font-weight: 800; color: #ffffff; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; margin-top: 0;">Quick Navigation</p>
         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.9rem;">
-          <li><a href="/" style="color: #cbd5e1; text-decoration: none;">Home</a></li>
+          <li><a href="/" style="color: #cbd5e1; text-decoration: none;">SOS Clinic Overview</a></li>
           <li><a href="/about" style="color: #cbd5e1; text-decoration: none;">About SOS &amp; Mission</a></li>
           <li><a href="/services" style="color: #cbd5e1; text-decoration: none;">Our Speciality Units</a></li>
           <li><a href="/doctors" style="color: #cbd5e1; text-decoration: none;">Orthopedic Doctors</a></li>
@@ -368,7 +372,7 @@ const prerenderFooterHtml = `
         </ul>
       </div>
       <div>
-        <h3 style="font-size: 0.95rem; font-weight: 800; color: #ffffff; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">Speciality Treatments</h3>
+        <p class="footer-col-title" style="font-size: 0.95rem; font-weight: 800; color: #ffffff; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; margin-top: 0;">Speciality Treatments</p>
         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.9rem;">
           <li><a href="/services/joint-replacement" style="color: #cbd5e1; text-decoration: none;">Joint Replacement Care</a></li>
           <li><a href="/services/acl-ligament" style="color: #cbd5e1; text-decoration: none;">ACL &amp; Ligament Reconstruction</a></li>
@@ -376,12 +380,11 @@ const prerenderFooterHtml = `
           <li><a href="/services/sports-injury" style="color: #cbd5e1; text-decoration: none;">Sports Injury Medicine</a></li>
           <li><a href="/services/pediatric-trauma" style="color: #cbd5e1; text-decoration: none;">Pediatric Trauma &amp; Fractures</a></li>
           <li><a href="/x-ray-services-at-home" style="color: #cbd5e1; text-decoration: none;">24/7 Home X-Ray Diagnostics</a></li>
-          <li><a href="/physiotherapy" style="color: #cbd5e1; text-decoration: none;">Post-Op Physiotherapy</a></li>
-          <li><a href="/x-ray-services-at-home" style="color: #cbd5e1; text-decoration: none;">24/7 Digital X-Ray at Home</a></li>
+          <li><a href="/physiotherapy" style="color: #cbd5e1; text-decoration: none;">Post-Op Physiotherapy &amp; Rehab</a></li>
         </ul>
       </div>
       <div>
-        <h3 style="font-size: 0.95rem; font-weight: 800; color: #ffffff; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">Mumbai Centres</h3>
+        <p class="footer-col-title" style="font-size: 0.95rem; font-weight: 800; color: #ffffff; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; margin-top: 0;">Mumbai Centres</p>
         <p style="color: #94a3b8; font-size: 0.88rem; line-height: 1.5; margin-bottom: 0.75rem;">
           Specialist OPD clinics and diagnostic outreach across Western Mumbai:
         </p>
@@ -401,7 +404,7 @@ const prerenderFooterHtml = `
       <div style="display: flex; gap: 1.25rem;">
         <a href="/privacy-policy" style="color: #94a3b8; text-decoration: none;">Privacy Policy</a>
         <a href="/terms" style="color: #94a3b8; text-decoration: none;">Terms of Service</a>
-        <a href="/contact" style="color: #94a3b8; text-decoration: none;">Helpline</a>
+        <a href="/contact" style="color: #94a3b8; text-decoration: none;">Contact Clinic Desk</a>
       </div>
     </div>
   </div>
@@ -2616,7 +2619,7 @@ ${prerenderNavbarHtml}
             Consultant orthopedic surgeon OPDs, joint preservation care, and 24/7 doorstep Home X-Ray diagnostics across Mumbai centres.
           </p>
           <div class="hero-cta-group" style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-bottom: 1.5rem;">
-            <a href="/contact" class="btn btn-primary btn-lg" style="padding: 0.9rem 2rem; font-size: 1.02rem; text-decoration: none; background: #0284c7; color: #ffffff; border-radius: 8px; font-weight: 700;">Book Appointment</a>
+            <a href="/contact" class="btn btn-primary btn-lg" style="padding: 0.9rem 2rem; font-size: 1.02rem; text-decoration: none; background: #0284c7; color: #ffffff; border-radius: 8px; font-weight: 700;">Schedule Orthopedic Consultation</a>
             <a href="/services" class="btn btn-secondary btn-lg" style="padding: 0.9rem 1.85rem; font-size: 1.02rem; background-color: #ffffff; color: #07152e; border: 1px solid #cbd5e1; text-decoration: none; border-radius: 8px; font-weight: 700;">Explore Specialities</a>
           </div>
         </div>
@@ -2646,19 +2649,19 @@ ${prerenderNavbarHtml}
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
         <div style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; background: #f8fafc;">
-          <h3 style="font-size: 1.15rem; color: #07152e; font-weight: 800; margin-top: 0; margin-bottom: 0.5rem;">Extended Surgeon Availability</h3>
+          <strong style="display: block; font-size: 1.15rem; color: #07152e; font-weight: 800; margin-top: 0; margin-bottom: 0.5rem;">Extended Surgeon Availability</strong>
           <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin: 0;">Direct access to senior consultant orthopedic surgeons for comprehensive OPD evaluations without bureaucratic delays.</p>
         </div>
         <div style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; background: #f8fafc;">
-          <h3 style="font-size: 1.15rem; color: #07152e; font-weight: 800; margin-top: 0; margin-bottom: 0.5rem;">Rapid Trauma &amp; Fracture Response</h3>
+          <strong style="display: block; font-size: 1.15rem; color: #07152e; font-weight: 800; margin-top: 0; margin-bottom: 0.5rem;">Rapid Trauma &amp; Fracture Response</strong>
           <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin: 0;">Fast-track emergency clinical triage and 20–30 minute mobile dispatch for acute limb injuries and sudden fractures.</p>
         </div>
         <div style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; background: #f8fafc;">
-          <h3 style="font-size: 1.15rem; color: #07152e; font-weight: 800; margin-top: 0; margin-bottom: 0.5rem;">Complete Doorstep Medical Suite</h3>
+          <strong style="display: block; font-size: 1.15rem; color: #07152e; font-weight: 800; margin-top: 0; margin-bottom: 0.5rem;">Complete Doorstep Medical Suite</strong>
           <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin: 0;">Certified radiographers and physiotherapists arrive with portable digital X-rays and sterile dressing kits at your residence.</p>
         </div>
         <div style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; background: #f8fafc;">
-          <h3 style="font-size: 1.15rem; color: #07152e; font-weight: 800; margin-top: 0; margin-bottom: 0.5rem;">Evidence-Based Conservative Care</h3>
+          <strong style="display: block; font-size: 1.15rem; color: #07152e; font-weight: 800; margin-top: 0; margin-bottom: 0.5rem;">Evidence-Based Conservative Care</strong>
           <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin: 0;">Targeted physiotherapy, ergonomic guidance, and joint preservation protocols prioritized before surgical recommendations.</p>
         </div>
       </div>
@@ -2684,32 +2687,32 @@ ${prerenderNavbarHtml}
         <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.75rem; box-shadow: 0 2px 8px rgba(10,31,68,0.04);">
           <h3 style="font-size: 1.25rem; font-weight: 800; color: #07152e; margin-top: 0; margin-bottom: 0.5rem;">Joint Replacement Care</h3>
           <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.25rem;">Precision robotic knee and hip replacements with sub-millimeter surgical accuracy and rapid recovery rehabilitation.</p>
-          <a href="/services/joint-replacement" style="color: #0284c7; font-weight: 700; text-decoration: none;">Learn more &rarr;</a>
+          <a href="/services/joint-replacement" style="color: #0284c7; font-weight: 700; text-decoration: none;">Explore joint replacement &rarr;</a>
         </div>
         <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.75rem; box-shadow: 0 2px 8px rgba(10,31,68,0.04);">
           <h3 style="font-size: 1.25rem; font-weight: 800; color: #07152e; margin-top: 0; margin-bottom: 0.5rem;">ACL &amp; Ligament Reconstruction</h3>
           <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.25rem;">Keyhole arthroscopic surgery for sports injuries, meniscus tears, and ligament tears with athlete return-to-sport protocols.</p>
-          <a href="/services/acl-ligament" style="color: #0284c7; font-weight: 700; text-decoration: none;">Learn more &rarr;</a>
+          <a href="/services/acl-ligament" style="color: #0284c7; font-weight: 700; text-decoration: none;">Explore ACL &amp; ligament care &rarr;</a>
         </div>
         <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.75rem; box-shadow: 0 2px 8px rgba(10,31,68,0.04);">
           <h3 style="font-size: 1.25rem; font-weight: 800; color: #07152e; margin-top: 0; margin-bottom: 0.5rem;">Spine Care &amp; Back Pain</h3>
           <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.25rem;">Non-surgical spinal decompression, sciatica relief, and targeted physical rehabilitation for desk workers and seniors.</p>
-          <a href="/services/spine-care" style="color: #0284c7; font-weight: 700; text-decoration: none;">Learn more &rarr;</a>
+          <a href="/services/spine-care" style="color: #0284c7; font-weight: 700; text-decoration: none;">Explore spine care options &rarr;</a>
         </div>
         <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.75rem; box-shadow: 0 2px 8px rgba(10,31,68,0.04);">
           <h3 style="font-size: 1.25rem; font-weight: 800; color: #07152e; margin-top: 0; margin-bottom: 0.5rem;">Sports Injury Medicine</h3>
           <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.25rem;">Dedicated care for shoulder dislocations, rotator cuff injuries, tennis elbow, and ankle sprains with structured rehab.</p>
-          <a href="/services/sports-injury" style="color: #0284c7; font-weight: 700; text-decoration: none;">Learn more &rarr;</a>
+          <a href="/services/sports-injury" style="color: #0284c7; font-weight: 700; text-decoration: none;">Explore sports injury care &rarr;</a>
         </div>
         <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.75rem; box-shadow: 0 2px 8px rgba(10,31,68,0.04);">
           <h3 style="font-size: 1.25rem; font-weight: 800; color: #07152e; margin-top: 0; margin-bottom: 0.5rem;">Pediatric Orthopedics &amp; Trauma</h3>
           <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.25rem;">Specialized fracture care, growth plate protection, developmental dysplasia, and gentle casting for children and adolescents.</p>
-          <a href="/services/pediatric-trauma" style="color: #0284c7; font-weight: 700; text-decoration: none;">Learn more &rarr;</a>
+          <a href="/services/pediatric-trauma" style="color: #0284c7; font-weight: 700; text-decoration: none;">Explore pediatric trauma care &rarr;</a>
         </div>
         <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.75rem; box-shadow: 0 2px 8px rgba(10,31,68,0.04);">
           <h3 style="font-size: 1.25rem; font-weight: 800; color: #07152e; margin-top: 0; margin-bottom: 0.5rem;">24/7 Home Digital X-Ray</h3>
           <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.25rem;">Hospital-grade mobile digital radiography brought to the bedside across Mumbai with instant digital reports.</p>
-          <a href="/x-ray-services-at-home" style="color: #0284c7; font-weight: 700; text-decoration: none;">Learn more &rarr;</a>
+          <a href="/x-ray-services-at-home" style="color: #0284c7; font-weight: 700; text-decoration: none;">Explore doorstep X-ray service &rarr;</a>
         </div>
       </div>
     </div>
@@ -2735,25 +2738,25 @@ ${prerenderNavbarHtml}
           <h3 style="font-size: 1.2rem; font-weight: 800; color: #07152e; margin-top: 0; margin-bottom: 0.35rem;">Dr. Maulik A. Joshi</h3>
           <div style="font-size: 0.85rem; color: #0284c7; font-weight: 700; margin-bottom: 0.75rem;">Consultant Trauma &amp; Orthopaedic Surgeon</div>
           <p style="color: #475569; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;">MBBS, D Orth, Fellowship in Hip &amp; Knee Arthroplasty (Mumbai), Fellowship in Trauma and Ilizarov Surgery (Dahod). 12+ years experience.</p>
-          <a href="/doctors" style="color: #07152e; font-weight: 700; font-size: 0.9rem; text-decoration: none;">View profile &rarr;</a>
+          <a href="/doctors" style="color: #07152e; font-weight: 700; font-size: 0.9rem; text-decoration: none;">View Dr. Maulik Joshi's profile &rarr;</a>
         </div>
         <div style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; background: #f8fafc;">
           <h3 style="font-size: 1.2rem; font-weight: 800; color: #07152e; margin-top: 0; margin-bottom: 0.35rem;">Dr. Shobit Nitin Deshmukh</h3>
           <div style="font-size: 0.85rem; color: #0284c7; font-weight: 700; margin-bottom: 0.75rem;">Consultant Orthopedic &amp; Joint Replacement Surgeon</div>
           <p style="color: #475569; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;">DNB Orthopedics, Fellowship in Joint Replacement Surgery (MUHS), Fellowship in Robotic Joint Replacement (Mumbai). 11+ years experience.</p>
-          <a href="/doctors" style="color: #07152e; font-weight: 700; font-size: 0.9rem; text-decoration: none;">View profile &rarr;</a>
+          <a href="/doctors" style="color: #07152e; font-weight: 700; font-size: 0.9rem; text-decoration: none;">View Dr. Shobit Deshmukh's profile &rarr;</a>
         </div>
         <div style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; background: #f8fafc;">
           <h3 style="font-size: 1.2rem; font-weight: 800; color: #07152e; margin-top: 0; margin-bottom: 0.35rem;">Dr. Omkar Rashinkar</h3>
           <div style="font-size: 0.85rem; color: #0284c7; font-weight: 700; margin-bottom: 0.75rem;">Consultant Orthopedic &amp; Spine Surgeon</div>
           <p style="color: #475569; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;">MBBS, MS Orthopaedics, Fellowship in Spine Surgery. Specialized in sciatica decompression and minimally invasive spinal care.</p>
-          <a href="/doctors" style="color: #07152e; font-weight: 700; font-size: 0.9rem; text-decoration: none;">View profile &rarr;</a>
+          <a href="/doctors" style="color: #07152e; font-weight: 700; font-size: 0.9rem; text-decoration: none;">View Dr. Omkar Rashinkar's profile &rarr;</a>
         </div>
         <div style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; background: #f8fafc;">
           <h3 style="font-size: 1.2rem; font-weight: 800; color: #07152e; margin-top: 0; margin-bottom: 0.35rem;">Dr. Hardik Desai</h3>
           <div style="font-size: 0.85rem; color: #0284c7; font-weight: 700; margin-bottom: 0.75rem;">Consultant Orthopedic Trauma Specialist</div>
           <p style="color: #475569; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;">MBBS, D Orth, Fellowship in Complex Trauma. Specialist in acute fracture fixation, ankle ligament injuries, and joint preservation.</p>
-          <a href="/doctors" style="color: #07152e; font-weight: 700; font-size: 0.9rem; text-decoration: none;">View profile &rarr;</a>
+          <a href="/doctors" style="color: #07152e; font-weight: 700; font-size: 0.9rem; text-decoration: none;">View Dr. Hardik Desai's profile &rarr;</a>
         </div>
       </div>
     </div>
@@ -2776,21 +2779,21 @@ ${prerenderNavbarHtml}
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
         <div style="background: #ffffff; border-radius: 12px; padding: 1.5rem; border: 1px solid #bae6fd;">
-          <h3 style="font-size: 1.15rem; color: #07152e; font-weight: 800; margin-top: 0; margin-bottom: 0.5rem;">20–30 Min Rapid Dispatch</h3>
+          <strong style="display: block; font-size: 1.15rem; color: #07152e; font-weight: 800; margin-top: 0; margin-bottom: 0.5rem;">20–30 Min Rapid Dispatch</strong>
           <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin: 0;">Strategically positioned diagnostic teams across Kandivali, Borivali, Malad, and Goregaon guarantee prompt emergency response.</p>
         </div>
         <div style="background: #ffffff; border-radius: 12px; padding: 1.5rem; border: 1px solid #bae6fd;">
-          <h3 style="font-size: 1.15rem; color: #07152e; font-weight: 800; margin-top: 0; margin-bottom: 0.5rem;">Low-Radiation High-Frequency Digital</h3>
-          <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin: 0;">AERB-compliant mobile X-ray units deliver ultra-sharp musculoskeletal imaging with minimal radiation exposure for patient safety.</p>
+          <strong style="display: block; font-size: 1.15rem; color: #07152e; font-weight: 800; margin-top: 0; margin-bottom: 0.5rem;">Low-Radiation High-Frequency Digital</strong>
+          <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin: 0;"><a href="https://www.aerb.gov.in/" target="_blank" rel="noopener noreferrer" style="color: #0284c7; font-weight: 700; text-decoration: underline;">AERB Radiation Safety Standards</a>-compliant mobile X-ray units deliver ultra-sharp musculoskeletal imaging with minimal radiation exposure for patient safety.</p>
         </div>
         <div style="background: #ffffff; border-radius: 12px; padding: 1.5rem; border: 1px solid #bae6fd;">
-          <h3 style="font-size: 1.15rem; color: #07152e; font-weight: 800; margin-top: 0; margin-bottom: 0.5rem;">Immediate Radiologist Reports</h3>
+          <strong style="display: block; font-size: 1.15rem; color: #07152e; font-weight: 800; margin-top: 0; margin-bottom: 0.5rem;">Immediate Radiologist Reports</strong>
           <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin: 0;">Digital DICOM radiographs are uploaded and reviewed in real-time by senior radiologists and orthopedic surgeons.</p>
         </div>
       </div>
 
       <div style="text-align: center;">
-        <a href="tel:09321144580" style="display: inline-block; padding: 0.85rem 2rem; background: #0284c7; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 1.05rem;">Request Home X-Ray: 093211 44580</a>
+        <a href="tel:09321144580" style="display: inline-block; padding: 0.85rem 2rem; background: #0284c7; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 1.05rem;">Request Emergency Home X-Ray: 093211 44580</a>
       </div>
     </div>
   </section>
@@ -2815,25 +2818,25 @@ ${prerenderNavbarHtml}
           <h3 style="font-size: 1.2rem; font-weight: 800; color: #07152e; margin-top: 0; margin-bottom: 0.35rem;">Kandivali Centre</h3>
           <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 0.5rem;">Opp. Raghuleela Mall, Kandivali West, Mumbai - 400067</p>
           <p style="color: #475569; font-size: 0.85rem; margin-bottom: 1rem;">Specialist OPD &bull; Digital Diagnostics &bull; Fracture Care</p>
-          <a href="/centres" style="color: #0284c7; font-weight: 700; text-decoration: none;">View centre details &rarr;</a>
+          <a href="/centres" style="color: #0284c7; font-weight: 700; text-decoration: none;">View Kandivali centre details &rarr;</a>
         </div>
         <div style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; background: #f8fafc;">
           <h3 style="font-size: 1.2rem; font-weight: 800; color: #07152e; margin-top: 0; margin-bottom: 0.35rem;">Borivali Centre</h3>
           <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 0.5rem;">S.V. Road, Near Station, Borivali West, Mumbai - 400092</p>
           <p style="color: #475569; font-size: 0.85rem; margin-bottom: 1rem;">Joint Preservation &bull; Arthritis Clinic &bull; Physio</p>
-          <a href="/centres" style="color: #0284c7; font-weight: 700; text-decoration: none;">View centre details &rarr;</a>
+          <a href="/centres" style="color: #0284c7; font-weight: 700; text-decoration: none;">View Borivali centre details &rarr;</a>
         </div>
         <div style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; background: #f8fafc;">
           <h3 style="font-size: 1.2rem; font-weight: 800; color: #07152e; margin-top: 0; margin-bottom: 0.35rem;">Malad Outreach</h3>
           <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 0.5rem;">Link Road, Near Inorbit, Malad West, Mumbai - 400064</p>
           <p style="color: #475569; font-size: 0.85rem; margin-bottom: 1rem;">Sports Injury OPD &bull; Knee &amp; Spine Consultations</p>
-          <a href="/centres" style="color: #0284c7; font-weight: 700; text-decoration: none;">View centre details &rarr;</a>
+          <a href="/centres" style="color: #0284c7; font-weight: 700; text-decoration: none;">View Malad outreach details &rarr;</a>
         </div>
         <div style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; background: #f8fafc;">
           <h3 style="font-size: 1.2rem; font-weight: 800; color: #07152e; margin-top: 0; margin-bottom: 0.35rem;">Goregaon Centre</h3>
           <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 0.5rem;">Near Railway Station, Goregaon West, Mumbai - 400062</p>
           <p style="color: #475569; font-size: 0.85rem; margin-bottom: 1rem;">Trauma Management &bull; Post-Surgical Rehabilitation</p>
-          <a href="/centres" style="color: #0284c7; font-weight: 700; text-decoration: none;">View centre details &rarr;</a>
+          <a href="/centres" style="color: #0284c7; font-weight: 700; text-decoration: none;">View Goregaon centre details &rarr;</a>
         </div>
       </div>
     </div>
@@ -2856,23 +2859,23 @@ ${prerenderNavbarHtml}
 
       <div style="display: flex; flex-direction: column; gap: 1rem;">
         <div style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; background: #ffffff;">
-          <h3 style="font-size: 1.15rem; font-weight: 700; color: #07152e; margin-top: 0; margin-bottom: 0.5rem;">What conditions are treated at SOS Speciality Orthopedic Clinic?</h3>
+          <p class="faq-question" style="font-size: 1.15rem; font-weight: 700; color: #07152e; margin-top: 0; margin-bottom: 0.5rem;">What conditions are treated at SOS Speciality Orthopedic Clinic?</p>
           <p style="color: #475569; font-size: 0.98rem; line-height: 1.7; margin: 0;">We specialize in comprehensive musculoskeletal care, including robotic joint replacement (knee and hip), arthroscopic ACL and meniscus repairs, minimally invasive spine decompression for sciatica and disc herniations, sports injury rehabilitation, pediatric fractures, and complex trauma reconstruction.</p>
         </div>
         <div style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; background: #ffffff;">
-          <h3 style="font-size: 1.15rem; font-weight: 700; color: #07152e; margin-top: 0; margin-bottom: 0.5rem;">How quickly can a Home X-Ray technician arrive at my home in Mumbai?</h3>
+          <p class="faq-question" style="font-size: 1.15rem; font-weight: 700; color: #07152e; margin-top: 0; margin-bottom: 0.5rem;">How quickly can a Home X-Ray technician arrive at my home in Mumbai?</p>
           <p style="color: #475569; font-size: 0.98rem; line-height: 1.7; margin: 0;">Our mobile digital radiography team operates 24/7 with a 20–30 minute emergency dispatch window across Western Mumbai, including Kandivali, Borivali, Malad, Goregaon, and neighboring areas. Reports are verified and transmitted digitally to senior orthopedic surgeons immediately.</p>
         </div>
         <div style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; background: #ffffff;">
-          <h3 style="font-size: 1.15rem; font-weight: 700; color: #07152e; margin-top: 0; margin-bottom: 0.5rem;">Which clinic locations are available for in-person doctor consultations?</h3>
+          <p class="faq-question" style="font-size: 1.15rem; font-weight: 700; color: #07152e; margin-top: 0; margin-bottom: 0.5rem;">Which clinic locations are available for in-person doctor consultations?</p>
           <p style="color: #475569; font-size: 0.98rem; line-height: 1.7; margin: 0;">SOS Speciality Orthopedic Clinic operates fully equipped consultation centres and outreach clinics across Kandivali West, Borivali West, Malad West, and Goregaon West. Each location offers specialist OPD timings, digital diagnostic reviews, and cast/dressing care.</p>
         </div>
         <div style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; background: #ffffff;">
-          <h3 style="font-size: 1.15rem; font-weight: 700; color: #07152e; margin-top: 0; margin-bottom: 0.5rem;">Does joint pain or back pain always require surgery?</h3>
+          <p class="faq-question" style="font-size: 1.15rem; font-weight: 700; color: #07152e; margin-top: 0; margin-bottom: 0.5rem;">Does joint pain or back pain always require surgery?</p>
           <p style="color: #475569; font-size: 0.98rem; line-height: 1.7; margin: 0;">No. At SOS, we follow an evidence-based conservative care philosophy. Over 85% of orthopedic conditions—including early knee osteoarthritis, postural back pain, and tendon sprains—are successfully managed with targeted physiotherapy, lifestyle ergonomic modifications, and guided joint preservation protocols before any surgical intervention is considered.</p>
         </div>
         <div style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; font-weight: 700; background: #ffffff;">
-          <h3 style="font-size: 1.15rem; font-weight: 700; color: #07152e; margin-top: 0; margin-bottom: 0.5rem;">How do I schedule an appointment with a senior orthopedic surgeon?</h3>
+          <p class="faq-question" style="font-size: 1.15rem; font-weight: 700; color: #07152e; margin-top: 0; margin-bottom: 0.5rem;">How do I schedule an appointment with a senior orthopedic surgeon?</p>
           <p style="color: #475569; font-size: 0.98rem; line-height: 1.7; margin: 0;">You can book directly by calling our 24/7 central desk at 093211 44580, contacting us on WhatsApp, or clicking the 'Book Appointment' button on this website to select your preferred doctor, clinic location, and consultation time.</p>
         </div>
       </div>
@@ -2892,8 +2895,8 @@ ${prerenderNavbarHtml}
         Schedule an in-clinic consultation at our Kandivali, Borivali, Malad, or Goregaon centres, or request emergency 24/7 doorstep digital X-ray dispatch across Mumbai.
       </p>
       <div style="display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap;">
-        <a href="/contact" style="display: inline-block; padding: 0.9rem 2.25rem; font-size: 1.05rem; background-color: #0284c7; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: 700;">Schedule Consultation</a>
-        <a href="tel:09321144580" style="display: inline-block; padding: 0.9rem 2rem; font-size: 1.05rem; background-color: rgba(255, 255, 255, 0.1); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.25); text-decoration: none; border-radius: 8px; font-weight: 700;">Call 24/7: 093211 44580</a>
+        <a href="/contact" style="display: inline-block; padding: 0.9rem 2.25rem; font-size: 1.05rem; background-color: #0284c7; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: 700;">Book Consultation Online</a>
+        <a href="tel:09321144580" style="display: inline-block; padding: 0.9rem 2rem; font-size: 1.05rem; background-color: rgba(255, 255, 255, 0.1); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.25); text-decoration: none; border-radius: 8px; font-weight: 700;">Call 24/7 Helpline: 093211 44580</a>
       </div>
     </div>
   </section>

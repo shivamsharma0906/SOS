@@ -94,9 +94,9 @@ export const Footer: React.FC = () => {
 
           {/* Column 2: Quick Links */}
           <div>
-            <h3 style={{ fontSize: '0.95rem', fontWeight: 800, color: '#ffffff', marginBottom: '1.25rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+            <p className="footer-col-title" style={{ fontSize: '0.95rem', fontWeight: 800, color: '#ffffff', marginBottom: '1.25rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
               Quick Navigation
-            </h3>
+            </p>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.88rem', padding: 0, margin: 0 }}>
               {[
                 { name: 'About SOS & Mission', path: '/about' },
@@ -142,9 +142,9 @@ export const Footer: React.FC = () => {
 
           {/* Column 3: Specialties */}
           <div>
-            <h3 style={{ fontSize: '0.95rem', fontWeight: 800, color: '#ffffff', marginBottom: '1.25rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+            <p className="footer-col-title" style={{ fontSize: '0.95rem', fontWeight: 800, color: '#ffffff', marginBottom: '1.25rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
               Speciality Care
-            </h3>
+            </p>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.88rem', padding: 0, margin: 0 }}>
               {[
                 { name: 'Joint Replacement Care', path: '/services/joint-replacement' },
@@ -189,9 +189,9 @@ export const Footer: React.FC = () => {
 
           {/* Column 4: Centres in Mumbai */}
           <div>
-            <h3 style={{ fontSize: '0.95rem', fontWeight: 800, color: '#ffffff', marginBottom: '1.25rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+            <p className="footer-col-title" style={{ fontSize: '0.95rem', fontWeight: 800, color: '#ffffff', marginBottom: '1.25rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
               Our Centre Network
-            </h3>
+            </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem' }}>
               {centresData.map(centre => (
                 <div key={centre.id} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.55rem', fontSize: '0.82rem' }}>
