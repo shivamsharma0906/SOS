@@ -22,7 +22,10 @@ import {
   Radio,
   FileCheck,
   Check,
-  X as CloseIcon
+  X as CloseIcon,
+  Home as HomeIcon,
+  Truck,
+  Sparkles
 } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import { SEOHead } from '../components/SEOHead';
@@ -107,6 +110,64 @@ export const XRayAtHome: React.FC = () => {
     }
   ];
 
+  const fleetAreas = [
+    {
+      region: 'Kandivali & Borivali West/East',
+      eta: '15 – 20 Mins',
+      status: 'Flagship Fleet &bull; On Duty',
+      coverage: 'Mahavir Nagar, Lokhandwala, Gorai, Shimpoli, IC Colony, Chikuwadi',
+      statusColor: '#16a34a',
+      statusBg: '#dcfce7'
+    },
+    {
+      region: 'Malad & Madh Island Belt',
+      eta: '20 – 25 Mins',
+      status: 'Outreach Unit &bull; On Duty',
+      coverage: 'Mindspace, Link Road, Marve Road, Pascal Wadi, Raheja Exotica, Orlem',
+      statusColor: '#16a34a',
+      statusBg: '#dcfce7'
+    },
+    {
+      region: 'Goregaon & Oshiwara',
+      eta: '25 – 30 Mins',
+      status: 'Suburban Fleet &bull; On Duty',
+      coverage: 'Goregaon West & East, Lokhandwala Complex, Bangur Nagar, Aarey Colony',
+      statusColor: '#16a34a',
+      statusBg: '#dcfce7'
+    },
+    {
+      region: 'Andheri, Juhu & Dahisar',
+      eta: '30 – 35 Mins',
+      status: 'Extended Fleet &bull; Available',
+      coverage: 'Andheri West/East, Versova, Juhu Scheme, Dahisar West/East & Mira Road',
+      statusColor: '#0284c7',
+      statusBg: '#e0f2fe'
+    }
+  ];
+
+  const steps = [
+    {
+      num: '01',
+      title: 'Call or WhatsApp Dispatch',
+      desc: 'Connect with our 24/7 medical desk. Share your location, patient symptoms, or doctor prescription.'
+    },
+    {
+      num: '02',
+      title: 'Rapid Bedside Arrival',
+      desc: 'Our certified radiographer arrives in 20–30 minutes with calibrated high-frequency portable DR equipment.'
+    },
+    {
+      num: '03',
+      title: '30-Second Gentle Exposure',
+      desc: 'Ultra-low radiation exposure taken directly on the patient bed with protective lead shielding and zero lifting.'
+    },
+    {
+      num: '04',
+      title: 'Instant Preview & Report',
+      desc: 'Immediate on-screen DICOM verification, signed MD Radiologist report, and on-call orthopedic surgeon review.'
+    }
+  ];
+
   const faqs = [
     {
       q: 'How clear is a portable home digital X-ray compared to large hospital machines?',
@@ -138,187 +199,223 @@ export const XRayAtHome: React.FC = () => {
         canonicalUrl={`${BUSINESS_INFO.website}/x-ray-services-at-home`}
       />
 
-      {/* ── 1. Editorial Hospital Header ── */}
-      <section 
-        style={{ 
-          background: 'linear-gradient(180deg, #07152e 0%, #0a1f44 100%)', 
-          color: '#ffffff',
-          padding: '4rem 0 3.5rem 0',
-          position: 'relative',
-          overflow: 'hidden'
-        }}
-      >
-        <MedicalCrossMotif size={70} top="6%" left="3%" opacity={0.04} />
-        <MedicalCrossMotif size={90} bottom="8%" right="4%" opacity={0.03} />
+      {/* ── 1. Page Hero Section (Brand Consistent with SOS Orthopedic Design System) ── */}
+      <section className="page-hero-section" style={{ padding: '3.5rem 0 3rem 0', position: 'relative', overflow: 'hidden' }}>
+        <MedicalCrossMotif size={65} top="8%" left="4%" opacity={0.04} />
+        <MedicalCrossMotif size={75} bottom="10%" right="5%" opacity={0.03} />
 
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1.15fr 0.85fr', gap: '3rem', alignItems: 'center' }} className="hero-split-grid">
-            {/* Left Column: Clinical Heading & Authority */}
-            <div>
-              <div 
-                style={{ 
-                  display: 'inline-flex', 
-                  alignItems: 'center', 
-                  gap: '0.45rem', 
-                  backgroundColor: 'rgba(56, 189, 248, 0.12)', 
-                  color: '#38bdf8', 
-                  padding: '0.35rem 0.95rem', 
-                  borderRadius: '9999px', 
-                  fontSize: '0.8rem', 
-                  fontWeight: 700, 
-                  border: '1px solid rgba(56, 189, 248, 0.25)', 
-                  marginBottom: '1.25rem',
-                  letterSpacing: '0.04em',
-                  textTransform: 'uppercase'
-                }}
+          <div style={{ textAlign: 'center', maxWidth: '880px', margin: '0 auto' }}>
+            <div 
+              style={{ 
+                display: 'inline-flex', 
+                alignItems: 'center', 
+                gap: '0.45rem', 
+                backgroundColor: 'var(--blue-soft)', 
+                color: 'var(--blue-brand)', 
+                padding: '0.35rem 0.95rem', 
+                borderRadius: 'var(--radius-pill)', 
+                fontSize: '0.82rem', 
+                fontWeight: 700, 
+                border: '1px solid rgba(2, 132, 199, 0.25)', 
+                marginBottom: '1rem', 
+                textTransform: 'uppercase', 
+                letterSpacing: '0.05em' 
+              }}
+            >
+              <Radio size={16} />
+              <span>24/7 Doorstep Diagnostic Radiography &bull; Mumbai</span>
+            </div>
+
+            <h1 className="heading-xl" style={{ color: 'var(--navy-primary)', marginBottom: '0.85rem', lineHeight: 1.15 }}>
+              Hospital-Grade Digital X-Ray, <span style={{ color: 'var(--blue-brand)' }}>Delivered to Your Bedside</span>
+            </h1>
+
+            <p className="subhead" style={{ color: 'var(--text-secondary)', margin: '0 auto 2.25rem auto', maxWidth: '780px', fontSize: '1.08rem', lineHeight: 1.65 }}>
+              Eliminating the trauma of transporting injured seniors, fracture patients, and bedridden individuals to crowded diagnostic labs. Portable, ultra-low-dose digital radiography with rapid 20–30 minute dispatch across Western Mumbai suburbs.
+            </p>
+
+            {/* Hero CTAs */}
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap', marginBottom: '2.75rem' }}>
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className="btn btn-primary btn-lg"
+                style={{ gap: '0.5rem', padding: '0.85rem 1.8rem', fontWeight: 800 }}
               >
-                <Radio size={14} />
-                <span>24/7 Doorstep Diagnostic Radiography &bull; Mumbai</span>
-              </div>
+                <Calendar size={18} /> Book Doorstep X-Ray
+              </button>
 
-              <h1 style={{ fontSize: '2.5rem', fontWeight: 800, lineHeight: 1.15, margin: '0 0 1rem 0', letterSpacing: '-0.02em' }}>
-                Hospital-Grade <span style={{ color: '#38bdf8' }}>Digital X-Ray</span> at Your Bedside
-              </h1>
-
-              <p style={{ color: '#cbd5e1', fontSize: '1.08rem', lineHeight: 1.65, margin: '0 0 1.75rem 0', maxWidth: '620px' }}>
-                Eliminating the trauma of transporting injured seniors and bedridden patients to diagnostic labs. Portable, low-dose digital radiography with 20–30 minute dispatch across Western Mumbai suburbs.
-              </p>
-
-              {/* Direct Dispatch Hotline Strip */}
-              <div 
-                style={{ 
-                  backgroundColor: 'rgba(255, 255, 255, 0.06)', 
-                  border: '1px solid rgba(255, 255, 255, 0.12)', 
-                  borderRadius: '16px', 
-                  padding: '1.25rem 1.5rem', 
-                  marginBottom: '2rem',
-                  maxWidth: '560px'
-                }}
+              <a 
+                href={`tel:${BUSINESS_INFO.phone}`}
+                className="btn btn-secondary btn-lg"
+                style={{ gap: '0.5rem', padding: '0.85rem 1.8rem', fontWeight: 700 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
-                  <div>
-                    <div style={{ fontSize: '0.72rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 700 }}>
-                      Emergency Dispatch Desk
-                    </div>
-                    <a 
-                      href={`tel:${BUSINESS_INFO.phone}`}
-                      style={{ fontSize: '1.35rem', fontWeight: 900, color: '#ffffff', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.45rem', marginTop: '0.2rem' }}
-                    >
-                      <Phone size={18} color="#38bdf8" />
-                      <span>{BUSINESS_INFO.phone}</span>
-                    </a>
-                  </div>
+                <Phone size={18} /> 24/7 Dispatch: {BUSINESS_INFO.phone}
+              </a>
 
-                  <div style={{ display: 'flex', gap: '0.5rem' }}>
-                    <button 
-                      onClick={() => setIsModalOpen(true)}
-                      className="btn btn-primary btn-sm"
-                      style={{ padding: '0.65rem 1.25rem', fontWeight: 800 }}
-                    >
-                      Request Dispatch
-                    </button>
-                    <a 
-                      href={`https://wa.me/91${BUSINESS_INFO.phone}?text=Hello%20SOS%20Clinic,%20I%20urgently%20need%20a%20Home%20X-Ray%20service.`}
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="btn btn-whatsapp btn-sm"
-                      style={{ padding: '0.65rem 1rem' }}
-                      aria-label="WhatsApp Dispatch"
-                    >
-                      <FaWhatsapp size={16} />
-                    </a>
-                  </div>
-                </div>
+              <a 
+                href={`https://wa.me/91${BUSINESS_INFO.phone}?text=Hello%20SOS%20Clinic,%20I%20urgently%20need%20a%20Home%20X-Ray%20service.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-whatsapp btn-lg"
+                style={{ gap: '0.5rem', padding: '0.85rem 1.8rem', fontWeight: 700 }}
+              >
+                <FaWhatsapp size={19} /> Instant WhatsApp Dispatch
+              </a>
+            </div>
+          </div>
+
+          {/* Operational Metrics Strip */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
+              gap: '1rem',
+              maxWidth: '1050px',
+              margin: '0 auto'
+            }}
+            className="services-stats-grid"
+          >
+            <div style={{ backgroundColor: '#ffffff', padding: '1.15rem', borderRadius: '16px', border: '1px solid rgba(10, 31, 68, 0.08)', boxShadow: '0 4px 16px rgba(10, 31, 68, 0.04)', display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+              <div style={{ width: '42px', height: '42px', borderRadius: '12px', backgroundColor: 'var(--blue-soft)', color: 'var(--blue-brand)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <Zap size={20} />
               </div>
-
-              {/* Verified Clinical Attributes */}
-              <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', fontSize: '0.85rem', color: '#94a3b8' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                  <ShieldCheck size={16} color="#38bdf8" />
-                  <span>AERB-Compliant Safety</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                  <FileCheck size={16} color="#38bdf8" />
-                  <span>MD Radiologist Verified</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                  <Stethoscope size={16} color="#38bdf8" />
-                  <span>Surgeon On-Call Triage</span>
-                </div>
+              <div>
+                <div style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--navy-primary)', lineHeight: 1 }}>20–30 Mins</div>
+                <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', fontWeight: 600, marginTop: '0.2rem' }}>Rapid Suburban Dispatch</div>
               </div>
             </div>
 
-            {/* Right Column: Live Dispatch Console Card */}
-            <div 
-              style={{
-                backgroundColor: '#ffffff',
-                color: 'var(--navy-primary)',
-                borderRadius: '24px',
-                padding: '2rem',
-                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.35)',
-                border: '1px solid rgba(255, 255, 255, 0.1)'
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', borderBottom: '1px solid #f1f5f9', paddingBottom: '1rem' }}>
-                <div>
-                  <div style={{ fontSize: '0.74rem', fontWeight: 800, color: 'var(--blue-brand)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                    Live Suburban Fleet Status
-                  </div>
-                  <div style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--navy-primary)' }}>
-                    Active Diagnostic Units
-                  </div>
-                </div>
-                <span style={{ fontSize: '0.75rem', fontWeight: 800, backgroundColor: '#dcfce7', color: '#16a34a', padding: '0.25rem 0.65rem', borderRadius: '9999px', display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                  <span className="live-pulse-indicator" />
-                  Fleet On Duty
-                </span>
+            <div style={{ backgroundColor: '#ffffff', padding: '1.15rem', borderRadius: '16px', border: '1px solid rgba(10, 31, 68, 0.08)', boxShadow: '0 4px 16px rgba(10, 31, 68, 0.04)', display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+              <div style={{ width: '42px', height: '42px', borderRadius: '12px', backgroundColor: '#ecfdf5', color: '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <HomeIcon size={20} />
               </div>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', marginBottom: '1.5rem' }}>
-                {[
-                  { region: 'Kandivali & Borivali West/East', eta: '15 - 20 mins', unit: 'Unit 1 &bull; Active' },
-                  { region: 'Malad & Marve Coastal Belt', eta: '20 - 25 mins', unit: 'Unit 2 &bull; Active' },
-                  { region: 'Goregaon & Oshiwara', eta: '25 - 30 mins', unit: 'Unit 3 &bull; Active' },
-                  { region: 'Andheri, Juhu & Dahisar', eta: '30 - 35 mins', unit: 'Unit 4 &bull; Scheduled' }
-                ].map((item, i) => (
-                  <div 
-                    key={i}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      padding: '0.75rem 1rem',
-                      backgroundColor: '#f8fafc',
-                      borderRadius: '12px',
-                      border: '1px solid #e2e8f0',
-                      fontSize: '0.85rem'
-                    }}
-                  >
-                    <div>
-                      <div style={{ fontWeight: 700, color: 'var(--navy-primary)' }}>{item.region}</div>
-                      <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)' }} dangerouslySetInnerHTML={{ __html: item.unit }} />
-                    </div>
-                    <div style={{ fontWeight: 800, color: 'var(--blue-brand)', fontSize: '0.88rem' }}>
-                      {item.eta}
-                    </div>
-                  </div>
-                ))}
+              <div>
+                <div style={{ fontSize: '1.2rem', fontWeight: 800, color: '#059669', lineHeight: 1 }}>100% Bedside</div>
+                <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', fontWeight: 600, marginTop: '0.2rem' }}>Zero Transit or Lifting Strain</div>
               </div>
+            </div>
 
-              <button 
-                onClick={() => setIsModalOpen(true)}
-                className="btn btn-primary"
-                style={{ width: '100%', justifyContent: 'center', padding: '0.85rem', fontWeight: 800, borderRadius: '12px' }}
-              >
-                Schedule Doorstep Examination <ArrowRight size={16} />
-              </button>
+            <div style={{ backgroundColor: '#ffffff', padding: '1.15rem', borderRadius: '16px', border: '1px solid rgba(10, 31, 68, 0.08)', boxShadow: '0 4px 16px rgba(10, 31, 68, 0.04)', display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+              <div style={{ width: '42px', height: '42px', borderRadius: '12px', backgroundColor: 'var(--blue-soft)', color: 'var(--blue-brand)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <ShieldCheck size={20} />
+              </div>
+              <div>
+                <div style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--navy-primary)', lineHeight: 1 }}>AERB Safety</div>
+                <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', fontWeight: 600, marginTop: '0.2rem' }}>Ultra-Low Dose DR Sensors</div>
+              </div>
+            </div>
+
+            <div style={{ backgroundColor: '#ffffff', padding: '1.15rem', borderRadius: '16px', border: '1px solid rgba(10, 31, 68, 0.08)', boxShadow: '0 4px 16px rgba(10, 31, 68, 0.04)', display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+              <div style={{ width: '42px', height: '42px', borderRadius: '12px', backgroundColor: '#fef3c7', color: '#d97706', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <Stethoscope size={20} />
+              </div>
+              <div>
+                <div style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--navy-primary)', lineHeight: 1 }}>Surgeon Panel</div>
+                <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', fontWeight: 600, marginTop: '0.2rem' }}>Immediate Fracture Triage</div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── 2. The Clinical Reality: Hospital Travel vs SOS Home Imaging ── */}
-      <section style={{ padding: '4.5rem 0', backgroundColor: '#ffffff' }}>
+      {/* ── 2. Suburban Rapid Dispatch Fleet ── */}
+      <section style={{ padding: '4.5rem 0', backgroundColor: '#ffffff', borderTop: '1px solid var(--border-color)' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 3rem auto' }}>
+            <div className="badge-tag" style={{ marginBottom: '0.75rem' }}>
+              Suburban Fleet Network
+            </div>
+            <h2 className="heading-lg" style={{ color: 'var(--navy-primary)', marginBottom: '0.85rem' }}>
+              24/7 Doorstep Coverage <span style={{ color: 'var(--blue-brand)' }}>Across Western Mumbai</span>
+            </h2>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.6 }}>
+              Our dedicated mobile radiography vans are positioned across key suburban clusters with sanitized portable equipment, ready for immediate emergency dispatch.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem', maxWidth: '1150px', margin: '0 auto 2.5rem auto' }}>
+            {fleetAreas.map((item, i) => (
+              <div 
+                key={i}
+                style={{
+                  backgroundColor: '#ffffff',
+                  border: '1px solid #e2e8f0',
+                  borderRadius: '16px',
+                  padding: '1.75rem 1.5rem',
+                  boxShadow: '0 4px 16px rgba(10, 31, 68, 0.04)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+                }}
+              >
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--blue-brand)', fontWeight: 700, fontSize: '0.85rem' }}>
+                      <MapPin size={16} />
+                      <span>Mumbai Suburban Hub</span>
+                    </div>
+                    <span 
+                      style={{ 
+                        fontSize: '0.72rem', 
+                        fontWeight: 700, 
+                        backgroundColor: item.statusBg, 
+                        color: item.statusColor, 
+                        padding: '0.2rem 0.6rem', 
+                        borderRadius: '9999px',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.03em'
+                      }}
+                      dangerouslySetInnerHTML={{ __html: item.status }}
+                    />
+                  </div>
+
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--navy-primary)', margin: '0 0 0.5rem 0' }}>
+                    {item.region}
+                  </h3>
+
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.4rem', marginBottom: '1rem' }}>
+                    <span style={{ fontSize: '0.8rem', color: '#64748b' }}>Estimated Arrival:</span>
+                    <strong style={{ fontSize: '1.05rem', color: 'var(--blue-brand)' }}>{item.eta}</strong>
+                  </div>
+
+                  <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.55, margin: 0 }}>
+                    {item.coverage}
+                  </p>
+                </div>
+
+                <div style={{ marginTop: '1.5rem', paddingTop: '1.25rem', borderTop: '1px solid #f1f5f9', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <a 
+                    href={`tel:${BUSINESS_INFO.phone}`}
+                    style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--navy-primary)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.35rem' }}
+                  >
+                    <Phone size={14} color="var(--blue-brand)" /> {BUSINESS_INFO.phone}
+                  </a>
+
+                  <button
+                    onClick={() => setIsModalOpen(true)}
+                    className="btn btn-primary btn-sm"
+                    style={{ padding: '0.45rem 1rem', fontSize: '0.8rem', fontWeight: 700 }}
+                  >
+                    Request
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ textAlign: 'center' }}>
+            <span style={{ fontSize: '0.9rem', color: '#64748b', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+              <Clock size={16} color="var(--blue-brand)" />
+              Emergency night dispatch available across all zones &bull; 24 Hours / 7 Days
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 3. The Clinical Reality: Hospital Travel vs SOS Home Imaging ── */}
+      <section style={{ padding: '4.5rem 0', backgroundColor: 'var(--bg-subtle)', borderTop: '1px solid var(--border-color)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 3rem auto' }}>
             <div className="badge-tag" style={{ marginBottom: '0.75rem' }}>
@@ -332,25 +429,26 @@ export const XRayAtHome: React.FC = () => {
             </p>
           </div>
 
-          <div style={{ maxWidth: '960px', margin: '0 auto', overflowX: 'auto' }}>
+          <div style={{ maxWidth: '980px', margin: '0 auto', overflowX: 'auto' }}>
             <table 
               style={{ 
                 width: '100%', 
                 borderCollapse: 'separate', 
                 borderSpacing: 0, 
-                borderRadius: '18px', 
+                borderRadius: '16px', 
                 overflow: 'hidden',
                 border: '1px solid #e2e8f0',
-                boxShadow: '0 6px 24px rgba(10, 31, 68, 0.04)'
+                backgroundColor: '#ffffff',
+                boxShadow: '0 4px 20px rgba(10, 31, 68, 0.05)'
               }}
             >
               <thead>
                 <tr style={{ backgroundColor: 'var(--navy-primary)', color: '#ffffff', textAlign: 'left' }}>
-                  <th style={{ padding: '1.25rem 1.5rem', fontSize: '0.9rem', width: '28%' }}>Clinical Parameter</th>
-                  <th style={{ padding: '1.25rem 1.5rem', fontSize: '0.9rem', width: '36%', backgroundColor: 'rgba(239, 68, 68, 0.15)', color: '#fca5a5' }}>
-                    Standard Lab / Hospital Visit
+                  <th style={{ padding: '1.25rem 1.5rem', fontSize: '0.88rem', fontWeight: 800, width: '28%' }}>Clinical Parameter</th>
+                  <th style={{ padding: '1.25rem 1.5rem', fontSize: '0.88rem', fontWeight: 800, width: '36%', backgroundColor: 'rgba(239, 68, 68, 0.2)', color: '#fca5a5' }}>
+                    Conventional Lab / Hospital Visit
                   </th>
-                  <th style={{ padding: '1.25rem 1.5rem', fontSize: '0.9rem', width: '36%', backgroundColor: 'rgba(2, 132, 199, 0.25)', color: '#38bdf8' }}>
+                  <th style={{ padding: '1.25rem 1.5rem', fontSize: '0.88rem', fontWeight: 800, width: '36%', backgroundColor: 'rgba(2, 132, 199, 0.3)', color: '#bae6fd' }}>
                     SOS Doorstep Digital Radiography
                   </th>
                 </tr>
@@ -361,13 +459,13 @@ export const XRayAtHome: React.FC = () => {
                     <td style={{ padding: '1.15rem 1.5rem', fontWeight: 800, fontSize: '0.88rem', color: 'var(--navy-primary)', borderRight: '1px solid #e2e8f0' }}>
                       {row.parameter}
                     </td>
-                    <td style={{ padding: '1.15rem 1.5rem', fontSize: '0.84rem', color: '#64748b', lineHeight: 1.5, borderRight: '1px solid #e2e8f0', backgroundColor: idx % 2 === 0 ? 'rgba(254, 242, 242, 0.4)' : 'rgba(254, 242, 242, 0.7)' }}>
+                    <td style={{ padding: '1.15rem 1.5rem', fontSize: '0.84rem', color: '#64748b', lineHeight: 1.5, borderRight: '1px solid #e2e8f0', backgroundColor: idx % 2 === 0 ? 'rgba(254, 242, 242, 0.35)' : 'rgba(254, 242, 242, 0.65)' }}>
                       <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.45rem' }}>
                         <CloseIcon size={14} color="#ef4444" style={{ marginTop: '3px', flexShrink: 0 }} />
                         <span>{row.conventional}</span>
                       </div>
                     </td>
-                    <td style={{ padding: '1.15rem 1.5rem', fontSize: '0.84rem', color: 'var(--navy-primary)', fontWeight: 600, lineHeight: 1.5, backgroundColor: idx % 2 === 0 ? 'rgba(240, 249, 255, 0.5)' : 'rgba(240, 249, 255, 0.8)' }}>
+                    <td style={{ padding: '1.15rem 1.5rem', fontSize: '0.84rem', color: 'var(--navy-primary)', fontWeight: 600, lineHeight: 1.5, backgroundColor: idx % 2 === 0 ? 'rgba(240, 249, 255, 0.45)' : 'rgba(240, 249, 255, 0.75)' }}>
                       <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.45rem' }}>
                         <Check size={14} color="#0284c7" style={{ marginTop: '3px', flexShrink: 0 }} />
                         <span>{row.sosHome}</span>
@@ -381,7 +479,60 @@ export const XRayAtHome: React.FC = () => {
         </div>
       </section>
 
-      {/* ── 3. Interactive Anatomical Examination Protocol ── */}
+      {/* ── 4. Step-by-Step "How Our Doorstep X-Ray Works" ── */}
+      <section style={{ padding: '4.5rem 0', backgroundColor: '#ffffff', borderTop: '1px solid var(--border-color)' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 3rem auto' }}>
+            <div className="badge-tag" style={{ marginBottom: '0.75rem' }}>
+              Seamless Bedside Protocol
+            </div>
+            <h2 className="heading-lg" style={{ color: 'var(--navy-primary)', marginBottom: '0.85rem' }}>
+              How Our Doorstep <span style={{ color: 'var(--blue-brand)' }}>Digital X-Ray Works</span>
+            </h2>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.6 }}>
+              Engineered for emergency speed, gentle patient handling, and immediate orthopedic decision-making.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem', maxWidth: '1150px', margin: '0 auto' }}>
+            {steps.map((st, i) => (
+              <div 
+                key={i}
+                style={{
+                  backgroundColor: '#f8fafc',
+                  border: '1px solid #e2e8f0',
+                  borderRadius: '16px',
+                  padding: '2rem 1.5rem',
+                  position: 'relative'
+                }}
+              >
+                <div 
+                  style={{ 
+                    fontSize: '0.85rem', 
+                    fontWeight: 800, 
+                    color: 'var(--blue-brand)', 
+                    backgroundColor: 'var(--blue-soft)', 
+                    padding: '0.2rem 0.65rem', 
+                    borderRadius: '9999px',
+                    display: 'inline-block',
+                    marginBottom: '1rem'
+                  }}
+                >
+                  Step {st.num}
+                </div>
+                <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--navy-primary)', margin: '0 0 0.6rem 0' }}>
+                  {st.title}
+                </h3>
+                <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>
+                  {st.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 5. Interactive Anatomical Examination Protocol ── */}
       <section style={{ padding: '4.5rem 0', backgroundColor: 'var(--bg-subtle)', borderTop: '1px solid var(--border-color)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 2.5rem auto' }}>
@@ -396,7 +547,7 @@ export const XRayAtHome: React.FC = () => {
             </p>
 
             {/* Examination Switcher Tabs */}
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '0.65rem', flexWrap: 'wrap', marginTop: '1.75rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem', flexWrap: 'wrap', marginTop: '1.75rem' }}>
               {[
                 { id: 'hip', label: 'Hip & Pelvis' },
                 { id: 'spine', label: 'Spine & Sciatica' },
@@ -410,7 +561,7 @@ export const XRayAtHome: React.FC = () => {
                   className="pill-choice-btn"
                   style={{
                     padding: '0.55rem 1.25rem',
-                    borderRadius: '9999px',
+                    borderRadius: 'var(--radius-pill)',
                     border: '1.5px solid',
                     borderColor: activeExamTab === tab.id ? 'var(--navy-primary)' : 'var(--border-color)',
                     backgroundColor: activeExamTab === tab.id ? 'var(--navy-primary)' : '#ffffff',
@@ -431,20 +582,20 @@ export const XRayAtHome: React.FC = () => {
             key={activeExamTab}
             className="animate-fade-in"
             style={{
-              maxWidth: '920px',
+              maxWidth: '960px',
               margin: '0 auto',
               backgroundColor: '#ffffff',
-              borderRadius: '24px',
-              border: '1px solid rgba(10, 31, 68, 0.09)',
+              borderRadius: '20px',
+              border: '1px solid #e2e8f0',
               padding: '2.5rem',
-              boxShadow: '0 8px 32px rgba(10, 31, 68, 0.05)'
+              boxShadow: '0 8px 30px rgba(10, 31, 68, 0.05)'
             }}
           >
             <div style={{ borderBottom: '1px solid #f1f5f9', paddingBottom: '1.25rem', marginBottom: '1.75rem' }}>
               <div style={{ fontSize: '0.78rem', color: 'var(--blue-brand)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                 Clinical Investigation Protocol
               </div>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--navy-primary)', margin: '0.35rem 0' }}>
+              <h3 style={{ fontSize: '1.45rem', fontWeight: 800, color: 'var(--navy-primary)', margin: '0.35rem 0' }}>
                 {examDetails[activeExamTab].title}
               </h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', margin: 0 }}>
@@ -454,7 +605,7 @@ export const XRayAtHome: React.FC = () => {
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.75rem', marginBottom: '2rem' }}>
               <div>
-                <div style={{ fontSize: '0.78rem', fontWeight: 800, color: '#64748b', textTransform: 'uppercase', marginBottom: '0.35rem' }}>
+                <div style={{ fontSize: '0.75rem', fontWeight: 800, color: '#64748b', textTransform: 'uppercase', marginBottom: '0.35rem' }}>
                   Projections & Views
                 </div>
                 <div style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--navy-primary)' }}>
@@ -463,7 +614,7 @@ export const XRayAtHome: React.FC = () => {
               </div>
 
               <div>
-                <div style={{ fontSize: '0.78rem', fontWeight: 800, color: '#64748b', textTransform: 'uppercase', marginBottom: '0.35rem' }}>
+                <div style={{ fontSize: '0.75rem', fontWeight: 800, color: '#64748b', textTransform: 'uppercase', marginBottom: '0.35rem' }}>
                   Diagnostic Focus
                 </div>
                 <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
@@ -472,7 +623,7 @@ export const XRayAtHome: React.FC = () => {
               </div>
 
               <div>
-                <div style={{ fontSize: '0.78rem', fontWeight: 800, color: '#64748b', textTransform: 'uppercase', marginBottom: '0.35rem' }}>
+                <div style={{ fontSize: '0.75rem', fontWeight: 800, color: '#64748b', textTransform: 'uppercase', marginBottom: '0.35rem' }}>
                   Patient Comfort & Positioning
                 </div>
                 <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
@@ -481,7 +632,7 @@ export const XRayAtHome: React.FC = () => {
               </div>
 
               <div>
-                <div style={{ fontSize: '0.78rem', fontWeight: 800, color: '#64748b', textTransform: 'uppercase', marginBottom: '0.35rem' }}>
+                <div style={{ fontSize: '0.75rem', fontWeight: 800, color: '#64748b', textTransform: 'uppercase', marginBottom: '0.35rem' }}>
                   Clinical Turnaround
                 </div>
                 <div style={{ fontSize: '0.88rem', color: '#16a34a', fontWeight: 700 }}>
@@ -508,12 +659,12 @@ export const XRayAtHome: React.FC = () => {
         </div>
       </section>
 
-      {/* ── 4. Integrated Orthopedic Surgeon Follow-Up Strip ── */}
+      {/* ── 6. Integrated Orthopedic Surgeon Follow-Up Strip ── */}
       <section style={{ padding: '3.5rem 0 4.5rem 0', backgroundColor: 'var(--bg-subtle)' }}>
         <div className="container">
           <div 
             style={{
-              background: 'linear-gradient(135deg, #0a1f44 0%, #0369a1 100%)',
+              background: 'linear-gradient(135deg, var(--navy-primary, #07152e) 0%, #0369a1 100%)',
               borderRadius: '24px',
               padding: '3rem 2.5rem',
               color: '#ffffff',
@@ -545,12 +696,12 @@ export const XRayAtHome: React.FC = () => {
                 <span>Continuous Surgical Oversight</span>
               </div>
 
-              <h2 style={{ fontSize: '1.9rem', fontWeight: 800, margin: '0 0 0.85rem 0', lineHeight: 1.25 }}>
+              <h2 style={{ fontSize: '1.9rem', fontWeight: 800, margin: '0 0 0.85rem 0', lineHeight: 1.25, color: '#ffffff' }}>
                 Found a Fracture on Your Home X-Ray? We Take Immediate Care
               </h2>
 
               <p style={{ fontSize: '0.96rem', color: '#e0f2fe', lineHeight: 1.6, margin: 0 }}>
-                Unlike detached imaging labs that leave patients stranded with an unexplained film, SOS integrates immediate fracture care. Our consultant surgeons (Dr. Maulik, Dr. Shobit, Dr. Omkar) provide emergency splinting, waterproof casting, and clinical governance right away.
+                Unlike detached imaging labs that leave patients stranded with an unexplained film, SOS integrates immediate fracture care. Our consultant surgeons (Dr. Maulik Joshi, Dr. Shobit Deshmukh, Dr. Omkar Rashinkar) provide emergency splinting, waterproof casting, and clinical governance right away.
               </p>
             </div>
 
@@ -563,7 +714,7 @@ export const XRayAtHome: React.FC = () => {
                   color: 'var(--navy-primary)',
                   fontWeight: 800,
                   padding: '0.85rem 1.6rem',
-                  borderRadius: '9999px',
+                  borderRadius: 'var(--radius-pill)',
                   justifyContent: 'center',
                   boxShadow: '0 4px 14px rgba(0,0,0,0.15)',
                   gap: '0.5rem'
@@ -580,7 +731,7 @@ export const XRayAtHome: React.FC = () => {
                   color: '#ffffff',
                   fontWeight: 700,
                   padding: '0.8rem 1.4rem',
-                  borderRadius: '9999px',
+                  borderRadius: 'var(--radius-pill)',
                   justifyContent: 'center',
                   border: '1px solid rgba(255, 255, 255, 0.3)',
                   gap: '0.5rem'
@@ -593,8 +744,8 @@ export const XRayAtHome: React.FC = () => {
         </div>
       </section>
 
-      {/* ── 6. Clinical FAQs ── */}
-      <section style={{ padding: '4.5rem 0', backgroundColor: '#ffffff' }}>
+      {/* ── 7. Clinical FAQs ── */}
+      <section style={{ padding: '4.5rem 0', backgroundColor: '#ffffff', borderTop: '1px solid var(--border-color)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 3rem auto' }}>
             <div className="badge-tag" style={{ marginBottom: '0.75rem' }}>
@@ -657,15 +808,6 @@ export const XRayAtHome: React.FC = () => {
         onClose={() => setIsModalOpen(false)}
         defaultService="home-x-ray"
       />
-
-      <style>{`
-        @media (max-width: 900px) {
-          .hero-split-grid {
-            grid-template-columns: 1fr !important;
-            gap: 2rem !important;
-          }
-        }
-      `}</style>
     </>
   );
 };
