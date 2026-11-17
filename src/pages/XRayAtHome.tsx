@@ -5,6 +5,7 @@ import {
   Clock, 
   Activity, 
   Phone, 
+  PhoneCall,
   MapPin, 
   Calendar, 
   CheckCircle2, 
@@ -112,36 +113,44 @@ export const XRayAtHome: React.FC = () => {
 
   const fleetAreas = [
     {
+      zone: 'Flagship Zone',
       region: 'Kandivali & Borivali West/East',
       eta: '15 – 20 Mins',
-      status: 'Flagship Fleet &bull; On Duty',
+      statusText: 'Active • On Duty',
       coverage: 'Mahavir Nagar, Lokhandwala, Gorai, Shimpoli, IC Colony, Chikuwadi',
       statusColor: '#16a34a',
-      statusBg: '#dcfce7'
+      statusBg: '#dcfce7',
+      accentColor: '#16a34a'
     },
     {
+      zone: 'Coastal Zone',
       region: 'Malad & Madh Island Belt',
       eta: '20 – 25 Mins',
-      status: 'Outreach Unit &bull; On Duty',
+      statusText: 'Active • On Duty',
       coverage: 'Mindspace, Link Road, Marve Road, Pascal Wadi, Raheja Exotica, Orlem',
       statusColor: '#16a34a',
-      statusBg: '#dcfce7'
+      statusBg: '#dcfce7',
+      accentColor: '#0284c7'
     },
     {
+      zone: 'Suburban Zone',
       region: 'Goregaon & Oshiwara',
       eta: '25 – 30 Mins',
-      status: 'Suburban Fleet &bull; On Duty',
+      statusText: 'Active • On Duty',
       coverage: 'Goregaon West & East, Lokhandwala Complex, Bangur Nagar, Aarey Colony',
       statusColor: '#16a34a',
-      statusBg: '#dcfce7'
+      statusBg: '#dcfce7',
+      accentColor: '#0ea5e9'
     },
     {
+      zone: 'Extended Zone',
       region: 'Andheri, Juhu & Dahisar',
       eta: '30 – 35 Mins',
-      status: 'Extended Fleet &bull; Available',
+      statusText: 'Standby • Available',
       coverage: 'Andheri West/East, Versova, Juhu Scheme, Dahisar West/East & Mira Road',
       statusColor: '#0284c7',
-      statusBg: '#e0f2fe'
+      statusBg: '#e0f2fe',
+      accentColor: '#6366f1'
     }
   ];
 
@@ -149,22 +158,34 @@ export const XRayAtHome: React.FC = () => {
     {
       num: '01',
       title: 'Call or WhatsApp Dispatch',
-      desc: 'Connect with our 24/7 medical desk. Share your location, patient symptoms, or doctor prescription.'
+      desc: 'Connect with our 24/7 medical desk. Share your location, patient symptoms, or doctor prescription.',
+      icon: <PhoneCall size={24} />,
+      iconBg: '#e0f2fe',
+      iconColor: '#0284c7'
     },
     {
       num: '02',
       title: 'Rapid Bedside Arrival',
-      desc: 'Our certified radiographer arrives in 20–30 minutes with calibrated high-frequency portable DR equipment.'
+      desc: 'Our certified radiographer arrives in 20–30 minutes with calibrated high-frequency portable DR equipment.',
+      icon: <Truck size={24} />,
+      iconBg: '#dcfce7',
+      iconColor: '#16a34a'
     },
     {
       num: '03',
       title: '30-Second Gentle Exposure',
-      desc: 'Ultra-low radiation exposure taken directly on the patient bed with protective lead shielding and zero lifting.'
+      desc: 'Ultra-low radiation exposure taken directly on the patient bed with protective lead shielding and zero lifting.',
+      icon: <Radio size={24} />,
+      iconBg: '#ede9fe',
+      iconColor: '#7c3aed'
     },
     {
       num: '04',
       title: 'Instant Preview & Report',
-      desc: 'Immediate on-screen DICOM verification, signed MD Radiologist report, and on-call orthopedic surgeon review.'
+      desc: 'Immediate on-screen DICOM verification, signed MD Radiologist report, and on-call orthopedic surgeon review.',
+      icon: <FileCheck size={24} />,
+      iconBg: '#fef3c7',
+      iconColor: '#d97706'
     }
   ];
 
@@ -334,71 +355,172 @@ export const XRayAtHome: React.FC = () => {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem', maxWidth: '1150px', margin: '0 auto 2.5rem auto' }}>
+          <div 
+            style={{ 
+              display: 'grid', 
+              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', 
+              gap: '1.5rem', 
+              maxWidth: '1180px', 
+              margin: '0 auto 2.5rem auto' 
+            }}
+          >
             {fleetAreas.map((item, i) => (
               <div 
                 key={i}
+                className="fleet-card"
                 style={{
                   backgroundColor: '#ffffff',
-                  border: '1px solid #e2e8f0',
-                  borderRadius: '16px',
-                  padding: '1.75rem 1.5rem',
-                  boxShadow: '0 4px 16px rgba(10, 31, 68, 0.04)',
+                  border: '1.5px solid #e2e8f0',
+                  borderRadius: '20px',
+                  padding: '1.75rem',
+                  boxShadow: '0 4px 18px rgba(10, 31, 68, 0.04)',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+                  position: 'relative',
+                  overflow: 'hidden',
+                  cursor: 'pointer'
                 }}
               >
+                {/* Top Accent Indicator */}
+                <div 
+                  className="card-top-bar" 
+                  style={{ 
+                    position: 'absolute', 
+                    top: 0, 
+                    left: 0, 
+                    right: 0, 
+                    height: '4px', 
+                    backgroundColor: item.accentColor, 
+                    opacity: 0, 
+                    transition: 'opacity 0.3s ease' 
+                  }} 
+                />
+
                 <div>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--blue-brand)', fontWeight: 700, fontSize: '0.85rem' }}>
-                      <MapPin size={16} />
-                      <span>Mumbai Suburban Hub</span>
-                    </div>
-                    <span 
+                  {/* Card Header Row: Badge & Live Status */}
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', gap: '0.5rem', flexWrap: 'wrap' }}>
+                    <div 
                       style={{ 
+                        display: 'inline-flex', 
+                        alignItems: 'center', 
+                        gap: '0.35rem', 
+                        color: 'var(--blue-brand)', 
+                        fontSize: '0.74rem', 
+                        fontWeight: 700, 
+                        backgroundColor: 'rgba(2, 132, 199, 0.08)', 
+                        padding: '0.25rem 0.65rem', 
+                        borderRadius: '9999px',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.04em'
+                      }}
+                    >
+                      <MapPin size={13} />
+                      <span>{item.zone}</span>
+                    </div>
+
+                    <div 
+                      style={{ 
+                        display: 'inline-flex', 
+                        alignItems: 'center', 
+                        gap: '0.4rem', 
                         fontSize: '0.72rem', 
                         fontWeight: 700, 
                         backgroundColor: item.statusBg, 
                         color: item.statusColor, 
-                        padding: '0.2rem 0.6rem', 
+                        padding: '0.25rem 0.65rem', 
                         borderRadius: '9999px',
                         textTransform: 'uppercase',
-                        letterSpacing: '0.03em'
+                        letterSpacing: '0.03em',
+                        whiteSpace: 'nowrap'
                       }}
-                      dangerouslySetInnerHTML={{ __html: item.status }}
-                    />
+                    >
+                      <span className="live-pulse-dot" style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: item.statusColor, display: 'inline-block' }} />
+                      <span>{item.statusText}</span>
+                    </div>
                   </div>
 
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--navy-primary)', margin: '0 0 0.5rem 0' }}>
+                  {/* Region Title */}
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--navy-primary)', margin: '0 0 0.85rem 0', lineHeight: 1.3 }}>
                     {item.region}
                   </h3>
 
-                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.4rem', marginBottom: '1rem' }}>
-                    <span style={{ fontSize: '0.8rem', color: '#64748b' }}>Estimated Arrival:</span>
-                    <strong style={{ fontSize: '1.05rem', color: 'var(--blue-brand)' }}>{item.eta}</strong>
+                  {/* Highlighted ETA Box */}
+                  <div 
+                    style={{ 
+                      backgroundColor: '#f0f9ff', 
+                      border: '1px solid #e0f2fe', 
+                      borderRadius: '12px', 
+                      padding: '0.75rem 1rem', 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'space-between', 
+                      marginBottom: '1.15rem' 
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.8rem', color: '#64748b', fontWeight: 600 }}>
+                      <Clock size={15} color="var(--blue-brand)" />
+                      <span>Estimated Arrival:</span>
+                    </div>
+                    <strong style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--blue-brand)', letterSpacing: '-0.01em' }}>
+                      {item.eta}
+                    </strong>
                   </div>
 
-                  <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.55, margin: 0 }}>
+                  {/* Coverage Locations */}
+                  <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: 1.55, margin: '0 0 1.25rem 0' }}>
                     {item.coverage}
                   </p>
                 </div>
 
-                <div style={{ marginTop: '1.5rem', paddingTop: '1.25rem', borderTop: '1px solid #f1f5f9', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                {/* Footer Action Strip */}
+                <div 
+                  style={{ 
+                    paddingTop: '1.25rem', 
+                    borderTop: '1px solid #f1f5f9', 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'space-between',
+                    gap: '0.75rem'
+                  }}
+                >
                   <a 
                     href={`tel:${BUSINESS_INFO.phone}`}
-                    style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--navy-primary)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.35rem' }}
+                    className="fleet-phone-btn"
+                    style={{ 
+                      fontSize: '0.85rem', 
+                      fontWeight: 700, 
+                      color: 'var(--navy-primary)', 
+                      textDecoration: 'none', 
+                      display: 'inline-flex', 
+                      alignItems: 'center', 
+                      gap: '0.45rem',
+                      padding: '0.45rem 0.65rem',
+                      borderRadius: '8px',
+                      backgroundColor: '#f8fafc',
+                      border: '1px solid #e2e8f0',
+                      transition: 'all 0.2s ease'
+                    }}
+                    title={`Call Helpline ${BUSINESS_INFO.phone}`}
                   >
-                    <Phone size={14} color="var(--blue-brand)" /> {BUSINESS_INFO.phone}
+                    <Phone size={14} color="var(--blue-brand)" />
+                    <span>{BUSINESS_INFO.phone}</span>
                   </a>
 
                   <button
                     onClick={() => setIsModalOpen(true)}
-                    className="btn btn-primary btn-sm"
-                    style={{ padding: '0.45rem 1rem', fontSize: '0.8rem', fontWeight: 700 }}
+                    className="btn btn-primary btn-sm fleet-cta-btn"
+                    style={{ 
+                      padding: '0.55rem 1.15rem', 
+                      fontSize: '0.82rem', 
+                      fontWeight: 800,
+                      gap: '0.35rem',
+                      borderRadius: '9999px',
+                      transition: 'all 0.25s ease'
+                    }}
                   >
-                    Request
+                    <span>Request</span>
+                    <ArrowRight size={13} />
                   </button>
                 </div>
               </div>
@@ -494,36 +616,91 @@ export const XRayAtHome: React.FC = () => {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem', maxWidth: '1150px', margin: '0 auto' }}>
+          <div 
+            style={{ 
+              display: 'grid', 
+              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
+              gap: '1.75rem', 
+              maxWidth: '1180px', 
+              margin: '0 auto' 
+            }}
+          >
             {steps.map((st, i) => (
               <div 
                 key={i}
+                className="step-card"
                 style={{
-                  backgroundColor: '#f8fafc',
-                  border: '1px solid #e2e8f0',
-                  borderRadius: '16px',
-                  padding: '2rem 1.5rem',
-                  position: 'relative'
+                  backgroundColor: '#ffffff',
+                  border: '1.5px solid #e2e8f0',
+                  borderRadius: '20px',
+                  padding: '2.25rem 1.75rem',
+                  boxShadow: '0 4px 18px rgba(10, 31, 68, 0.04)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  cursor: 'pointer'
                 }}
               >
+                {/* Number Watermark in Background */}
+                <span 
+                  style={{ 
+                    position: 'absolute', 
+                    top: '1rem', 
+                    right: '1.25rem', 
+                    fontSize: '2.5rem', 
+                    fontWeight: 900, 
+                    color: 'rgba(10, 31, 68, 0.05)', 
+                    lineHeight: 1,
+                    userSelect: 'none',
+                    pointerEvents: 'none'
+                  }}
+                >
+                  {st.num}
+                </span>
+
+                {/* Animated Icon Container */}
+                <div 
+                  className="step-icon-wrap"
+                  style={{
+                    width: '56px',
+                    height: '56px',
+                    borderRadius: '16px',
+                    backgroundColor: st.iconBg,
+                    color: st.iconColor,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginBottom: '1.5rem',
+                    boxShadow: `0 8px 20px ${st.iconBg}`
+                  }}
+                >
+                  {st.icon}
+                </div>
+
                 <div 
                   style={{ 
-                    fontSize: '0.85rem', 
+                    fontSize: '0.76rem', 
                     fontWeight: 800, 
-                    color: 'var(--blue-brand)', 
-                    backgroundColor: 'var(--blue-soft)', 
+                    color: st.iconColor, 
+                    backgroundColor: st.iconBg, 
                     padding: '0.2rem 0.65rem', 
                     borderRadius: '9999px',
                     display: 'inline-block',
-                    marginBottom: '1rem'
+                    width: 'fit-content',
+                    marginBottom: '0.85rem',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.04em'
                   }}
                 >
                   Step {st.num}
                 </div>
-                <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--navy-primary)', margin: '0 0 0.6rem 0' }}>
+
+                <h3 style={{ fontSize: '1.22rem', fontWeight: 800, color: 'var(--navy-primary)', margin: '0 0 0.65rem 0', lineHeight: 1.3 }}>
                   {st.title}
                 </h3>
-                <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>
+
+                <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0, flexGrow: 1 }}>
                   {st.desc}
                 </p>
               </div>
@@ -808,6 +985,68 @@ export const XRayAtHome: React.FC = () => {
         onClose={() => setIsModalOpen(false)}
         defaultService="home-x-ray"
       />
+
+      <style>{`
+        /* Animated pulse indicator for active fleet */
+        @keyframes pulseFleetDot {
+          0% { transform: scale(0.9); opacity: 0.75; }
+          50% { transform: scale(1.35); opacity: 1; box-shadow: 0 0 8px currentColor; }
+          100% { transform: scale(0.9); opacity: 0.75; }
+        }
+        .live-pulse-dot {
+          animation: pulseFleetDot 2s infinite ease-in-out;
+        }
+
+        /* ── Fleet Cards Hover Animation ── */
+        .fleet-card {
+          transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                      box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                      border-color 0.3s ease;
+        }
+        .fleet-card:hover {
+          transform: translateY(-8px);
+          border-color: rgba(2, 132, 199, 0.45) !important;
+          box-shadow: 0 20px 42px -10px rgba(10, 31, 68, 0.12), 0 0 0 1px rgba(2, 132, 199, 0.2) !important;
+        }
+        .fleet-card:hover .card-top-bar {
+          opacity: 1 !important;
+        }
+        .fleet-card:hover .fleet-cta-btn {
+          background-color: var(--blue-brand) !important;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 16px rgba(2, 132, 199, 0.35);
+        }
+        .fleet-phone-btn:hover {
+          background-color: #f0f9ff !important;
+          border-color: #bae6fd !important;
+          color: var(--blue-brand) !important;
+        }
+
+        /* ── Steps Cards Hover Animation ── */
+        .step-card {
+          transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                      box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                      border-color 0.3s ease;
+        }
+        .step-card:hover {
+          transform: translateY(-8px);
+          border-color: rgba(2, 132, 199, 0.45) !important;
+          box-shadow: 0 22px 45px -12px rgba(2, 132, 199, 0.16), 0 0 0 1px rgba(2, 132, 199, 0.2) !important;
+        }
+        .step-card:hover .step-icon-wrap {
+          transform: scale(1.12) translateY(-3px);
+        }
+
+        /* ── Stats Strip Hover Animation ── */
+        .services-stats-grid > div {
+          transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .services-stats-grid > div:hover {
+          transform: translateY(-4px);
+          border-color: rgba(2, 132, 199, 0.3) !important;
+          box-shadow: 0 12px 28px rgba(10, 31, 68, 0.08) !important;
+        }
+      `}</style>
     </>
   );
 };
